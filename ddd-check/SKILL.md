@@ -7,9 +7,14 @@ description: >
   This skill scans Go source files for architectural violations across domain, usecase, adapter,
   and infra layers and produces a structured report with file/line references and a pass/fail summary.
   Always use this skill proactively after refactoring sessions or before PRs in DDD Go projects.
+category: engineering
+tags: [go, architecture, ddd, clean-architecture, audit, lint]
+related: [clean-ddd-go]
 ---
 
 # DDD Architecture Check — Go Projects
+
+> **Related skill:** [`clean-ddd-go`](../clean-ddd-go/SKILL.md) defines the architectural rules this skill validates. Read it first to understand the conventions being enforced.
 
 ## What This Skill Does
 
