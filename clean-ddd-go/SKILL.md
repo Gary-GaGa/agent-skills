@@ -1,8 +1,23 @@
+---
+name: clean-ddd-go
+description: >
+  Guidance for developing Go applications using Clean Architecture combined with
+  Domain-Driven Design (DDD). Covers layered architecture, bounded contexts,
+  aggregate roots, repository patterns, usecase orchestration, and adapter
+  separation. Use this skill when building or modifying Go projects that follow
+  these architectural principles.
+category: engineering
+tags: [go, architecture, ddd, clean-architecture, backend]
+related: [ddd-check]
+---
+
 # Clean Architecture + Domain-Driven Design for Go
 
 ## Description
 
 This skill provides guidance for developing Go applications using **Clean Architecture** combined with **Domain-Driven Design (DDD)**. It covers layered architecture, bounded contexts, aggregate roots, repository patterns, usecase orchestration, and adapter separation. Use this skill when building or modifying Go projects that follow these architectural principles.
+
+**Related skill:** [`ddd-check`](../ddd-check/SKILL.md) — automated validator that checks whether a Go project follows the rules defined in this skill.
 
 ## Architecture Layers
 

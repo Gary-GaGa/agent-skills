@@ -1,6 +1,8 @@
 ---
 name: medium-writing-zh
 description: 提供 Medium 平台繁體中文寫作與經營的完整指南。涵蓋文章撰寫技巧、排版格式、SEO 優化、標籤策略、讀者互動與平台經營心法，協助使用者產出高品質、好閱讀的繁體中文 Medium 文章。
+category: content
+tags: [writing, medium, chinese, zh-tw, seo, content-marketing]
 ---
 
 # Medium 繁體中文寫作與經營指南

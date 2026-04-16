@@ -6,8 +6,23 @@ Purpose: Short, focused guidance for Copilot agents and CLI sessions working in 
 
 ## Quick repository snapshot
 
-- Top-level directories: `clean-ddd-go/` (Clean Architecture + DDD Go example/template) and `copilot-sdk/` (Copilot SDK documentation and references).
-- There are no repository-wide build scripts detected at the root (no `go.mod`, `package.json`, or `pyproject.toml` present in this repo snapshot); the folders are documentation/examples.
+This repo is a collection of reusable **agent skills**. Each top-level folder is a self-contained skill package with a `SKILL.md` entry point (YAML frontmatter: `name`, `description`, `category`, `tags`).
+
+Current skills (see `README.md` for the full index):
+
+| Skill | Category | Purpose |
+|-------|----------|---------|
+| `clean-ddd-go/` | engineering | Clean Architecture + DDD guide for Go |
+| `ddd-check/` | engineering | Auditor that validates Go DDD/Clean-Arch compliance |
+| `copilot-sdk/` | engineering | GitHub Copilot SDK usage guide (TS/Py/Go/.NET) |
+| `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
+
+Repo-level files:
+- `README.md` — skill index organized by category
+- `CONTRIBUTING.md` — how to add a new skill
+- `SKILL_TEMPLATE.md` — template/boilerplate for new skills
+
+There are no repository-wide build scripts at the root (no `go.mod`, `package.json`, or `pyproject.toml`); the folders are documentation/examples.
 
 ---
 
@@ -104,8 +119,12 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 
 ## Files and locations to consult
 
+- `README.md` — the top-level skill index; start here to discover what skills are available.
 - `clean-ddd-go/SKILL.md` — authoritative architecture and conventions for the Go exemplar.
+- `ddd-check/SKILL.md` — checks/validators for Go DDD projects; run after refactors or before PRs.
 - `copilot-sdk/SKILL.md` and `copilot-sdk/references/` — event model, agent frontmatter, MCP documentation, examples across languages.
+- `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
+- `CONTRIBUTING.md` / `SKILL_TEMPLATE.md` — process and boilerplate for adding new skills.
 
 ---
 
