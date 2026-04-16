@@ -15,12 +15,25 @@ Current skills (see `README.md` for the full index):
 | `clean-ddd-go/` | engineering | Clean Architecture + DDD guide for Go |
 | `ddd-check/` | engineering | Auditor that validates Go DDD/Clean-Arch compliance |
 | `copilot-sdk/` | engineering | GitHub Copilot SDK usage guide (TS/Py/Go/.NET) |
+| `go-testing/` | engineering | Go testing patterns — table-driven, fakes/mocks, coverage |
+| `git-workflow/` | engineering | Git day-to-day workflow, branching, commits, recovery |
+| `code-review/` | engineering | Giving/receiving code review effectively |
+| `debugging-methodology/` | engineering | Systematic debugging — reproduce, isolate, verify |
 | `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
+
+Rule sheets (lightweight, quotable) live in `rules/`:
+
+| Rule | Topic |
+|------|-------|
+| `rules/go-naming.md` | Go naming conventions |
+| `rules/go-error-handling.md` | Go error handling (sentinel/wrap/panic policy) |
+| `rules/commit-messages.md` | Conventional Commits format |
 
 Repo-level files:
 - `README.md` — skill index organized by category
-- `CONTRIBUTING.md` — how to add a new skill
+- `CONTRIBUTING.md` — how to add a new skill or rule
 - `SKILL_TEMPLATE.md` — template/boilerplate for new skills
+- `rules/README.md` — index of rule sheets
 
 There are no repository-wide build scripts at the root (no `go.mod`, `package.json`, or `pyproject.toml`); the folders are documentation/examples.
 
@@ -123,8 +136,13 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 - `clean-ddd-go/SKILL.md` — authoritative architecture and conventions for the Go exemplar.
 - `ddd-check/SKILL.md` — checks/validators for Go DDD projects; run after refactors or before PRs.
 - `copilot-sdk/SKILL.md` and `copilot-sdk/references/` — event model, agent frontmatter, MCP documentation, examples across languages.
+- `go-testing/SKILL.md` — testing patterns (table-driven, fakes, parallel, coverage); pair with `clean-ddd-go`.
+- `git-workflow/SKILL.md` — branching, commits, conflict resolution, recovery (reflog, bisect).
+- `code-review/SKILL.md` — how to give/receive review; severity prefixes; checklist.
+- `debugging-methodology/SKILL.md` — the reproduce→isolate→hypothesize→verify loop.
 - `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
-- `CONTRIBUTING.md` / `SKILL_TEMPLATE.md` — process and boilerplate for adding new skills.
+- `rules/` — rule sheets for naming, error handling, commit messages; cite by filename when giving feedback.
+- `CONTRIBUTING.md` / `SKILL_TEMPLATE.md` — process and boilerplate for adding new skills or rules.
 
 ---
 

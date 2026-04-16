@@ -25,6 +25,7 @@ Every skill has exactly one `category`. Current options:
 |----------|-----|
 | `engineering` | Software design, development, SDK usage, auditing. |
 | `content` | Writing, editing, publishing, content marketing. |
+| `rules` | Lightweight rule sheets (see ["Adding a Rule" below](#adding-a-rule-lightweight-convention-sheet)). |
 
 Planned (open a PR to add):
 
@@ -99,6 +100,39 @@ If the skill has >~300 lines of detail, move the depth into `your-skill-name/ref
    - What the skill covers.
    - A concrete example of a user prompt that should trigger it.
    - Any new category or convention you're introducing.
+
+---
+
+## Adding a Rule (Lightweight Convention Sheet)
+
+Rules are a lighter format than skills. Use a **rule** (not a skill) when:
+
+- The content is a **list of norms** (do this, not that) rather than a how-to.
+- It's short enough to read end-to-end in under 2 minutes.
+- It's meant to be **quoted** in code review or **referenced** from skills — not dispatched by an agent as an action.
+- Examples: naming conventions, error-handling rules, commit-message format.
+
+### How to add
+
+1. Create `rules/<topic>.md`. No frontmatter needed.
+2. Start with a 1-2 sentence intro: what it covers, who it applies to, and any authoritative source it aligns with.
+3. Number the rules (1, 2, 3 …) so they can be cited as "violates rule 7 of `go-naming`".
+4. For each rule: one-line statement, then a ❌ / ✅ example if the rule isn't self-evident.
+5. Close with an "Anti-Patterns" table if applicable.
+6. Register it in `rules/README.md` and in the Rules section of the root `README.md`.
+
+### Rule vs Skill — rule of thumb
+
+| Signal | Format |
+|--------|--------|
+| "How do I do X?" | skill |
+| "What's the convention for X?" | rule |
+| Teaches a workflow | skill |
+| Enforceable by lint / auditor | rule |
+| Needs examples and prose | skill |
+| Numbered list of do/don't | rule |
+
+If a topic needs both, make both and cross-link — e.g. `git-workflow` skill + `commit-messages` rule.
 
 ---
 
