@@ -41,6 +41,9 @@ Skills for personal investing and market analysis (currently Taiwan stock market
 |-------|-------------|------|
 | [`tw-stock-fundamental`](./tw-stock-fundamental/SKILL.md) | 台股基本面分析 — 財報判讀、財務比率、選股框架（殖利率/成長/價值）、財報陷阱辨識。 | `tw-stock` `fundamental-analysis` `investing` |
 | [`tw-stock-chip`](./tw-stock-chip/SKILL.md) | 台股籌碼面分析 — 三大法人、融資融券、集保大戶、主力分點，搭配基本面判斷進場時機。 | `tw-stock` `chip-analysis` `investing` |
+| [`tw-stock-technical`](./tw-stock-technical/SKILL.md) | 台股技術分析 — K 線、均線、MACD、RSI、KD、布林通道、量價關係、支撐壓力。 | `tw-stock` `technical-analysis` `charting` |
+| [`tw-stock-quant`](./tw-stock-quant/SKILL.md) | 台股量化策略 — 回測框架、因子模型、績效評估、過擬合防範、策略開發流程。 | `tw-stock` `quantitative` `backtesting` |
+| [`tw-stock-data`](./tw-stock-data/SKILL.md) | 台股資料工程 — 資料源、欄位規格、除權息還原、point-in-time、儲存方案、自動化排程。 | `tw-stock` `data-engineering` `pipeline` |
 
 ### Rules
 
@@ -51,6 +54,7 @@ Lightweight rule sheets for coding conventions — quotable in reviews, referenc
 | [`rules/go-naming.md`](./rules/go-naming.md) | Go naming conventions — packages, types, functions, receivers, files |
 | [`rules/go-error-handling.md`](./rules/go-error-handling.md) | Go error handling — sentinel, wrapping, `errors.Is/As`, panic policy |
 | [`rules/commit-messages.md`](./rules/commit-messages.md) | Conventional Commits format for git messages |
+| [`rules/trading-discipline.md`](./rules/trading-discipline.md) | 交易紀律 — 資金管理、停損停利、心理控制、持股管理（35 條規則） |
 
 ---
 
@@ -137,9 +141,16 @@ agent-skills/
 │   └── SKILL.md
 ├── tw-stock-chip/
 │   └── SKILL.md
+├── tw-stock-technical/
+│   └── SKILL.md
+├── tw-stock-quant/
+│   └── SKILL.md
+├── tw-stock-data/
+│   └── SKILL.md
 └── rules/                     ← rules: lightweight, quotable conventions
     ├── README.md
     ├── go-naming.md
     ├── go-error-handling.md
-    └── commit-messages.md
+    ├── commit-messages.md
+    └── trading-discipline.md
 ```

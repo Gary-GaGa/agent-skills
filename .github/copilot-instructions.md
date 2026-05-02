@@ -25,6 +25,9 @@ Current skills (see `README.md` for the full index):
 | `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
 | `tw-stock-fundamental/` | finance | 台股基本面分析 — 財報判讀、財務比率、選股框架 |
 | `tw-stock-chip/` | finance | 台股籌碼面分析 — 三大法人、融資融券、集保大戶 |
+| `tw-stock-technical/` | finance | 台股技術分析 — K 線、均線、MACD、RSI、量價 |
+| `tw-stock-quant/` | finance | 台股量化策略 — 回測、因子模型、績效評估 |
+| `tw-stock-data/` | finance | 台股資料工程 — 資料源、清洗、儲存、排程 |
 
 Rule sheets (lightweight, quotable) live in `rules/`:
 
@@ -33,6 +36,7 @@ Rule sheets (lightweight, quotable) live in `rules/`:
 | `rules/go-naming.md` | Go naming conventions |
 | `rules/go-error-handling.md` | Go error handling (sentinel/wrap/panic policy) |
 | `rules/commit-messages.md` | Conventional Commits format |
+| `rules/trading-discipline.md` | 交易紀律（資金管理、停損停利、心理控制）|
 
 Repo-level files:
 - `README.md` — skill index organized by category
@@ -151,6 +155,9 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 - `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
 - `tw-stock-fundamental/SKILL.md` — 台股基本面分析（財報、財務比率、選股框架、財報陷阱）。
 - `tw-stock-chip/SKILL.md` — 台股籌碼面分析（三大法人、融資融券、集保大戶、主力分點）。
+- `tw-stock-technical/SKILL.md` — 台股技術分析（K 線、均線、指標、量價、型態、多指標共振）。
+- `tw-stock-quant/SKILL.md` — 台股量化策略（回測框架、因子模型、績效指標、過擬合防範）。
+- `tw-stock-data/SKILL.md` — 台股資料工程（資料源、欄位、除權息還原、point-in-time、Schema）。
 - `rules/` — rule sheets for naming, error handling, commit messages; cite by filename when giving feedback.
 - `CONTRIBUTING.md` / `SKILL_TEMPLATE.md` — process and boilerplate for adding new skills or rules.
 

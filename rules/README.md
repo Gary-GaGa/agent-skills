@@ -18,6 +18,7 @@ Each rule sheet is a single `.md` file. No frontmatter required — rules are me
 | [`go-naming.md`](./go-naming.md) | Go naming conventions — packages, types, functions, receivers |
 | [`go-error-handling.md`](./go-error-handling.md) | Go error handling — sentinel, wrapping, `errors.Is/As`, panic policy |
 | [`commit-messages.md`](./commit-messages.md) | Conventional Commits format for git messages |
+| [`trading-discipline.md`](./trading-discipline.md) | 交易紀律 — 資金管理、停損停利、心理控制、持股管理 |
 
 ---
 
