@@ -24,6 +24,11 @@ Skills that help design, build, or audit software.
 | [`api-design-rest`](./api-design-rest/SKILL.md) | RESTful API design — resource URLs, status codes, error format, pagination, versioning, idempotency. | `api` `rest` `http` |
 | [`api-design-grpc`](./api-design-grpc/SKILL.md) | gRPC API design — proto organization, naming, status codes, streaming, backward compatibility. | `api` `grpc` `protobuf` |
 | [`refactoring-patterns`](./refactoring-patterns/SKILL.md) | Safe, mechanical refactoring — extract, inline, rename, decompose. Tests-first workflow. | `refactoring` `patterns` |
+| [`go-concurrency`](./go-concurrency/SKILL.md) | Go concurrency — goroutines, channels, sync, errgroup, context cancellation, race prevention. | `go` `concurrency` |
+| [`go-performance`](./go-performance/SKILL.md) | Go performance — benchmarking, pprof, allocation reduction, escape analysis, GC tuning. | `go` `performance` `profiling` |
+| [`observability-go`](./observability-go/SKILL.md) | Go observability — slog, OpenTelemetry tracing, Prometheus metrics, correlation IDs. | `go` `observability` `tracing` |
+| [`event-driven-architecture`](./event-driven-architecture/SKILL.md) | Event-driven patterns — message queues, event sourcing, CQRS, saga, idempotent consumers. | `architecture` `events` `cqrs` |
+| [`microservices-patterns`](./microservices-patterns/SKILL.md) | Microservices — decomposition, circuit breaker, API gateway, 12-factor, when to stay monolithic. | `architecture` `microservices` |
 
 ### AI Engineering
 
@@ -43,6 +48,31 @@ Skills for designing, building, and operating LLM-powered agents and application
 | [`agent-safety-guardrails`](./agent-safety-guardrails/SKILL.md) | Safety patterns — input validation, prompt injection defense, tool scoping, refusals, audit logging. | `safety` `security` `guardrails` |
 | [`claude-code-customization`](./claude-code-customization/SKILL.md) | Customizing Claude Code — settings.json, hooks, slash commands, sub-agents, MCP servers, plugins. | `claude-code` `customization` |
 | [`prompt-caching`](./prompt-caching/SKILL.md) | Optimizing cost and latency with prompt caching — breakpoint placement, hit rate, cache-aware design. | `caching` `performance` `cost` |
+| [`rag-deep-dive`](./rag-deep-dive/SKILL.md) | RAG pipeline — chunking, embedding, vector DB, hybrid search, reranking, evaluation. | `rag` `retrieval` `vector-db` |
+| [`agentic-coding-patterns`](./agentic-coding-patterns/SKILL.md) | Writing code agents work well with — CLAUDE.md, test-friendly arch, modular structure. | `agent` `coding` `developer-experience` |
+| [`llm-cost-optimization`](./llm-cost-optimization/SKILL.md) | LLM cost control — model routing, caching, context reduction, batching, cost budgets. | `cost` `optimization` `tokens` |
+| [`fine-tuning-guide`](./fine-tuning-guide/SKILL.md) | When and how to fine-tune — decision flowchart, data prep, training, eval, deployment. | `fine-tuning` `training` `model` |
+
+### DevOps
+
+Skills for deployment, CI/CD, and infrastructure.
+
+| Skill | Description | Tags |
+|-------|-------------|------|
+| [`docker-basics`](./docker-basics/SKILL.md) | Docker best practices — Dockerfile, multi-stage builds, image optimization, compose, security. | `docker` `container` `devops` |
+| [`github-actions`](./github-actions/SKILL.md) | GitHub Actions CI/CD — workflows, caching, matrix, secrets, reusable workflows. | `ci-cd` `github-actions` `automation` |
+| [`terraform-basics`](./terraform-basics/SKILL.md) | Terraform fundamentals — HCL, state, modules, plan/apply safety, remote backend. | `terraform` `iac` `infrastructure` |
+| [`k8s-fundamentals`](./k8s-fundamentals/SKILL.md) | Kubernetes for developers — pods, deployments, services, health checks, resource limits, debugging. | `kubernetes` `k8s` `deployment` |
+
+### Data
+
+Skills for database design, queries, and data management.
+
+| Skill | Description | Tags |
+|-------|-------------|------|
+| [`sql-fundamentals`](./sql-fundamentals/SKILL.md) | SQL for developers — schema design, indexing, query optimization, N+1, transactions. | `sql` `database` `postgresql` |
+| [`database-migrations`](./database-migrations/SKILL.md) | Database migration best practices — expand-contract, safe ops, backfill batching, tooling. | `migration` `schema` `database` |
+| [`data-modeling`](./data-modeling/SKILL.md) | Data modeling — ER design, normalization, patterns (polymorphism, hierarchy, audit), DDD mapping. | `data-modeling` `schema` `er-diagram` |
 
 ### Content
 
@@ -51,6 +81,8 @@ Skills for writing, editing, and content strategy.
 | Skill | Description | Tags |
 |-------|-------------|------|
 | [`medium-writing-zh`](./medium-writing-zh/SKILL.md) | 繁體中文 Medium 寫作與經營完整指南 — 排版、SEO、標籤、互動與收益策略。 | `writing` `medium` `zh-tw` |
+| [`technical-writing-en`](./technical-writing-en/SKILL.md) | English technical writing — READMEs, API docs, ADRs, changelogs, writing style. | `writing` `documentation` `english` |
+| [`newsletter-writing-zh`](./newsletter-writing-zh/SKILL.md) | 繁體中文電子報經營 — 平台選擇、成長策略、寫作技巧、指標追蹤。 | `writing` `newsletter` `zh-tw` |
 
 ### Finance
 
@@ -63,6 +95,20 @@ Skills for personal investing and market analysis (currently Taiwan stock market
 | [`tw-stock-technical`](./tw-stock-technical/SKILL.md) | 台股技術分析 — K 線、均線、MACD、RSI、KD、布林通道、量價關係、支撐壓力。 | `tw-stock` `technical-analysis` `charting` |
 | [`tw-stock-quant`](./tw-stock-quant/SKILL.md) | 台股量化策略 — 回測框架、因子模型、績效評估、過擬合防範、策略開發流程。 | `tw-stock` `quantitative` `backtesting` |
 | [`tw-stock-data`](./tw-stock-data/SKILL.md) | 台股資料工程 — 資料源、欄位規格、除權息還原、point-in-time、儲存方案、自動化排程。 | `tw-stock` `data-engineering` `pipeline` |
+| [`tw-stock-options`](./tw-stock-options/SKILL.md) | 台股選擇權基礎 — 買賣權、Greeks、常見策略、台指選擇權合約、風險管理。 | `tw-stock` `options` `derivatives` |
+| [`tw-etf-investing`](./tw-etf-investing/SKILL.md) | 台股 ETF 投資 — 主流 ETF 比較、定期定額、核心衛星配置、內扣費用。 | `tw-stock` `etf` `passive-investing` |
+| [`portfolio-construction`](./portfolio-construction/SKILL.md) | 投資組合建構 — 資產配置、風險分散、再平衡、position sizing、績效追蹤。 | `portfolio` `asset-allocation` `risk` |
+| [`tw-stock-tax`](./tw-stock-tax/SKILL.md) | 台股稅務 — 證交稅、股利所得稅、二代健保、資本利得免稅、節稅策略。 | `tw-stock` `tax` `investing` |
+
+### Productivity
+
+Skills for learning, knowledge management, and personal effectiveness.
+
+| Skill | Description | Tags |
+|-------|-------------|------|
+| [`learning-methodology`](./learning-methodology/SKILL.md) | 學習方法論 — 費曼技巧、間隔重複、刻意練習、技術學習五步法。 | `learning` `methodology` `productivity` |
+| [`second-brain`](./second-brain/SKILL.md) | 第二大腦 — PARA + Zettelkasten、Obsidian、筆記類型、連結策略、回顧系統。 | `pkm` `note-taking` `obsidian` |
+| [`time-management`](./time-management/SKILL.md) | 時間管理 — Eisenhower、深度工作、時間盒、能量管理、每日每週回顧。 | `time-management` `deep-work` `focus` |
 
 ### Rules
 
@@ -77,6 +123,11 @@ Lightweight rule sheets for coding conventions — quotable in reviews, referenc
 | [`rules/prompt-style.md`](./rules/prompt-style.md) | Prompt writing rules — structure, instructions, examples, output format, refusals |
 | [`rules/tool-schema.md`](./rules/tool-schema.md) | Tool schema rules — naming, descriptions, parameters, errors, side effects |
 | [`rules/agent-anti-patterns.md`](./rules/agent-anti-patterns.md) | 41 numbered agent design / prompt / tool / eval / safety anti-patterns |
+| [`rules/go-concurrency.md`](./rules/go-concurrency.md) | Go concurrency rules — goroutine lifecycle, channels, mutexes, context, race prevention |
+| [`rules/go-logging.md`](./rules/go-logging.md) | Go logging rules — slog, levels, what to log, what not to log, correlation IDs |
+| [`rules/api-versioning.md`](./rules/api-versioning.md) | API versioning rules — when to bump, backward compat, deprecation process |
+| [`rules/security-checklist.md`](./rules/security-checklist.md) | Security checklist — OWASP Top 10 condensed, injection, auth, secrets, headers |
+| [`rules/dockerfile.md`](./rules/dockerfile.md) | Dockerfile rules — base image, layer ordering, security, multi-stage, compose |
 
 ---
 
@@ -91,18 +142,14 @@ Current categories:
 
 | Category | Purpose |
 |----------|---------|
-| `engineering` | Software design, development, auditing, SDK usage. |
+| `engineering` | Software design, development, auditing, architecture patterns. |
 | `ai-engineering` | LLM agents, prompts, context, tools, evals, observability, safety. |
+| `devops` | CI/CD, containers, infrastructure-as-code, orchestration. |
+| `data` | Database design, SQL, migrations, data modeling. |
 | `content` | Writing, editing, publishing, content marketing. |
 | `finance` | Personal investing, market analysis, trading discipline. |
+| `productivity` | Learning, knowledge management, time management. |
 | `rules` | Lightweight rule sheets — conventions and norms cited by skills. |
-
-Planned categories (to be added as skills are contributed):
-
-- `devops` — CI/CD, deployment, infrastructure-as-code.
-- `testing` — test strategy, fixtures, property-based testing.
-- `review` — code review, PR review, security review.
-- `data` — data modelling, SQL, analytics.
 
 ---
 

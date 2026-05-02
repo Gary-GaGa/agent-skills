@@ -22,6 +22,11 @@ Each rule sheet is a single `.md` file. No frontmatter required — rules are me
 | [`prompt-style.md`](./prompt-style.md) | Prompt writing — structure, instructions, examples, output format, refusals |
 | [`tool-schema.md`](./tool-schema.md) | Tool schemas — naming, descriptions, parameters, errors, side effects |
 | [`agent-anti-patterns.md`](./agent-anti-patterns.md) | 41 numbered anti-patterns across agent architecture, prompts, tools, eval, safety |
+| [`go-concurrency.md`](./go-concurrency.md) | Go concurrency — goroutine lifecycle, channels, mutexes, context, race prevention |
+| [`go-logging.md`](./go-logging.md) | Go logging — slog, levels, what to log / not to log, correlation IDs |
+| [`api-versioning.md`](./api-versioning.md) | API versioning — when to bump, backward compat, deprecation process |
+| [`security-checklist.md`](./security-checklist.md) | Security checklist — OWASP Top 10 condensed for code review |
+| [`dockerfile.md`](./dockerfile.md) | Dockerfile — base image, layer ordering, security, multi-stage |
 
 ---
 

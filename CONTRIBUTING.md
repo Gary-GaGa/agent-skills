@@ -23,15 +23,14 @@ Every skill has exactly one `category`. Current options:
 
 | Category | For |
 |----------|-----|
-| `engineering` | Software design, development, SDK usage, auditing. |
+| `engineering` | Software design, development, architecture patterns. |
 | `ai-engineering` | LLM agents, prompts, context, tools, evals, observability, safety. |
+| `devops` | CI/CD, containers, infrastructure-as-code, orchestration. |
+| `data` | Database design, SQL, migrations, data modeling. |
 | `content` | Writing, editing, publishing, content marketing. |
 | `finance` | Personal investing, market analysis, trading discipline. |
+| `productivity` | Learning, knowledge management, time management. |
 | `rules` | Lightweight rule sheets (see ["Adding a Rule" below](#adding-a-rule-lightweight-convention-sheet)). |
-
-Planned (open a PR to add):
-
-- `devops`, `testing`, `review`, `data`
 
 If your skill doesn't fit, propose a new category in your PR and add it to `README.md`.
 
