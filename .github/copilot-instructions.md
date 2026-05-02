@@ -30,6 +30,10 @@ Current skills (see `README.md` for the full index):
 | `mcp-server-design/` | ai-engineering | MCP servers — tools/resources/prompts, transport, security |
 | `agent-evaluation/` | ai-engineering | Eval harnesses — golden tests, LLM-judge, regression detection |
 | `agent-observability/` | ai-engineering | Agent tracing, logging, cost telemetry, multi-turn debugging |
+| `multi-agent-orchestration/` | ai-engineering | Supervisor/worker, planner/executor, handoff design |
+| `agent-safety-guardrails/` | ai-engineering | Input validation, prompt injection, tool scoping, audit logs |
+| `claude-code-customization/` | ai-engineering | settings.json, hooks, slash commands, MCP, plugins |
+| `prompt-caching/` | ai-engineering | Cache breakpoints, hit rate optimization, cache-aware design |
 | `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
 | `tw-stock-fundamental/` | finance | 台股基本面分析 — 財報判讀、財務比率、選股框架 |
 | `tw-stock-chip/` | finance | 台股籌碼面分析 — 三大法人、融資融券、集保大戶 |
@@ -45,6 +49,9 @@ Rule sheets (lightweight, quotable) live in `rules/`:
 | `rules/go-error-handling.md` | Go error handling (sentinel/wrap/panic policy) |
 | `rules/commit-messages.md` | Conventional Commits format |
 | `rules/trading-discipline.md` | 交易紀律（資金管理、停損停利、心理控制）|
+| `rules/prompt-style.md` | Prompt writing rules |
+| `rules/tool-schema.md` | Tool schema design rules |
+| `rules/agent-anti-patterns.md` | 41 numbered agent / prompt / tool / eval / safety anti-patterns |
 
 Repo-level files:
 - `README.md` — skill index organized by category
@@ -168,6 +175,10 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 - `mcp-server-design/SKILL.md` — MCP servers; tools/resources/prompts, stdio vs HTTP, namespacing, security.
 - `agent-evaluation/SKILL.md` — eval harnesses; golden sets, LLM-judges, trajectory tests, CI integration.
 - `agent-observability/SKILL.md` — span design, cost telemetry, multi-turn debugging, production→eval loop.
+- `multi-agent-orchestration/SKILL.md` — when single-agent isn't enough; supervisor/worker, planner/executor, handoff payloads.
+- `agent-safety-guardrails/SKILL.md` — threat model, input validation, prompt injection layered defense, tool scoping.
+- `claude-code-customization/SKILL.md` — Claude Code settings, hooks, slash commands, sub-agents, MCP, plugins.
+- `prompt-caching/SKILL.md` — cache breakpoint placement, hit rate optimization, cache-aware prompt assembly.
 - `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
 - `tw-stock-fundamental/SKILL.md` — 台股基本面分析（財報、財務比率、選股框架、財報陷阱）。
 - `tw-stock-chip/SKILL.md` — 台股籌碼面分析（三大法人、融資融券、集保大戶、主力分點）。

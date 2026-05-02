@@ -19,6 +19,9 @@ Each rule sheet is a single `.md` file. No frontmatter required — rules are me
 | [`go-error-handling.md`](./go-error-handling.md) | Go error handling — sentinel, wrapping, `errors.Is/As`, panic policy |
 | [`commit-messages.md`](./commit-messages.md) | Conventional Commits format for git messages |
 | [`trading-discipline.md`](./trading-discipline.md) | 交易紀律 — 資金管理、停損停利、心理控制、持股管理 |
+| [`prompt-style.md`](./prompt-style.md) | Prompt writing — structure, instructions, examples, output format, refusals |
+| [`tool-schema.md`](./tool-schema.md) | Tool schemas — naming, descriptions, parameters, errors, side effects |
+| [`agent-anti-patterns.md`](./agent-anti-patterns.md) | 41 numbered anti-patterns across agent architecture, prompts, tools, eval, safety |
 
 ---
 

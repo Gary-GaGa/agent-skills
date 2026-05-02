@@ -39,6 +39,10 @@ Skills for designing, building, and operating LLM-powered agents and application
 | [`mcp-server-design`](./mcp-server-design/SKILL.md) | Designing Model Context Protocol servers — tools/resources/prompts, transport, security, versioning. | `mcp` `server` `protocol` |
 | [`agent-evaluation`](./agent-evaluation/SKILL.md) | Building eval harnesses — golden tests, behavioral assertions, LLM-as-judge, regression detection, CI. | `eval` `testing` `regression` |
 | [`agent-observability`](./agent-observability/SKILL.md) | Tracing, logging, monitoring agents — span design, cost telemetry, multi-turn debugging, prod→eval loop. | `observability` `tracing` `monitoring` |
+| [`multi-agent-orchestration`](./multi-agent-orchestration/SKILL.md) | Patterns for coordinating multiple agents — supervisor/worker, planner/executor, debate, handoff design. | `multi-agent` `orchestration` |
+| [`agent-safety-guardrails`](./agent-safety-guardrails/SKILL.md) | Safety patterns — input validation, prompt injection defense, tool scoping, refusals, audit logging. | `safety` `security` `guardrails` |
+| [`claude-code-customization`](./claude-code-customization/SKILL.md) | Customizing Claude Code — settings.json, hooks, slash commands, sub-agents, MCP servers, plugins. | `claude-code` `customization` |
+| [`prompt-caching`](./prompt-caching/SKILL.md) | Optimizing cost and latency with prompt caching — breakpoint placement, hit rate, cache-aware design. | `caching` `performance` `cost` |
 
 ### Content
 
@@ -70,6 +74,9 @@ Lightweight rule sheets for coding conventions — quotable in reviews, referenc
 | [`rules/go-error-handling.md`](./rules/go-error-handling.md) | Go error handling — sentinel, wrapping, `errors.Is/As`, panic policy |
 | [`rules/commit-messages.md`](./rules/commit-messages.md) | Conventional Commits format for git messages |
 | [`rules/trading-discipline.md`](./rules/trading-discipline.md) | 交易紀律 — 資金管理、停損停利、心理控制、持股管理（35 條規則） |
+| [`rules/prompt-style.md`](./rules/prompt-style.md) | Prompt writing rules — structure, instructions, examples, output format, refusals |
+| [`rules/tool-schema.md`](./rules/tool-schema.md) | Tool schema rules — naming, descriptions, parameters, errors, side effects |
+| [`rules/agent-anti-patterns.md`](./rules/agent-anti-patterns.md) | 41 numbered agent design / prompt / tool / eval / safety anti-patterns |
 
 ---
 
@@ -167,6 +174,14 @@ agent-skills/
 │   └── SKILL.md
 ├── agent-observability/
 │   └── SKILL.md
+├── multi-agent-orchestration/
+│   └── SKILL.md
+├── agent-safety-guardrails/
+│   └── SKILL.md
+├── claude-code-customization/
+│   └── SKILL.md
+├── prompt-caching/
+│   └── SKILL.md
 ├── medium-writing-zh/
 │   └── SKILL.md
 ├── tw-stock-fundamental/
@@ -184,5 +199,8 @@ agent-skills/
     ├── go-naming.md
     ├── go-error-handling.md
     ├── commit-messages.md
-    └── trading-discipline.md
+    ├── trading-discipline.md
+    ├── prompt-style.md
+    ├── tool-schema.md
+    └── agent-anti-patterns.md
 ```
