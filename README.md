@@ -35,6 +35,10 @@ Skills for designing, building, and operating LLM-powered agents and application
 | [`prompt-engineering`](./prompt-engineering/SKILL.md) | System prompt structure, instruction patterns, few-shot, chain-of-thought, output formatting, cross-model differences. | `prompt` `llm` `claude` `gpt` |
 | [`context-engineering`](./context-engineering/SKILL.md) | Managing what the model sees per turn — context budget, compaction, retrieval, pinning, tool result compression. | `context` `rag` `memory` |
 | [`tool-design-for-agents`](./tool-design-for-agents/SKILL.md) | Designing tools agents use well — naming, descriptions, schemas, errors, idempotency, granularity. | `tool` `agent` `json-schema` |
+| [`skill-authoring`](./skill-authoring/SKILL.md) | Meta-skill for writing good SKILL.md files — frontmatter, scope, references, agent-friendly structure. | `skill` `meta` `documentation` |
+| [`mcp-server-design`](./mcp-server-design/SKILL.md) | Designing Model Context Protocol servers — tools/resources/prompts, transport, security, versioning. | `mcp` `server` `protocol` |
+| [`agent-evaluation`](./agent-evaluation/SKILL.md) | Building eval harnesses — golden tests, behavioral assertions, LLM-as-judge, regression detection, CI. | `eval` `testing` `regression` |
+| [`agent-observability`](./agent-observability/SKILL.md) | Tracing, logging, monitoring agents — span design, cost telemetry, multi-turn debugging, prod→eval loop. | `observability` `tracing` `monitoring` |
 
 ### Content
 
@@ -154,6 +158,14 @@ agent-skills/
 ├── context-engineering/
 │   └── SKILL.md
 ├── tool-design-for-agents/
+│   └── SKILL.md
+├── skill-authoring/
+│   └── SKILL.md
+├── mcp-server-design/
+│   └── SKILL.md
+├── agent-evaluation/
+│   └── SKILL.md
+├── agent-observability/
 │   └── SKILL.md
 ├── medium-writing-zh/
 │   └── SKILL.md

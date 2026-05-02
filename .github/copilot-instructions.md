@@ -26,6 +26,10 @@ Current skills (see `README.md` for the full index):
 | `prompt-engineering/` | ai-engineering | System prompts, few-shot, CoT, output formats |
 | `context-engineering/` | ai-engineering | Context budget, compaction, retrieval, pinning |
 | `tool-design-for-agents/` | ai-engineering | Tool naming, descriptions, schemas, errors |
+| `skill-authoring/` | ai-engineering | Writing SKILL.md files — frontmatter, scope, references |
+| `mcp-server-design/` | ai-engineering | MCP servers — tools/resources/prompts, transport, security |
+| `agent-evaluation/` | ai-engineering | Eval harnesses — golden tests, LLM-judge, regression detection |
+| `agent-observability/` | ai-engineering | Agent tracing, logging, cost telemetry, multi-turn debugging |
 | `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
 | `tw-stock-fundamental/` | finance | 台股基本面分析 — 財報判讀、財務比率、選股框架 |
 | `tw-stock-chip/` | finance | 台股籌碼面分析 — 三大法人、融資融券、集保大戶 |
@@ -160,6 +164,10 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 - `prompt-engineering/SKILL.md` — system prompt anatomy, instruction patterns, few-shot, CoT, output formatting.
 - `context-engineering/SKILL.md` — context budget, compaction, retrieval, pinning, tool result compression.
 - `tool-design-for-agents/SKILL.md` — tool naming, descriptions, schemas, errors, idempotency, granularity.
+- `skill-authoring/SKILL.md` — meta-skill for writing SKILL.md files; frontmatter, scope, references, sizing.
+- `mcp-server-design/SKILL.md` — MCP servers; tools/resources/prompts, stdio vs HTTP, namespacing, security.
+- `agent-evaluation/SKILL.md` — eval harnesses; golden sets, LLM-judges, trajectory tests, CI integration.
+- `agent-observability/SKILL.md` — span design, cost telemetry, multi-turn debugging, production→eval loop.
 - `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
 - `tw-stock-fundamental/SKILL.md` — 台股基本面分析（財報、財務比率、選股框架、財報陷阱）。
 - `tw-stock-chip/SKILL.md` — 台股籌碼面分析（三大法人、融資融券、集保大戶、主力分點）。
