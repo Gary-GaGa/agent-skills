@@ -19,6 +19,9 @@ Current skills (see `README.md` for the full index):
 | `git-workflow/` | engineering | Git day-to-day workflow, branching, commits, recovery |
 | `code-review/` | engineering | Giving/receiving code review effectively |
 | `debugging-methodology/` | engineering | Systematic debugging — reproduce, isolate, verify |
+| `api-design-rest/` | engineering | RESTful API design — resources, status codes, pagination |
+| `api-design-grpc/` | engineering | gRPC API design — proto files, streaming, compatibility |
+| `refactoring-patterns/` | engineering | Safe refactoring — extract, inline, rename, decompose |
 | `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
 
 Rule sheets (lightweight, quotable) live in `rules/`:
@@ -140,6 +143,9 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 - `git-workflow/SKILL.md` — branching, commits, conflict resolution, recovery (reflog, bisect).
 - `code-review/SKILL.md` — how to give/receive review; severity prefixes; checklist.
 - `debugging-methodology/SKILL.md` — the reproduce→isolate→hypothesize→verify loop.
+- `api-design-rest/SKILL.md` — RESTful API conventions (URLs, verbs, status codes, errors, pagination, versioning).
+- `api-design-grpc/SKILL.md` — gRPC/Protobuf design (proto structure, naming, streaming, backward compat).
+- `refactoring-patterns/SKILL.md` — catalogue of safe refactorings with before/after examples.
 - `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
 - `rules/` — rule sheets for naming, error handling, commit messages; cite by filename when giving feedback.
 - `CONTRIBUTING.md` / `SKILL_TEMPLATE.md` — process and boilerplate for adding new skills or rules.

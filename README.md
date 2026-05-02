@@ -21,6 +21,9 @@ Skills that help design, build, or audit software.
 | [`git-workflow`](./git-workflow/SKILL.md) | Day-to-day Git workflow — branching, atomic commits, rebase vs merge, conflict resolution, recovery. | `git` `workflow` |
 | [`code-review`](./code-review/SKILL.md) | How to give and receive code review — severity prefixes, what to look for, pushing back productively. | `code-review` `collaboration` |
 | [`debugging-methodology`](./debugging-methodology/SKILL.md) | Systematic debugging — reproduce, isolate, hypothesize, verify. Includes Go-specific tooling. | `debugging` `methodology` |
+| [`api-design-rest`](./api-design-rest/SKILL.md) | RESTful API design — resource URLs, status codes, error format, pagination, versioning, idempotency. | `api` `rest` `http` |
+| [`api-design-grpc`](./api-design-grpc/SKILL.md) | gRPC API design — proto organization, naming, status codes, streaming, backward compatibility. | `api` `grpc` `protobuf` |
+| [`refactoring-patterns`](./refactoring-patterns/SKILL.md) | Safe, mechanical refactoring — extract, inline, rename, decompose. Tests-first workflow. | `refactoring` `patterns` |
 
 ### Content
 
@@ -111,6 +114,12 @@ agent-skills/
 ├── code-review/
 │   └── SKILL.md
 ├── debugging-methodology/
+│   └── SKILL.md
+├── api-design-rest/
+│   └── SKILL.md
+├── api-design-grpc/
+│   └── SKILL.md
+├── refactoring-patterns/
 │   └── SKILL.md
 ├── medium-writing-zh/
 │   └── SKILL.md
