@@ -24,6 +24,7 @@ Every skill has exactly one `category`. Current options:
 | Category | For |
 |----------|-----|
 | `engineering` | Software design, development, SDK usage, auditing. |
+| `ai-engineering` | LLM agents, prompts, context, tools, evals, observability, safety. |
 | `content` | Writing, editing, publishing, content marketing. |
 | `finance` | Personal investing, market analysis, trading discipline. |
 | `rules` | Lightweight rule sheets (see ["Adding a Rule" below](#adding-a-rule-lightweight-convention-sheet)). |

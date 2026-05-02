@@ -25,6 +25,17 @@ Skills that help design, build, or audit software.
 | [`api-design-grpc`](./api-design-grpc/SKILL.md) | gRPC API design — proto organization, naming, status codes, streaming, backward compatibility. | `api` `grpc` `protobuf` |
 | [`refactoring-patterns`](./refactoring-patterns/SKILL.md) | Safe, mechanical refactoring — extract, inline, rename, decompose. Tests-first workflow. | `refactoring` `patterns` |
 
+### AI Engineering
+
+Skills for designing, building, and operating LLM-powered agents and applications.
+
+| Skill | Description | Tags |
+|-------|-------------|------|
+| [`agent-harness-design`](./agent-harness-design/SKILL.md) | Designing the harness around an LLM — agent loop, single vs multi-agent, autonomy levels, failure modes. | `agent` `harness` `architecture` |
+| [`prompt-engineering`](./prompt-engineering/SKILL.md) | System prompt structure, instruction patterns, few-shot, chain-of-thought, output formatting, cross-model differences. | `prompt` `llm` `claude` `gpt` |
+| [`context-engineering`](./context-engineering/SKILL.md) | Managing what the model sees per turn — context budget, compaction, retrieval, pinning, tool result compression. | `context` `rag` `memory` |
+| [`tool-design-for-agents`](./tool-design-for-agents/SKILL.md) | Designing tools agents use well — naming, descriptions, schemas, errors, idempotency, granularity. | `tool` `agent` `json-schema` |
+
 ### Content
 
 Skills for writing, editing, and content strategy.
@@ -70,6 +81,7 @@ Current categories:
 | Category | Purpose |
 |----------|---------|
 | `engineering` | Software design, development, auditing, SDK usage. |
+| `ai-engineering` | LLM agents, prompts, context, tools, evals, observability, safety. |
 | `content` | Writing, editing, publishing, content marketing. |
 | `finance` | Personal investing, market analysis, trading discipline. |
 | `rules` | Lightweight rule sheets — conventions and norms cited by skills. |
@@ -134,6 +146,14 @@ agent-skills/
 ├── api-design-grpc/
 │   └── SKILL.md
 ├── refactoring-patterns/
+│   └── SKILL.md
+├── agent-harness-design/
+│   └── SKILL.md
+├── prompt-engineering/
+│   └── SKILL.md
+├── context-engineering/
+│   └── SKILL.md
+├── tool-design-for-agents/
 │   └── SKILL.md
 ├── medium-writing-zh/
 │   └── SKILL.md

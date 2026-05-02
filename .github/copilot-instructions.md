@@ -22,6 +22,10 @@ Current skills (see `README.md` for the full index):
 | `api-design-rest/` | engineering | RESTful API design — resources, status codes, pagination |
 | `api-design-grpc/` | engineering | gRPC API design — proto files, streaming, compatibility |
 | `refactoring-patterns/` | engineering | Safe refactoring — extract, inline, rename, decompose |
+| `agent-harness-design/` | ai-engineering | Agent loop, sub-agents, autonomy, failure modes |
+| `prompt-engineering/` | ai-engineering | System prompts, few-shot, CoT, output formats |
+| `context-engineering/` | ai-engineering | Context budget, compaction, retrieval, pinning |
+| `tool-design-for-agents/` | ai-engineering | Tool naming, descriptions, schemas, errors |
 | `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
 | `tw-stock-fundamental/` | finance | 台股基本面分析 — 財報判讀、財務比率、選股框架 |
 | `tw-stock-chip/` | finance | 台股籌碼面分析 — 三大法人、融資融券、集保大戶 |
@@ -152,6 +156,10 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 - `api-design-rest/SKILL.md` — RESTful API conventions (URLs, verbs, status codes, errors, pagination, versioning).
 - `api-design-grpc/SKILL.md` — gRPC/Protobuf design (proto structure, naming, streaming, backward compat).
 - `refactoring-patterns/SKILL.md` — catalogue of safe refactorings with before/after examples.
+- `agent-harness-design/SKILL.md` — agent loop design, sub-agent decisions, autonomy spectrum, failure modes.
+- `prompt-engineering/SKILL.md` — system prompt anatomy, instruction patterns, few-shot, CoT, output formatting.
+- `context-engineering/SKILL.md` — context budget, compaction, retrieval, pinning, tool result compression.
+- `tool-design-for-agents/SKILL.md` — tool naming, descriptions, schemas, errors, idempotency, granularity.
 - `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
 - `tw-stock-fundamental/SKILL.md` — 台股基本面分析（財報、財務比率、選股框架、財報陷阱）。
 - `tw-stock-chip/SKILL.md` — 台股籌碼面分析（三大法人、融資融券、集保大戶、主力分點）。
