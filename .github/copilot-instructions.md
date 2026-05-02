@@ -23,6 +23,8 @@ Current skills (see `README.md` for the full index):
 | `api-design-grpc/` | engineering | gRPC API design — proto files, streaming, compatibility |
 | `refactoring-patterns/` | engineering | Safe refactoring — extract, inline, rename, decompose |
 | `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
+| `tw-stock-fundamental/` | finance | 台股基本面分析 — 財報判讀、財務比率、選股框架 |
+| `tw-stock-chip/` | finance | 台股籌碼面分析 — 三大法人、融資融券、集保大戶 |
 
 Rule sheets (lightweight, quotable) live in `rules/`:
 
@@ -147,6 +149,8 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 - `api-design-grpc/SKILL.md` — gRPC/Protobuf design (proto structure, naming, streaming, backward compat).
 - `refactoring-patterns/SKILL.md` — catalogue of safe refactorings with before/after examples.
 - `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
+- `tw-stock-fundamental/SKILL.md` — 台股基本面分析（財報、財務比率、選股框架、財報陷阱）。
+- `tw-stock-chip/SKILL.md` — 台股籌碼面分析（三大法人、融資融券、集保大戶、主力分點）。
 - `rules/` — rule sheets for naming, error handling, commit messages; cite by filename when giving feedback.
 - `CONTRIBUTING.md` / `SKILL_TEMPLATE.md` — process and boilerplate for adding new skills or rules.
 

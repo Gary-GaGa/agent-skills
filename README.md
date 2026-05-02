@@ -33,6 +33,15 @@ Skills for writing, editing, and content strategy.
 |-------|-------------|------|
 | [`medium-writing-zh`](./medium-writing-zh/SKILL.md) | 繁體中文 Medium 寫作與經營完整指南 — 排版、SEO、標籤、互動與收益策略。 | `writing` `medium` `zh-tw` |
 
+### Finance
+
+Skills for personal investing and market analysis (currently Taiwan stock market focused).
+
+| Skill | Description | Tags |
+|-------|-------------|------|
+| [`tw-stock-fundamental`](./tw-stock-fundamental/SKILL.md) | 台股基本面分析 — 財報判讀、財務比率、選股框架（殖利率/成長/價值）、財報陷阱辨識。 | `tw-stock` `fundamental-analysis` `investing` |
+| [`tw-stock-chip`](./tw-stock-chip/SKILL.md) | 台股籌碼面分析 — 三大法人、融資融券、集保大戶、主力分點，搭配基本面判斷進場時機。 | `tw-stock` `chip-analysis` `investing` |
+
 ### Rules
 
 Lightweight rule sheets for coding conventions — quotable in reviews, referenceable from skills, feedable to linters. See [`rules/README.md`](./rules/README.md).
@@ -58,6 +67,7 @@ Current categories:
 |----------|---------|
 | `engineering` | Software design, development, auditing, SDK usage. |
 | `content` | Writing, editing, publishing, content marketing. |
+| `finance` | Personal investing, market analysis, trading discipline. |
 | `rules` | Lightweight rule sheets — conventions and norms cited by skills. |
 
 Planned categories (to be added as skills are contributed):
@@ -122,6 +132,10 @@ agent-skills/
 ├── refactoring-patterns/
 │   └── SKILL.md
 ├── medium-writing-zh/
+│   └── SKILL.md
+├── tw-stock-fundamental/
+│   └── SKILL.md
+├── tw-stock-chip/
 │   └── SKILL.md
 └── rules/                     ← rules: lightweight, quotable conventions
     ├── README.md

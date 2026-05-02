@@ -25,6 +25,7 @@ Every skill has exactly one `category`. Current options:
 |----------|-----|
 | `engineering` | Software design, development, SDK usage, auditing. |
 | `content` | Writing, editing, publishing, content marketing. |
+| `finance` | Personal investing, market analysis, trading discipline. |
 | `rules` | Lightweight rule sheets (see ["Adding a Rule" below](#adding-a-rule-lightweight-convention-sheet)). |
 
 Planned (open a PR to add):
