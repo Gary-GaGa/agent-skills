@@ -8,7 +8,7 @@ description: >
   prompts between models.
 category: ai-engineering
 tags: [prompt, llm, claude, gpt, instruction-design]
-related: [agent-harness-design, context-engineering, tool-design-for-agents]
+related: [agent-harness-design, context-engineering, tool-design-for-agents, agent-evaluation, prompt-caching, skill-authoring, rag-deep-dive, multi-agent-orchestration, fine-tuning-guide]
 ---
 
 # Prompt Engineering

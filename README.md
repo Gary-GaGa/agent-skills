@@ -179,75 +179,16 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the full process. Quick version:
 
 ```
 agent-skills/
-├── README.md                  ← you are here
-├── CONTRIBUTING.md            ← how to add a new skill
-├── SKILL_TEMPLATE.md          ← copy this to start a new skill
+├── README.md              ← you are here (skill index)
+├── CONTRIBUTING.md        ← how to add a new skill or rule
+├── SKILL_TEMPLATE.md      ← boilerplate for new skills
 ├── .github/
 │   └── copilot-instructions.md
-├── clean-ddd-go/              ← skills: one SKILL.md per folder
-│   └── SKILL.md
-├── ddd-check/
-│   └── SKILL.md
-├── copilot-sdk/
-│   ├── SKILL.md
-│   └── references/            ← deep-dive docs loaded on demand
-├── go-testing/
-│   └── SKILL.md
-├── git-workflow/
-│   └── SKILL.md
-├── code-review/
-│   └── SKILL.md
-├── debugging-methodology/
-│   └── SKILL.md
-├── api-design-rest/
-│   └── SKILL.md
-├── api-design-grpc/
-│   └── SKILL.md
-├── refactoring-patterns/
-│   └── SKILL.md
-├── agent-harness-design/
-│   └── SKILL.md
-├── prompt-engineering/
-│   └── SKILL.md
-├── context-engineering/
-│   └── SKILL.md
-├── tool-design-for-agents/
-│   └── SKILL.md
-├── skill-authoring/
-│   └── SKILL.md
-├── mcp-server-design/
-│   └── SKILL.md
-├── agent-evaluation/
-│   └── SKILL.md
-├── agent-observability/
-│   └── SKILL.md
-├── multi-agent-orchestration/
-│   └── SKILL.md
-├── agent-safety-guardrails/
-│   └── SKILL.md
-├── claude-code-customization/
-│   └── SKILL.md
-├── prompt-caching/
-│   └── SKILL.md
-├── medium-writing-zh/
-│   └── SKILL.md
-├── tw-stock-fundamental/
-│   └── SKILL.md
-├── tw-stock-chip/
-│   └── SKILL.md
-├── tw-stock-technical/
-│   └── SKILL.md
-├── tw-stock-quant/
-│   └── SKILL.md
-├── tw-stock-data/
-│   └── SKILL.md
-└── rules/                     ← rules: lightweight, quotable conventions
+├── <skill-name>/          ← 53 skill folders, each containing:
+│   └── SKILL.md           ←   entry point with YAML frontmatter
+└── rules/                 ← 12 lightweight rule sheets
     ├── README.md
-    ├── go-naming.md
-    ├── go-error-handling.md
-    ├── commit-messages.md
-    ├── trading-discipline.md
-    ├── prompt-style.md
-    ├── tool-schema.md
-    └── agent-anti-patterns.md
+    └── *.md
 ```
+
+53 skills across 8 categories. Each skill is a folder with a `SKILL.md`. See the [Skill Index](#skill-index) above for the complete list.

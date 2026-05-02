@@ -7,6 +7,7 @@ description: >
   random print statements.
 category: engineering
 tags: [debugging, troubleshooting, methodology, observability]
+related: [go-concurrency, go-performance, observability-go, agent-observability]
 ---
 
 # Debugging Methodology

@@ -7,7 +7,7 @@ description: >
   Use this skill when designing a new agent system or auditing an existing one.
 category: ai-engineering
 tags: [agent, harness, llm, architecture, design]
-related: [prompt-engineering, context-engineering, tool-design-for-agents]
+related: [prompt-engineering, context-engineering, tool-design-for-agents, agent-evaluation, agent-observability, multi-agent-orchestration, agent-safety-guardrails, mcp-server-design, skill-authoring, claude-code-customization, prompt-caching, llm-cost-optimization]
 ---
 
 # Agent Harness Design

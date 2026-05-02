@@ -7,7 +7,7 @@ description: >
   how to disagree productively.
 category: engineering
 tags: [code-review, collaboration, quality, pr]
-related: [git-workflow]
+related: [git-workflow, refactoring-patterns, technical-writing-en, ddd-check]
 ---
 
 # Code Review

@@ -3,6 +3,7 @@ name: copilot-sdk
 description: This skill provides guidance for creating agents and applications with the GitHub Copilot SDK. It should be used when the user wants to create, modify, or work on software that uses the GitHub Copilot SDK in TypeScript, Python, Go, or .NET. The skill covers SDK usage patterns, CLI configuration, custom tools, MCP servers, and custom agents.
 category: engineering
 tags: [sdk, ai-agent, github-copilot, typescript, python, go, dotnet, mcp]
+related: [mcp-server-design, agent-harness-design]
 ---
 
 # GitHub Copilot SDK

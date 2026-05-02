@@ -7,7 +7,7 @@ description: >
   or to catch regressions before users do.
 category: ai-engineering
 tags: [eval, evaluation, testing, agent, llm, regression]
-related: [agent-harness-design, prompt-engineering, agent-observability]
+related: [agent-harness-design, prompt-engineering, agent-observability, tool-design-for-agents, rag-deep-dive, fine-tuning-guide]
 ---
 
 # Agent Evaluation

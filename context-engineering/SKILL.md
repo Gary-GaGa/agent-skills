@@ -8,7 +8,7 @@ description: >
   sessions.
 category: ai-engineering
 tags: [context, llm, rag, memory, compaction, agent]
-related: [agent-harness-design, prompt-engineering, prompt-caching]
+related: [agent-harness-design, prompt-engineering, prompt-caching, rag-deep-dive, llm-cost-optimization, multi-agent-orchestration]
 ---
 
 # Context Engineering

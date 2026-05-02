@@ -6,7 +6,7 @@ description: >
   涵蓋資料來源、訊號解讀、常見陷阱與個人觀察流程。觀念為主，不綁特定工具。
 category: finance
 tags: [stock, taiwan, tw-stock, chip-analysis, institutional-investors, margin-trading]
-related: [tw-stock-fundamental]
+related: [tw-stock-fundamental, tw-stock-technical, tw-stock-quant, tw-stock-data]
 ---
 
 # 台股籌碼面分析

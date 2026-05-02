@@ -6,7 +6,7 @@ description: >
   搭配基本面與籌碼面使用效果最佳。
 category: finance
 tags: [stock, taiwan, tw-stock, technical-analysis, charting, indicators]
-related: [tw-stock-fundamental, tw-stock-chip]
+related: [tw-stock-fundamental, tw-stock-chip, tw-stock-quant, tw-stock-data, tw-stock-options]
 ---
 
 # 台股技術分析

@@ -6,7 +6,7 @@ description: >
   適合從單一股票操作進階到系統化組合管理的散戶投資者。
 category: finance
 tags: [portfolio, asset-allocation, risk-management, diversification, investing]
-related: [tw-stock-fundamental, tw-etf-investing, rules/trading-discipline]
+related: [tw-stock-fundamental, tw-etf-investing, tw-stock-options, tw-stock-tax]
 ---
 
 # 投資組合建構

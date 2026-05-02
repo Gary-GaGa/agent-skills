@@ -8,50 +8,23 @@ Purpose: Short, focused guidance for Copilot agents and CLI sessions working in 
 
 This repo is a collection of reusable **agent skills**. Each top-level folder is a self-contained skill package with a `SKILL.md` entry point (YAML frontmatter: `name`, `description`, `category`, `tags`).
 
-Current skills (see `README.md` for the full index):
+Current skills — 53 total across 8 categories (see `README.md` for the full index with descriptions):
 
-| Skill | Category | Purpose |
-|-------|----------|---------|
-| `clean-ddd-go/` | engineering | Clean Architecture + DDD guide for Go |
-| `ddd-check/` | engineering | Auditor that validates Go DDD/Clean-Arch compliance |
-| `copilot-sdk/` | engineering | GitHub Copilot SDK usage guide (TS/Py/Go/.NET) |
-| `go-testing/` | engineering | Go testing patterns — table-driven, fakes/mocks, coverage |
-| `git-workflow/` | engineering | Git day-to-day workflow, branching, commits, recovery |
-| `code-review/` | engineering | Giving/receiving code review effectively |
-| `debugging-methodology/` | engineering | Systematic debugging — reproduce, isolate, verify |
-| `api-design-rest/` | engineering | RESTful API design — resources, status codes, pagination |
-| `api-design-grpc/` | engineering | gRPC API design — proto files, streaming, compatibility |
-| `refactoring-patterns/` | engineering | Safe refactoring — extract, inline, rename, decompose |
-| `agent-harness-design/` | ai-engineering | Agent loop, sub-agents, autonomy, failure modes |
-| `prompt-engineering/` | ai-engineering | System prompts, few-shot, CoT, output formats |
-| `context-engineering/` | ai-engineering | Context budget, compaction, retrieval, pinning |
-| `tool-design-for-agents/` | ai-engineering | Tool naming, descriptions, schemas, errors |
-| `skill-authoring/` | ai-engineering | Writing SKILL.md files — frontmatter, scope, references |
-| `mcp-server-design/` | ai-engineering | MCP servers — tools/resources/prompts, transport, security |
-| `agent-evaluation/` | ai-engineering | Eval harnesses — golden tests, LLM-judge, regression detection |
-| `agent-observability/` | ai-engineering | Agent tracing, logging, cost telemetry, multi-turn debugging |
-| `multi-agent-orchestration/` | ai-engineering | Supervisor/worker, planner/executor, handoff design |
-| `agent-safety-guardrails/` | ai-engineering | Input validation, prompt injection, tool scoping, audit logs |
-| `claude-code-customization/` | ai-engineering | settings.json, hooks, slash commands, MCP, plugins |
-| `prompt-caching/` | ai-engineering | Cache breakpoints, hit rate optimization, cache-aware design |
-| `medium-writing-zh/` | content | 繁體中文 Medium 寫作與經營指南 |
-| `tw-stock-fundamental/` | finance | 台股基本面分析 — 財報判讀、財務比率、選股框架 |
-| `tw-stock-chip/` | finance | 台股籌碼面分析 — 三大法人、融資融券、集保大戶 |
-| `tw-stock-technical/` | finance | 台股技術分析 — K 線、均線、MACD、RSI、量價 |
-| `tw-stock-quant/` | finance | 台股量化策略 — 回測、因子模型、績效評估 |
-| `tw-stock-data/` | finance | 台股資料工程 — 資料源、清洗、儲存、排程 |
+**engineering (15):** clean-ddd-go, ddd-check, copilot-sdk, go-testing, git-workflow, code-review, debugging-methodology, api-design-rest, api-design-grpc, refactoring-patterns, go-concurrency, go-performance, observability-go, event-driven-architecture, microservices-patterns
 
-Rule sheets (lightweight, quotable) live in `rules/`:
+**ai-engineering (16):** agent-harness-design, prompt-engineering, context-engineering, tool-design-for-agents, skill-authoring, mcp-server-design, agent-evaluation, agent-observability, multi-agent-orchestration, agent-safety-guardrails, claude-code-customization, prompt-caching, rag-deep-dive, agentic-coding-patterns, llm-cost-optimization, fine-tuning-guide
 
-| Rule | Topic |
-|------|-------|
-| `rules/go-naming.md` | Go naming conventions |
-| `rules/go-error-handling.md` | Go error handling (sentinel/wrap/panic policy) |
-| `rules/commit-messages.md` | Conventional Commits format |
-| `rules/trading-discipline.md` | 交易紀律（資金管理、停損停利、心理控制）|
-| `rules/prompt-style.md` | Prompt writing rules |
-| `rules/tool-schema.md` | Tool schema design rules |
-| `rules/agent-anti-patterns.md` | 41 numbered agent / prompt / tool / eval / safety anti-patterns |
+**devops (4):** docker-basics, github-actions, terraform-basics, k8s-fundamentals
+
+**data (3):** sql-fundamentals, database-migrations, data-modeling
+
+**content (3):** medium-writing-zh, technical-writing-en, newsletter-writing-zh
+
+**finance (9):** tw-stock-fundamental, tw-stock-chip, tw-stock-technical, tw-stock-quant, tw-stock-data, tw-stock-options, tw-etf-investing, portfolio-construction, tw-stock-tax
+
+**productivity (3):** learning-methodology, second-brain, time-management
+
+Rule sheets (12) in `rules/`: go-naming, go-error-handling, commit-messages, trading-discipline, prompt-style, tool-schema, agent-anti-patterns, go-concurrency, go-logging, api-versioning, security-checklist, dockerfile
 
 Repo-level files:
 - `README.md` — skill index organized by category
@@ -156,37 +129,11 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 
 ## Files and locations to consult
 
-- `README.md` — the top-level skill index; start here to discover what skills are available.
-- `clean-ddd-go/SKILL.md` — authoritative architecture and conventions for the Go exemplar.
-- `ddd-check/SKILL.md` — checks/validators for Go DDD projects; run after refactors or before PRs.
-- `copilot-sdk/SKILL.md` and `copilot-sdk/references/` — event model, agent frontmatter, MCP documentation, examples across languages.
-- `go-testing/SKILL.md` — testing patterns (table-driven, fakes, parallel, coverage); pair with `clean-ddd-go`.
-- `git-workflow/SKILL.md` — branching, commits, conflict resolution, recovery (reflog, bisect).
-- `code-review/SKILL.md` — how to give/receive review; severity prefixes; checklist.
-- `debugging-methodology/SKILL.md` — the reproduce→isolate→hypothesize→verify loop.
-- `api-design-rest/SKILL.md` — RESTful API conventions (URLs, verbs, status codes, errors, pagination, versioning).
-- `api-design-grpc/SKILL.md` — gRPC/Protobuf design (proto structure, naming, streaming, backward compat).
-- `refactoring-patterns/SKILL.md` — catalogue of safe refactorings with before/after examples.
-- `agent-harness-design/SKILL.md` — agent loop design, sub-agent decisions, autonomy spectrum, failure modes.
-- `prompt-engineering/SKILL.md` — system prompt anatomy, instruction patterns, few-shot, CoT, output formatting.
-- `context-engineering/SKILL.md` — context budget, compaction, retrieval, pinning, tool result compression.
-- `tool-design-for-agents/SKILL.md` — tool naming, descriptions, schemas, errors, idempotency, granularity.
-- `skill-authoring/SKILL.md` — meta-skill for writing SKILL.md files; frontmatter, scope, references, sizing.
-- `mcp-server-design/SKILL.md` — MCP servers; tools/resources/prompts, stdio vs HTTP, namespacing, security.
-- `agent-evaluation/SKILL.md` — eval harnesses; golden sets, LLM-judges, trajectory tests, CI integration.
-- `agent-observability/SKILL.md` — span design, cost telemetry, multi-turn debugging, production→eval loop.
-- `multi-agent-orchestration/SKILL.md` — when single-agent isn't enough; supervisor/worker, planner/executor, handoff payloads.
-- `agent-safety-guardrails/SKILL.md` — threat model, input validation, prompt injection layered defense, tool scoping.
-- `claude-code-customization/SKILL.md` — Claude Code settings, hooks, slash commands, sub-agents, MCP, plugins.
-- `prompt-caching/SKILL.md` — cache breakpoint placement, hit rate optimization, cache-aware prompt assembly.
-- `medium-writing-zh/SKILL.md` — 繁體中文 Medium 寫作規範、排版與 SEO 指南。
-- `tw-stock-fundamental/SKILL.md` — 台股基本面分析（財報、財務比率、選股框架、財報陷阱）。
-- `tw-stock-chip/SKILL.md` — 台股籌碼面分析（三大法人、融資融券、集保大戶、主力分點）。
-- `tw-stock-technical/SKILL.md` — 台股技術分析（K 線、均線、指標、量價、型態、多指標共振）。
-- `tw-stock-quant/SKILL.md` — 台股量化策略（回測框架、因子模型、績效指標、過擬合防範）。
-- `tw-stock-data/SKILL.md` — 台股資料工程（資料源、欄位、除權息還原、point-in-time、Schema）。
-- `rules/` — rule sheets for naming, error handling, commit messages; cite by filename when giving feedback.
+- `README.md` — the top-level skill index organized by category; **start here** to discover skills.
+- Each `<skill>/SKILL.md` — entry point for a skill; frontmatter has `description` and `tags` for matching.
+- `rules/*.md` — lightweight rule sheets (12 total); cite by filename in reviews and feedback.
 - `CONTRIBUTING.md` / `SKILL_TEMPLATE.md` — process and boilerplate for adding new skills or rules.
+- `copilot-sdk/references/` — deep-dive docs for the Copilot SDK (event model, MCP, examples).
 
 ---
 

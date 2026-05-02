@@ -6,7 +6,7 @@ description: >
   價值投資），以及常見的財報陷阱與警訊。觀念為主，不綁特定程式語言或工具。
 category: finance
 tags: [stock, taiwan, tw-stock, fundamental-analysis, investing, value-investing]
-related: [tw-stock-chip]
+related: [tw-stock-chip, tw-stock-technical, tw-stock-quant, tw-stock-data, tw-stock-options, tw-etf-investing, portfolio-construction, tw-stock-tax]
 ---
 
 # 台股基本面分析
