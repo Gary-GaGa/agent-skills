@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
-"""Auto-fix bidirectional `related:` references.
+"""Suggest (and optionally apply) bidirectional `related:` back-references.
 
-For every A -> B where B does not list A, append A to B's `related:` list.
+For every A -> B where B does not list A, the script reports it and, with
+`--apply`, appends A to B's `related:` list. Default is dry-run so a
+maintainer can review the diff before committing — auto-mutation can add
+back-references the original author intentionally omitted.
+
 Edits the `related: [...]` line in-place; relies on every skill using the
 single-line list form (verified by validate.py separately).
 
-Run after adding or removing skills, then commit the changes.
+Usage:
+    python3 scripts/fix_related.py            # dry-run, prints what would change
+    python3 scripts/fix_related.py --apply    # actually edit the SKILL.md files
 """
 from __future__ import annotations
 
+import argparse
 import re
 import sys
 from pathlib import Path
@@ -54,6 +61,14 @@ def add_related(path: Path, additions: list[str]) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--apply",
+        action="store_true",
+        help="actually edit SKILL.md files; default is dry-run (advisory only)",
+    )
+    args = parser.parse_args()
+
     skills = collect()
     pending: dict[str, list[str]] = {name: [] for name in skills}
     for name, info in skills.items():
@@ -66,12 +81,23 @@ def main() -> int:
     if not pending:
         print("ok: all related references are already bidirectional")
         return 0
+
+    mode = "would append" if not args.apply else "appended"
     for target, additions in sorted(pending.items()):
         path = skills[target]["path"]
-        add_related(path, additions)
         rel = path.relative_to(REPO_ROOT)
-        print(f"{rel}: appended {additions}")
-    print(f"\npatched {len(pending)} file(s); re-run scripts/validate.py to confirm")
+        if args.apply:
+            add_related(path, additions)
+        print(f"{rel}: {mode} {additions}")
+
+    if args.apply:
+        print(f"\npatched {len(pending)} file(s); re-run scripts/validate.py to confirm")
+    else:
+        print(
+            f"\n{len(pending)} file(s) would be patched. Re-run with --apply to edit, "
+            "or update the source SKILL.md files manually if some back-references "
+            "were intentionally omitted."
+        )
     return 0
 
 

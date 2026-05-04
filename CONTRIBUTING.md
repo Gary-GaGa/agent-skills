@@ -85,6 +85,8 @@ If the skill has >~300 lines of detail, move the depth into `your-skill-name/ref
 | `keywords` | no | Literal phrases for BM25-style exact matching — proper nouns, acronyms, library names, error codes. Preserve case (`MCP`, `PostgreSQL`, `pgvector`). Add what `tags` and `description` don't already capture; not a synonym for `tags`. Max ~20. |
 | `related` | no | List of other skill `name`s that pair with this one. |
 
+Unknown fields are rejected by `validate.py` — typos like `keyword` (vs `keywords`) will fail CI rather than silently going unread.
+
 ### When to add `keywords`
 
 The agent matches user intent against `description` (semantic) and `tags`
@@ -108,6 +110,8 @@ search surface — empty is fine.
 - **Code blocks.** Annotate with a language tag so syntax highlighting works.
 - **Links.** Use relative paths for intra-repo links (`../other-skill/SKILL.md`).
 - **No emojis** unless they carry meaning (e.g. severity markers in `ddd-check`).
+- **Tags.** Reuse a tag from `tags-allowlist.txt` if one fits. Add a new tag only when an existing one genuinely doesn't apply, and add the new tag to the allowlist in the same PR — `validate.py` warns on unlisted tags so typos (`golang` vs `go`) don't accumulate silently.
+- **References quota.** A skill's SKILL.md plus everything in its `references/` should not exceed ~1500 lines combined. If you blow past it, the skill is probably two skills.
 
 ---
 
@@ -163,7 +167,7 @@ Before requesting review, confirm:
 - [ ] Description reads like a trigger prompt, not a product blurb.
 - [ ] `python3 scripts/validate.py` passes (also runs in CI).
 - [ ] `skills.json`, the relevant `INDEX.md`, `README.md`, and `.github/copilot-instructions.md` are regenerated (run `build_manifest.py` then `render_docs.py`).
-- [ ] Cross-references to related skills go both ways (run `fix_related.py` if not).
+- [ ] Cross-references to related skills go both ways. `python3 scripts/fix_related.py` reports missing back-references in dry-run; re-run with `--apply` to mutate the SKILL.md files (review the diff — auto-mutation can add back-references the original author intentionally omitted).
 - [ ] If your skill could plausibly collide with an existing one, add a routing eval case to `evals/skill-routing.jsonl` and run `python3 scripts/run_routing_eval.py`.
 - [ ] No repo-specific or project-specific assumptions leaked in.
 - [ ] Examples compile / render / make sense on a fresh read.
