@@ -8,7 +8,7 @@ description: >
   these architectural principles.
 category: engineering
 tags: [go, architecture, ddd, clean-architecture, backend]
-related: [ddd-check, go-testing, go-concurrency, api-design-rest, api-design-grpc, refactoring-patterns, data-modeling, sql-fundamentals]
+related: [ddd-check, go-testing, go-concurrency, api-design-rest, api-design-grpc, refactoring-patterns, data-modeling, sql-fundamentals, agentic-coding-patterns, event-driven-architecture, microservices-patterns, mongodb-go]
 ---
 
 # Clean Architecture + Domain-Driven Design for Go

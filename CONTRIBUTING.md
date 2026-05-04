@@ -66,10 +66,11 @@ If the skill has >~300 lines of detail, move the depth into `your-skill-name/ref
 
 ## 5. Register the Skill
 
-1. Add a row to the relevant `<category>/INDEX.md`.
-2. If you introduced a new category, create a new category folder with `INDEX.md`, add it to the categories table in `README.md`, and update `.github/copilot-instructions.md`.
-3. If the skill relates to existing skills, add mutual `related:` entries and cross-link them in prose.
+1. Run `python3 scripts/build_manifest.py` then `python3 scripts/render_docs.py` — this regenerates `skills.json`, the relevant `<category>/INDEX.md`, the categories table in `README.md`, and the skill list in `.github/copilot-instructions.md`. Do not edit those auto-generated regions by hand.
+2. If you introduced a new category, register it in `scripts/build_manifest.py` (the `CATEGORIES` list) and create the category folder with an `INDEX.md` that contains the marker blocks (see an existing INDEX as reference).
+3. If the skill relates to existing skills, add mutual `related:` entries — `python3 scripts/fix_related.py` will append any missing back-references for you.
 4. For cross-category links, use `../../<other-category>/<skill>/SKILL.md`. Same-category links use `../<skill>/SKILL.md`.
+5. Run `python3 scripts/validate.py` before opening the PR. The same script runs in CI.
 
 ---
 
@@ -145,7 +146,8 @@ Before requesting review, confirm:
 - [ ] Folder is kebab-case and matches `name` in frontmatter.
 - [ ] `SKILL.md` has full frontmatter (`name`, `description`, `category`, `tags`).
 - [ ] Description reads like a trigger prompt, not a product blurb.
-- [ ] Skill is registered in `README.md` under the correct category.
-- [ ] Cross-references to related skills go both ways.
+- [ ] `python3 scripts/validate.py` passes (also runs in CI).
+- [ ] `skills.json`, the relevant `INDEX.md`, `README.md`, and `.github/copilot-instructions.md` are regenerated (run `build_manifest.py` then `render_docs.py`).
+- [ ] Cross-references to related skills go both ways (run `fix_related.py` if not).
 - [ ] No repo-specific or project-specific assumptions leaked in.
 - [ ] Examples compile / render / make sense on a fresh read.

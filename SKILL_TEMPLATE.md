@@ -4,7 +4,7 @@ description: >
   One to three sentences describing when an agent should invoke this skill.
   Write it in the form "Use this skill when the user wants to …". Include
   concrete trigger phrases so intent-matching works well. Keep under ~300 chars.
-category: engineering        # one of: engineering | content | devops | testing | review | data
+category: engineering        # one of: ai-engineering | engineering | devops | data | content | finance | productivity
 tags: [tag1, tag2, tag3]     # free-form, lowercase, kebab-case; include language/framework/purpose
 related: []                  # optional; list sibling skill names (e.g. [clean-ddd-go])
 ---

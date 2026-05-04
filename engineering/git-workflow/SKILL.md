@@ -7,7 +7,7 @@ description: >
   a tricky merge, or set up a team branching strategy.
 category: engineering
 tags: [git, workflow, version-control, collaboration]
-related: [code-review]
+related: [code-review, github-actions]
 ---
 
 # Git Workflow

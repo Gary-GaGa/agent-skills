@@ -12,23 +12,25 @@ This repo is a collection of reusable **agent skills**, organized into **categor
 
 **Navigation:** `README.md` → `<category>/INDEX.md` → `<category>/<skill>/SKILL.md`.
 
-Current skills — 59 total across 8 categories:
+<!-- BEGIN AUTO-GENERATED: skill-list -->
+Current skills — 59 total across 7 categories:
 
-**engineering (21):** clean-ddd-go, ddd-check, copilot-sdk, go-testing, git-workflow, code-review, debugging-methodology, api-design-rest, api-design-grpc, refactoring-patterns, go-concurrency, go-performance, observability-go, event-driven-architecture, microservices-patterns, mongodb-go, auth-patterns, nextjs-fundamentals, realtime-websocket, tw-payment-integration, line-integration-tw
+**engineering (21):** api-design-grpc, api-design-rest, auth-patterns, clean-ddd-go, code-review, copilot-sdk, ddd-check, debugging-methodology, event-driven-architecture, git-workflow, go-concurrency, go-performance, go-testing, line-integration-tw, microservices-patterns, mongodb-go, nextjs-fundamentals, observability-go, realtime-websocket, refactoring-patterns, tw-payment-integration
 
-**ai-engineering (16):** agent-harness-design, prompt-engineering, context-engineering, tool-design-for-agents, skill-authoring, mcp-server-design, agent-evaluation, agent-observability, multi-agent-orchestration, agent-safety-guardrails, claude-code-customization, prompt-caching, rag-deep-dive, agentic-coding-patterns, llm-cost-optimization, fine-tuning-guide
+**ai-engineering (16):** agent-evaluation, agent-harness-design, agent-observability, agent-safety-guardrails, agentic-coding-patterns, claude-code-customization, context-engineering, fine-tuning-guide, llm-cost-optimization, mcp-server-design, multi-agent-orchestration, prompt-caching, prompt-engineering, rag-deep-dive, skill-authoring, tool-design-for-agents
 
-**devops (4):** docker-basics, github-actions, terraform-basics, k8s-fundamentals
+**devops (4):** docker-basics, github-actions, k8s-fundamentals, terraform-basics
 
-**data (3):** sql-fundamentals, database-migrations, data-modeling
+**data (3):** data-modeling, database-migrations, sql-fundamentals
 
-**content (3):** medium-writing-zh, technical-writing-en, newsletter-writing-zh
+**content (3):** medium-writing-zh, newsletter-writing-zh, technical-writing-en
 
-**finance (9):** tw-stock-fundamental, tw-stock-chip, tw-stock-technical, tw-stock-quant, tw-stock-data, tw-stock-options, tw-etf-investing, portfolio-construction, tw-stock-tax
+**finance (9):** portfolio-construction, tw-etf-investing, tw-stock-chip, tw-stock-data, tw-stock-fundamental, tw-stock-options, tw-stock-quant, tw-stock-tax, tw-stock-technical
 
 **productivity (3):** learning-methodology, second-brain, time-management
 
-Rule sheets (12) in `rules/`: go-naming, go-error-handling, commit-messages, trading-discipline, prompt-style, tool-schema, agent-anti-patterns, go-concurrency, go-logging, api-versioning, security-checklist, dockerfile
+Rule sheets (12) in `rules/`: agent-anti-patterns, api-versioning, commit-messages, dockerfile, go-concurrency, go-error-handling, go-logging, go-naming, prompt-style, security-checklist, tool-schema, trading-discipline
+<!-- END AUTO-GENERATED: skill-list -->
 
 Repo-level files:
 - `README.md` — skill index organized by category

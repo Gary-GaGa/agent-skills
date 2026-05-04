@@ -7,7 +7,7 @@ description: >
   team conventions, or building a personal Claude Code setup.
 category: ai-engineering
 tags: [claude-code, anthropic, customization, hooks, mcp, settings]
-related: [skill-authoring, mcp-server-design, agent-harness-design]
+related: [skill-authoring, mcp-server-design, agent-harness-design, agentic-coding-patterns]
 ---
 
 # Claude Code Customization

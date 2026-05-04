@@ -7,7 +7,7 @@ description: >
   designing a cost-conscious agent architecture.
 category: ai-engineering
 tags: [cost, optimization, llm, tokens, caching, routing]
-related: [prompt-caching, context-engineering, agent-harness-design]
+related: [prompt-caching, context-engineering, agent-harness-design, fine-tuning-guide]
 ---
 
 # LLM Cost Optimization

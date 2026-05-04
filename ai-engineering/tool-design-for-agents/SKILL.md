@@ -7,7 +7,7 @@ description: >
   tool", or auditing an existing tool surface.
 category: ai-engineering
 tags: [tool, agent, json-schema, design, llm]
-related: [agent-harness-design, prompt-engineering, mcp-server-design, agent-safety-guardrails, skill-authoring, context-engineering]
+related: [agent-harness-design, prompt-engineering, mcp-server-design, agent-safety-guardrails, skill-authoring, context-engineering, agent-evaluation]
 ---
 
 # Tool Design for Agents

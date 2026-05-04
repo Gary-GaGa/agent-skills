@@ -7,7 +7,7 @@ description: >
   tests, and coverage analysis. Pairs naturally with clean-ddd-go.
 category: engineering
 tags: [go, testing, tdd, quality]
-related: [clean-ddd-go, ddd-check, go-concurrency, go-performance, refactoring-patterns, agentic-coding-patterns]
+related: [clean-ddd-go, ddd-check, go-concurrency, go-performance, refactoring-patterns, agentic-coding-patterns, github-actions, mongodb-go]
 ---
 
 # Go Testing

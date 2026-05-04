@@ -7,7 +7,7 @@ description: >
   reviewing code for performance-sensitive paths.
 category: engineering
 tags: [go, performance, profiling, pprof, benchmark, optimization]
-related: [go-concurrency, go-testing, debugging-methodology]
+related: [go-concurrency, go-testing, debugging-methodology, observability-go]
 ---
 
 # Go Performance

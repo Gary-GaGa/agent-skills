@@ -7,7 +7,7 @@ description: >
   need live updates (chat, notifications, collaborative editing, live status).
 category: engineering
 tags: [websocket, sse, realtime, go, react, socket-io]
-related: [api-design-rest, nextjs-fundamentals, go-concurrency, event-driven-architecture]
+related: [api-design-rest, nextjs-fundamentals, go-concurrency, event-driven-architecture, line-integration-tw]
 ---
 
 # Real-Time WebSocket
