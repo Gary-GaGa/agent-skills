@@ -10,7 +10,7 @@ This repo is a collection of reusable **agent skills**. Each top-level folder is
 
 Current skills — 53 total across 8 categories (see `README.md` for the full index with descriptions):
 
-**engineering (15):** clean-ddd-go, ddd-check, copilot-sdk, go-testing, git-workflow, code-review, debugging-methodology, api-design-rest, api-design-grpc, refactoring-patterns, go-concurrency, go-performance, observability-go, event-driven-architecture, microservices-patterns
+**engineering (22):** clean-ddd-go, ddd-check, copilot-sdk, go-testing, git-workflow, code-review, debugging-methodology, api-design-rest, api-design-grpc, refactoring-patterns, go-concurrency, go-performance, observability-go, event-driven-architecture, microservices-patterns, mongodb-go, auth-patterns, nextjs-fundamentals, realtime-websocket, tw-payment-integration, line-integration-tw
 
 **ai-engineering (16):** agent-harness-design, prompt-engineering, context-engineering, tool-design-for-agents, skill-authoring, mcp-server-design, agent-evaluation, agent-observability, multi-agent-orchestration, agent-safety-guardrails, claude-code-customization, prompt-caching, rag-deep-dive, agentic-coding-patterns, llm-cost-optimization, fine-tuning-guide
 

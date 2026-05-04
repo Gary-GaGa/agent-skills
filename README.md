@@ -29,6 +29,12 @@ Skills that help design, build, or audit software.
 | [`observability-go`](./observability-go/SKILL.md) | Go observability — slog, OpenTelemetry tracing, Prometheus metrics, correlation IDs. | `go` `observability` `tracing` |
 | [`event-driven-architecture`](./event-driven-architecture/SKILL.md) | Event-driven patterns — message queues, event sourcing, CQRS, saga, idempotent consumers. | `architecture` `events` `cqrs` |
 | [`microservices-patterns`](./microservices-patterns/SKILL.md) | Microservices — decomposition, circuit breaker, API gateway, 12-factor, when to stay monolithic. | `architecture` `microservices` |
+| [`mongodb-go`](./mongodb-go/SKILL.md) | MongoDB with Go — document schema, mongo-go-driver, indexing, aggregation, transactions. | `go` `mongodb` `nosql` |
+| [`auth-patterns`](./auth-patterns/SKILL.md) | Authentication & authorization — JWT, OAuth2, social login, RBAC, refresh tokens, password hashing. | `auth` `jwt` `oauth` `security` |
+| [`nextjs-fundamentals`](./nextjs-fundamentals/SKILL.md) | Next.js frontend — App Router, server/client components, data fetching, next-auth, Tailwind + shadcn/ui. | `nextjs` `react` `frontend` |
+| [`realtime-websocket`](./realtime-websocket/SKILL.md) | Real-time communication — WebSocket, SSE, Go server, React client, rooms/channels, hub pattern. | `websocket` `sse` `realtime` |
+| [`tw-payment-integration`](./tw-payment-integration/SKILL.md) | 台灣金流整合 — 綠界 ECPay、藍新 NewebPay、callback 處理、退款、訂單狀態管理。 | `payment` `taiwan` `ecpay` |
+| [`line-integration-tw`](./line-integration-tw/SKILL.md) | LINE 整合（台灣）— LINE Login、LINE Notify、LIFF、Messaging API、Rich Menu。 | `line` `taiwan` `login` `notification` |
 
 ### AI Engineering
 
