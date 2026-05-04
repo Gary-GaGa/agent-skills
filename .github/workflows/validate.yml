@@ -28,9 +28,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
 
       - name: Install dependencies
+        # Only one tiny dep; pip caching here needs a lockfile and saves <2s.
         run: pip install pyyaml
 
       - name: Validate skills repo
