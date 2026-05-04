@@ -165,6 +165,7 @@ Before requesting review, confirm:
 - [ ] Folder is kebab-case and matches `name` in frontmatter.
 - [ ] `SKILL.md` has full frontmatter (`name`, `description`, `category`, `tags`).
 - [ ] Description reads like a trigger prompt, not a product blurb.
+- [ ] `python3 -m unittest discover -s tests -v` passes (also runs in CI).
 - [ ] `python3 scripts/validate.py` passes (also runs in CI).
 - [ ] `skills.json`, the relevant `INDEX.md`, `README.md`, and `.github/copilot-instructions.md` are regenerated (run `build_manifest.py` then `render_docs.py`).
 - [ ] Cross-references to related skills go both ways. `python3 scripts/fix_related.py` reports missing back-references in dry-run; re-run with `--apply` to mutate the SKILL.md files (review the diff — auto-mutation can add back-references the original author intentionally omitted).

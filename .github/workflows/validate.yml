@@ -8,6 +8,8 @@ on:
       - "**/references/**"
       - "rules/**"
       - "evals/**"
+      - "tests/**"
+      - "tags-allowlist.txt"
       - "skills.json"
       - "README.md"
       - "CONTRIBUTING.md"
@@ -32,6 +34,9 @@ jobs:
       - name: Install dependencies
         # Only one tiny dep; pip caching here needs a lockfile and saves <2s.
         run: pip install pyyaml
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -v
 
       - name: Validate skills repo
         run: python3 scripts/validate.py
