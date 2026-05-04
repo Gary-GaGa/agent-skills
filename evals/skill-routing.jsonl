@@ -1,0 +1,35 @@
+// Skill-routing eval set. One JSON object per line; lines starting with `//` are comments.
+// `kind`: match (single best), multi (any of expected), ambiguous (top should be in expected),
+// unanswerable (top score should fall below threshold; expected is empty).
+// Run: python3 scripts/run_routing_eval.py
+{"id": "001", "kind": "match", "intent": "Help me design an MCP server for Claude Desktop", "expected": ["mcp-server-design"]}
+{"id": "002", "kind": "match", "intent": "I want to write Go tests with table-driven subtests", "expected": ["go-testing"]}
+{"id": "003", "kind": "match", "intent": "How do I avoid prompt injection in my agent?", "expected": ["agent-safety-guardrails"]}
+{"id": "004", "kind": "match", "intent": "Building a RAG pipeline — how should I chunk docs?", "expected": ["rag-deep-dive"]}
+{"id": "005", "kind": "match", "intent": "我想學台股的籌碼面分析", "expected": ["tw-stock-chip"]}
+{"id": "006", "kind": "match", "intent": "想了解 0050 跟 0056 哪個比較適合長期投資", "expected": ["tw-etf-investing"]}
+{"id": "007", "kind": "match", "intent": "Optimize a slow PostgreSQL query that joins 3 tables", "expected": ["sql-fundamentals"]}
+{"id": "008", "kind": "match", "intent": "Write a Dockerfile for a Go service with multi-stage build", "expected": ["docker-basics"]}
+{"id": "009", "kind": "match", "intent": "Set up GitHub Actions to run tests on PRs", "expected": ["github-actions"]}
+{"id": "010", "kind": "match", "intent": "What's the difference between rebase and merge in Git?", "expected": ["git-workflow"]}
+{"id": "011", "kind": "match", "intent": "Design a JSON schema for a tool an LLM agent will call", "expected": ["tool-design-for-agents"]}
+{"id": "012", "kind": "match", "intent": "我想用 Medium 寫繁體中文技術文章", "expected": ["medium-writing-zh"]}
+{"id": "013", "kind": "match", "intent": "How do I structure a Next.js app with the App Router?", "expected": ["nextjs-fundamentals"]}
+{"id": "014", "kind": "match", "intent": "Add observability (tracing, metrics) to my Go microservice", "expected": ["observability-go"]}
+{"id": "015", "kind": "match", "intent": "How should I think about prompt caching with Anthropic Claude?", "expected": ["prompt-caching"]}
+{"id": "016", "kind": "match", "intent": "Add LINE Login to a Taiwanese web service", "expected": ["line-integration-tw"]}
+{"id": "017", "kind": "match", "intent": "Integrate ECPay credit card payment into a Go backend", "expected": ["tw-payment-integration"]}
+{"id": "018", "kind": "match", "intent": "I want to write a new agent skill — how do I structure SKILL.md?", "expected": ["skill-authoring"]}
+{"id": "019", "kind": "match", "intent": "Audit my Go project for Clean Architecture violations", "expected": ["ddd-check"]}
+{"id": "020", "kind": "match", "intent": "Set up a Kubernetes deployment with health checks and resource limits", "expected": ["k8s-fundamentals"]}
+{"id": "m01", "kind": "multi", "intent": "Build a real-time chat feature with WebSocket and a Next.js frontend", "expected": ["realtime-websocket", "nextjs-fundamentals"]}
+{"id": "m02", "kind": "multi", "intent": "I'm designing an agent — what's the right harness loop and tool surface?", "expected": ["agent-harness-design", "tool-design-for-agents"]}
+{"id": "m03", "kind": "multi", "intent": "我想建立投資組合並且了解相關稅務", "expected": ["portfolio-construction", "tw-stock-tax"]}
+{"id": "a01", "kind": "ambiguous", "intent": "Design a clean public API for our backend", "expected": ["api-design-rest", "api-design-grpc"]}
+{"id": "a02", "kind": "ambiguous", "intent": "My LLM agent forgets earlier instructions in long sessions", "expected": ["context-engineering", "agent-harness-design"]}
+{"id": "a03", "kind": "ambiguous", "intent": "Refactor a legacy module without breaking behaviour", "expected": ["refactoring-patterns", "code-review"]}
+{"id": "u01", "kind": "unanswerable", "intent": "Set up a Rust async runtime with tokio", "expected": []}
+{"id": "u02", "kind": "unanswerable", "intent": "What's the best Slack bot framework in 2026?", "expected": []}
+{"id": "u03", "kind": "unanswerable", "intent": "How do I write a Solidity smart contract on Ethereum?", "expected": []}
+{"id": "u04", "kind": "unanswerable", "intent": "Help me cook a beef wellington for 4 people", "expected": []}
+{"id": "u05", "kind": "unanswerable", "intent": "How do I configure Apache Kafka for exactly-once delivery?", "expected": []}

@@ -164,5 +164,6 @@ Before requesting review, confirm:
 - [ ] `python3 scripts/validate.py` passes (also runs in CI).
 - [ ] `skills.json`, the relevant `INDEX.md`, `README.md`, and `.github/copilot-instructions.md` are regenerated (run `build_manifest.py` then `render_docs.py`).
 - [ ] Cross-references to related skills go both ways (run `fix_related.py` if not).
+- [ ] If your skill could plausibly collide with an existing one, add a routing eval case to `evals/skill-routing.jsonl` and run `python3 scripts/run_routing_eval.py`.
 - [ ] No repo-specific or project-specific assumptions leaked in.
 - [ ] Examples compile / render / make sense on a fresh read.

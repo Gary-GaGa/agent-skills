@@ -48,7 +48,11 @@ agent-skills/
 │   ├── build_manifest.py     ← regenerates skills.json
 │   ├── render_docs.py        ← regenerates README/INDEX/copilot-instructions
 │   ├── fix_related.py        ← auto-completes bidirectional related: refs
-│   └── validate.py           ← schema/drift/cross-link checks (runs in CI)
+│   ├── validate.py           ← schema/drift/cross-link checks (runs in CI)
+│   └── run_routing_eval.py   ← lexical eval of routing quality
+├── evals/
+│   ├── README.md             ← eval format and methodology
+│   └── skill-routing.jsonl   ← test cases (intent → expected skill)
 ├── .github/
 │   ├── copilot-instructions.md
 │   └── workflows/validate.yml
