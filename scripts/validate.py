@@ -147,6 +147,53 @@ def collect_all_skills() -> dict[str, dict]:
     return result
 
 
+_FENCED_RE = re.compile(r"```.*?```", re.DOTALL)
+
+
+def _strip_code(text: str) -> str:
+    """Remove fenced code blocks so prose-pattern matchers don't trip on
+    illustrative paths inside ``` blocks (directory trees, example bodies).
+    Inline `code` is intentionally preserved — repos like copilot-sdk wrap
+    real reference filenames in backticks."""
+    return _FENCED_RE.sub("", text)
+
+
+def check_references(skills: dict[str, dict]) -> None:
+    """For every skill with a references/ folder:
+       (a) every *.md inside is referenced from SKILL.md body,
+       (b) every references/ link in SKILL.md points to an existing file."""
+    for fm in skills.values():
+        skill_md: Path = fm["_path"]
+        ref_dir = skill_md.parent / "references"
+        raw_body = skill_md.read_text(encoding="utf-8")
+        prose_body = _strip_code(raw_body)
+        # files actually present
+        present: set[str] = set()
+        if ref_dir.is_dir():
+            for p in ref_dir.glob("*.md"):
+                if p.name.upper() == "README.MD":
+                    continue
+                present.add(p.name)
+        # files mentioned in body — accept Markdown links (raw, so backtick
+        # labels survive) and plain prose mentions outside of code blocks.
+        mentioned: set[str] = set()
+        for _, target in LINK_RE.findall(raw_body):
+            target = target.strip()
+            if target.startswith("./references/") or target.startswith("references/"):
+                fname = Path(target).name.split("#", 1)[0].split("?", 1)[0]
+                if fname:
+                    mentioned.add(fname)
+        for m in re.finditer(r"(?<![\w/])references/([\w.\-]+\.md)", prose_body):
+            mentioned.add(m.group(1))
+        # orphans: files present but not mentioned
+        for fname in sorted(present - mentioned):
+            rel = (ref_dir / fname).relative_to(REPO_ROOT)
+            err(f"{rel}: orphan reference — not linked from {skill_md.relative_to(REPO_ROOT)}")
+        # dangling: mentioned but missing on disk
+        for fname in sorted(mentioned - present):
+            err(f"{skill_md.relative_to(REPO_ROOT)}: references `references/{fname}` but file does not exist")
+
+
 def check_related(skills: dict[str, dict]) -> None:
     for name, fm in skills.items():
         for ref in fm.get("related") or []:
@@ -164,6 +211,7 @@ def check_related(skills: dict[str, dict]) -> None:
 def check_links(skills: dict[str, dict]) -> None:
     files: list[Path] = []
     files.extend(REPO_ROOT.glob("*/*/SKILL.md"))
+    files.extend(REPO_ROOT.glob("*/*/references/*.md"))
     files.extend(REPO_ROOT.glob("*/INDEX.md"))
     files.append(REPO_ROOT / "README.md")
     files.append(REPO_ROOT / "CONTRIBUTING.md")
@@ -172,6 +220,9 @@ def check_links(skills: dict[str, dict]) -> None:
     rules_readme = REPO_ROOT / "rules" / "README.md"
     if rules_readme.exists():
         files.append(rules_readme)
+    evals_readme = REPO_ROOT / "evals" / "README.md"
+    if evals_readme.exists():
+        files.append(evals_readme)
 
     for f in files:
         if not f.exists():
@@ -207,6 +258,7 @@ def run_subscript(args: list[str], description: str) -> bool:
 def main() -> int:
     skills = collect_all_skills()
     check_related(skills)
+    check_references(skills)
     check_links(skills)
 
     # Drift checks
