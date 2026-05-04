@@ -5,7 +5,9 @@ on:
     paths:
       - "**/SKILL.md"
       - "**/INDEX.md"
+      - "**/references/**"
       - "rules/**"
+      - "evals/**"
       - "skills.json"
       - "README.md"
       - "CONTRIBUTING.md"
@@ -26,9 +28,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
 
       - name: Install dependencies
         run: pip install pyyaml
 
       - name: Validate skills repo
         run: python3 scripts/validate.py
+
+      - name: Routing eval (informational; diffs against evals/baseline.json)
+        # Does NOT fail the build — eval regressions are signals to investigate,
+        # not auto-fail. Compare the printed numbers against the baseline lines.
+        run: python3 scripts/run_routing_eval.py --baseline evals/baseline.json
+        continue-on-error: true

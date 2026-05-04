@@ -111,10 +111,114 @@ def load_cases() -> list[dict]:
     return cases
 
 
+def evaluate(cases: list[dict], skills: list[dict]) -> dict:
+    """Run all cases; return aggregate + per-source metrics + per-case results."""
+    per_case: list[dict] = []
+    for case in cases:
+        intent = case["intent"]
+        expected: list[str] = case.get("expected", [])
+        kind = case.get("kind", "match")
+        ranked = rank(intent, skills)
+        top_score = ranked[0][0] if ranked else 0.0
+        top3 = [{"name": s["name"], "score": round(sc, 2)} for sc, s in ranked[:3]]
+
+        result = {
+            "id": case.get("id"),
+            "source": case.get("source", "curated"),
+            "kind": kind,
+            "intent": intent,
+            "expected": expected,
+            "top3": top3,
+            "top_score": round(top_score, 3),
+        }
+
+        if kind == "unanswerable":
+            result["passed"] = top_score < UNANSWERABLE_THRESHOLD
+        else:
+            in_top1 = bool(ranked) and ranked[0][1]["name"] in expected
+            in_top3 = any(s["name"] in expected for _, s in ranked[:3])
+            rr = 0.0
+            for i, (_, s) in enumerate(ranked, 1):
+                if s["name"] in expected:
+                    rr = 1.0 / i
+                    break
+            result["in_top1"] = in_top1
+            result["in_top3"] = in_top3
+            result["rr"] = rr
+            result["passed"] = in_top1
+        per_case.append(result)
+
+    return {
+        "summary": aggregate(per_case),
+        "by_source": {
+            source: aggregate([c for c in per_case if c["source"] == source])
+            for source in sorted({c["source"] for c in per_case})
+        },
+        "cases": per_case,
+    }
+
+
+def aggregate(per_case: list[dict]) -> dict:
+    match_cases = [c for c in per_case if c["kind"] != "unanswerable"]
+    una_cases = [c for c in per_case if c["kind"] == "unanswerable"]
+    n_match = len(match_cases)
+    n_una = len(una_cases)
+    return {
+        "total": len(per_case),
+        "match_total": n_match,
+        "unanswerable_total": n_una,
+        "recall_at_1": (sum(1 for c in match_cases if c["in_top1"]) / n_match) if n_match else 0.0,
+        "recall_at_3": (sum(1 for c in match_cases if c["in_top3"]) / n_match) if n_match else 0.0,
+        "mrr": (sum(c["rr"] for c in match_cases) / n_match) if n_match else 0.0,
+        "unanswerable_correct": sum(1 for c in una_cases if c["passed"]),
+        "unanswerable_accuracy": (sum(1 for c in una_cases if c["passed"]) / n_una) if n_una else 1.0,
+    }
+
+
+def fmt_pct(v: float) -> str:
+    return f"{v:.1%}"
+
+
+def fmt_diff(curr: float, base: float, pct: bool = True) -> str:
+    delta = curr - base
+    if abs(delta) < 1e-9:
+        return ""
+    arrow = "↑" if delta > 0 else "↓"
+    val = f"{abs(delta):.1%}" if pct else f"{abs(delta):.3f}"
+    return f"  ({arrow} {val} vs baseline)"
+
+
+def print_metrics(label: str, summary: dict, baseline: dict | None = None) -> None:
+    print(f"  {label}")
+    base_summary = baseline or {}
+    n_match = summary["match_total"]
+    n_una = summary["unanswerable_total"]
+
+    def line(display: str, key: str, fmt: str) -> None:
+        current_val = summary[key]
+        b = base_summary.get(key)
+        diff = ""
+        if b is not None:
+            diff = fmt_diff(current_val, b, pct=(fmt == "pct"))
+        if fmt == "pct":
+            print(f"    {display:<22}{current_val:.1%}{diff}")
+        else:
+            print(f"    {display:<22}{current_val:.3f}{diff}")
+
+    if n_match:
+        line("recall@1", "recall_at_1", "pct")
+        line("recall@3", "recall_at_3", "pct")
+        line("MRR", "mrr", "num")
+    if n_una:
+        line("unanswerable acc", "unanswerable_accuracy", "pct")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--verbose", action="store_true", help="print top-3 per case")
     parser.add_argument("--json", action="store_true", help="emit JSON summary")
+    parser.add_argument("--baseline", type=Path, help="JSON file to compare metrics against")
+    parser.add_argument("--update-baseline", type=Path, help="write current results to this baseline file")
     args = parser.parse_args()
 
     if not MANIFEST_PATH.exists():
@@ -123,103 +227,63 @@ def main() -> int:
     skills = manifest["skills"]
     cases = load_cases()
 
-    n_total = len(cases)
-    n_match = sum(1 for c in cases if c.get("kind") != "unanswerable")
-    n_unanswerable = n_total - n_match
+    results = evaluate(cases, skills)
+    summary = results["summary"]
+    by_source = results["by_source"]
 
-    hits_at_1 = 0
-    hits_at_3 = 0
-    rr_sum = 0.0
-    unanswerable_correct = 0
-    failures: list[dict] = []
+    baseline_data = None
+    if args.baseline:
+        if args.baseline.exists():
+            baseline_data = json.loads(args.baseline.read_text(encoding="utf-8"))
+        else:
+            print(f"warning: baseline {args.baseline} does not exist; skipping comparison", file=sys.stderr)
 
-    for case in cases:
-        intent = case["intent"]
-        expected: list[str] = case.get("expected", [])
-        kind = case.get("kind", "match")
-        ranked = rank(intent, skills)
-        top_score = ranked[0][0] if ranked else 0.0
-        top_names = [s["name"] for _, s in ranked[:3]]
-
-        if kind == "unanswerable":
-            ok = top_score < UNANSWERABLE_THRESHOLD
-            if ok:
-                unanswerable_correct += 1
-            else:
-                failures.append({
-                    "id": case.get("id"),
-                    "kind": kind,
-                    "intent": intent,
-                    "top": [(round(sc, 2), s["name"]) for sc, s in ranked[:3]],
-                    "expected": expected,
-                })
-            if args.verbose:
-                tag = "OK " if ok else "BAD"
-                print(f"  [{tag}] {case.get('id')} unanswerable (top score {top_score:.2f}): {intent!r}")
-                for sc, s in ranked[:3]:
-                    print(f"        {sc:.2f}  {s['name']}")
-            continue
-
-        # match / multi / ambiguous
-        rank_of_first_hit = None
-        for i, (_, s) in enumerate(ranked, 1):
-            if s["name"] in expected:
-                rank_of_first_hit = i
-                break
-        in_top1 = ranked and ranked[0][1]["name"] in expected
-        in_top3 = any(s["name"] in expected for _, s in ranked[:3])
-        if in_top1:
-            hits_at_1 += 1
-        if in_top3:
-            hits_at_3 += 1
-        if rank_of_first_hit:
-            rr_sum += 1.0 / rank_of_first_hit
-
-        if not in_top3:
-            failures.append({
-                "id": case.get("id"),
-                "kind": kind,
-                "intent": intent,
-                "top": [(round(sc, 2), s["name"]) for sc, s in ranked[:3]],
-                "expected": expected,
-            })
-        if args.verbose:
-            tag = "OK " if in_top1 else ("PR3" if in_top3 else "BAD")
-            print(f"  [{tag}] {case.get('id')} {kind}: {intent!r}")
-            for sc, s in ranked[:3]:
-                marker = " *" if s["name"] in expected else ""
-                print(f"        {sc:.2f}  {s['name']}{marker}")
-
-    summary = {
-        "total": n_total,
-        "match_total": n_match,
-        "unanswerable_total": n_unanswerable,
-        "recall_at_1": hits_at_1 / n_match if n_match else 0.0,
-        "recall_at_3": hits_at_3 / n_match if n_match else 0.0,
-        "mrr": rr_sum / n_match if n_match else 0.0,
-        "unanswerable_correct": unanswerable_correct,
-        "unanswerable_accuracy": (unanswerable_correct / n_unanswerable) if n_unanswerable else 1.0,
-        "failures": failures,
-    }
+    if args.update_baseline:
+        payload = {"summary": summary, "by_source": by_source}
+        args.update_baseline.write_text(
+            json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+        print(f"wrote baseline to {args.update_baseline}")
 
     if args.json:
-        print(json.dumps(summary, indent=2, ensure_ascii=False))
+        out = {"summary": summary, "by_source": by_source}
+        if baseline_data:
+            out["baseline"] = baseline_data
+        print(json.dumps(out, indent=2, ensure_ascii=False))
         return 0
 
-    print("Routing eval results")
-    print(f"  cases:                 {n_total} ({n_match} match, {n_unanswerable} unanswerable)")
-    print(f"  recall@1:              {hits_at_1}/{n_match} = {summary['recall_at_1']:.1%}")
-    print(f"  recall@3:              {hits_at_3}/{n_match} = {summary['recall_at_3']:.1%}")
-    print(f"  MRR:                   {summary['mrr']:.3f}")
-    print(f"  unanswerable correct:  {unanswerable_correct}/{n_unanswerable} = {summary['unanswerable_accuracy']:.1%}")
+    print(f"Routing eval results ({summary['total']} cases)")
+    base_summary = (baseline_data or {}).get("summary") if baseline_data else None
+    print_metrics(
+        f"overall ({summary['match_total']} match, {summary['unanswerable_total']} unanswerable)",
+        summary,
+        base_summary,
+    )
+    for source, ssum in by_source.items():
+        base_src = ((baseline_data or {}).get("by_source") or {}).get(source) if baseline_data else None
+        print_metrics(
+            f"{source} ({ssum['match_total']} match, {ssum['unanswerable_total']} unanswerable)",
+            ssum,
+            base_src,
+        )
 
+    if args.verbose:
+        print("\nPer-case:")
+        for c in results["cases"]:
+            tag = "OK " if c["passed"] else ("PR3" if c.get("in_top3") else "BAD")
+            print(f"  [{tag}] {c['id']} [{c['source']}] {c['kind']}: {c['intent']!r}")
+            for entry in c["top3"]:
+                star = " *" if entry["name"] in c["expected"] else ""
+                print(f"        {entry['score']:.2f}  {entry['name']}{star}")
+
+    failures = [c for c in results["cases"] if not c["passed"]]
     if failures and not args.verbose:
         print(f"\nFailures ({len(failures)}):")
-        for f in failures:
-            top_str = ", ".join(f"{n}({s})" for s, n in f["top"])
-            exp_str = ", ".join(f["expected"]) if f["expected"] else "(none — unanswerable)"
-            print(f"  {f['id']} [{f['kind']}] expected: {exp_str}")
-            print(f"      intent: {f['intent']}")
+        for c in failures:
+            top_str = ", ".join(f"{e['name']}({e['score']})" for e in c["top3"])
+            exp_str = ", ".join(c["expected"]) if c["expected"] else "(none — unanswerable)"
+            print(f"  {c['id']} [{c['source']}/{c['kind']}] expected: {exp_str}")
+            print(f"      intent: {c['intent']}")
             print(f"      top-3:  {top_str}")
     return 0
 
