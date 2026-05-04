@@ -8,6 +8,7 @@ description: >
   right packaging for a capability.
 category: ai-engineering
 tags: [mcp, agent, tool, server, protocol]
+keywords: [MCP, Model Context Protocol, stdio, SSE, JSON-RPC, Claude Desktop]
 related: [tool-design-for-agents, agent-harness-design, claude-code-customization, agent-safety-guardrails, copilot-sdk]
 ---
 

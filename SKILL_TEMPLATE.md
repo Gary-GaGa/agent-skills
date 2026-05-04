@@ -6,6 +6,7 @@ description: >
   concrete trigger phrases so intent-matching works well. Keep under ~300 chars.
 category: engineering        # one of: ai-engineering | engineering | devops | data | content | finance | productivity
 tags: [tag1, tag2, tag3]     # free-form, lowercase, kebab-case; include language/framework/purpose
+keywords: []                 # optional; literal phrases for BM25-style match (proper nouns, acronyms, error codes, library names — preserve case)
 related: []                  # optional; list sibling skill names (e.g. [clean-ddd-go])
 ---
 

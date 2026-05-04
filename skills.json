@@ -57,6 +57,7 @@
         "llm",
         "regression"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "prompt-engineering",
@@ -66,7 +67,8 @@
         "fine-tuning-guide"
       ],
       "path": "ai-engineering/agent-evaluation/SKILL.md",
-      "body_lines": 265
+      "body_lines": 265,
+      "references": []
     },
     {
       "name": "agent-harness-design",
@@ -79,6 +81,7 @@
         "architecture",
         "design"
       ],
+      "keywords": [],
       "related": [
         "prompt-engineering",
         "context-engineering",
@@ -95,7 +98,8 @@
         "copilot-sdk"
       ],
       "path": "ai-engineering/agent-harness-design/SKILL.md",
-      "body_lines": 219
+      "body_lines": 219,
+      "references": []
     },
     {
       "name": "agent-observability",
@@ -109,6 +113,7 @@
         "debugging",
         "monitoring"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "agent-evaluation",
@@ -116,7 +121,8 @@
         "observability-go"
       ],
       "path": "ai-engineering/agent-observability/SKILL.md",
-      "body_lines": 273
+      "body_lines": 273,
+      "references": []
     },
     {
       "name": "agent-safety-guardrails",
@@ -129,13 +135,15 @@
         "prompt-injection",
         "agent"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "tool-design-for-agents",
         "mcp-server-design"
       ],
       "path": "ai-engineering/agent-safety-guardrails/SKILL.md",
-      "body_lines": 271
+      "body_lines": 271,
+      "references": []
     },
     {
       "name": "agentic-coding-patterns",
@@ -148,6 +156,7 @@
         "developer-experience",
         "codebase-design"
       ],
+      "keywords": [],
       "related": [
         "claude-code-customization",
         "skill-authoring",
@@ -155,7 +164,8 @@
         "go-testing"
       ],
       "path": "ai-engineering/agentic-coding-patterns/SKILL.md",
-      "body_lines": 189
+      "body_lines": 189,
+      "references": []
     },
     {
       "name": "claude-code-customization",
@@ -169,6 +179,7 @@
         "mcp",
         "settings"
       ],
+      "keywords": [],
       "related": [
         "skill-authoring",
         "mcp-server-design",
@@ -176,7 +187,8 @@
         "agentic-coding-patterns"
       ],
       "path": "ai-engineering/claude-code-customization/SKILL.md",
-      "body_lines": 358
+      "body_lines": 358,
+      "references": []
     },
     {
       "name": "context-engineering",
@@ -190,6 +202,7 @@
         "compaction",
         "agent"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "prompt-engineering",
@@ -200,7 +213,8 @@
         "tool-design-for-agents"
       ],
       "path": "ai-engineering/context-engineering/SKILL.md",
-      "body_lines": 280
+      "body_lines": 280,
+      "references": []
     },
     {
       "name": "fine-tuning-guide",
@@ -213,13 +227,15 @@
         "data",
         "model-customization"
       ],
+      "keywords": [],
       "related": [
         "prompt-engineering",
         "agent-evaluation",
         "llm-cost-optimization"
       ],
       "path": "ai-engineering/fine-tuning-guide/SKILL.md",
-      "body_lines": 193
+      "body_lines": 193,
+      "references": []
     },
     {
       "name": "llm-cost-optimization",
@@ -233,6 +249,7 @@
         "caching",
         "routing"
       ],
+      "keywords": [],
       "related": [
         "prompt-caching",
         "context-engineering",
@@ -240,7 +257,8 @@
         "fine-tuning-guide"
       ],
       "path": "ai-engineering/llm-cost-optimization/SKILL.md",
-      "body_lines": 167
+      "body_lines": 167,
+      "references": []
     },
     {
       "name": "mcp-server-design",
@@ -253,6 +271,14 @@
         "server",
         "protocol"
       ],
+      "keywords": [
+        "MCP",
+        "Model Context Protocol",
+        "stdio",
+        "SSE",
+        "JSON-RPC",
+        "Claude Desktop"
+      ],
       "related": [
         "tool-design-for-agents",
         "agent-harness-design",
@@ -261,7 +287,8 @@
         "copilot-sdk"
       ],
       "path": "ai-engineering/mcp-server-design/SKILL.md",
-      "body_lines": 262
+      "body_lines": 262,
+      "references": []
     },
     {
       "name": "multi-agent-orchestration",
@@ -274,13 +301,15 @@
         "planner",
         "agent"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "prompt-engineering",
         "context-engineering"
       ],
       "path": "ai-engineering/multi-agent-orchestration/SKILL.md",
-      "body_lines": 272
+      "body_lines": 272,
+      "references": []
     },
     {
       "name": "prompt-caching",
@@ -293,6 +322,7 @@
         "anthropic",
         "claude"
       ],
+      "keywords": [],
       "related": [
         "context-engineering",
         "agent-harness-design",
@@ -300,7 +330,8 @@
         "llm-cost-optimization"
       ],
       "path": "ai-engineering/prompt-caching/SKILL.md",
-      "body_lines": 293
+      "body_lines": 293,
+      "references": []
     },
     {
       "name": "prompt-engineering",
@@ -313,6 +344,7 @@
         "gpt",
         "instruction-design"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "context-engineering",
@@ -325,7 +357,8 @@
         "fine-tuning-guide"
       ],
       "path": "ai-engineering/prompt-engineering/SKILL.md",
-      "body_lines": 335
+      "body_lines": 335,
+      "references": []
     },
     {
       "name": "rag-deep-dive",
@@ -339,13 +372,15 @@
         "llm",
         "search"
       ],
+      "keywords": [],
       "related": [
         "context-engineering",
         "prompt-engineering",
         "agent-evaluation"
       ],
       "path": "ai-engineering/rag-deep-dive/SKILL.md",
-      "body_lines": 227
+      "body_lines": 227,
+      "references": []
     },
     {
       "name": "skill-authoring",
@@ -358,6 +393,7 @@
         "documentation",
         "claude-skills"
       ],
+      "keywords": [],
       "related": [
         "prompt-engineering",
         "agent-harness-design",
@@ -367,7 +403,8 @@
         "technical-writing-en"
       ],
       "path": "ai-engineering/skill-authoring/SKILL.md",
-      "body_lines": 297
+      "body_lines": 297,
+      "references": []
     },
     {
       "name": "tool-design-for-agents",
@@ -380,6 +417,7 @@
         "design",
         "llm"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "prompt-engineering",
@@ -390,7 +428,8 @@
         "agent-evaluation"
       ],
       "path": "ai-engineering/tool-design-for-agents/SKILL.md",
-      "body_lines": 299
+      "body_lines": 299,
+      "references": []
     },
     {
       "name": "medium-writing-zh",
@@ -404,12 +443,14 @@
         "seo",
         "content-marketing"
       ],
+      "keywords": [],
       "related": [
         "newsletter-writing-zh",
         "technical-writing-en"
       ],
       "path": "content/medium-writing-zh/SKILL.md",
-      "body_lines": 381
+      "body_lines": 381,
+      "references": []
     },
     {
       "name": "newsletter-writing-zh",
@@ -423,12 +464,14 @@
         "content-marketing",
         "substack"
       ],
+      "keywords": [],
       "related": [
         "medium-writing-zh",
         "technical-writing-en"
       ],
       "path": "content/newsletter-writing-zh/SKILL.md",
-      "body_lines": 157
+      "body_lines": 157,
+      "references": []
     },
     {
       "name": "technical-writing-en",
@@ -442,6 +485,7 @@
         "api-docs",
         "english"
       ],
+      "keywords": [],
       "related": [
         "medium-writing-zh",
         "skill-authoring",
@@ -449,7 +493,8 @@
         "newsletter-writing-zh"
       ],
       "path": "content/technical-writing-en/SKILL.md",
-      "body_lines": 212
+      "body_lines": 212,
+      "references": []
     },
     {
       "name": "data-modeling",
@@ -462,6 +507,7 @@
         "er-diagram",
         "normalization"
       ],
+      "keywords": [],
       "related": [
         "sql-fundamentals",
         "database-migrations",
@@ -469,7 +515,8 @@
         "mongodb-go"
       ],
       "path": "data/data-modeling/SKILL.md",
-      "body_lines": 242
+      "body_lines": 242,
+      "references": []
     },
     {
       "name": "database-migrations",
@@ -482,12 +529,14 @@
         "postgresql",
         "devops"
       ],
+      "keywords": [],
       "related": [
         "sql-fundamentals",
         "data-modeling"
       ],
       "path": "data/database-migrations/SKILL.md",
-      "body_lines": 185
+      "body_lines": 185,
+      "references": []
     },
     {
       "name": "sql-fundamentals",
@@ -500,13 +549,15 @@
         "schema",
         "query-optimization"
       ],
+      "keywords": [],
       "related": [
         "database-migrations",
         "data-modeling",
         "clean-ddd-go"
       ],
       "path": "data/sql-fundamentals/SKILL.md",
-      "body_lines": 240
+      "body_lines": 240,
+      "references": []
     },
     {
       "name": "docker-basics",
@@ -519,13 +570,15 @@
         "compose",
         "devops"
       ],
+      "keywords": [],
       "related": [
         "github-actions",
         "k8s-fundamentals",
         "terraform-basics"
       ],
       "path": "devops/docker-basics/SKILL.md",
-      "body_lines": 180
+      "body_lines": 180,
+      "references": []
     },
     {
       "name": "github-actions",
@@ -538,6 +591,7 @@
         "automation",
         "github"
       ],
+      "keywords": [],
       "related": [
         "docker-basics",
         "git-workflow",
@@ -546,7 +600,8 @@
         "terraform-basics"
       ],
       "path": "devops/github-actions/SKILL.md",
-      "body_lines": 303
+      "body_lines": 303,
+      "references": []
     },
     {
       "name": "k8s-fundamentals",
@@ -559,13 +614,15 @@
         "deployment",
         "container"
       ],
+      "keywords": [],
       "related": [
         "docker-basics",
         "github-actions",
         "terraform-basics"
       ],
       "path": "devops/k8s-fundamentals/SKILL.md",
-      "body_lines": 240
+      "body_lines": 240,
+      "references": []
     },
     {
       "name": "terraform-basics",
@@ -578,13 +635,15 @@
         "cloud",
         "devops"
       ],
+      "keywords": [],
       "related": [
         "docker-basics",
         "github-actions",
         "k8s-fundamentals"
       ],
       "path": "devops/terraform-basics/SKILL.md",
-      "body_lines": 261
+      "body_lines": 261,
+      "references": []
     },
     {
       "name": "api-design-grpc",
@@ -598,6 +657,7 @@
         "go",
         "design"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "api-design-rest",
@@ -605,7 +665,8 @@
         "microservices-patterns"
       ],
       "path": "engineering/api-design-grpc/SKILL.md",
-      "body_lines": 346
+      "body_lines": 346,
+      "references": []
     },
     {
       "name": "api-design-rest",
@@ -619,6 +680,7 @@
         "go",
         "design"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "api-design-grpc",
@@ -629,7 +691,8 @@
         "tw-payment-integration"
       ],
       "path": "engineering/api-design-rest/SKILL.md",
-      "body_lines": 292
+      "body_lines": 292,
+      "references": []
     },
     {
       "name": "auth-patterns",
@@ -643,6 +706,7 @@
         "rbac",
         "session"
       ],
+      "keywords": [],
       "related": [
         "api-design-rest",
         "mongodb-go",
@@ -651,7 +715,8 @@
         "tw-payment-integration"
       ],
       "path": "engineering/auth-patterns/SKILL.md",
-      "body_lines": 308
+      "body_lines": 308,
+      "references": []
     },
     {
       "name": "clean-ddd-go",
@@ -664,6 +729,7 @@
         "clean-architecture",
         "backend"
       ],
+      "keywords": [],
       "related": [
         "ddd-check",
         "go-testing",
@@ -679,7 +745,8 @@
         "mongodb-go"
       ],
       "path": "engineering/clean-ddd-go/SKILL.md",
-      "body_lines": 335
+      "body_lines": 335,
+      "references": []
     },
     {
       "name": "code-review",
@@ -691,6 +758,7 @@
         "quality",
         "pr"
       ],
+      "keywords": [],
       "related": [
         "git-workflow",
         "refactoring-patterns",
@@ -698,7 +766,8 @@
         "ddd-check"
       ],
       "path": "engineering/code-review/SKILL.md",
-      "body_lines": 148
+      "body_lines": 148,
+      "references": []
     },
     {
       "name": "copilot-sdk",
@@ -714,12 +783,35 @@
         "dotnet",
         "mcp"
       ],
+      "keywords": [],
       "related": [
         "mcp-server-design",
         "agent-harness-design"
       ],
       "path": "engineering/copilot-sdk/SKILL.md",
-      "body_lines": 216
+      "body_lines": 216,
+      "references": [
+        {
+          "name": "cli-agents-mcp",
+          "path": "engineering/copilot-sdk/references/cli-agents-mcp.md",
+          "lines": 120
+        },
+        {
+          "name": "event-system",
+          "path": "engineering/copilot-sdk/references/event-system.md",
+          "lines": 91
+        },
+        {
+          "name": "troubleshooting",
+          "path": "engineering/copilot-sdk/references/troubleshooting.md",
+          "lines": 64
+        },
+        {
+          "name": "working-examples",
+          "path": "engineering/copilot-sdk/references/working-examples.md",
+          "lines": 273
+        }
+      ]
     },
     {
       "name": "ddd-check",
@@ -733,13 +825,15 @@
         "audit",
         "lint"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "code-review",
         "go-testing"
       ],
       "path": "engineering/ddd-check/SKILL.md",
-      "body_lines": 192
+      "body_lines": 192,
+      "references": []
     },
     {
       "name": "debugging-methodology",
@@ -751,6 +845,7 @@
         "methodology",
         "observability"
       ],
+      "keywords": [],
       "related": [
         "go-concurrency",
         "go-performance",
@@ -758,7 +853,8 @@
         "agent-observability"
       ],
       "path": "engineering/debugging-methodology/SKILL.md",
-      "body_lines": 182
+      "body_lines": 182,
+      "references": []
     },
     {
       "name": "event-driven-architecture",
@@ -772,6 +868,7 @@
         "event-sourcing",
         "saga"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "microservices-patterns",
@@ -779,7 +876,8 @@
         "realtime-websocket"
       ],
       "path": "engineering/event-driven-architecture/SKILL.md",
-      "body_lines": 235
+      "body_lines": 235,
+      "references": []
     },
     {
       "name": "git-workflow",
@@ -791,12 +889,14 @@
         "version-control",
         "collaboration"
       ],
+      "keywords": [],
       "related": [
         "code-review",
         "github-actions"
       ],
       "path": "engineering/git-workflow/SKILL.md",
-      "body_lines": 154
+      "body_lines": 154,
+      "references": []
     },
     {
       "name": "go-concurrency",
@@ -809,6 +909,7 @@
         "channel",
         "sync"
       ],
+      "keywords": [],
       "related": [
         "go-testing",
         "debugging-methodology",
@@ -818,7 +919,8 @@
         "realtime-websocket"
       ],
       "path": "engineering/go-concurrency/SKILL.md",
-      "body_lines": 256
+      "body_lines": 256,
+      "references": []
     },
     {
       "name": "go-performance",
@@ -832,6 +934,7 @@
         "benchmark",
         "optimization"
       ],
+      "keywords": [],
       "related": [
         "go-concurrency",
         "go-testing",
@@ -839,7 +942,8 @@
         "observability-go"
       ],
       "path": "engineering/go-performance/SKILL.md",
-      "body_lines": 258
+      "body_lines": 258,
+      "references": []
     },
     {
       "name": "go-testing",
@@ -851,6 +955,7 @@
         "tdd",
         "quality"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "ddd-check",
@@ -862,7 +967,8 @@
         "mongodb-go"
       ],
       "path": "engineering/go-testing/SKILL.md",
-      "body_lines": 196
+      "body_lines": 196,
+      "references": []
     },
     {
       "name": "line-integration-tw",
@@ -877,6 +983,7 @@
         "messaging",
         "integration"
       ],
+      "keywords": [],
       "related": [
         "auth-patterns",
         "nextjs-fundamentals",
@@ -884,7 +991,8 @@
         "tw-payment-integration"
       ],
       "path": "engineering/line-integration-tw/SKILL.md",
-      "body_lines": 316
+      "body_lines": 316,
+      "references": []
     },
     {
       "name": "microservices-patterns",
@@ -897,6 +1005,7 @@
         "12-factor",
         "patterns"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "event-driven-architecture",
@@ -904,7 +1013,8 @@
         "api-design-grpc"
       ],
       "path": "engineering/microservices-patterns/SKILL.md",
-      "body_lines": 233
+      "body_lines": 233,
+      "references": []
     },
     {
       "name": "mongodb-go",
@@ -917,6 +1027,14 @@
         "nosql",
         "document-db"
       ],
+      "keywords": [
+        "MongoDB",
+        "mongo-go-driver",
+        "BSON",
+        "ObjectID",
+        "aggregation pipeline",
+        "$lookup"
+      ],
       "related": [
         "clean-ddd-go",
         "data-modeling",
@@ -926,7 +1044,8 @@
         "tw-payment-integration"
       ],
       "path": "engineering/mongodb-go/SKILL.md",
-      "body_lines": 373
+      "body_lines": 373,
+      "references": []
     },
     {
       "name": "nextjs-fundamentals",
@@ -940,6 +1059,7 @@
         "tailwind",
         "ssr"
       ],
+      "keywords": [],
       "related": [
         "api-design-rest",
         "auth-patterns",
@@ -947,7 +1067,19 @@
         "line-integration-tw"
       ],
       "path": "engineering/nextjs-fundamentals/SKILL.md",
-      "body_lines": 384
+      "body_lines": 213,
+      "references": [
+        {
+          "name": "deployment",
+          "path": "engineering/nextjs-fundamentals/references/deployment.md",
+          "lines": 63
+        },
+        {
+          "name": "integrations",
+          "path": "engineering/nextjs-fundamentals/references/integrations.md",
+          "lines": 130
+        }
+      ]
     },
     {
       "name": "observability-go",
@@ -962,13 +1094,15 @@
         "opentelemetry",
         "slog"
       ],
+      "keywords": [],
       "related": [
         "debugging-methodology",
         "go-performance",
         "agent-observability"
       ],
       "path": "engineering/observability-go/SKILL.md",
-      "body_lines": 266
+      "body_lines": 266,
+      "references": []
     },
     {
       "name": "realtime-websocket",
@@ -982,6 +1116,7 @@
         "react",
         "socket-io"
       ],
+      "keywords": [],
       "related": [
         "api-design-rest",
         "nextjs-fundamentals",
@@ -990,7 +1125,8 @@
         "line-integration-tw"
       ],
       "path": "engineering/realtime-websocket/SKILL.md",
-      "body_lines": 357
+      "body_lines": 357,
+      "references": []
     },
     {
       "name": "refactoring-patterns",
@@ -1002,13 +1138,15 @@
         "patterns",
         "go"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "code-review",
         "go-testing"
       ],
       "path": "engineering/refactoring-patterns/SKILL.md",
-      "body_lines": 367
+      "body_lines": 367,
+      "references": []
     },
     {
       "name": "tw-payment-integration",
@@ -1022,6 +1160,7 @@
         "integration",
         "fintech"
       ],
+      "keywords": [],
       "related": [
         "api-design-rest",
         "auth-patterns",
@@ -1029,7 +1168,8 @@
         "line-integration-tw"
       ],
       "path": "engineering/tw-payment-integration/SKILL.md",
-      "body_lines": 247
+      "body_lines": 247,
+      "references": []
     },
     {
       "name": "portfolio-construction",
@@ -1042,6 +1182,7 @@
         "diversification",
         "investing"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-etf-investing",
@@ -1049,7 +1190,8 @@
         "tw-stock-tax"
       ],
       "path": "finance/portfolio-construction/SKILL.md",
-      "body_lines": 210
+      "body_lines": 210,
+      "references": []
     },
     {
       "name": "tw-etf-investing",
@@ -1063,13 +1205,15 @@
         "dividend",
         "portfolio"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "portfolio-construction",
         "tw-stock-tax"
       ],
       "path": "finance/tw-etf-investing/SKILL.md",
-      "body_lines": 155
+      "body_lines": 155,
+      "references": []
     },
     {
       "name": "tw-stock-chip",
@@ -1083,6 +1227,7 @@
         "institutional-investors",
         "margin-trading"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-technical",
@@ -1090,7 +1235,8 @@
         "tw-stock-data"
       ],
       "path": "finance/tw-stock-chip/SKILL.md",
-      "body_lines": 295
+      "body_lines": 295,
+      "references": []
     },
     {
       "name": "tw-stock-data",
@@ -1104,6 +1250,7 @@
         "api",
         "pipeline"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-chip",
@@ -1111,7 +1258,8 @@
         "tw-stock-quant"
       ],
       "path": "finance/tw-stock-data/SKILL.md",
-      "body_lines": 341
+      "body_lines": 341,
+      "references": []
     },
     {
       "name": "tw-stock-fundamental",
@@ -1125,6 +1273,7 @@
         "investing",
         "value-investing"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-chip",
         "tw-stock-technical",
@@ -1136,7 +1285,8 @@
         "tw-stock-tax"
       ],
       "path": "finance/tw-stock-fundamental/SKILL.md",
-      "body_lines": 280
+      "body_lines": 280,
+      "references": []
     },
     {
       "name": "tw-stock-options",
@@ -1149,13 +1299,15 @@
         "derivatives",
         "strategy"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-technical",
         "portfolio-construction"
       ],
       "path": "finance/tw-stock-options/SKILL.md",
-      "body_lines": 148
+      "body_lines": 148,
+      "references": []
     },
     {
       "name": "tw-stock-quant",
@@ -1170,6 +1322,7 @@
         "factor-investing",
         "strategy"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-chip",
@@ -1177,7 +1330,8 @@
         "tw-stock-data"
       ],
       "path": "finance/tw-stock-quant/SKILL.md",
-      "body_lines": 345
+      "body_lines": 345,
+      "references": []
     },
     {
       "name": "tw-stock-tax",
@@ -1190,13 +1344,15 @@
         "dividend",
         "investing"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-etf-investing",
         "portfolio-construction"
       ],
       "path": "finance/tw-stock-tax/SKILL.md",
-      "body_lines": 164
+      "body_lines": 164,
+      "references": []
     },
     {
       "name": "tw-stock-technical",
@@ -1210,6 +1366,7 @@
         "charting",
         "indicators"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-chip",
@@ -1218,7 +1375,8 @@
         "tw-stock-options"
       ],
       "path": "finance/tw-stock-technical/SKILL.md",
-      "body_lines": 311
+      "body_lines": 311,
+      "references": []
     },
     {
       "name": "learning-methodology",
@@ -1231,12 +1389,14 @@
         "spaced-repetition",
         "productivity"
       ],
+      "keywords": [],
       "related": [
         "second-brain",
         "time-management"
       ],
       "path": "productivity/learning-methodology/SKILL.md",
-      "body_lines": 177
+      "body_lines": 177,
+      "references": []
     },
     {
       "name": "second-brain",
@@ -1250,12 +1410,14 @@
         "note-taking",
         "productivity"
       ],
+      "keywords": [],
       "related": [
         "learning-methodology",
         "time-management"
       ],
       "path": "productivity/second-brain/SKILL.md",
-      "body_lines": 183
+      "body_lines": 183,
+      "references": []
     },
     {
       "name": "time-management",
@@ -1268,12 +1430,14 @@
         "focus",
         "planning"
       ],
+      "keywords": [],
       "related": [
         "learning-methodology",
         "second-brain"
       ],
       "path": "productivity/time-management/SKILL.md",
-      "body_lines": 174
+      "body_lines": 174,
+      "references": []
     }
   ],
   "rules": [

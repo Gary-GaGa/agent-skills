@@ -92,15 +92,30 @@ def collect_skills() -> list[dict[str, Any]]:
             if not skill_md.exists():
                 continue
             fm, body_lines = parse_frontmatter(skill_md)
+            references: list[dict[str, Any]] = []
+            ref_dir = skill_dir / "references"
+            if ref_dir.is_dir():
+                for ref_path in sorted(ref_dir.glob("*.md")):
+                    if ref_path.name.upper() == "README.MD":
+                        continue
+                    references.append(
+                        {
+                            "name": ref_path.stem,
+                            "path": str(ref_path.relative_to(REPO_ROOT)),
+                            "lines": ref_path.read_text(encoding="utf-8").count("\n"),
+                        }
+                    )
             skills.append(
                 {
                     "name": fm.get("name", ""),
                     "category": fm.get("category", ""),
                     "description": (fm.get("description") or "").strip(),
                     "tags": list(fm.get("tags") or []),
+                    "keywords": list(fm.get("keywords") or []),
                     "related": list(fm.get("related") or []),
                     "path": str(skill_md.relative_to(REPO_ROOT)),
                     "body_lines": body_lines,
+                    "references": references,
                 }
             )
     skills.sort(key=lambda s: (s["category"], s["name"]))

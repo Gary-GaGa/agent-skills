@@ -193,7 +193,7 @@ my-skill/
 Inside `SKILL.md`:
 
 ```markdown
-For complete examples in Node.js, see `references/nodejs-examples.md`.
+For complete examples in Node.js, see `references/<your-doc>.md`.
 ```
 
 The agent will follow the link only when the topic comes up.
