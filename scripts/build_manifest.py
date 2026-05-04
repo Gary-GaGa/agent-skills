@@ -81,6 +81,12 @@ def parse_frontmatter(path: Path) -> tuple[dict[str, Any], int]:
     return data, body_lines
 
 
+def _rel(path: Path) -> str:
+    """Return repo-relative path with forward slashes (manifest is JSON,
+    consumed cross-platform)."""
+    return str(path.relative_to(REPO_ROOT)).replace("\\", "/")
+
+
 def collect_skills() -> list[dict[str, Any]]:
     skills: list[dict[str, Any]] = []
     for category in CATEGORIES:
@@ -101,7 +107,7 @@ def collect_skills() -> list[dict[str, Any]]:
                     references.append(
                         {
                             "name": ref_path.stem,
-                            "path": str(ref_path.relative_to(REPO_ROOT)),
+                            "path": _rel(ref_path),
                             "lines": ref_path.read_text(encoding="utf-8").count("\n"),
                         }
                     )
@@ -113,7 +119,7 @@ def collect_skills() -> list[dict[str, Any]]:
                     "tags": list(fm.get("tags") or []),
                     "keywords": list(fm.get("keywords") or []),
                     "related": list(fm.get("related") or []),
-                    "path": str(skill_md.relative_to(REPO_ROOT)),
+                    "path": _rel(skill_md),
                     "body_lines": body_lines,
                     "references": references,
                 }
@@ -141,7 +147,7 @@ def collect_rules() -> list[dict[str, Any]]:
         rules.append(
             {
                 "name": path.stem,
-                "path": str(path.relative_to(REPO_ROOT)),
+                "path": _rel(path),
                 "topic": topics.get(path.name, ""),
             }
         )

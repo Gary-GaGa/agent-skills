@@ -44,6 +44,7 @@ agent-skills/
 ├── CONTRIBUTING.md           ← how to add a new skill or rule
 ├── SKILL_TEMPLATE.md         ← boilerplate for new skills
 ├── skills.json               ← machine-readable manifest (auto-generated)
+├── tags-allowlist.txt        ← curated tag taxonomy (validate warns on unlisted tags)
 ├── scripts/
 │   ├── build_manifest.py     ← regenerates skills.json
 │   ├── render_docs.py        ← regenerates README/INDEX/copilot-instructions

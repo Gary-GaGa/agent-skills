@@ -2,17 +2,21 @@
 """Validate the skills repo.
 
 Checks performed:
-  1. Every SKILL.md has frontmatter with required fields
-     (name, description, category, tags).
+  1. Every SKILL.md has frontmatter with required fields, correct types,
+     and no unknown fields (strict schema).
   2. `name` matches the parent folder name.
   3. `category` is in the canonical whitelist and matches the parent folder.
-  4. `description` length <= 300 chars (skill-authoring rule 8).
+  4. `description` length <= 300 chars (skill-authoring rule 8; warning).
   5. Every entry in `related:` resolves to an existing skill.
   6. `related:` is bidirectional (A -> B implies B -> A).
   7. All relative markdown links inside SKILL.md / INDEX.md / README.md
      point to real files.
-  8. skills.json is up to date with the filesystem.
-  9. README.md / per-category INDEX.md / .github/copilot-instructions.md
+  8. References inside `<skill>/references/` are linked from SKILL.md and
+     do not exceed the recommended quota of 1500 total lines per skill.
+  9. Every tag is in tags-allowlist.txt (warning if not — add intentionally).
+ 10. AUTO-GENERATED marker blocks are well-formed (paired BEGIN/END, unique IDs).
+ 11. skills.json is up to date with the filesystem.
+ 12. README.md / per-category INDEX.md / .github/copilot-instructions.md
      are up to date with skills.json.
 
 Usage:
@@ -28,6 +32,7 @@ from pathlib import Path
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+TAGS_ALLOWLIST_PATH = REPO_ROOT / "tags-allowlist.txt"
 
 VALID_CATEGORIES = {
     "ai-engineering",
@@ -39,10 +44,15 @@ VALID_CATEGORIES = {
     "productivity",
 }
 REQUIRED_FIELDS = ("name", "description", "category", "tags")
+ALLOWED_FIELDS = {"name", "description", "category", "tags", "keywords", "related"}
 DESCRIPTION_MAX = 300
+REFERENCES_LINES_MAX = 1500  # warn when SKILL.md + references exceed this
 
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+MARKER_BEGIN_RE = re.compile(r"<!--\s*BEGIN AUTO-GENERATED:\s*([a-z][a-z0-9_-]*)\s*-->")
+MARKER_END_RE = re.compile(r"<!--\s*END AUTO-GENERATED:\s*([a-z][a-z0-9_-]*)\s*-->")
+_INLINE_CODE_RE = re.compile(r"`[^`\n]*`")
 
 errors: list[str] = []
 warnings: list[str] = []
@@ -82,6 +92,11 @@ def check_skill(path: Path) -> dict | None:
     for field in REQUIRED_FIELDS:
         if field not in fm or fm[field] in (None, "", []):
             err(f"{rel}: missing required frontmatter field `{field}`")
+
+    # strict: reject unknown frontmatter fields so typos don't go silent
+    for field in fm:
+        if field not in ALLOWED_FIELDS:
+            err(f"{rel}: unknown frontmatter field `{field}` (allowed: {sorted(ALLOWED_FIELDS)})")
 
     name = fm.get("name", "")
     folder_name = path.parent.name
@@ -192,6 +207,80 @@ def check_references(skills: dict[str, dict]) -> None:
         # dangling: mentioned but missing on disk
         for fname in sorted(mentioned - present):
             err(f"{skill_md.relative_to(REPO_ROOT)}: references `references/{fname}` but file does not exist")
+        # quota: SKILL.md + sum(references) line count
+        if present:
+            total = raw_body.count("\n")
+            for p in ref_dir.glob("*.md"):
+                if p.name.upper() == "README.MD":
+                    continue
+                total += p.read_text(encoding="utf-8").count("\n")
+            if total > REFERENCES_LINES_MAX:
+                warn(f"{skill_md.relative_to(REPO_ROOT)}: SKILL.md + references = {total} lines (recommended max {REFERENCES_LINES_MAX}; consider splitting the skill)")
+
+
+def check_tags(skills: dict[str, dict]) -> None:
+    """Warn on tags not in tags-allowlist.txt. The allowlist is a flat
+    text file (one tag per line, lowercase, kebab-case). Add new tags
+    intentionally — typos like `golang` vs `go` should be caught at PR."""
+    if not TAGS_ALLOWLIST_PATH.exists():
+        return  # repo without an allowlist: skip the check entirely
+    allowed = {
+        line.strip()
+        for line in TAGS_ALLOWLIST_PATH.read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.startswith("#")
+    }
+    seen_unknown: dict[str, list[str]] = {}
+    for name, fm in skills.items():
+        for tag in fm.get("tags") or []:
+            if not isinstance(tag, str):
+                continue
+            if tag not in allowed:
+                seen_unknown.setdefault(tag, []).append(name)
+    for tag, owners in sorted(seen_unknown.items()):
+        owner_str = ", ".join(sorted(owners)[:3]) + (f" (+{len(owners) - 3} more)" if len(owners) > 3 else "")
+        warn(f"tag `{tag}` not in tags-allowlist.txt — used by {owner_str}. Add it to the allowlist if intentional, or fix the typo.")
+
+
+def check_markers() -> None:
+    """Every <!-- BEGIN AUTO-GENERATED: id --> must have a matching END,
+    IDs must be unique within the file, and BEGIN must precede END."""
+    candidates: list[Path] = []
+    candidates.append(REPO_ROOT / "README.md")
+    candidates.extend(REPO_ROOT.glob("*/INDEX.md"))
+    candidates.append(REPO_ROOT / "rules" / "README.md")
+    candidates.append(REPO_ROOT / ".github" / "copilot-instructions.md")
+    for path in candidates:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        # strip fenced + inline code so prose mentions of marker syntax
+        # (e.g. README explaining the convention) don't get matched
+        scan_text = _FENCED_RE.sub("", text)
+        scan_text = _INLINE_CODE_RE.sub("", scan_text)
+        rel = path.relative_to(REPO_ROOT)
+        begins = [(m.start(), m.group(1)) for m in MARKER_BEGIN_RE.finditer(scan_text)]
+        ends = [(m.start(), m.group(1)) for m in MARKER_END_RE.finditer(scan_text)]
+        begin_ids = [b for _, b in begins]
+        end_ids = [e for _, e in ends]
+        # duplicate BEGIN ids
+        seen: set[str] = set()
+        for bid in begin_ids:
+            if bid in seen:
+                err(f"{rel}: duplicate BEGIN marker id `{bid}`")
+            seen.add(bid)
+        # every BEGIN has matching END
+        for bid in begin_ids:
+            if end_ids.count(bid) == 0:
+                err(f"{rel}: BEGIN marker `{bid}` has no matching END")
+        # every END has matching BEGIN
+        for eid in end_ids:
+            if begin_ids.count(eid) == 0:
+                err(f"{rel}: END marker `{eid}` has no matching BEGIN")
+        # ordering: for each id, BEGIN must come before END
+        for bpos, bid in begins:
+            for epos, eid in ends:
+                if eid == bid and epos < bpos:
+                    err(f"{rel}: END marker `{bid}` appears before its BEGIN")
 
 
 def check_related(skills: dict[str, dict]) -> None:
@@ -259,6 +348,8 @@ def main() -> int:
     skills = collect_all_skills()
     check_related(skills)
     check_references(skills)
+    check_tags(skills)
+    check_markers()
     check_links(skills)
 
     # Drift checks
