@@ -6,11 +6,15 @@ Purpose: Short, focused guidance for Copilot agents and CLI sessions working in 
 
 ## Quick repository snapshot
 
-This repo is a collection of reusable **agent skills**. Each top-level folder is a self-contained skill package with a `SKILL.md` entry point (YAML frontmatter: `name`, `description`, `category`, `tags`).
+This repo is a collection of reusable **agent skills**, organized into **category folders**. Each category has an `INDEX.md` listing its skills; each skill has a `SKILL.md` entry point with YAML frontmatter.
 
-Current skills — 53 total across 8 categories (see `README.md` for the full index with descriptions):
+**Structure:** `<category>/<skill>/SKILL.md` (e.g. `engineering/go-testing/SKILL.md`).
 
-**engineering (22):** clean-ddd-go, ddd-check, copilot-sdk, go-testing, git-workflow, code-review, debugging-methodology, api-design-rest, api-design-grpc, refactoring-patterns, go-concurrency, go-performance, observability-go, event-driven-architecture, microservices-patterns, mongodb-go, auth-patterns, nextjs-fundamentals, realtime-websocket, tw-payment-integration, line-integration-tw
+**Navigation:** `README.md` → `<category>/INDEX.md` → `<category>/<skill>/SKILL.md`.
+
+Current skills — 59 total across 8 categories:
+
+**engineering (21):** clean-ddd-go, ddd-check, copilot-sdk, go-testing, git-workflow, code-review, debugging-methodology, api-design-rest, api-design-grpc, refactoring-patterns, go-concurrency, go-performance, observability-go, event-driven-architecture, microservices-patterns, mongodb-go, auth-patterns, nextjs-fundamentals, realtime-websocket, tw-payment-integration, line-integration-tw
 
 **ai-engineering (16):** agent-harness-design, prompt-engineering, context-engineering, tool-design-for-agents, skill-authoring, mcp-server-design, agent-evaluation, agent-observability, multi-agent-orchestration, agent-safety-guardrails, claude-code-customization, prompt-caching, rag-deep-dive, agentic-coding-patterns, llm-cost-optimization, fine-tuning-guide
 
@@ -129,11 +133,12 @@ Copilot SDK / Agent-specific conventions (from `copilot-sdk`):
 
 ## Files and locations to consult
 
-- `README.md` — the top-level skill index organized by category; **start here** to discover skills.
-- Each `<skill>/SKILL.md` — entry point for a skill; frontmatter has `description` and `tags` for matching.
+- `README.md` — routing file; lists categories with links to each `INDEX.md`.
+- `<category>/INDEX.md` — lists all skills in that category with one-line descriptions.
+- `<category>/<skill>/SKILL.md` — the full skill content.
 - `rules/*.md` — lightweight rule sheets (12 total); cite by filename in reviews and feedback.
 - `CONTRIBUTING.md` / `SKILL_TEMPLATE.md` — process and boilerplate for adding new skills or rules.
-- `copilot-sdk/references/` — deep-dive docs for the Copilot SDK (event model, MCP, examples).
+- `engineering/copilot-sdk/references/` — deep-dive docs for the Copilot SDK.
 
 ---
 

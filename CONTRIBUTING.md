@@ -38,7 +38,7 @@ If your skill doesn't fit, propose a new category in your PR and add it to `READ
 
 ## 3. Create the Skill Folder
 
-1. Create a kebab-case directory at the repo root: `your-skill-name/`.
+1. Create a kebab-case directory under the appropriate **category folder**: `<category>/your-skill-name/`.
    - If the skill is language- or locale-specific, suffix with the code: `medium-writing-zh`, `clean-ddd-go`.
 2. Copy `SKILL_TEMPLATE.md` into it as `SKILL.md`.
 3. Fill in the frontmatter:
@@ -66,9 +66,10 @@ If the skill has >~300 lines of detail, move the depth into `your-skill-name/ref
 
 ## 5. Register the Skill
 
-1. Add a row to the relevant category table in `README.md`.
-2. If you introduced a new category, add it to the category table in `README.md` and update `.github/copilot-instructions.md`.
+1. Add a row to the relevant `<category>/INDEX.md`.
+2. If you introduced a new category, create a new category folder with `INDEX.md`, add it to the categories table in `README.md`, and update `.github/copilot-instructions.md`.
 3. If the skill relates to existing skills, add mutual `related:` entries and cross-link them in prose.
+4. For cross-category links, use `../../<other-category>/<skill>/SKILL.md`. Same-category links use `../<skill>/SKILL.md`.
 
 ---
 
