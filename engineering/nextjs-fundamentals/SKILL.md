@@ -7,7 +7,7 @@ description: >
   that connects to a separate backend API.
 category: engineering
 tags: [nextjs, react, frontend, typescript, tailwind, ssr]
-related: [api-design-rest, auth-patterns, realtime-websocket]
+related: [api-design-rest, auth-patterns, realtime-websocket, line-integration-tw]
 ---
 
 # Next.js Fundamentals

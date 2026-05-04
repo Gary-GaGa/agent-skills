@@ -7,7 +7,7 @@ description: >
   distributed system. Language-agnostic with Go examples.
 category: engineering
 tags: [architecture, event-driven, messaging, cqrs, event-sourcing, saga]
-related: [clean-ddd-go, microservices-patterns, api-design-grpc]
+related: [clean-ddd-go, microservices-patterns, api-design-grpc, realtime-websocket]
 ---
 
 # Event-Driven Architecture

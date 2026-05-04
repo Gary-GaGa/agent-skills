@@ -7,7 +7,7 @@ description: >
   setting documentation standards for a team.
 category: content
 tags: [writing, documentation, readme, adr, api-docs, english]
-related: [medium-writing-zh, skill-authoring, code-review]
+related: [medium-writing-zh, skill-authoring, code-review, newsletter-writing-zh]
 ---
 
 # Technical Writing (English)

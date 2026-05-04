@@ -9,7 +9,7 @@ description: >
   Always use this skill proactively after refactoring sessions or before PRs in DDD Go projects.
 category: engineering
 tags: [go, architecture, ddd, clean-architecture, audit, lint]
-related: [clean-ddd-go]
+related: [clean-ddd-go, code-review, go-testing]
 ---
 
 # DDD Architecture Check — Go Projects

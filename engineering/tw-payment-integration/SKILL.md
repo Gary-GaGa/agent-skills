@@ -6,7 +6,7 @@ description: >
   安全注意事項。適合需要在台灣市場收款的 Web 應用。
 category: engineering
 tags: [payment, taiwan, ecpay, newebpay, integration, fintech]
-related: [api-design-rest, auth-patterns, mongodb-go]
+related: [api-design-rest, auth-patterns, mongodb-go, line-integration-tw]
 ---
 
 # 台灣金流整合

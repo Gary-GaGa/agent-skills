@@ -7,7 +7,7 @@ description: >
   or refactoring an existing one.
 category: data
 tags: [data-modeling, database, schema, er-diagram, normalization]
-related: [sql-fundamentals, database-migrations, clean-ddd-go]
+related: [sql-fundamentals, database-migrations, clean-ddd-go, mongodb-go]
 ---
 
 # Data Modeling

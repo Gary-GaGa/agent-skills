@@ -7,7 +7,7 @@ description: >
   protecting API endpoints, or integrating third-party auth providers.
 category: engineering
 tags: [auth, jwt, oauth, security, rbac, session]
-related: [api-design-rest, mongodb-go, nextjs-fundamentals, line-integration-tw]
+related: [api-design-rest, mongodb-go, nextjs-fundamentals, line-integration-tw, tw-payment-integration]
 ---
 
 # Authentication & Authorization Patterns

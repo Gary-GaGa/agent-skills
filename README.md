@@ -1,6 +1,8 @@
 # Agent Skills
 
-A curated collection of **59 skills** and **12 rule sheets** across **8 categories**. Each skill is a self-contained capability package that AI coding agents (Claude Code, GitHub Copilot, etc.) can load to gain domain expertise.
+<!-- BEGIN AUTO-GENERATED: summary -->
+A curated collection of **59 skills** and **12 rule sheets** across **7 categories**. Each skill is a self-contained capability package that AI coding agents (Claude Code, GitHub Copilot, etc.) can load to gain domain expertise.
+<!-- END AUTO-GENERATED: summary -->
 
 ---
 
@@ -19,6 +21,7 @@ README.md (you are here)
 
 ## Categories
 
+<!-- BEGIN AUTO-GENERATED: categories -->
 | Category | Skills | Description | Index |
 |----------|--------|-------------|-------|
 | **[engineering](./engineering/INDEX.md)** | 21 | Software design, Go, APIs, frontend, databases, architecture, integrations. | [→ INDEX](./engineering/INDEX.md) |
@@ -29,6 +32,7 @@ README.md (you are here)
 | **[finance](./finance/INDEX.md)** | 9 | Taiwan stock analysis, ETF, options, portfolio, tax. | [→ INDEX](./finance/INDEX.md) |
 | **[productivity](./productivity/INDEX.md)** | 3 | Learning methodology, second brain, time management. | [→ INDEX](./productivity/INDEX.md) |
 | **[rules](./rules/README.md)** | 12 | Lightweight, quotable convention sheets (Go, security, Docker, prompts, etc.). | [→ README](./rules/README.md) |
+<!-- END AUTO-GENERATED: categories -->
 
 ---
 
@@ -39,8 +43,15 @@ agent-skills/
 ├── README.md                 ← you are here (routing file)
 ├── CONTRIBUTING.md           ← how to add a new skill or rule
 ├── SKILL_TEMPLATE.md         ← boilerplate for new skills
+├── skills.json               ← machine-readable manifest (auto-generated)
+├── scripts/
+│   ├── build_manifest.py     ← regenerates skills.json
+│   ├── render_docs.py        ← regenerates README/INDEX/copilot-instructions
+│   ├── fix_related.py        ← auto-completes bidirectional related: refs
+│   └── validate.py           ← schema/drift/cross-link checks (runs in CI)
 ├── .github/
-│   └── copilot-instructions.md
+│   ├── copilot-instructions.md
+│   └── workflows/validate.yml
 │
 ├── engineering/              ← category folder
 │   ├── INDEX.md              ← lists all skills in this category
@@ -66,6 +77,12 @@ agent-skills/
     └── ...
 ```
 
+> Sections wrapped in `<!-- BEGIN AUTO-GENERATED: ... -->` markers in this README,
+> the per-category `INDEX.md`, `rules/README.md`, and
+> `.github/copilot-instructions.md` are regenerated from `skills.json` by
+> `scripts/render_docs.py`. Edit the source `SKILL.md` frontmatter, then run
+> `python3 scripts/build_manifest.py && python3 scripts/render_docs.py`.
+
 ---
 
 ## Adding a New Skill
@@ -74,5 +91,6 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the full process. Quick version:
 
 1. Copy [`SKILL_TEMPLATE.md`](./SKILL_TEMPLATE.md) into `<category>/<your-skill>/SKILL.md`.
 2. Fill in the frontmatter (`name`, `description`, `category`, `tags`, optional `related`).
-3. Add a row to `<category>/INDEX.md`.
-4. Open a PR against `master`.
+3. Run `python3 scripts/build_manifest.py && python3 scripts/render_docs.py` (regenerates `skills.json`, INDEX, README, copilot-instructions).
+4. Run `python3 scripts/fix_related.py` if you added `related:` entries.
+5. Run `python3 scripts/validate.py` and open a PR against `master`.

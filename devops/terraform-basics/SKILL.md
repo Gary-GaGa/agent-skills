@@ -7,7 +7,7 @@ description: >
   Terraform configs, or setting up a new Terraform project.
 category: devops
 tags: [terraform, iac, infrastructure, cloud, devops]
-related: [docker-basics, github-actions]
+related: [docker-basics, github-actions, k8s-fundamentals]
 ---
 
 # Terraform Basics

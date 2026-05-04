@@ -7,7 +7,7 @@ description: >
   optimizing the cost and latency of an agent or chatbot at scale.
 category: ai-engineering
 tags: [caching, performance, cost, anthropic, claude]
-related: [context-engineering, agent-harness-design, prompt-engineering]
+related: [context-engineering, agent-harness-design, prompt-engineering, llm-cost-optimization]
 ---
 
 # Prompt Caching

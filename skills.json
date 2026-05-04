@@ -1,0 +1,1346 @@
+{
+  "schema_version": 1,
+  "categories": [
+    {
+      "name": "engineering",
+      "title": "Engineering",
+      "description": "Software design, Go, APIs, frontend, databases, architecture, integrations.",
+      "skill_count": 21
+    },
+    {
+      "name": "ai-engineering",
+      "title": "AI Engineering",
+      "description": "LLM agents, prompts, context, tools, eval, observability, safety, caching.",
+      "skill_count": 16
+    },
+    {
+      "name": "devops",
+      "title": "DevOps",
+      "description": "Docker, GitHub Actions, Terraform, Kubernetes.",
+      "skill_count": 4
+    },
+    {
+      "name": "data",
+      "title": "Data",
+      "description": "SQL, database migrations, data modeling.",
+      "skill_count": 3
+    },
+    {
+      "name": "content",
+      "title": "Content",
+      "description": "Medium writing, technical docs, newsletters.",
+      "skill_count": 3
+    },
+    {
+      "name": "finance",
+      "title": "Finance",
+      "description": "Taiwan stock analysis, ETF, options, portfolio, tax.",
+      "skill_count": 9
+    },
+    {
+      "name": "productivity",
+      "title": "Productivity",
+      "description": "Learning methodology, second brain, time management.",
+      "skill_count": 3
+    }
+  ],
+  "skills": [
+    {
+      "name": "agent-evaluation",
+      "category": "ai-engineering",
+      "description": "Building eval harnesses for LLM agents — golden tests, behavioral assertions, regression detection, and metric selection. Use this skill when you want to measure whether a prompt, tool, or harness change is actually an improvement, or to catch regressions before users do.",
+      "tags": [
+        "eval",
+        "evaluation",
+        "testing",
+        "agent",
+        "llm",
+        "regression"
+      ],
+      "related": [
+        "agent-harness-design",
+        "prompt-engineering",
+        "agent-observability",
+        "tool-design-for-agents",
+        "rag-deep-dive",
+        "fine-tuning-guide"
+      ],
+      "path": "ai-engineering/agent-evaluation/SKILL.md",
+      "body_lines": 265
+    },
+    {
+      "name": "agent-harness-design",
+      "category": "ai-engineering",
+      "description": "Conceptual guide to designing the harness around an LLM — the agent loop, single vs multi-agent decisions, when to use sub-agents, context management strategy, and tool selection patterns. Language- and provider-agnostic. Use this skill when designing a new agent system or auditing an existing one.",
+      "tags": [
+        "agent",
+        "harness",
+        "llm",
+        "architecture",
+        "design"
+      ],
+      "related": [
+        "prompt-engineering",
+        "context-engineering",
+        "tool-design-for-agents",
+        "agent-evaluation",
+        "agent-observability",
+        "multi-agent-orchestration",
+        "agent-safety-guardrails",
+        "mcp-server-design",
+        "skill-authoring",
+        "claude-code-customization",
+        "prompt-caching",
+        "llm-cost-optimization",
+        "copilot-sdk"
+      ],
+      "path": "ai-engineering/agent-harness-design/SKILL.md",
+      "body_lines": 219
+    },
+    {
+      "name": "agent-observability",
+      "category": "ai-engineering",
+      "description": "Tracing, logging, and monitoring LLM agents in development and production — what to log per turn, span design, token cost tracking, multi-turn debugging, and failure mode classification. Use this skill when an agent misbehaves in ways you can't reproduce, or when setting up production telemetry.",
+      "tags": [
+        "observability",
+        "tracing",
+        "logging",
+        "agent",
+        "debugging",
+        "monitoring"
+      ],
+      "related": [
+        "agent-harness-design",
+        "agent-evaluation",
+        "debugging-methodology",
+        "observability-go"
+      ],
+      "path": "ai-engineering/agent-observability/SKILL.md",
+      "body_lines": 273
+    },
+    {
+      "name": "agent-safety-guardrails",
+      "category": "ai-engineering",
+      "description": "Practical safety patterns for LLM agents — input validation, output filtering, prompt injection defense, sandboxing, refusal patterns, and blast-radius limitation. Use this skill when an agent has access to user-controlled input, external tools, or anything mutation-capable.",
+      "tags": [
+        "safety",
+        "security",
+        "guardrails",
+        "prompt-injection",
+        "agent"
+      ],
+      "related": [
+        "agent-harness-design",
+        "tool-design-for-agents",
+        "mcp-server-design"
+      ],
+      "path": "ai-engineering/agent-safety-guardrails/SKILL.md",
+      "body_lines": 271
+    },
+    {
+      "name": "agentic-coding-patterns",
+      "category": "ai-engineering",
+      "description": "Patterns for writing code that AI coding agents work well with — CLAUDE.md design, test-friendly architecture, modular structure, clear naming, and conventions that reduce agent errors. Use this skill when setting up a repo for AI-assisted development or improving agent effectiveness on your codebase.",
+      "tags": [
+        "agent",
+        "coding",
+        "claude-code",
+        "developer-experience",
+        "codebase-design"
+      ],
+      "related": [
+        "claude-code-customization",
+        "skill-authoring",
+        "clean-ddd-go",
+        "go-testing"
+      ],
+      "path": "ai-engineering/agentic-coding-patterns/SKILL.md",
+      "body_lines": 189
+    },
+    {
+      "name": "claude-code-customization",
+      "category": "ai-engineering",
+      "description": "Customizing Claude Code via settings.json, hooks, slash commands, MCP servers, CLAUDE.md memory files, plugins, and statusline. Use this skill when tailoring Claude Code to a specific project, automating repetitive workflows, enforcing team conventions, or building a personal Claude Code setup.",
+      "tags": [
+        "claude-code",
+        "anthropic",
+        "customization",
+        "hooks",
+        "mcp",
+        "settings"
+      ],
+      "related": [
+        "skill-authoring",
+        "mcp-server-design",
+        "agent-harness-design",
+        "agentic-coding-patterns"
+      ],
+      "path": "ai-engineering/claude-code-customization/SKILL.md",
+      "body_lines": 358
+    },
+    {
+      "name": "context-engineering",
+      "category": "ai-engineering",
+      "description": "Practical strategies for managing what an LLM sees on each turn — context window budgeting, compaction, summarization, retrieval (RAG basics), conversation memory, and selective context injection. Use this skill when an agent forgets earlier instructions, runs out of context, or returns inconsistent results across long sessions.",
+      "tags": [
+        "context",
+        "llm",
+        "rag",
+        "memory",
+        "compaction",
+        "agent"
+      ],
+      "related": [
+        "agent-harness-design",
+        "prompt-engineering",
+        "prompt-caching",
+        "rag-deep-dive",
+        "llm-cost-optimization",
+        "multi-agent-orchestration",
+        "tool-design-for-agents"
+      ],
+      "path": "ai-engineering/context-engineering/SKILL.md",
+      "body_lines": 280
+    },
+    {
+      "name": "fine-tuning-guide",
+      "category": "ai-engineering",
+      "description": "When and how to fine-tune LLMs — deciding if fine-tuning is the right approach, data preparation, evaluation, deployment, and common pitfalls. Use this skill when prompt engineering isn't enough and you're considering training a custom model.",
+      "tags": [
+        "fine-tuning",
+        "llm",
+        "training",
+        "data",
+        "model-customization"
+      ],
+      "related": [
+        "prompt-engineering",
+        "agent-evaluation",
+        "llm-cost-optimization"
+      ],
+      "path": "ai-engineering/fine-tuning-guide/SKILL.md",
+      "body_lines": 193
+    },
+    {
+      "name": "llm-cost-optimization",
+      "category": "ai-engineering",
+      "description": "Optimizing LLM application costs — model selection and routing, prompt caching, batching, token budgeting, output length control, and when to use smaller models. Use this skill when LLM spend is growing faster than value, or when designing a cost-conscious agent architecture.",
+      "tags": [
+        "cost",
+        "optimization",
+        "llm",
+        "tokens",
+        "caching",
+        "routing"
+      ],
+      "related": [
+        "prompt-caching",
+        "context-engineering",
+        "agent-harness-design",
+        "fine-tuning-guide"
+      ],
+      "path": "ai-engineering/llm-cost-optimization/SKILL.md",
+      "body_lines": 167
+    },
+    {
+      "name": "mcp-server-design",
+      "category": "ai-engineering",
+      "description": "Designing Model Context Protocol (MCP) servers — when to use MCP vs custom tools, server lifecycle, the three primitives (tools, resources, prompts), transport choices (stdio vs HTTP/SSE), and security considerations. Use this skill when building a new MCP server or deciding whether MCP is the right packaging for a capability.",
+      "tags": [
+        "mcp",
+        "agent",
+        "tool",
+        "server",
+        "protocol"
+      ],
+      "related": [
+        "tool-design-for-agents",
+        "agent-harness-design",
+        "claude-code-customization",
+        "agent-safety-guardrails",
+        "copilot-sdk"
+      ],
+      "path": "ai-engineering/mcp-server-design/SKILL.md",
+      "body_lines": 262
+    },
+    {
+      "name": "multi-agent-orchestration",
+      "category": "ai-engineering",
+      "description": "Patterns for coordinating multiple LLM agents — supervisor/worker, planner/ executor, parallel sub-agents, handoff design, and shared state management. Use this skill when a single agent isn't enough and you need to compose agents to handle complex workflows. Strongly recommended to start single-agent before reaching for this.",
+      "tags": [
+        "multi-agent",
+        "orchestration",
+        "supervisor",
+        "planner",
+        "agent"
+      ],
+      "related": [
+        "agent-harness-design",
+        "prompt-engineering",
+        "context-engineering"
+      ],
+      "path": "ai-engineering/multi-agent-orchestration/SKILL.md",
+      "body_lines": 272
+    },
+    {
+      "name": "prompt-caching",
+      "category": "ai-engineering",
+      "description": "Practical guide to LLM prompt caching — what it is, when it helps, cache breakpoint placement, hit rate optimization, and when caching hurts. Focused on Anthropic's prompt caching but principles transfer. Use this skill when optimizing the cost and latency of an agent or chatbot at scale.",
+      "tags": [
+        "caching",
+        "performance",
+        "cost",
+        "anthropic",
+        "claude"
+      ],
+      "related": [
+        "context-engineering",
+        "agent-harness-design",
+        "prompt-engineering",
+        "llm-cost-optimization"
+      ],
+      "path": "ai-engineering/prompt-caching/SKILL.md",
+      "body_lines": 293
+    },
+    {
+      "name": "prompt-engineering",
+      "category": "ai-engineering",
+      "description": "Practical prompt engineering for building LLM applications. Covers system prompt structure, instruction design, few-shot, chain-of-thought, role assignment, output formatting, and cross-model differences. Use this skill when crafting the prompt for an agent, debugging \"the model is wrong\" issues, or migrating prompts between models.",
+      "tags": [
+        "prompt",
+        "llm",
+        "claude",
+        "gpt",
+        "instruction-design"
+      ],
+      "related": [
+        "agent-harness-design",
+        "context-engineering",
+        "tool-design-for-agents",
+        "agent-evaluation",
+        "prompt-caching",
+        "skill-authoring",
+        "rag-deep-dive",
+        "multi-agent-orchestration",
+        "fine-tuning-guide"
+      ],
+      "path": "ai-engineering/prompt-engineering/SKILL.md",
+      "body_lines": 335
+    },
+    {
+      "name": "rag-deep-dive",
+      "category": "ai-engineering",
+      "description": "Retrieval-Augmented Generation deep dive — chunking strategies, embedding models, vector databases, retrieval quality, reranking, hybrid search, and evaluation. Use this skill when building a RAG pipeline, debugging poor retrieval quality, or choosing between RAG approaches.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "embedding",
+        "vector-db",
+        "llm",
+        "search"
+      ],
+      "related": [
+        "context-engineering",
+        "prompt-engineering",
+        "agent-evaluation"
+      ],
+      "path": "ai-engineering/rag-deep-dive/SKILL.md",
+      "body_lines": 227
+    },
+    {
+      "name": "skill-authoring",
+      "category": "ai-engineering",
+      "description": "Meta-skill for writing good SKILL.md files — frontmatter design, when to load references, scope control, description writing for intent matching, and versioning. Use this skill when adding a new skill to a skills repo or refactoring an existing one for clarity and discoverability.",
+      "tags": [
+        "skill",
+        "agent",
+        "meta",
+        "documentation",
+        "claude-skills"
+      ],
+      "related": [
+        "prompt-engineering",
+        "agent-harness-design",
+        "tool-design-for-agents",
+        "agentic-coding-patterns",
+        "claude-code-customization",
+        "technical-writing-en"
+      ],
+      "path": "ai-engineering/skill-authoring/SKILL.md",
+      "body_lines": 297
+    },
+    {
+      "name": "tool-design-for-agents",
+      "category": "ai-engineering",
+      "description": "How to design tools that LLM agents use well — schema design, naming, descriptions, error semantics, idempotency, return shape, and selection heuristics. Use this skill when adding a new tool to an agent, debugging \"the model picks the wrong tool\", or auditing an existing tool surface.",
+      "tags": [
+        "tool",
+        "agent",
+        "json-schema",
+        "design",
+        "llm"
+      ],
+      "related": [
+        "agent-harness-design",
+        "prompt-engineering",
+        "mcp-server-design",
+        "agent-safety-guardrails",
+        "skill-authoring",
+        "context-engineering",
+        "agent-evaluation"
+      ],
+      "path": "ai-engineering/tool-design-for-agents/SKILL.md",
+      "body_lines": 299
+    },
+    {
+      "name": "medium-writing-zh",
+      "category": "content",
+      "description": "提供 Medium 平台繁體中文寫作與經營的完整指南。涵蓋文章撰寫技巧、排版格式、SEO 優化、標籤策略、讀者互動與平台經營心法，協助使用者產出高品質、好閱讀的繁體中文 Medium 文章。",
+      "tags": [
+        "writing",
+        "medium",
+        "chinese",
+        "zh-tw",
+        "seo",
+        "content-marketing"
+      ],
+      "related": [
+        "newsletter-writing-zh",
+        "technical-writing-en"
+      ],
+      "path": "content/medium-writing-zh/SKILL.md",
+      "body_lines": 381
+    },
+    {
+      "name": "newsletter-writing-zh",
+      "category": "content",
+      "description": "繁體中文電子報經營指南，涵蓋平台選擇（Substack/Buttondown/beehiiv）、 訂閱成長策略、寫作節奏、內容規劃、開信率/點擊率優化，以及從零到一建立 讀者群的方法。適合想用電子報經營個人品牌的創作者。",
+      "tags": [
+        "writing",
+        "newsletter",
+        "chinese",
+        "zh-tw",
+        "content-marketing",
+        "substack"
+      ],
+      "related": [
+        "medium-writing-zh",
+        "technical-writing-en"
+      ],
+      "path": "content/newsletter-writing-zh/SKILL.md",
+      "body_lines": 157
+    },
+    {
+      "name": "technical-writing-en",
+      "category": "content",
+      "description": "English technical writing guide — READMEs, API docs, architecture decision records (ADRs), changelogs, and inline documentation. Use this skill when writing developer-facing documentation, reviewing someone's docs, or setting documentation standards for a team.",
+      "tags": [
+        "writing",
+        "documentation",
+        "readme",
+        "adr",
+        "api-docs",
+        "english"
+      ],
+      "related": [
+        "medium-writing-zh",
+        "skill-authoring",
+        "code-review",
+        "newsletter-writing-zh"
+      ],
+      "path": "content/technical-writing-en/SKILL.md",
+      "body_lines": 212
+    },
+    {
+      "name": "data-modeling",
+      "category": "data",
+      "description": "Data modeling fundamentals — entity-relationship design, normalization forms, modeling patterns (polymorphism, hierarchy, audit trails), and mapping domain models to database schemas. Use this skill when designing a new data model or refactoring an existing one.",
+      "tags": [
+        "data-modeling",
+        "database",
+        "schema",
+        "er-diagram",
+        "normalization"
+      ],
+      "related": [
+        "sql-fundamentals",
+        "database-migrations",
+        "clean-ddd-go",
+        "mongodb-go"
+      ],
+      "path": "data/data-modeling/SKILL.md",
+      "body_lines": 242
+    },
+    {
+      "name": "database-migrations",
+      "category": "data",
+      "description": "Database migration best practices — schema evolution, rollback strategy, zero-downtime migrations, migration tooling, and common pitfalls. Use this skill when adding/modifying tables or columns in a production database.",
+      "tags": [
+        "database",
+        "migration",
+        "schema",
+        "postgresql",
+        "devops"
+      ],
+      "related": [
+        "sql-fundamentals",
+        "data-modeling"
+      ],
+      "path": "data/database-migrations/SKILL.md",
+      "body_lines": 185
+    },
+    {
+      "name": "sql-fundamentals",
+      "category": "data",
+      "description": "SQL fundamentals for developers — schema design, indexing strategy, query optimization, JOINs, transactions, and common anti-patterns. Use this skill when designing a database schema, optimizing slow queries, or reviewing data access patterns. Dialect-agnostic with PostgreSQL examples.",
+      "tags": [
+        "sql",
+        "database",
+        "postgresql",
+        "schema",
+        "query-optimization"
+      ],
+      "related": [
+        "database-migrations",
+        "data-modeling",
+        "clean-ddd-go"
+      ],
+      "path": "data/sql-fundamentals/SKILL.md",
+      "body_lines": 240
+    },
+    {
+      "name": "docker-basics",
+      "category": "devops",
+      "description": "Docker best practices for developers — Dockerfile patterns, multi-stage builds, image optimization, docker-compose for local dev, security hardening, and .dockerignore. Use this skill when containerizing an application, optimizing image size, or setting up a local development environment.",
+      "tags": [
+        "docker",
+        "container",
+        "dockerfile",
+        "compose",
+        "devops"
+      ],
+      "related": [
+        "github-actions",
+        "k8s-fundamentals",
+        "terraform-basics"
+      ],
+      "path": "devops/docker-basics/SKILL.md",
+      "body_lines": 180
+    },
+    {
+      "name": "github-actions",
+      "category": "devops",
+      "description": "GitHub Actions CI/CD patterns — workflow structure, common triggers, matrix builds, caching, secrets management, reusable workflows, and deployment patterns. Use this skill when setting up or optimizing CI/CD pipelines on GitHub.",
+      "tags": [
+        "github-actions",
+        "ci-cd",
+        "devops",
+        "automation",
+        "github"
+      ],
+      "related": [
+        "docker-basics",
+        "git-workflow",
+        "go-testing",
+        "k8s-fundamentals",
+        "terraform-basics"
+      ],
+      "path": "devops/github-actions/SKILL.md",
+      "body_lines": 303
+    },
+    {
+      "name": "k8s-fundamentals",
+      "category": "devops",
+      "description": "Kubernetes fundamentals for developers — pods, deployments, services, configmaps, secrets, health checks, resource limits, and common debugging. Use this skill when deploying to Kubernetes, writing manifests, or debugging pod issues. Operator-level topics (cluster setup, networking) are out of scope.",
+      "tags": [
+        "kubernetes",
+        "k8s",
+        "devops",
+        "deployment",
+        "container"
+      ],
+      "related": [
+        "docker-basics",
+        "github-actions",
+        "terraform-basics"
+      ],
+      "path": "devops/k8s-fundamentals/SKILL.md",
+      "body_lines": 240
+    },
+    {
+      "name": "terraform-basics",
+      "category": "devops",
+      "description": "Terraform fundamentals — HCL basics, resource/module structure, state management, plan/apply workflow, provider configuration, and common patterns. Use this skill when provisioning cloud infrastructure as code, reviewing Terraform configs, or setting up a new Terraform project.",
+      "tags": [
+        "terraform",
+        "iac",
+        "infrastructure",
+        "cloud",
+        "devops"
+      ],
+      "related": [
+        "docker-basics",
+        "github-actions",
+        "k8s-fundamentals"
+      ],
+      "path": "devops/terraform-basics/SKILL.md",
+      "body_lines": 261
+    },
+    {
+      "name": "api-design-grpc",
+      "category": "engineering",
+      "description": "gRPC API design guide — proto file organization, service/message conventions, error handling with status codes, streaming patterns, and backward compatibility. Use this skill when designing or reviewing gRPC services. Language-agnostic but Go examples included.",
+      "tags": [
+        "api",
+        "grpc",
+        "protobuf",
+        "backend",
+        "go",
+        "design"
+      ],
+      "related": [
+        "clean-ddd-go",
+        "api-design-rest",
+        "event-driven-architecture",
+        "microservices-patterns"
+      ],
+      "path": "engineering/api-design-grpc/SKILL.md",
+      "body_lines": 346
+    },
+    {
+      "name": "api-design-rest",
+      "category": "engineering",
+      "description": "RESTful API design principles for backend developers. Use this skill when designing new HTTP APIs, reviewing endpoint structure, choosing status codes, handling errors, or planning versioning and pagination. Language-agnostic but examples lean Go.",
+      "tags": [
+        "api",
+        "rest",
+        "http",
+        "backend",
+        "go",
+        "design"
+      ],
+      "related": [
+        "clean-ddd-go",
+        "api-design-grpc",
+        "auth-patterns",
+        "microservices-patterns",
+        "nextjs-fundamentals",
+        "realtime-websocket",
+        "tw-payment-integration"
+      ],
+      "path": "engineering/api-design-rest/SKILL.md",
+      "body_lines": 292
+    },
+    {
+      "name": "auth-patterns",
+      "category": "engineering",
+      "description": "Authentication and authorization patterns for web applications — JWT, session, OAuth2/OIDC, social login (Google, LINE), role-based access control (RBAC), password hashing, and token refresh. Use this skill when implementing login, protecting API endpoints, or integrating third-party auth providers.",
+      "tags": [
+        "auth",
+        "jwt",
+        "oauth",
+        "security",
+        "rbac",
+        "session"
+      ],
+      "related": [
+        "api-design-rest",
+        "mongodb-go",
+        "nextjs-fundamentals",
+        "line-integration-tw",
+        "tw-payment-integration"
+      ],
+      "path": "engineering/auth-patterns/SKILL.md",
+      "body_lines": 308
+    },
+    {
+      "name": "clean-ddd-go",
+      "category": "engineering",
+      "description": "Guidance for developing Go applications using Clean Architecture combined with Domain-Driven Design (DDD). Covers layered architecture, bounded contexts, aggregate roots, repository patterns, usecase orchestration, and adapter separation. Use this skill when building or modifying Go projects that follow these architectural principles.",
+      "tags": [
+        "go",
+        "architecture",
+        "ddd",
+        "clean-architecture",
+        "backend"
+      ],
+      "related": [
+        "ddd-check",
+        "go-testing",
+        "go-concurrency",
+        "api-design-rest",
+        "api-design-grpc",
+        "refactoring-patterns",
+        "data-modeling",
+        "sql-fundamentals",
+        "agentic-coding-patterns",
+        "event-driven-architecture",
+        "microservices-patterns",
+        "mongodb-go"
+      ],
+      "path": "engineering/clean-ddd-go/SKILL.md",
+      "body_lines": 335
+    },
+    {
+      "name": "code-review",
+      "category": "engineering",
+      "description": "How to give and receive code review effectively. Use this skill when the user is reviewing someone's PR, preparing a PR for review, or wants a review checklist. Covers what to look for, tone, comment severity, and how to disagree productively.",
+      "tags": [
+        "code-review",
+        "collaboration",
+        "quality",
+        "pr"
+      ],
+      "related": [
+        "git-workflow",
+        "refactoring-patterns",
+        "technical-writing-en",
+        "ddd-check"
+      ],
+      "path": "engineering/code-review/SKILL.md",
+      "body_lines": 148
+    },
+    {
+      "name": "copilot-sdk",
+      "category": "engineering",
+      "description": "This skill provides guidance for creating agents and applications with the GitHub Copilot SDK. It should be used when the user wants to create, modify, or work on software that uses the GitHub Copilot SDK in TypeScript, Python, Go, or .NET. The skill covers SDK usage patterns, CLI configuration, custom tools, MCP servers, and custom agents.",
+      "tags": [
+        "sdk",
+        "ai-agent",
+        "github-copilot",
+        "typescript",
+        "python",
+        "go",
+        "dotnet",
+        "mcp"
+      ],
+      "related": [
+        "mcp-server-design",
+        "agent-harness-design"
+      ],
+      "path": "engineering/copilot-sdk/SKILL.md",
+      "body_lines": 216
+    },
+    {
+      "name": "ddd-check",
+      "category": "engineering",
+      "description": "Run this skill whenever the user wants to check, audit, or validate the DDD (Domain-Driven Design) or Clean Architecture structure of a Go project — even if they just say \"check the architecture\", \"is this DDD correct?\", \"audit imports\", \"any layer violations?\", or \"scan the project\". This skill scans Go source files for architectural violations across domain, usecase, adapter, and infra layers and produces a structured report with file/line references and a pass/fail summary. Always use this skill proactively after refactoring sessions or before PRs in DDD Go projects.",
+      "tags": [
+        "go",
+        "architecture",
+        "ddd",
+        "clean-architecture",
+        "audit",
+        "lint"
+      ],
+      "related": [
+        "clean-ddd-go",
+        "code-review",
+        "go-testing"
+      ],
+      "path": "engineering/ddd-check/SKILL.md",
+      "body_lines": 192
+    },
+    {
+      "name": "debugging-methodology",
+      "category": "engineering",
+      "description": "A systematic approach to debugging — reproduce, isolate, hypothesize, verify. Use this skill when the user is stuck on a bug, has a flaky test, is hunting a race condition, or wants a repeatable process instead of random print statements.",
+      "tags": [
+        "debugging",
+        "troubleshooting",
+        "methodology",
+        "observability"
+      ],
+      "related": [
+        "go-concurrency",
+        "go-performance",
+        "observability-go",
+        "agent-observability"
+      ],
+      "path": "engineering/debugging-methodology/SKILL.md",
+      "body_lines": 182
+    },
+    {
+      "name": "event-driven-architecture",
+      "category": "engineering",
+      "description": "Event-driven architecture patterns — message queues, event sourcing, CQRS, saga pattern, and eventual consistency. Use this skill when designing systems that communicate via events or messages, or when decoupling services in a distributed system. Language-agnostic with Go examples.",
+      "tags": [
+        "architecture",
+        "event-driven",
+        "messaging",
+        "cqrs",
+        "event-sourcing",
+        "saga"
+      ],
+      "related": [
+        "clean-ddd-go",
+        "microservices-patterns",
+        "api-design-grpc",
+        "realtime-websocket"
+      ],
+      "path": "engineering/event-driven-architecture/SKILL.md",
+      "body_lines": 235
+    },
+    {
+      "name": "git-workflow",
+      "category": "engineering",
+      "description": "Day-to-day Git workflow for developers — branching, commits, rebase vs merge, conflict resolution, PR hygiene, and recovery from common mistakes. Use this skill when the user asks how to structure commits, clean up history, handle a tricky merge, or set up a team branching strategy.",
+      "tags": [
+        "git",
+        "workflow",
+        "version-control",
+        "collaboration"
+      ],
+      "related": [
+        "code-review",
+        "github-actions"
+      ],
+      "path": "engineering/git-workflow/SKILL.md",
+      "body_lines": 154
+    },
+    {
+      "name": "go-concurrency",
+      "category": "engineering",
+      "description": "Go concurrency patterns — goroutines, channels, sync primitives, errgroup, context cancellation, and race condition prevention. Use this skill when writing concurrent Go code, debugging data races, or reviewing goroutine lifecycle management.",
+      "tags": [
+        "go",
+        "concurrency",
+        "goroutine",
+        "channel",
+        "sync"
+      ],
+      "related": [
+        "go-testing",
+        "debugging-methodology",
+        "clean-ddd-go",
+        "go-performance",
+        "mongodb-go",
+        "realtime-websocket"
+      ],
+      "path": "engineering/go-concurrency/SKILL.md",
+      "body_lines": 256
+    },
+    {
+      "name": "go-performance",
+      "category": "engineering",
+      "description": "Go performance analysis and optimization — benchmarking, pprof profiling, memory allocation reduction, escape analysis, and common performance pitfalls. Use this skill when a Go program is too slow or uses too much memory, or when reviewing code for performance-sensitive paths.",
+      "tags": [
+        "go",
+        "performance",
+        "profiling",
+        "pprof",
+        "benchmark",
+        "optimization"
+      ],
+      "related": [
+        "go-concurrency",
+        "go-testing",
+        "debugging-methodology",
+        "observability-go"
+      ],
+      "path": "engineering/go-performance/SKILL.md",
+      "body_lines": 258
+    },
+    {
+      "name": "go-testing",
+      "category": "engineering",
+      "description": "Guidance for writing effective tests in Go. Use this skill when the user wants to add, refactor, or review tests for a Go project — including table-driven tests, subtests, mocks/fakes, parallel tests, integration tests, and coverage analysis. Pairs naturally with clean-ddd-go.",
+      "tags": [
+        "go",
+        "testing",
+        "tdd",
+        "quality"
+      ],
+      "related": [
+        "clean-ddd-go",
+        "ddd-check",
+        "go-concurrency",
+        "go-performance",
+        "refactoring-patterns",
+        "agentic-coding-patterns",
+        "github-actions",
+        "mongodb-go"
+      ],
+      "path": "engineering/go-testing/SKILL.md",
+      "body_lines": 196
+    },
+    {
+      "name": "line-integration-tw",
+      "category": "engineering",
+      "description": "LINE 平台整合指南（台灣市場）— LINE Login、LINE Notify、LIFF、Messaging API、 Rich Menu，以及常見的揪團/預約場景應用。適合需要在台灣市場用 LINE 做社交登入、 推播通知、或嵌入式應用的 Web 服務。",
+      "tags": [
+        "line",
+        "taiwan",
+        "login",
+        "notification",
+        "liff",
+        "messaging",
+        "integration"
+      ],
+      "related": [
+        "auth-patterns",
+        "nextjs-fundamentals",
+        "realtime-websocket",
+        "tw-payment-integration"
+      ],
+      "path": "engineering/line-integration-tw/SKILL.md",
+      "body_lines": 316
+    },
+    {
+      "name": "microservices-patterns",
+      "category": "engineering",
+      "description": "Microservices architecture patterns — service decomposition, communication (sync/async), service discovery, circuit breaker, API gateway, 12-factor, and when to stay monolithic. Use this skill when designing distributed systems, splitting a monolith, or reviewing a microservices architecture.",
+      "tags": [
+        "architecture",
+        "microservices",
+        "distributed-systems",
+        "12-factor",
+        "patterns"
+      ],
+      "related": [
+        "clean-ddd-go",
+        "event-driven-architecture",
+        "api-design-rest",
+        "api-design-grpc"
+      ],
+      "path": "engineering/microservices-patterns/SKILL.md",
+      "body_lines": 233
+    },
+    {
+      "name": "mongodb-go",
+      "category": "engineering",
+      "description": "MongoDB with Go — mongo-go-driver usage, document schema design, indexing strategies, aggregation pipeline, transactions, and migration patterns. Use this skill when building Go services backed by MongoDB, designing document schemas, or optimizing query performance.",
+      "tags": [
+        "go",
+        "mongodb",
+        "database",
+        "nosql",
+        "document-db"
+      ],
+      "related": [
+        "clean-ddd-go",
+        "data-modeling",
+        "go-testing",
+        "go-concurrency",
+        "auth-patterns",
+        "tw-payment-integration"
+      ],
+      "path": "engineering/mongodb-go/SKILL.md",
+      "body_lines": 373
+    },
+    {
+      "name": "nextjs-fundamentals",
+      "category": "engineering",
+      "description": "Next.js fundamentals for frontend development — App Router, server/client components, data fetching, API routes, authentication (next-auth), Tailwind + shadcn/ui, and deployment. Use this skill when building a Next.js frontend that connects to a separate backend API.",
+      "tags": [
+        "nextjs",
+        "react",
+        "frontend",
+        "typescript",
+        "tailwind",
+        "ssr"
+      ],
+      "related": [
+        "api-design-rest",
+        "auth-patterns",
+        "realtime-websocket",
+        "line-integration-tw"
+      ],
+      "path": "engineering/nextjs-fundamentals/SKILL.md",
+      "body_lines": 384
+    },
+    {
+      "name": "observability-go",
+      "category": "engineering",
+      "description": "Observability for Go services — structured logging with slog, OpenTelemetry tracing, metrics with Prometheus, distributed tracing patterns, and correlation IDs. Use this skill when adding observability to a Go service or debugging production issues with inadequate telemetry.",
+      "tags": [
+        "go",
+        "observability",
+        "logging",
+        "tracing",
+        "metrics",
+        "opentelemetry",
+        "slog"
+      ],
+      "related": [
+        "debugging-methodology",
+        "go-performance",
+        "agent-observability"
+      ],
+      "path": "engineering/observability-go/SKILL.md",
+      "body_lines": 266
+    },
+    {
+      "name": "realtime-websocket",
+      "category": "engineering",
+      "description": "Real-time communication patterns for web apps — WebSocket, SSE, Socket.IO, Go server implementation, React client integration, and common patterns (presence, pub/sub, rooms). Use this skill when building features that need live updates (chat, notifications, collaborative editing, live status).",
+      "tags": [
+        "websocket",
+        "sse",
+        "realtime",
+        "go",
+        "react",
+        "socket-io"
+      ],
+      "related": [
+        "api-design-rest",
+        "nextjs-fundamentals",
+        "go-concurrency",
+        "event-driven-architecture",
+        "line-integration-tw"
+      ],
+      "path": "engineering/realtime-websocket/SKILL.md",
+      "body_lines": 357
+    },
+    {
+      "name": "refactoring-patterns",
+      "category": "engineering",
+      "description": "Safe, mechanical refactoring patterns — extract, inline, rename, replace conditional with polymorphism, and more. Use this skill when the user wants to clean up code without changing behaviour, is planning a refactor before adding a feature, or is reviewing a refactoring PR. Language-agnostic with Go examples.",
+      "tags": [
+        "refactoring",
+        "code-quality",
+        "patterns",
+        "go"
+      ],
+      "related": [
+        "clean-ddd-go",
+        "code-review",
+        "go-testing"
+      ],
+      "path": "engineering/refactoring-patterns/SKILL.md",
+      "body_lines": 367
+    },
+    {
+      "name": "tw-payment-integration",
+      "category": "engineering",
+      "description": "台灣金流整合指南，涵蓋綠界 ECPay 與藍新 NewebPay 的串接流程、付款方式 （信用卡/ATM/超商）、背景通知（callback）處理、退款、訂單狀態管理，以及 安全注意事項。適合需要在台灣市場收款的 Web 應用。",
+      "tags": [
+        "payment",
+        "taiwan",
+        "ecpay",
+        "newebpay",
+        "integration",
+        "fintech"
+      ],
+      "related": [
+        "api-design-rest",
+        "auth-patterns",
+        "mongodb-go",
+        "line-integration-tw"
+      ],
+      "path": "engineering/tw-payment-integration/SKILL.md",
+      "body_lines": 247
+    },
+    {
+      "name": "portfolio-construction",
+      "category": "finance",
+      "description": "投資組合建構指��，涵蓋資產配置、風險分散、再平衡、個人風險承受度評估、 核心衛星策略、Kelly criterion 簡化應用，以及組合績效追蹤。 適合從單一股票操作進階到系統化組合管理的散戶投資者。",
+      "tags": [
+        "portfolio",
+        "asset-allocation",
+        "risk-management",
+        "diversification",
+        "investing"
+      ],
+      "related": [
+        "tw-stock-fundamental",
+        "tw-etf-investing",
+        "tw-stock-options",
+        "tw-stock-tax"
+      ],
+      "path": "finance/portfolio-construction/SKILL.md",
+      "body_lines": 210
+    },
+    {
+      "name": "tw-etf-investing",
+      "category": "finance",
+      "description": "台股 ETF 投資指南，涵蓋主流 ETF（0050/0056/00878/00713 等）特性比較、 定期定額策略、核心衛星配置、配息機制、內扣費用，以及 ETF 搭配個股的組合方式。 適合想建立長期投資組合的散戶。",
+      "tags": [
+        "stock",
+        "taiwan",
+        "etf",
+        "passive-investing",
+        "dividend",
+        "portfolio"
+      ],
+      "related": [
+        "tw-stock-fundamental",
+        "portfolio-construction",
+        "tw-stock-tax"
+      ],
+      "path": "finance/tw-etf-investing/SKILL.md",
+      "body_lines": 155
+    },
+    {
+      "name": "tw-stock-chip",
+      "category": "finance",
+      "description": "台股籌碼面分析指南，協助散戶觀察三大法人（外資、投信、自營商）動向、信用交易 （融資融券）變化、集保戶股權分散與主力進出，判斷股票背後的籌碼結構與買賣壓力。 涵蓋資料來源、訊號解讀、常見陷阱與個人觀察流程。觀念為主，不綁特定工具。",
+      "tags": [
+        "stock",
+        "taiwan",
+        "tw-stock",
+        "chip-analysis",
+        "institutional-investors",
+        "margin-trading"
+      ],
+      "related": [
+        "tw-stock-fundamental",
+        "tw-stock-technical",
+        "tw-stock-quant",
+        "tw-stock-data"
+      ],
+      "path": "finance/tw-stock-chip/SKILL.md",
+      "body_lines": 295
+    },
+    {
+      "name": "tw-stock-data",
+      "category": "finance",
+      "description": "台股資料工程指南，涵蓋主要資料源（證交所、櫃買中心、公開資訊觀測站）、常用欄位、 資料清洗要點（除權息還原、point-in-time、存活偏差）、儲存方案、自動化排程， 以及常見陷阱。觀念為主，API 與欄位說明可對接任何程式語言。",
+      "tags": [
+        "stock",
+        "taiwan",
+        "tw-stock",
+        "data-engineering",
+        "api",
+        "pipeline"
+      ],
+      "related": [
+        "tw-stock-fundamental",
+        "tw-stock-chip",
+        "tw-stock-technical",
+        "tw-stock-quant"
+      ],
+      "path": "finance/tw-stock-data/SKILL.md",
+      "body_lines": 341
+    },
+    {
+      "name": "tw-stock-fundamental",
+      "category": "finance",
+      "description": "台股基本面分析指南，協助散戶投資人從財務報表、營收動能、產業結構與股利政策篩選個股。 涵蓋公開資訊觀測站使用、季報/年報判讀、關鍵財務比率、選股框架（殖利率、成長股、 價值投資），以及常見的財報陷阱與警訊。觀念為主，不綁特定程式語言或工具。",
+      "tags": [
+        "stock",
+        "taiwan",
+        "tw-stock",
+        "fundamental-analysis",
+        "investing",
+        "value-investing"
+      ],
+      "related": [
+        "tw-stock-chip",
+        "tw-stock-technical",
+        "tw-stock-quant",
+        "tw-stock-data",
+        "tw-stock-options",
+        "tw-etf-investing",
+        "portfolio-construction",
+        "tw-stock-tax"
+      ],
+      "path": "finance/tw-stock-fundamental/SKILL.md",
+      "body_lines": 280
+    },
+    {
+      "name": "tw-stock-options",
+      "category": "finance",
+      "description": "台股選擇權基礎指南，涵蓋買權/賣權觀念、希臘字母（Delta/Gamma/Theta/Vega）、 常見策略（covered call、protective put、價差、跨式）、台指選擇權合約規格， 以及個人投資者的風險管理。觀念為主，不綁工具。",
+      "tags": [
+        "stock",
+        "taiwan",
+        "options",
+        "derivatives",
+        "strategy"
+      ],
+      "related": [
+        "tw-stock-fundamental",
+        "tw-stock-technical",
+        "portfolio-construction"
+      ],
+      "path": "finance/tw-stock-options/SKILL.md",
+      "body_lines": 148
+    },
+    {
+      "name": "tw-stock-quant",
+      "category": "finance",
+      "description": "台股量化投資策略指南，涵蓋回測框架設計、常見因子模型（價值、動能、品質、低波動）、 策略開發流程、績效評估指標、過擬合風險與存活偏差，以及策略上線後的紀律。 觀念為主，程式碼範例以 pseudo-code 呈現，可對接 Python / Go / R 等語言。",
+      "tags": [
+        "stock",
+        "taiwan",
+        "tw-stock",
+        "quantitative",
+        "backtesting",
+        "factor-investing",
+        "strategy"
+      ],
+      "related": [
+        "tw-stock-fundamental",
+        "tw-stock-chip",
+        "tw-stock-technical",
+        "tw-stock-data"
+      ],
+      "path": "finance/tw-stock-quant/SKILL.md",
+      "body_lines": 345
+    },
+    {
+      "name": "tw-stock-tax",
+      "category": "finance",
+      "description": "台股投資相關稅務指南，涵蓋證券交易稅、股利所得稅（合併/分離計稅）、 二代健保補充保費、當沖稅率、海外所得基本稅額，以及節稅策略。 適合需要在報稅前了解投資稅務影響的散戶。",
+      "tags": [
+        "stock",
+        "taiwan",
+        "tax",
+        "dividend",
+        "investing"
+      ],
+      "related": [
+        "tw-stock-fundamental",
+        "tw-etf-investing",
+        "portfolio-construction"
+      ],
+      "path": "finance/tw-stock-tax/SKILL.md",
+      "body_lines": 164
+    },
+    {
+      "name": "tw-stock-technical",
+      "category": "finance",
+      "description": "台股技術分析指南，涵蓋 K 線型態、均線系統、MACD、RSI、KD、布林通道、 量價關係、支撐壓力判讀，以及多指標共振的進出場框架。觀念為主，不綁特定工具， 搭配基本面與籌碼面使用效果最佳。",
+      "tags": [
+        "stock",
+        "taiwan",
+        "tw-stock",
+        "technical-analysis",
+        "charting",
+        "indicators"
+      ],
+      "related": [
+        "tw-stock-fundamental",
+        "tw-stock-chip",
+        "tw-stock-quant",
+        "tw-stock-data",
+        "tw-stock-options"
+      ],
+      "path": "finance/tw-stock-technical/SKILL.md",
+      "body_lines": 311
+    },
+    {
+      "name": "learning-methodology",
+      "category": "productivity",
+      "description": "系統化學習方法論 — 費曼技巧、間隔重複、刻意練習、學習金字塔、 建構主義學習法，以及技術領域的高效學習框架。適合想提升學習效率的 開發者或終身學習者。",
+      "tags": [
+        "learning",
+        "methodology",
+        "feynman",
+        "spaced-repetition",
+        "productivity"
+      ],
+      "related": [
+        "second-brain",
+        "time-management"
+      ],
+      "path": "productivity/learning-methodology/SKILL.md",
+      "body_lines": 177
+    },
+    {
+      "name": "second-brain",
+      "category": "productivity",
+      "description": "個人知識管理系統（第二大腦）建構指南 — Zettelkasten 方法、PARA 組織法、 筆記工具選擇（Obsidian/Notion/Logseq）、知識連結、定期回顧，以及從輸入 到輸出的知識工作流。適合想系統化管理學習筆記和想法的人。",
+      "tags": [
+        "pkm",
+        "second-brain",
+        "zettelkasten",
+        "obsidian",
+        "note-taking",
+        "productivity"
+      ],
+      "related": [
+        "learning-methodology",
+        "time-management"
+      ],
+      "path": "productivity/second-brain/SKILL.md",
+      "body_lines": 183
+    },
+    {
+      "name": "time-management",
+      "category": "productivity",
+      "description": "開發者的時間管理實踐 — 時間盒、深度工作、任務優先級（Eisenhower）、 能量管理、中斷處理、每日/每週回顧，以及避免過度排程。 適合感覺「時間不夠用」或「一天很忙但沒產出」的知識工作者。",
+      "tags": [
+        "time-management",
+        "productivity",
+        "deep-work",
+        "focus",
+        "planning"
+      ],
+      "related": [
+        "learning-methodology",
+        "second-brain"
+      ],
+      "path": "productivity/time-management/SKILL.md",
+      "body_lines": 174
+    }
+  ],
+  "rules": [
+    {
+      "name": "agent-anti-patterns",
+      "path": "rules/agent-anti-patterns.md",
+      "topic": "41 numbered anti-patterns across agent architecture, prompts, tools, eval, safety"
+    },
+    {
+      "name": "api-versioning",
+      "path": "rules/api-versioning.md",
+      "topic": "API versioning — when to bump, backward compat, deprecation process"
+    },
+    {
+      "name": "commit-messages",
+      "path": "rules/commit-messages.md",
+      "topic": "Conventional Commits format for git messages"
+    },
+    {
+      "name": "dockerfile",
+      "path": "rules/dockerfile.md",
+      "topic": "Dockerfile — base image, layer ordering, security, multi-stage"
+    },
+    {
+      "name": "go-concurrency",
+      "path": "rules/go-concurrency.md",
+      "topic": "Go concurrency — goroutine lifecycle, channels, mutexes, context, race prevention"
+    },
+    {
+      "name": "go-error-handling",
+      "path": "rules/go-error-handling.md",
+      "topic": "Go error handling — sentinel, wrapping, `errors.Is/As`, panic policy"
+    },
+    {
+      "name": "go-logging",
+      "path": "rules/go-logging.md",
+      "topic": "Go logging — slog, levels, what to log / not to log, correlation IDs"
+    },
+    {
+      "name": "go-naming",
+      "path": "rules/go-naming.md",
+      "topic": "Go naming conventions — packages, types, functions, receivers"
+    },
+    {
+      "name": "prompt-style",
+      "path": "rules/prompt-style.md",
+      "topic": "Prompt writing — structure, instructions, examples, output format, refusals"
+    },
+    {
+      "name": "security-checklist",
+      "path": "rules/security-checklist.md",
+      "topic": "Security checklist — OWASP Top 10 condensed for code review"
+    },
+    {
+      "name": "tool-schema",
+      "path": "rules/tool-schema.md",
+      "topic": "Tool schemas — naming, descriptions, parameters, errors, side effects"
+    },
+    {
+      "name": "trading-discipline",
+      "path": "rules/trading-discipline.md",
+      "topic": "交易紀律 — 資金管理、停損停利、心理控制、持股管理"
+    }
+  ],
+  "totals": {
+    "skills": 59,
+    "rules": 12,
+    "categories": 7
+  }
+}

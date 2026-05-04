@@ -7,7 +7,7 @@ description: >
   document schemas, or optimizing query performance.
 category: engineering
 tags: [go, mongodb, database, nosql, document-db]
-related: [clean-ddd-go, data-modeling, go-testing, go-concurrency]
+related: [clean-ddd-go, data-modeling, go-testing, go-concurrency, auth-patterns, tw-payment-integration]
 ---
 
 # MongoDB + Go

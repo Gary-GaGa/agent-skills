@@ -7,7 +7,7 @@ description: >
   Go examples included.
 category: engineering
 tags: [api, grpc, protobuf, backend, go, design]
-related: [clean-ddd-go, api-design-rest]
+related: [clean-ddd-go, api-design-rest, event-driven-architecture, microservices-patterns]
 ---
 
 # gRPC API Design

@@ -7,7 +7,7 @@ description: >
   lifecycle management.
 category: engineering
 tags: [go, concurrency, goroutine, channel, sync]
-related: [go-testing, debugging-methodology, clean-ddd-go]
+related: [go-testing, debugging-methodology, clean-ddd-go, go-performance, mongodb-go, realtime-websocket]
 ---
 
 # Go Concurrency

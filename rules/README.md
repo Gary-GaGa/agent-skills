@@ -13,20 +13,22 @@ Each rule sheet is a single `.md` file. No frontmatter required — rules are me
 
 ## Index
 
+<!-- BEGIN AUTO-GENERATED: rules-index -->
 | Rule | Topic |
 |------|-------|
-| [`go-naming.md`](./go-naming.md) | Go naming conventions — packages, types, functions, receivers |
-| [`go-error-handling.md`](./go-error-handling.md) | Go error handling — sentinel, wrapping, `errors.Is/As`, panic policy |
-| [`commit-messages.md`](./commit-messages.md) | Conventional Commits format for git messages |
-| [`trading-discipline.md`](./trading-discipline.md) | 交易紀律 — 資金管理、停損停利、心理控制、持股管理 |
-| [`prompt-style.md`](./prompt-style.md) | Prompt writing — structure, instructions, examples, output format, refusals |
-| [`tool-schema.md`](./tool-schema.md) | Tool schemas — naming, descriptions, parameters, errors, side effects |
 | [`agent-anti-patterns.md`](./agent-anti-patterns.md) | 41 numbered anti-patterns across agent architecture, prompts, tools, eval, safety |
-| [`go-concurrency.md`](./go-concurrency.md) | Go concurrency — goroutine lifecycle, channels, mutexes, context, race prevention |
-| [`go-logging.md`](./go-logging.md) | Go logging — slog, levels, what to log / not to log, correlation IDs |
 | [`api-versioning.md`](./api-versioning.md) | API versioning — when to bump, backward compat, deprecation process |
-| [`security-checklist.md`](./security-checklist.md) | Security checklist — OWASP Top 10 condensed for code review |
+| [`commit-messages.md`](./commit-messages.md) | Conventional Commits format for git messages |
 | [`dockerfile.md`](./dockerfile.md) | Dockerfile — base image, layer ordering, security, multi-stage |
+| [`go-concurrency.md`](./go-concurrency.md) | Go concurrency — goroutine lifecycle, channels, mutexes, context, race prevention |
+| [`go-error-handling.md`](./go-error-handling.md) | Go error handling — sentinel, wrapping, `errors.Is/As`, panic policy |
+| [`go-logging.md`](./go-logging.md) | Go logging — slog, levels, what to log / not to log, correlation IDs |
+| [`go-naming.md`](./go-naming.md) | Go naming conventions — packages, types, functions, receivers |
+| [`prompt-style.md`](./prompt-style.md) | Prompt writing — structure, instructions, examples, output format, refusals |
+| [`security-checklist.md`](./security-checklist.md) | Security checklist — OWASP Top 10 condensed for code review |
+| [`tool-schema.md`](./tool-schema.md) | Tool schemas — naming, descriptions, parameters, errors, side effects |
+| [`trading-discipline.md`](./trading-discipline.md) | 交易紀律 — 資金管理、停損停利、心理控制、持股管理 |
+<!-- END AUTO-GENERATED: rules-index -->
 
 ---
 

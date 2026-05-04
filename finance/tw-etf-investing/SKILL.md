@@ -6,7 +6,7 @@ description: >
   適合想建立長期投資組合的散戶。
 category: finance
 tags: [stock, taiwan, etf, passive-investing, dividend, portfolio]
-related: [tw-stock-fundamental, portfolio-construction]
+related: [tw-stock-fundamental, portfolio-construction, tw-stock-tax]
 ---
 
 # 台股 ETF 投資
