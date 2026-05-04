@@ -82,7 +82,22 @@ If the skill has >~300 lines of detail, move the depth into `your-skill-name/ref
 | `description` | yes | Intent-matchable blurb. Agents decide to load on this. |
 | `category` | yes | One of the defined categories. |
 | `tags` | yes | Free-form labels: language, framework, purpose. Lowercase, kebab-case. |
+| `keywords` | no | Literal phrases for BM25-style exact matching — proper nouns, acronyms, library names, error codes. Preserve case (`MCP`, `PostgreSQL`, `pgvector`). Add what `tags` and `description` don't already capture; not a synonym for `tags`. Max ~20. |
 | `related` | no | List of other skill `name`s that pair with this one. |
+
+### When to add `keywords`
+
+The agent matches user intent against `description` (semantic) and `tags`
+(soft filter). `keywords` is the literal/BM25 layer — use it for terms a
+user is likely to type *exactly* but that don't fit naturally in the
+description. Examples:
+
+- `mcp-server-design` → `["MCP", "Model Context Protocol", "stdio", "SSE"]`
+- `mongodb-go` → `["MongoDB", "mongo-go-driver", "BSON", "ObjectID"]`
+- `auth-patterns` → `["JWT", "OAuth2", "OIDC", "RBAC", "PKCE"]`
+
+Skip `keywords` entirely if `description` and `tags` already cover the
+search surface — empty is fine.
 
 ---
 

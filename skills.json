@@ -57,6 +57,7 @@
         "llm",
         "regression"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "prompt-engineering",
@@ -79,6 +80,7 @@
         "architecture",
         "design"
       ],
+      "keywords": [],
       "related": [
         "prompt-engineering",
         "context-engineering",
@@ -109,6 +111,7 @@
         "debugging",
         "monitoring"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "agent-evaluation",
@@ -129,6 +132,7 @@
         "prompt-injection",
         "agent"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "tool-design-for-agents",
@@ -148,6 +152,7 @@
         "developer-experience",
         "codebase-design"
       ],
+      "keywords": [],
       "related": [
         "claude-code-customization",
         "skill-authoring",
@@ -169,6 +174,7 @@
         "mcp",
         "settings"
       ],
+      "keywords": [],
       "related": [
         "skill-authoring",
         "mcp-server-design",
@@ -190,6 +196,7 @@
         "compaction",
         "agent"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "prompt-engineering",
@@ -213,6 +220,7 @@
         "data",
         "model-customization"
       ],
+      "keywords": [],
       "related": [
         "prompt-engineering",
         "agent-evaluation",
@@ -233,6 +241,7 @@
         "caching",
         "routing"
       ],
+      "keywords": [],
       "related": [
         "prompt-caching",
         "context-engineering",
@@ -252,6 +261,14 @@
         "tool",
         "server",
         "protocol"
+      ],
+      "keywords": [
+        "MCP",
+        "Model Context Protocol",
+        "stdio",
+        "SSE",
+        "JSON-RPC",
+        "Claude Desktop"
       ],
       "related": [
         "tool-design-for-agents",
@@ -274,6 +291,7 @@
         "planner",
         "agent"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "prompt-engineering",
@@ -293,6 +311,7 @@
         "anthropic",
         "claude"
       ],
+      "keywords": [],
       "related": [
         "context-engineering",
         "agent-harness-design",
@@ -313,6 +332,7 @@
         "gpt",
         "instruction-design"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "context-engineering",
@@ -339,6 +359,7 @@
         "llm",
         "search"
       ],
+      "keywords": [],
       "related": [
         "context-engineering",
         "prompt-engineering",
@@ -358,6 +379,7 @@
         "documentation",
         "claude-skills"
       ],
+      "keywords": [],
       "related": [
         "prompt-engineering",
         "agent-harness-design",
@@ -380,6 +402,7 @@
         "design",
         "llm"
       ],
+      "keywords": [],
       "related": [
         "agent-harness-design",
         "prompt-engineering",
@@ -404,6 +427,7 @@
         "seo",
         "content-marketing"
       ],
+      "keywords": [],
       "related": [
         "newsletter-writing-zh",
         "technical-writing-en"
@@ -423,6 +447,7 @@
         "content-marketing",
         "substack"
       ],
+      "keywords": [],
       "related": [
         "medium-writing-zh",
         "technical-writing-en"
@@ -442,6 +467,7 @@
         "api-docs",
         "english"
       ],
+      "keywords": [],
       "related": [
         "medium-writing-zh",
         "skill-authoring",
@@ -462,6 +488,7 @@
         "er-diagram",
         "normalization"
       ],
+      "keywords": [],
       "related": [
         "sql-fundamentals",
         "database-migrations",
@@ -482,6 +509,7 @@
         "postgresql",
         "devops"
       ],
+      "keywords": [],
       "related": [
         "sql-fundamentals",
         "data-modeling"
@@ -500,6 +528,7 @@
         "schema",
         "query-optimization"
       ],
+      "keywords": [],
       "related": [
         "database-migrations",
         "data-modeling",
@@ -519,6 +548,7 @@
         "compose",
         "devops"
       ],
+      "keywords": [],
       "related": [
         "github-actions",
         "k8s-fundamentals",
@@ -538,6 +568,7 @@
         "automation",
         "github"
       ],
+      "keywords": [],
       "related": [
         "docker-basics",
         "git-workflow",
@@ -559,6 +590,7 @@
         "deployment",
         "container"
       ],
+      "keywords": [],
       "related": [
         "docker-basics",
         "github-actions",
@@ -578,6 +610,7 @@
         "cloud",
         "devops"
       ],
+      "keywords": [],
       "related": [
         "docker-basics",
         "github-actions",
@@ -598,6 +631,7 @@
         "go",
         "design"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "api-design-rest",
@@ -619,6 +653,7 @@
         "go",
         "design"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "api-design-grpc",
@@ -643,6 +678,7 @@
         "rbac",
         "session"
       ],
+      "keywords": [],
       "related": [
         "api-design-rest",
         "mongodb-go",
@@ -664,6 +700,7 @@
         "clean-architecture",
         "backend"
       ],
+      "keywords": [],
       "related": [
         "ddd-check",
         "go-testing",
@@ -691,6 +728,7 @@
         "quality",
         "pr"
       ],
+      "keywords": [],
       "related": [
         "git-workflow",
         "refactoring-patterns",
@@ -714,6 +752,7 @@
         "dotnet",
         "mcp"
       ],
+      "keywords": [],
       "related": [
         "mcp-server-design",
         "agent-harness-design"
@@ -733,6 +772,7 @@
         "audit",
         "lint"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "code-review",
@@ -751,6 +791,7 @@
         "methodology",
         "observability"
       ],
+      "keywords": [],
       "related": [
         "go-concurrency",
         "go-performance",
@@ -772,6 +813,7 @@
         "event-sourcing",
         "saga"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "microservices-patterns",
@@ -791,6 +833,7 @@
         "version-control",
         "collaboration"
       ],
+      "keywords": [],
       "related": [
         "code-review",
         "github-actions"
@@ -809,6 +852,7 @@
         "channel",
         "sync"
       ],
+      "keywords": [],
       "related": [
         "go-testing",
         "debugging-methodology",
@@ -832,6 +876,7 @@
         "benchmark",
         "optimization"
       ],
+      "keywords": [],
       "related": [
         "go-concurrency",
         "go-testing",
@@ -851,6 +896,7 @@
         "tdd",
         "quality"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "ddd-check",
@@ -877,6 +923,7 @@
         "messaging",
         "integration"
       ],
+      "keywords": [],
       "related": [
         "auth-patterns",
         "nextjs-fundamentals",
@@ -897,6 +944,7 @@
         "12-factor",
         "patterns"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "event-driven-architecture",
@@ -916,6 +964,14 @@
         "database",
         "nosql",
         "document-db"
+      ],
+      "keywords": [
+        "MongoDB",
+        "mongo-go-driver",
+        "BSON",
+        "ObjectID",
+        "aggregation pipeline",
+        "$lookup"
       ],
       "related": [
         "clean-ddd-go",
@@ -940,6 +996,7 @@
         "tailwind",
         "ssr"
       ],
+      "keywords": [],
       "related": [
         "api-design-rest",
         "auth-patterns",
@@ -962,6 +1019,7 @@
         "opentelemetry",
         "slog"
       ],
+      "keywords": [],
       "related": [
         "debugging-methodology",
         "go-performance",
@@ -982,6 +1040,7 @@
         "react",
         "socket-io"
       ],
+      "keywords": [],
       "related": [
         "api-design-rest",
         "nextjs-fundamentals",
@@ -1002,6 +1061,7 @@
         "patterns",
         "go"
       ],
+      "keywords": [],
       "related": [
         "clean-ddd-go",
         "code-review",
@@ -1022,6 +1082,7 @@
         "integration",
         "fintech"
       ],
+      "keywords": [],
       "related": [
         "api-design-rest",
         "auth-patterns",
@@ -1042,6 +1103,7 @@
         "diversification",
         "investing"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-etf-investing",
@@ -1063,6 +1125,7 @@
         "dividend",
         "portfolio"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "portfolio-construction",
@@ -1083,6 +1146,7 @@
         "institutional-investors",
         "margin-trading"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-technical",
@@ -1104,6 +1168,7 @@
         "api",
         "pipeline"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-chip",
@@ -1125,6 +1190,7 @@
         "investing",
         "value-investing"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-chip",
         "tw-stock-technical",
@@ -1149,6 +1215,7 @@
         "derivatives",
         "strategy"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-technical",
@@ -1170,6 +1237,7 @@
         "factor-investing",
         "strategy"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-chip",
@@ -1190,6 +1258,7 @@
         "dividend",
         "investing"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-etf-investing",
@@ -1210,6 +1279,7 @@
         "charting",
         "indicators"
       ],
+      "keywords": [],
       "related": [
         "tw-stock-fundamental",
         "tw-stock-chip",
@@ -1231,6 +1301,7 @@
         "spaced-repetition",
         "productivity"
       ],
+      "keywords": [],
       "related": [
         "second-brain",
         "time-management"
@@ -1250,6 +1321,7 @@
         "note-taking",
         "productivity"
       ],
+      "keywords": [],
       "related": [
         "learning-methodology",
         "time-management"
@@ -1268,6 +1340,7 @@
         "focus",
         "planning"
       ],
+      "keywords": [],
       "related": [
         "learning-methodology",
         "second-brain"

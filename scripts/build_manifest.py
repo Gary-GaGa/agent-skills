@@ -98,6 +98,7 @@ def collect_skills() -> list[dict[str, Any]]:
                     "category": fm.get("category", ""),
                     "description": (fm.get("description") or "").strip(),
                     "tags": list(fm.get("tags") or []),
+                    "keywords": list(fm.get("keywords") or []),
                     "related": list(fm.get("related") or []),
                     "path": str(skill_md.relative_to(REPO_ROOT)),
                     "body_lines": body_lines,

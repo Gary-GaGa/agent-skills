@@ -105,6 +105,27 @@ def check_skill(path: Path) -> dict | None:
     if not isinstance(fm.get("related") or [], list):
         err(f"{rel}: related must be a list")
 
+    if "keywords" in fm:
+        kw = fm["keywords"]
+        if not isinstance(kw, list):
+            err(f"{rel}: keywords must be a list")
+        else:
+            seen: set[str] = set()
+            for item in kw:
+                if not isinstance(item, str) or not item.strip():
+                    err(f"{rel}: keywords entries must be non-empty strings")
+                    continue
+                norm = item.strip().lower()
+                if norm in seen:
+                    err(f"{rel}: duplicate keyword `{item}`")
+                seen.add(norm)
+            if len(kw) > 20:
+                warn(f"{rel}: {len(kw)} keywords (recommended max 20; keep BM25-focused)")
+            tag_set = {t.lower() for t in (fm.get("tags") or []) if isinstance(t, str)}
+            kw_set = {item.strip().lower() for item in kw if isinstance(item, str)}
+            if tag_set and kw_set and kw_set <= tag_set:
+                warn(f"{rel}: keywords is a subset of tags — add proper nouns / acronyms / error codes that differ from tags")
+
     return fm
 
 
