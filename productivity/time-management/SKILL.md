@@ -1,184 +1,187 @@
 ---
 name: time-management
 description: >
-  開發者的時間管理實踐 — 時間盒、深度工作、任務優先級（Eisenhower）、
-  能量管理、中斷處理、每日/每週回顧，以及避免過度排程。
-  適合感覺「時間不夠用」或「一天很忙但沒產出」的知識工作者。
+  Time management for developers — timeboxing, deep work, the Eisenhower
+  matrix, energy management, handling interruptions, daily and weekly review,
+  and avoiding over-scheduling. For knowledge workers who feel "always busy
+  but with little to show".
 category: productivity
 tags: [time-management, productivity, deep-work, focus, planning]
 related: [learning-methodology, second-brain]
 ---
 
-# 時間管��（開發者版）
+# Time Management (Developer Edition)
 
-> 你管理的不是時間，是注意力。時間對每個人一樣多；差別在於把注意力放在哪���。
+> You don't manage time, you manage attention. Time is the same for everyone; what differs is where the attention goes.
 
-## 適用情境
+## When to Use This Skill
 
-- 覺得一天很忙但回顧起來沒什麼產出
-- 經常被打斷、開會、訊息轟炸
-- 想找到固定的學習/專案/副業時間
-- 想建立可持續的工作節奏
-- 想在工作、學習、生活之間找到平衡
-
----
-
-## 核心原則
-
-1. **先決定「不做什麼」。** 待辦清單上最有生產力的動作是刪除。
-2. **保護深度工作時間。** 2 小時不被打斷的專注 > 8 小時零碎的忙碌。
-3. **能量管理 > 時間管理。** 在精力最好的時段做最難的事。
-4. **完成 > 完美。** 80% 完成的事 > 0% 完成的完美計畫。
-5. **系統 > 意志力。** 靠習慣和環境設計，不靠「今天要特別努力」。
+- Days feel busy but the week shows little progress
+- Constant interruptions, meetings, message blasts
+- Want a stable slot for learning, side projects, or deep work
+- Want a sustainable working rhythm
+- Want to balance work, learning, and life
 
 ---
 
-## 優先級框架：Eisenhower 矩陣
+## Core Principles
 
-| | 緊急 | 不緊急 |
-|-|------|--------|
-| **重要** | 🔴 **立刻做** (deadline、critical bug) | 🟢 **排時間做** (學習、專案、健康) |
-| **不重要** | 🟡 **委託或快速處理** (大部分訊息、例行會議) | ⚪ **刪除** (社群滑手機、無意義會議) |
-
-6. **多數人把 90% 時間花在「緊急」。** 但真正的成長來自「重要但不緊急」。
-7. **每天至少 2 小時在「重要但不緊急」上。** 學習、Side project、健康、關係。
-8. **「不重要且不緊急」的事勇敢刪掉。** 包括：無目的地滑社群、不需要你參加的會議。
+1. **Decide what *not* to do first.** The most productive item on a to-do list is often the deletion.
+2. **Protect deep-work time.** Two undistracted hours beats eight fragmented ones.
+3. **Manage energy, not just time.** Do the hardest work when energy is highest.
+4. **Done > perfect.** 80% completed beats 0% perfect.
+5. **System > willpower.** Lean on habits and environment, not "today I'll try harder".
 
 ---
 
-## 深度工作（Deep Work）
+## Prioritization: The Eisenhower Matrix
 
-### Cal Newport 的定義
+| | Urgent | Not Urgent |
+|-|--------|------------|
+| **Important** | Do now (deadlines, critical bugs) | Schedule (learning, projects, health) |
+| **Not Important** | Delegate or batch (most messages, routine meetings) | Delete (mindless scrolling, pointless meetings) |
 
-在沒有干擾的狀態下進行需要認知能力的工作。
-
-### 實踐方式
-
-9. **固定深度工作時段。** 例如每天 9:00-11:00。寫在行事曆上，像開會一樣不可侵犯。
-10. **通知全關。** 手機靜音、Slack 離線、Email 關掉。2 小時後再回。
-11. **有儀式感。** 泡一杯咖啡、坐到特定位置、戴上耳機 → 大腦知道「開始了」。
-12. **90 分鐘是一個自然的專注週期。** 超過會衰退。休息 15 分鐘再繼續。
-
-### 深度工作的敵人
-
-| 敵人 | 對策 |
-|------|------|
-| Slack/LINE 訊息 | 設定「勿擾時段」|
-| 開放辦公室 | 戴耳機 = 請勿打擾 |
-| 「5 分鐘就好」的請求 | 上下文切換成本 ~23 分鐘。不是 5 分鐘。|
-| 多任務並行 | 一次只做一件事 |
-| 沒有計劃的一天 | 前一天晚上規劃明天的深度工作時段 |
+6. **Most people spend 90% of their time on "urgent".** Real growth lives in "important but not urgent".
+7. **Carve out at least 2 hours/day for "important but not urgent".** Learning, side project, health, relationships.
+8. **Be brave about deleting "not important / not urgent".** Including aimless social-media use and meetings you're not needed in.
 
 ---
 
-## 時間盒（Timeboxing）
+## Deep Work
 
-### 做法
+### Cal Newport's definition
 
-為每個任務分配固定的時間區塊，時間到就停。
+Cognitive-demanding work performed in a state free of distraction.
+
+### How to practice it
+
+9. **Block a fixed deep-work window.** E.g. 09:00–11:00 every weekday. Calendar it like a meeting that can't be moved.
+10. **Notifications all off.** Phone silent, Slack offline, email closed. Catch up after the block.
+11. **Have a ritual.** Coffee → specific seat → headphones. The brain learns "this means start".
+12. **90 minutes is one natural focus cycle.** Past that, focus decays. Take a 15-minute break, then continue.
+
+### Enemies of deep work
+
+| Enemy | Counter |
+|-------|---------|
+| Slack / chat messages | Set "do not disturb" windows |
+| Open office | Headphones = do not disturb |
+| "Just five minutes" requests | Context-switch cost is ~23 minutes. It's not five. |
+| Multitasking | One thing at a time |
+| Unplanned day | Plan tomorrow's deep-work block the night before |
+
+---
+
+## Timeboxing
+
+### Method
+
+Allocate each task a fixed time block; when time is up, stop.
 
 ```
-09:00-11:00  深度工作：寫 API endpoint（2hr）
-11:00-11:30  處理 Slack 訊息和 Email
-11:30-12:00  Code review
-13:00-14:30  深度工作：學習 Kubernetes（1.5hr）
-14:30-15:00  站會 + 雜事
-15:00-16:00  測試和 debug
-16:00-16:30  每日回顧 + 規劃明天
+09:00–11:00  Deep work: write API endpoint (2 hr)
+11:00–11:30  Process Slack and email
+11:30–12:00  Code review
+13:00–14:30  Deep work: learn Kubernetes (1.5 hr)
+14:30–15:00  Stand-up + admin
+15:00–16:00  Testing and debugging
+16:00–16:30  Daily review + plan tomorrow
 ```
 
-13. **時間盒強迫你做取捨。** 「2 小時能做多少就做多少」比「做到完美再停」有效。
-14. **包含緩衝。** 不要把 8 小時排滿。留 1-2 小時給意外。
-15. **把「處理訊息」也排進時間盒。** 而不是一整天隨時回覆。
+13. **Timeboxes force trade-offs.** "What can I do in 2 hours" is better than "I'll keep going until perfect".
+14. **Leave buffer.** Don't pack 8 hours solid. Reserve 1–2 hours for surprises.
+15. **Schedule "process messages" as a box.** Not a continuous interrupt for the whole day.
 
 ---
 
-## 能量管理
+## Energy Management
 
-### 找到你的黃金時段
+### Find your golden hours
 
-每個人一天中有 2-3 小時精力最好。
+Most people have 2–3 hours per day where their cognitive energy peaks.
 
-16. **在黃金時段做最難的事。** 寫程式、學新技術、設計架構。
-17. **在低能量時段做簡單的事。** 回訊息、Code review、整理筆記。
-18. **不要在低能量時做重大決策。** 下午 3-4 點的決策品質通常最差。
+16. **Do the hardest work in the golden hours.** Coding, designing, learning hard topics.
+17. **Save easy work for low-energy stretches.** Replying to messages, code review, organizing notes.
+18. **Don't make big decisions when energy is low.** Decisions made between 3–4pm are usually the worst of the day.
 
-### 能量補��
+### Recovering energy
 
-19. **90 分���工作 → 15 分��真正的休息。** 不是滑手機。走動、看遠處、喝水。
-20. **午睡 15-20 分鐘。** 研究支持：短午睡恢復認知能力。超過 30 分鐘反而更累。
-21. **運動。** 每天 30 分鐘中等強度運動。對專注力的效果比咖啡好。
-22. **睡眠是最被低估的生產力工具。** 7-8 小時。睡眠不足的工程效率 ≈ 醉酒。
-
----
-
-## 每日/每週回顧
-
-### 每日回顧（10 分鐘）
-
-下班前：
-- ✅ 今天完成了什麼？
-- ❌ 什麼沒完成？為什麼？
-- 📋 明天最重要的 1-3 件事是什麼？
-
-23. **規劃明天是今天最後一件事。** 第二天一醒來就知道要做什麼。
-
-### 每週回顧（30-60 分鐘）
-
-週五或週日：
-- 本週完成了什麼？（列表）
-- 哪些事花了太多時間？能優化嗎？
-- 下週最重要的 3 件事
-- Eisenhower 矩陣重新檢視：有哪些「重要但不緊急」的事被忽略？
-
-24. **每週回顧是防止「忙碌但沒進展」的核心機制。**
+19. **Work 90 minutes → take a real 15-minute break.** Not on the phone. Walk, look out the window, drink water.
+20. **15–20 minute nap.** Research supports it: short naps restore cognition. Beyond 30 minutes you'll feel worse.
+21. **Exercise.** 30 minutes of moderate activity each day. Better for focus than caffeine.
+22. **Sleep is the most underrated productivity tool.** 7–8 hours. Sleep-deprived engineering ≈ drunk engineering.
 
 ---
 
-## 中斷處理
+## Daily and Weekly Review
 
-| 中斷類型 | 處理方式 |
-|----------|----------|
-| Slack 訊息 | 批次處理（每 2 小時看一次）|
-| 同事臨時問問題 | 「我 11:30 有空，可以嗎？」（約時間）|
-| 老闆急件 | 評估：真的緊急嗎？10 分鐘後回覆通常也可以 |
-| 自己的分心 | 寫下來（閃念筆記），回到當前任務 |
+### Daily review (10 minutes)
 
-25. **上下文切換成本約 23 分鐘。** 每次中斷不是 5 分鐘，是 5 + 23 分鐘。
-26. **「稍後處理」是一種超能力。** 90% 的「緊急」等 2 小時也沒事。
+Before logging off:
 
----
+- What did I finish today?
+- What didn't I finish, and why?
+- What are the 1–3 most important things for tomorrow?
 
-## 常見陷阱
+23. **Plan tomorrow as the last act of today.** You wake up knowing exactly what to start.
 
-| 陷阱 | 對策 |
-|------|------|
-| **排程排滿** | 留 20-30% 緩衝 |
-| **意志力依賴** | 建立系統和環境（例：手機放另一個房間）|
-| **忽略休息** | 休息是生產力的一部分，不是浪費 |
-| **目標太大** | 拆成今天能完成的最小單位 |
-| **追求效率忽略方向** | 先確認做的事重要（Eisenhower），再追求效率 |
-| **比較別人的產出** | 比較昨天的自己就好 |
-| **多線程工作** | 一次一件事。完成再換。|
-| **不做回顧** | 每日 10 分鐘 + 每週 30 分鐘 |
+### Weekly review (30–60 minutes)
+
+Friday or Sunday:
+
+- What did I finish this week? (List it.)
+- What took too long? Can I optimize it?
+- Top 3 things for next week.
+- Re-check the Eisenhower matrix: any "important but not urgent" items I've been ignoring?
+
+24. **The weekly review is the core mechanism that prevents "busy but no progress".**
 
 ---
 
-## 最小可行系統
+## Handling Interruptions
 
-不需要複雜的工具。從這 5 件事開始：
+| Type | How to handle |
+|------|---------------|
+| Slack message | Batch process (check every 2 hours) |
+| Coworker dropping by | "I'm free at 11:30, does that work?" — schedule it |
+| Boss says "urgent" | Evaluate. Truly urgent? 10-minute delay is usually fine. |
+| Your own distraction | Write it down (fleeting note) and return to the task |
 
-- [ ] 每天前一晚寫下明天最重要的 3 件事
-- [ ] 每天固定 2 小時深度工作（通知全關）
-- [ ] 每天下班前 10 分鐘回顧
-- [ ] 每週 30 分鐘週回顧
-- [ ] 用 Eisenhower 矩陣刪掉至少 1 件「不重要」的事
-
-做到這 5 點，你的產出會超過 90% 沒有系統的人。
+25. **Context-switch cost is ~23 minutes.** Each interruption isn't 5 minutes — it's 5 + 23.
+26. **"Later" is a superpower.** 90% of "urgents" survive a two-hour wait.
 
 ---
 
-## 相關技能
+## Common Traps
 
-- [`learning-methodology`](../learning-methodology/SKILL.md) — 在深度工作時段學習
-- [`second-brain`](../second-brain/SKILL.md) — 把想法和學習記錄下來
+| Trap | Counter |
+|------|---------|
+| **Over-packed schedule** | Leave 20–30% as buffer |
+| **Willpower reliance** | Design system + environment (e.g. phone in another room) |
+| **Skipping breaks** | Rest is part of productivity, not a tax on it |
+| **Goals too big** | Break into the smallest unit doable today |
+| **Efficiency over direction** | Decide it's important first (Eisenhower); then chase efficiency |
+| **Comparing your output to others'** | Compare to yesterday-you instead |
+| **Multitasking** | One thing at a time. Finish, then switch. |
+| **No review** | 10 min/day + 30 min/week is enough |
+
+---
+
+## Minimum Viable System
+
+You don't need fancy tools. Start with these five:
+
+- [ ] Each evening, write tomorrow's top 3 priorities
+- [ ] Each weekday, hold a fixed 2-hour deep-work block (notifications off)
+- [ ] 10-minute daily review before logging off
+- [ ] 30-minute weekly review on Friday or Sunday
+- [ ] Use the Eisenhower matrix to delete at least one "not important" thing per week
+
+Doing those five reliably puts you ahead of 90% of people without a system.
+
+---
+
+## Related Skills
+
+- [`learning-methodology`](../learning-methodology/SKILL.md) — what to do during the deep-work block
+- [`second-brain`](../second-brain/SKILL.md) — capturing thoughts and outputs along the way

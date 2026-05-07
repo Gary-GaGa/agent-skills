@@ -1,351 +1,353 @@
 ---
 name: tw-stock-data
 description: >
-  台股資料工程指南，涵蓋主要資料源（證交所、櫃買中心、公開資訊觀測站）、常用欄位、
-  資料清洗要點（除權息還原、point-in-time、存活偏差）、儲存方案、自動化排程，
-  以及常見陷阱。觀念為主，API 與欄位說明可對接任何程式語言。
+  Data engineering for Taiwan-listed stocks — primary data sources (TWSE,
+  TPEx, MOPS), key fields, cleaning essentials (dividend adjustment,
+  point-in-time, survivorship bias), storage choices, scheduling, and common
+  pitfalls. Concept-oriented; APIs and field semantics are language-agnostic.
 category: finance
 tags: [stock, taiwan, tw-stock, data-engineering, api, pipeline]
+keywords: [TWSE, TPEx, MOPS, FinMind, TEJ, point-in-time, dividend adjustment]
 related: [tw-stock-fundamental, tw-stock-chip, tw-stock-technical, tw-stock-quant]
 ---
 
-# 台股資料工程
+# Taiwan Stock Data Engineering
 
-> 垃圾進，垃圾出。量化投資的品質上限 = 資料品質的上限。花 80% 的時間處理數據是正常的。
+> Garbage in, garbage out. Quant return ceiling = data quality ceiling. Spending 80% of your time on data is normal.
 
-## 適用情境
+## When to Use This Skill
 
-- 想自己建台股歷史數據庫（而非依賴第三方平台）
-- 想串接即時或日頻數據做分析
-- 想回測但不確定該用哪些數據源、怎麼處理
-- 想建立自動化資料更新流程
-- 想確保數據品質（除權息還原、前視偏差、存活偏差）
-
----
-
-## 一、台股資料源總覽
-
-### 官方免費來源
-
-| 來源 | 網站 | 提供什麼 | 格式 | 頻率 |
-|------|------|----------|------|------|
-| **證交所 (TWSE)** | twse.com.tw | 上市股票日成交、三大法人、融資融券、集保 | CSV / JSON | 日 |
-| **櫃買中心 (TPEx)** | tpex.org.tw | 上櫃股票同上 | CSV / JSON | 日 |
-| **公開資訊觀測站 (MOPS)** | mops.twse.com.tw | 財報、月營收、股利、董監持股、重訊 | HTML / CSV | 月/季/年 |
-| **證交所 Open API** | openapi.twse.com.tw | 部分上市數據的 RESTful API | JSON | 日 |
-
-### 第三方免費 / 開源
-
-| 來源 | 說明 | 注意事項 |
-|------|------|----------|
-| **FinMind** | 台股開源數據平台，有 API 和 Python package | 免費有請求限制 |
-| **台灣證券交易所 Open Data** | 政府開放資料 | 欄位可能不完整 |
-| **Yahoo Finance (TW)** | `{代碼}.TW`（上市）、`{代碼}.TWO`（上櫃）| 除權息還原品質參差 |
-| **Google Finance** | 基本報價 | 不提供歷史數據下載 |
-
-### 付費來源
-
-| 來源 | 特色 | 適合 |
-|------|------|------|
-| **TEJ（台灣經濟新報）** | 學術級、含下市股票、point-in-time 財報 | 量化回測（最正確）|
-| **CMoney** | 介面友善、策略回測平台 | 非工程師使用者 |
-| **XQ 全球贏家** | 即時報價 + 程式交易 | 即時策略執行 |
+- Building your own Taiwan stock historical database (vs depending on a third-party platform)
+- Pulling realtime or daily data for analysis
+- Backtesting but unsure which sources to use and how to clean them
+- Building an automated data-update pipeline
+- Ensuring data quality (dividend adjustment, look-ahead, survivorship)
 
 ---
 
-## 二、核心資料類型與欄位
+## 1. Taiwan Data Sources
 
-### 1. 日成交行情（OHLCV）
+### Official, free
 
-| 欄位 | 說明 | 注意事項 |
-|------|------|----------|
-| 日期 | 交易日 | 台股週一到週五，排除國定假日 |
-| 股票代碼 | 4 碼數字 | 上市/上櫃代碼空間不重疊 |
-| 開盤價 | 當日第一筆成交價 | |
-| 最高價 | 當日最高成交價 | |
-| 最低價 | 當日最低成交價 | |
-| 收盤價 | 當日最後一筆成交價 | **需除權息還原** |
-| 成交量 | 當日成交張數 | 1 張 = 1,000 股 |
-| 成交金額 | 當日成交總金額 | |
-| 本益比 | 證交所公布的 trailing P/E | 每日更新 |
+| Source | Site | Provides | Format | Cadence |
+|--------|------|----------|--------|---------|
+| **TWSE** | twse.com.tw | Listed daily quotes, three-major-institution flow, margin, TDCC | CSV / JSON | Daily |
+| **TPEx** | tpex.org.tw | OTC daily quotes, etc. | CSV / JSON | Daily |
+| **MOPS** | mops.twse.com.tw | Financial statements, monthly revenue, dividends, insider holdings, material info | HTML / CSV | Monthly / quarterly / annual |
+| **TWSE Open API** | openapi.twse.com.tw | RESTful API for some listed data | JSON | Daily |
 
-### 2. 月營收
+### Third-party / open-source
 
-| 欄位 | 說明 |
-|------|------|
-| 年月 | 營收所屬月份 |
-| 月營收 | 千元 |
-| 月增率 (MoM) | 與上月比較 |
-| 年增率 (YoY) | 與去年同月比較 |
-| 累計營收 | 當年度累計 |
-| 累計年增率 | 累計 vs 去年同期累計 |
+| Source | Notes | Caveats |
+|--------|-------|---------|
+| **FinMind** | Open TW data platform with API + Python package | Free tier rate-limited |
+| **TWSE Open Data (gov.tw)** | Government open data | Fields may be incomplete |
+| **Yahoo Finance (TW)** | `{code}.TW` (listed), `{code}.TWO` (OTC) | Dividend adjustment quality varies |
+| **Google Finance** | Basic quotes | No history download |
 
-**注意：** 月營收在**次月 10 日前**公布。1 月營收 → 2 月 10 日前。
+### Paid
 
-### 3. 季度財報
+| Source | Notable | Best for |
+|--------|---------|----------|
+| **TEJ (Taiwan Economic Journal)** | Academic-grade, includes delisted, point-in-time financials | Quant backtesting (most correct) |
+| **CMoney** | Friendly UI, strategy-backtest platform | Non-engineer users |
+| **XQ** | Realtime + algo trading | Realtime strategy execution |
 
-| 欄位 | 說明 |
-|------|------|
-| EPS | 每股盈餘 |
-| 營收 | 該季營收 |
-| 毛利率 | |
-| 營業利益率 | |
-| 稅後淨利率 | |
-| ROE | 股東權益報酬率（通常用最近 4 季加總）|
-| ROA | 資產報酬率 |
-| 每股淨值 | |
-| 負債比 | |
-| 營業現金流 | |
-| 自由現金流 | |
+---
 
-**公布延遲（極重要）：**
+## 2. Core Data Types and Fields
 
-| 季報 | 公布截止日 | 回測最早可用日 |
-|------|------------|----------------|
+### 1. Daily quotes (OHLCV)
+
+| Field | Notes | Caveats |
+|-------|-------|---------|
+| Date | Trading day | TW market: Mon–Fri, exclude holidays |
+| Code | 4-digit | Listed and OTC code spaces don't overlap |
+| Open | First trade of the day | |
+| High | Day high | |
+| Low | Day low | |
+| Close | Last trade of the day | **Needs dividend adjustment** |
+| Volume | Lots traded | 1 lot = 1,000 shares |
+| Turnover | Daily traded value | |
+| P/E | TWSE-published trailing P/E | Daily refreshed |
+
+### 2. Monthly revenue
+
+| Field | Notes |
+|-------|-------|
+| Year-month | Revenue's reporting month |
+| Revenue | In NT$ thousands |
+| MoM | vs previous month |
+| YoY | vs same month last year |
+| YTD revenue | Cumulative this year |
+| YTD YoY | YTD vs prior YTD |
+
+**Note:** monthly revenue is published by the 10th of the following month. January revenue → by Feb 10.
+
+### 3. Quarterly financials
+
+| Field | Notes |
+|-------|-------|
+| EPS | Earnings per share |
+| Revenue | Quarterly revenue |
+| Gross margin | |
+| Operating margin | |
+| Net margin | |
+| ROE | Usually trailing 4 quarters |
+| ROA | |
+| Book value per share | |
+| Debt ratio | |
+| OCF | Operating cash flow |
+| FCF | Free cash flow |
+
+**Release deadlines (critical):**
+
+| Report | Deadline | Earliest usable in backtest |
+|--------|----------|------------------------------|
 | Q1 | 5/15 | 5/16 |
 | Q2 | 8/14 | 8/15 |
 | Q3 | 11/14 | 11/15 |
-| Q4 + 年報 | 3/31 | 4/1 |
+| Q4 + Annual | 3/31 | 4/1 |
 
-### 4. 法人買賣超
+### 4. Institutional flow
 
-| 欄位 | 說明 |
-|------|------|
-| 外資買賣超（張） | 含 FINI（外國機構）+ FIDI（外國個人）|
-| 投信買賣超（張） | 國內投資信託 |
-| 自營商買賣超（張） | 分「自行買賣」和「避險」|
-| 合計三大法人 | 上述加總 |
+| Field | Notes |
+|-------|-------|
+| Foreign net (lots) | FINI (institutional) + FIDI (individual) |
+| Trust net (lots) | Domestic investment trusts |
+| Dealer net (lots) | Split into "proprietary" and "hedging" |
+| Three-institution total | Sum of the above |
 
-### 5. 信用交易
+### 5. Margin trading
 
-| 欄位 | 說明 |
-|------|------|
-| 融資餘額（張） | 當日收盤後融資張數 |
-| 融資增減 | 與前日比較 |
-| 融券餘額（張） | 當日收盤後融券張數 |
-| 融券增減 | |
-| 券資比 | 融券 / 融資 |
+| Field | Notes |
+|-------|-------|
+| Margin balance (lots) | After-close balance |
+| Margin change | vs previous day |
+| Short balance (lots) | After-close short balance |
+| Short change | |
+| Short/margin ratio | Short / margin |
 
-### 6. 集保戶股權分散
+### 6. TDCC shareholder concentration
 
-| 欄位 | 說明 |
-|------|------|
-| 持股分級 | 1-999 股、1,000-5,000 股、...、1,000 張以上 |
-| 人數 | 各分級持有人數 |
-| 股數 | 各分級持有總股數 |
-| 占集保庫存比例 | 百分比 |
+| Field | Notes |
+|-------|-------|
+| Holding tier | 1–999 shares, 1,000–5,000 shares, ..., ≥ 1,000 lots |
+| Holders | # of holders per tier |
+| Shares | Total shares per tier |
+| % of vault | Percentage |
 
-**更新頻率：** 每週六更新前一週五資料。
-
----
-
-## 三、資料清洗關鍵
-
-### 1. 除權息還原（最重要）
-
-台股除權息時，股價會被「除」：
-- **除息（現金股利）**：股價 − 每股現金股利
-- **除權（股票股利）**：股價 / (1 + 每股股票股利/10)
-
-**不還原的問題：** 一檔每年配 5% 殖利率的股票，5 年累計股價會「看起來」跌 25%，但投資人其實賺了。
-
-**還原方式：**
-- **前復權（Forward Adjusted）：** 把歷史價格往上調。當前價格不變，歷史價格變高。適合技術分析。
-- **後復權（Backward Adjusted）：** 把歷史價格不動，調整後面的。適合報酬計算。
-- **還原因子法：** 每次除權息計算一個還原因子，累積相乘。
-
-### 2. Point-in-Time（時間點數據）
-
-**規則：回測在某一天只能使用在那一天「已經公布」的數據。**
-
-常見錯誤：
-- ❌ 在 4/1 用 Q1 季報數據（Q1 季報 5/15 才公布）
-- ❌ 用「最新」的營收數據回測過去的日期
-- ❌ 用「修正後」的財報數據而非「首次公布」的版本
-
-**做法：** 每筆數據加上 `published_date` 欄位，回測只取 `published_date <= 回測日期` 的數據。
-
-### 3. 存活偏差（Survivorship Bias）
-
-只使用目前仍上市的股票 → 自動排除了下市、下櫃、倒閉的公司 → 回測報酬被高估。
-
-**做法：** 數據庫要包含歷史上所有曾經上市的股票，含下市日期和原因。
-
-### 4. 缺值處理
-
-| 情況 | 處理 |
-|------|------|
-| 某日停牌（暫停交易） | 保留前一日收盤價，成交量設為 0 |
-| 財報數據缺失 | 排除該股票，不要補插值（補了就是假數據）|
-| 新上市股票 | 前 N 天數據不足 → 排除該股（如策略需要 MA60，至少要 60 天數據）|
-
-### 5. 資料一致性檢查
-
-每次更新數據後跑以下檢查：
-
-- [ ] 日期是否連續（排除假日後無缺漏）
-- [ ] 收盤價是否在漲跌停範圍內（±10%）
-- [ ] 成交量 = 0 的天數是否合理（停牌？還是數據缺失？）
-- [ ] 月營收加總 ≈ 年營收（差異 < 1%）
-- [ ] 除權息日股價是否有對應的跳空
+**Cadence:** updated each Saturday for the prior Friday's snapshot.
 
 ---
 
-## 四、儲存方案
+## 3. Data Cleaning Essentials
 
-### 個人使用（小規模）
+### 1. Dividend adjustment (most important)
 
-| 方案 | 優點 | 缺點 |
-|------|------|------|
-| **CSV 檔案** | 簡單、任何語言都能讀 | 查詢慢、不好做關聯 |
-| **SQLite** | 單檔案資料庫、支援 SQL、零配置 | 不支援並行寫入 |
-| **DuckDB** | 向量化分析型資料庫、讀 CSV/Parquet 快 | 較新，生態系還在成長 |
-| **Parquet 檔案** | 列式儲存、壓縮好、分析快 | 需要程式讀取 |
+When TW stocks go ex-dividend the price is adjusted:
+- **Cash dividend:** Price − cash dividend per share
+- **Stock dividend:** Price / (1 + stock dividend per share / 10)
 
-**建議：** 個人分析從 **SQLite 或 Parquet** 開始。CSV 只做暫存或交換格式。
+**The problem if you don't adjust:** a 5%-yield name will appear to have lost 25% over 5 years even though investors actually made money.
 
-### 資料庫 Schema 設計（建議）
+**Adjustment methods:**
+- **Forward-adjusted:** scale historical prices up; current price unchanged. Good for technical analysis.
+- **Back-adjusted:** keep history, adjust forward. Good for return calculation.
+- **Adjustment-factor method:** compute a factor at each ex-dividend, multiply cumulatively.
+
+### 2. Point-in-time
+
+**Rule: at any backtest date, you can only use data that was *already published* by that date.**
+
+Common mistakes:
+- Using Q1 financials on April 1 (Q1 is published by May 15)
+- Using "the latest" revenue when backtesting a past date
+- Using "restated" instead of "originally reported" financials
+
+**Fix:** add a `published_date` column to every record; backtests filter `published_date <= backtest_date`.
+
+### 3. Survivorship bias
+
+Only using currently-listed names = automatically excluding delisted/bankrupt companies = inflated backtest returns.
+
+**Fix:** the database must include all stocks ever listed, with delisted dates and reasons.
+
+### 4. Missing values
+
+| Situation | Handling |
+|-----------|----------|
+| Trading halt for a day | Carry the previous close, set volume to 0 |
+| Missing financials | Exclude that stock (don't interpolate — that creates fake data) |
+| New listing | Drop the first N days if your strategy needs them (e.g., MA60 needs 60 days) |
+
+### 5. Data consistency checks
+
+After every update:
+
+- [ ] Trading days are continuous (no gaps after holidays)
+- [ ] Close is within ±10% of prior (price-limit sanity)
+- [ ] Days with volume = 0 are explained (halt, not loss of data)
+- [ ] Monthly revenue sum ≈ annual revenue (< 1% error)
+- [ ] Ex-dividend days have a corresponding price gap
+
+---
+
+## 4. Storage Options
+
+### Personal (small scale)
+
+| Option | Pros | Cons |
+|--------|------|------|
+| **CSV files** | Simple, readable from any language | Slow queries, no joins |
+| **SQLite** | Single-file DB, supports SQL, zero config | No concurrent writes |
+| **DuckDB** | Vectorized analytical DB, fast on CSV / Parquet | Newer, ecosystem still growing |
+| **Parquet files** | Columnar, well compressed, fast for analytics | Needs code to read |
+
+**Recommendation:** start with **SQLite or Parquet**. Use CSV only as a transit / interchange format.
+
+### Suggested schema
 
 ```
-stocks (股票主檔)
-├── code         TEXT PK    -- 股票代碼
-├── name         TEXT       -- 股票名稱
-├── market       TEXT       -- TSE / OTC
-├── industry     TEXT       -- 產業分類
-├── listed_date  DATE       -- 上市日
-└── delisted_date DATE      -- 下市日（NULL = 仍上市）
+stocks (master)
+├── code           TEXT PK   -- ticker
+├── name           TEXT
+├── market         TEXT      -- TSE / OTC
+├── industry       TEXT
+├── listed_date    DATE
+└── delisted_date  DATE      -- NULL = still listed
 
-daily_prices (日行情)
-├── code         TEXT FK
-├── date         DATE
-├── open         REAL
-├── high         REAL
-├── low          REAL
-├── close        REAL       -- 原始收盤價
-├── close_adj    REAL       -- 除權息還原收盤價
-├── volume       INTEGER    -- 張數
+daily_prices
+├── code           TEXT FK
+├── date           DATE
+├── open           REAL
+├── high           REAL
+├── low            REAL
+├── close          REAL      -- raw close
+├── close_adj      REAL      -- dividend-adjusted close
+├── volume         INTEGER   -- lots
 └── PK(code, date)
 
-monthly_revenue (月營收)
-├── code         TEXT FK
-├── year_month   TEXT       -- "2024-03"
-├── revenue      BIGINT     -- 千元
-├── yoy          REAL       -- 年增率 %
-├── published_date DATE     -- 公布日（point-in-time 用）
+monthly_revenue
+├── code           TEXT FK
+├── year_month     TEXT      -- "2024-03"
+├── revenue        BIGINT    -- NT$ thousands
+├── yoy            REAL      -- YoY %
+├── published_date DATE      -- for point-in-time
 └── PK(code, year_month)
 
-quarterly_financials (季度財報)
-├── code         TEXT FK
-├── year         INTEGER
-├── quarter      INTEGER    -- 1,2,3,4
-├── eps          REAL
-├── roe          REAL
-├── gross_margin REAL
-├── ... (其他比率)
-├── published_date DATE     -- 公布日
+quarterly_financials
+├── code           TEXT FK
+├── year           INTEGER
+├── quarter        INTEGER   -- 1..4
+├── eps            REAL
+├── roe            REAL
+├── gross_margin   REAL
+├── ... (other ratios)
+├── published_date DATE
 └── PK(code, year, quarter)
 
-daily_institutional (法人買賣超)
-├── code         TEXT FK
-├── date         DATE
-├── foreign_buy_sell  INTEGER  -- 正=買超 負=賣超
-├── trust_buy_sell    INTEGER
-├── dealer_buy_sell   INTEGER  -- 自行買賣
-├── dealer_hedge      INTEGER  -- 避險
+daily_institutional
+├── code           TEXT FK
+├── date           DATE
+├── foreign_buy_sell INTEGER -- + buy / − sell
+├── trust_buy_sell   INTEGER
+├── dealer_buy_sell  INTEGER -- proprietary
+├── dealer_hedge     INTEGER -- hedging
 └── PK(code, date)
 
-daily_margin (信用交易)
-├── code         TEXT FK
-├── date         DATE
-├── margin_balance   INTEGER  -- 融資餘額(張)
-├── short_balance    INTEGER  -- 融券餘額(張)
+daily_margin
+├── code           TEXT FK
+├── date           DATE
+├── margin_balance INTEGER   -- lots
+├── short_balance  INTEGER   -- lots
 └── PK(code, date)
 
-weekly_shareholders (集保戶)
-├── code         TEXT FK
-├── date         DATE       -- 每週五
-├── level        TEXT       -- "1-999", "1000+"
-├── holders      INTEGER
-├── shares       BIGINT
-├── percentage   REAL
+weekly_shareholders
+├── code           TEXT FK
+├── date           DATE      -- each Friday
+├── level          TEXT      -- "1-999", "1000+"
+├── holders        INTEGER
+├── shares         BIGINT
+├── percentage     REAL
 └── PK(code, date, level)
 ```
 
 ---
 
-## 五、自動化排程
+## 5. Scheduling
 
-### 每日（交易日收盤後，建議 15:30-17:00 抓取）
+### Daily (after close, suggested 15:30–17:00 local)
 
-| 資料 | 來源 | 延遲 |
-|------|------|------|
-| 日成交行情 | 證交所/櫃買 | 收盤後 ~30 分鐘 |
-| 三大法人買賣超 | 證交所/櫃買 | 收盤後 ~1 小時 |
-| 融資融券 | 證交所/櫃買 | 收盤後 ~1 小時 |
-| 借券賣出 | 證交所 | 收盤後 ~2 小時 |
+| Data | Source | Delay |
+|------|--------|-------|
+| Daily quotes | TWSE / TPEx | ~30 min after close |
+| Three-institution flow | TWSE / TPEx | ~1 hr after close |
+| Margin / short | TWSE / TPEx | ~1 hr after close |
+| Securities-lending shorts | TWSE | ~2 hr after close |
 
-### 每月
+### Monthly
 
-| 資料 | 來源 | 時間 |
-|------|------|------|
-| 月營收 | 公開資訊觀測站 | 次月 1-10 日陸續公布 |
+| Data | Source | When |
+|------|--------|------|
+| Monthly revenue | MOPS | Days 1–10 of next month |
 
-### 每季
+### Quarterly
 
-| 資料 | 來源 | 時間 |
-|------|------|------|
-| 季度財報 | 公開資訊觀測站 | 依法定截止日陸續公布 |
-| 股利政策 | 公開資訊觀測站 | 董事會通過後 |
+| Data | Source | When |
+|------|--------|------|
+| Quarterly financials | MOPS | Per legal deadlines |
+| Dividend proposal | MOPS | After board approval |
 
-### 每週
+### Weekly
 
-| 資料 | 來源 | 時間 |
-|------|------|------|
-| 集保戶股權分散 | 集保中心 / 公開資訊觀測站 | 每週六更新 |
+| Data | Source | When |
+|------|--------|------|
+| TDCC shareholder concentration | TDCC / MOPS | Each Saturday |
 
-### 排程注意事項
+### Scheduling notes
 
-1. **證交所有請求頻率限制。** 太頻繁會被擋。建議每次請求間隔 3-5 秒。
-2. **抓取失敗要重試。** 官方網站偶爾維護。設定重試機制（指數退避）。
-3. **記錄每次抓取的狀態。** 成功/失敗/跳過，方便追蹤缺漏。
-4. **每次抓完跑資料一致性檢查。**
-
----
-
-## 六、常見陷阱
-
-| 陷阱 | 說明 | 對策 |
-|------|------|------|
-| **Yahoo Finance 除權息還原不準** | 時有遺漏或延遲 | 自己算還原因子，或用 TEJ |
-| **證交所 CSV 格式偶爾改版** | 欄位增減、編碼改變 | 抓取後做格式驗證 |
-| **新股上市首 5 日無漲跌停** | 價格可能大幅波動 | 回測排除上市首週 |
-| **ETF 混在個股裡** | 代碼 00xx 是 ETF | 建立 stock type 欄位，分開處理 |
-| **減資換股後股價跳空** | 非除權息但價格變動 | 標記「非正常跳空」，回測過濾 |
-| **上櫃轉上市** | 代碼可能改變、歷史數據斷裂 | 用統一代碼映射表 |
-| **KY 股（外國企業來台上市）** | 財報格式可能不同 | 另外處理或排除 |
+1. **TWSE has rate limits.** Too-frequent requests get blocked. Use 3–5s spacing.
+2. **Retry on failure.** Official sites have occasional maintenance. Use exponential backoff.
+3. **Log every fetch.** Success/fail/skip — for tracking gaps.
+4. **Run consistency checks after each fetch.**
 
 ---
 
-## 七、資料品質檢查清單
+## 6. Common Traps
 
-建立或更新數據庫時逐項確認：
-
-- [ ] 資料來源是否包含上市 + 上櫃
-- [ ] 是否包含已下市 / 下櫃股票（避免存活偏差）
-- [ ] 收盤價是否為除權息還原價
-- [ ] 財報數據是否有 `published_date` 欄位（point-in-time）
-- [ ] 月營收數據是否按「公布日」對齊（而非「所屬月」）
-- [ ] 新上市股票前 N 天是否已標記
-- [ ] ETF 是否已與個股分開
-- [ ] 停牌日是否已處理（保留前日收盤、量 = 0）
-- [ ] 資料更新排程是否有重試與錯誤通知
-- [ ] 每次更新後是否自動跑一致性檢查
+| Trap | Note | Counter |
+|------|------|---------|
+| **Yahoo Finance dividend adjustment is unreliable** | Occasional misses or delays | Compute your own factor, or use TEJ |
+| **TWSE CSV format changes** | Columns added/removed, encoding shifts | Validate format after fetch |
+| **New listings have no price limit for the first 5 days** | Wild moves | Exclude the first listing week |
+| **ETFs mixed in with stocks** | 00xx codes are ETFs | Add a stock_type column, separate handling |
+| **Capital reduction creates a non-dividend gap** | Price moves but it's not ex-dividend | Mark "abnormal gap"; backtest filters them |
+| **Code change on OTC-to-listed transitions** | History fragments | Use a unified code-mapping table |
+| **KY shares (foreign issuers in TW)** | Different filing format | Special-case or exclude |
 
 ---
 
-## 相關技能
+## 7. Quality Checklist
 
-- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — 使用財報數據的基本面分析
-- [`tw-stock-chip`](../tw-stock-chip/SKILL.md) — 使用法人、信用、集保數據的籌碼分析
-- [`tw-stock-technical`](../tw-stock-technical/SKILL.md) — 使用 OHLCV 數據的技術分析
-- [`tw-stock-quant`](../tw-stock-quant/SKILL.md) — 使用全部數據的量化策略回測
+When building or updating the database:
+
+- [ ] Source includes both listed and OTC
+- [ ] Includes delisted names (no survivorship bias)
+- [ ] Close is dividend-adjusted
+- [ ] Financials carry `published_date` (point-in-time)
+- [ ] Monthly revenue keyed by published date (not reporting month)
+- [ ] First N days of new listings flagged
+- [ ] ETFs separated from individual stocks
+- [ ] Halt days handled (carry close, volume = 0)
+- [ ] Update job has retry + error notifications
+- [ ] Consistency checks run after each update
+
+---
+
+## Related Skills
+
+- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — fundamentals (uses financials)
+- [`tw-stock-chip`](../tw-stock-chip/SKILL.md) — chip flow (uses institutional, margin, TDCC)
+- [`tw-stock-technical`](../tw-stock-technical/SKILL.md) — technicals (uses OHLCV)
+- [`tw-stock-quant`](../tw-stock-quant/SKILL.md) — quant strategies (uses everything)

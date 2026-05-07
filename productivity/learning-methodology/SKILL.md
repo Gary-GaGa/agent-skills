@@ -1,187 +1,188 @@
 ---
 name: learning-methodology
 description: >
-  系統化學習方法論 — 費曼技巧、間隔重複、刻意練習、學習金字塔、
-  建構主義學習法，以及技術領域的高效學習框架。適合想提升學習效率的
-  開發者或終身學習者。
+  Systematic learning methodology — the Feynman Technique, spaced repetition,
+  deliberate practice, the Learning Pyramid, and a high-efficiency framework
+  for technical learning. For developers and lifelong learners who want to
+  raise the return on study time.
 category: productivity
 tags: [learning, methodology, feynman, spaced-repetition, productivity]
 related: [second-brain, time-management]
 ---
 
-# 學習方法論
+# Learning Methodology
 
-> 學習的效率不取決於花多少時間，而取決於用什麼方法。同樣的 1 小時，方法不同，留存率差 10 倍。
+> Learning efficiency isn't about hours spent — it's about method. The same hour, with a different approach, can have 10× retention.
 
-## 適用情境
+## When to Use This Skill
 
-- 想學一個全新的技術領域（如 Kubernetes、區塊鏈、機器學習）
-- 覺得「看了很多但記不住」
-- 想建立持續學習的系統
-- 想提升從初學到實戰的速度
-
----
-
-## 學習留存率（Learning Pyramid）
-
-| 學習方式 | 留存率 |
-|----------|--------|
-| 聽講 | ~5% |
-| 閱讀 | ~10% |
-| 視聽教材 | ~20% |
-| 演示/展示 | ~30% |
-| **討論/參與** | ~50% |
-| **實作練習** | ~75% |
-| **教導他人** | ~90% |
-
-1. **被動學習（看、聽、讀）留存率最低。** 不是沒用，是不夠。
-2. **主動學習（做、教、討論）留存率最高。** 學完一定要動手。
-3. **最高效的學習：學完立刻教別人。** 費曼技巧的核心。
+- Learning a new technical domain (Kubernetes, blockchain, machine learning)
+- Feeling "I read a lot but remember nothing"
+- Building a sustainable learning system
+- Wanting to shorten the path from beginner to practitioner
 
 ---
 
-## 費曼技巧（Feynman Technique）
+## The Learning Pyramid
 
-### 四步驟
+| Method | Retention |
+|--------|-----------|
+| Lecture | ~5% |
+| Reading | ~10% |
+| Audio-visual | ~20% |
+| Demonstration | ~30% |
+| **Discussion / participation** | ~50% |
+| **Hands-on practice** | ~75% |
+| **Teaching others** | ~90% |
 
-1. **選一個概念** — 例如「gRPC streaming」
-2. **用簡單的話解釋，像在教一個完全不懂的人** — 不用術語
-3. **找出卡住的地方** — 解釋不清楚的部分 = 你不夠理解的���分
-4. **回去補強，再解釋一次** — 直到完全流暢
-
-### 實務做法
-
-- 寫一篇部落格 / 筆記，假設讀者是初學者
-- 在社群發一則「今天學到 X，簡單來說就是...」
-- 用比喻：「gRPC streaming 就像電話通話（持續傳輸），REST 像寄信（一問一答）」
-
-4. **如果你不能簡單解釋，代表你還不夠理解。** 不是讀者的問題。
+1. **Passive learning (watch, listen, read) has the lowest retention.** Not useless, but not enough on its own.
+2. **Active learning (do, teach, discuss) has the highest retention.** Always pair study with practice.
+3. **The most effective study: teach what you just learned.** This is the core of the Feynman Technique.
 
 ---
 
-## 間隔重複（Spaced Repetition）
+## The Feynman Technique
 
-### 原理
+### Four steps
 
-遺忘曲線：學完 24 小時後忘掉 70%。但在「快要忘記的時候」複習，記憶會大幅延長。
+1. **Pick a concept** — e.g. "gRPC streaming"
+2. **Explain it in simple language, as if to a complete beginner** — no jargon
+3. **Find where you got stuck** — the parts you can't explain are the parts you don't really understand
+4. **Go back, fill the gap, explain again** — repeat until smooth
 
-### 間隔時間表
+### How to apply it
+
+- Write a blog post or note targeting an absolute beginner
+- Post a "Today I learned X — in plain words..." snippet to a community
+- Use analogies: "gRPC streaming is like a phone call (continuous), REST is like postal mail (one Q, one A)"
+
+4. **If you can't explain it simply, you don't understand it well enough.** That's on you, not on the reader.
+
+---
+
+## Spaced Repetition
+
+### The principle
+
+Forgetting curve: ~70% of new material is lost within 24 hours. But reviewing *just before* you'd forget extends retention dramatically.
+
+### Suggested intervals
 
 ```
-第一次複習：1 天後
-第二次複習：3 天後
-第三次複習：7 天後
-第四次複習：21 天後
-第五次複習：60 天後
+1st review:  1 day later
+2nd review:  3 days later
+3rd review:  7 days later
+4th review: 21 days later
+5th review: 60 days later
 ```
 
-### 工具
+### Tools
 
-- **Anki** — 閃卡軟體，自動計算複習時間
-- **筆記系統回顧** — 在 Obsidian/Notion 設定每週回顧
+- **Anki** — flashcard software that schedules reviews automatically
+- **Note-system review** — set a weekly review in Obsidian / Notion
 
-5. **不需要對所有知識都用間隔重複。** 只用在「必須記住的核心概念」。
-6. **把概念轉成問題。** 「什麼是 context.WithTimeout?」比「context.WithTimeout 是用來設定超時的」更適合複習。
+5. **Don't apply spaced repetition to everything.** Reserve it for the core concepts you must remember.
+6. **Phrase items as questions.** "What is `context.WithTimeout`?" is a better review prompt than the statement form.
 
 ---
 
-## 刻意練習（Deliberate Practice）
+## Deliberate Practice
 
-### 與一般練習的差異
+### Versus ordinary practice
 
-| 一般練習 | 刻意練習 |
-|----------|----------|
-| 舒適區內重複 | 在能力邊緣挑戰 |
-| 沒有明確目標 | 每次有具體小目標 |
-| 做完就算 | 有回饋、有修正 |
-| 花很多時間 | 短但專注（45-90 分鐘） |
+| Ordinary practice | Deliberate practice |
+|-------------------|---------------------|
+| Repeat what's comfortable | Push the edge of ability |
+| No specific goal | A concrete small goal each session |
+| Done is done | Feedback and correction loop |
+| Lots of unfocused hours | Short, focused blocks (45–90 min) |
 
-### 技術學習的刻意練習
+### Applying it to technical learning
 
-7. **設定「剛好超出能力」的挑戰。** 不是重做已會的，不是跳到完全不懂的。
-8. **每次練習有一個焦點。** 今天只練 goroutine lifecycle，不是「Go 併發」。
-9. **要有反饋迴路。** 寫完 → 跑測試 → 看結果 → 改正。測試就是反饋。
-10. **短時間高專注 > 長時間低品質。** 45 分鐘全神貫注 > 3 小時分心。
-
----
-
-## 技術學習框架
-
-### 學新技術的 5 步法
-
-```
-Step 1：Why — 這個技術解決什麼問題？為什麼它存在？
-Step 2：What — 核心概念是什麼？（3-5 個關鍵字）
-Step 3：How — 最小可用範例（Hello World 級）
-Step 4：Build — 做一個小專案（不是跟教學，是自己設計）
-Step 5：Teach — 寫一篇學習筆記或教別人
-```
-
-11. **不要從 Step 3 開始。** 先理解 Why 和 What，寫出來的程式碼才知道為什麼這樣寫。
-12. **Step 4 是最重要的。** 跟教學做 ≠ 學會。自己設計一個小問題解決它才是。
-13. **Step 5 固化記憶。** 費曼技巧 + ���隔重複。
-
-### 例子：學 Kubernetes
-
-```
-Step 1: Why — 為什麼需要 K8s？手動管理容器在 50+ 台機器時的痛點
-Step 2: What — Pod、Deployment、Service、ConfigMap、Ingress
-Step 3: How — 在 minikube 跑一個 nginx deployment
-Step 4: Build — 把自己的 Go API 部署到 K8s（含 health check、env 配置）
-Step 5: Teach — 寫一篇「5 個 K8s 核心概念，用 Go 開發者的角度」
-```
+7. **Set a "just beyond your current ability" challenge.** Not redoing what you know, not jumping to what you can't read at all.
+8. **One focus per session.** Today: goroutine lifecycle. Not "Go concurrency" in general.
+9. **Keep a feedback loop.** Write → run tests → read the result → fix. Tests *are* the feedback.
+10. **Short bursts of focus beat long unfocused stretches.** 45 minutes of full attention > 3 distracted hours.
 
 ---
 
-## 學習陷阱
+## Framework for Learning a New Technology
 
-| 陷阱 | 症狀 | 對策 |
-|------|------|------|
-| **教學地獄** | 看了 10 個教學，沒寫一行自己的 code | 看 1 個教學 → 立刻動手 |
-| **收藏家** | 收藏 100 篇文章，沒讀 95 篇 | 只收藏「現在需要」的 |
-| **完美主義** | 「等我全部看完再開始」 | 邊學邊做，接受不完美 |
-| **知識焦慮** | 覺得要學的東西太多 | 一次只學一個主題 |
-| **舒適區循環** | 一直做已經會的事 | 刻意練習：找到不會的邊界 |
-| **只讀不寫** | 被動吸收 | 用費曼技巧主動輸出 |
-| **不做筆記** | 讀完就忘 | 用 second-brain 系統記錄 |
-
----
-
-## 每日學習流程（建議）
+### Five steps
 
 ```
-Morning（30-60 min）
-  - 刻意練習一個焦點技能（寫程式、解題）
-
-Evening（15-30 min）
-  - 間隔重複：回顧 Anki 或筆記
-  - 費曼輸出：寫一段「今天學到的，用簡單的話說」
-
-Weekly（1-2 hr）
-  - 回顧本週筆記
-  - 更新 learning roadmap（下週要學什麼）
+Step 1: Why  — what problem does this solve? Why does it exist?
+Step 2: What — core concepts (3–5 keywords)
+Step 3: How  — a minimal working example ("hello world")
+Step 4: Build — a small project of your own design (not a tutorial copy)
+Step 5: Teach — write notes or teach someone else
 ```
 
-14. **每天 30 分鐘穩定學 > 週末 8 小時衝刺。** 間隔效應。
-15. **學習也需要休息。** 大腦在離開學習時整合記憶（散步、睡覺）。
+11. **Do not start at Step 3.** Knowing the Why and What is what makes the code make sense.
+12. **Step 4 matters most.** Following a tutorial is not learning. Designing a small problem and solving it is.
+13. **Step 5 cements memory.** Feynman + spaced repetition.
+
+### Example: learning Kubernetes
+
+```
+Step 1: Why  — manual container management hurts at 50+ machines.
+Step 2: What — Pod, Deployment, Service, ConfigMap, Ingress.
+Step 3: How  — run an nginx Deployment on minikube.
+Step 4: Build — deploy your own Go API to K8s (with health checks, env config).
+Step 5: Teach — write "5 core K8s concepts from a Go developer's perspective".
+```
 
 ---
 
-## 檢查清單
+## Learning Anti-Patterns
 
-開始學新東西前：
-
-- [ ] 寫下「我為什麼要學這個」（動機）
-- [ ] 列出 3-5 個核心概念（What）
-- [ ] 找到一個最小可用範例（How）
-- [ ] 設定一個小專案目標（Build）
-- [ ] 計劃在哪裡輸出（教）—— 筆記、部落格、社群
-- [ ] 設定每日學習時間（30-60 分鐘）
-- [ ] 接受「不完美地開始」比「完美地拖延」好
+| Trap | Symptom | Fix |
+|------|---------|-----|
+| **Tutorial hell** | Watched 10 tutorials, wrote 0 lines of your own | After tutorial #1, hands on |
+| **Hoarder** | Bookmarked 100 articles, read 5 | Save only what you need *now* |
+| **Perfectionism** | "Once I've seen everything, I'll start" | Start before you're ready |
+| **Knowledge anxiety** | "Too many things to learn" | One topic at a time |
+| **Comfort-zone loops** | Always doing what you already know | Find the edge; deliberate practice |
+| **Read-only mode** | Pure passive intake | Force output via Feynman |
+| **No notes** | Read once, forget once | Run a `second-brain` system |
 
 ---
 
-## 相關技能
+## A Suggested Daily Flow
 
-- [`second-brain`](../second-brain/SKILL.md) — 筆記系統管理學到的知識
-- [`time-management`](../time-management/SKILL.md) — 找到學習時間的方法
+```
+Morning (30–60 min)
+  - Deliberate practice on one focus skill (coding, problem solving)
+
+Evening (15–30 min)
+  - Spaced-repetition review (Anki or notes)
+  - Feynman output: a short "Today I learned X, in plain words..."
+
+Weekly (1–2 hr)
+  - Review notes from the week
+  - Update the learning roadmap (what to learn next week)
+```
+
+14. **30 minutes a day beats 8 hours on Saturday.** The spacing effect is real.
+15. **Rest is part of learning.** The brain consolidates memory when you stop studying (walks, sleep).
+
+---
+
+## Pre-Flight Checklist
+
+Before starting on a new topic:
+
+- [ ] Wrote down "why am I learning this" (motivation)
+- [ ] Listed 3–5 core concepts (the *What*)
+- [ ] Found one minimal working example (the *How*)
+- [ ] Set a small project goal (the *Build*)
+- [ ] Planned where you'll output (the *Teach*) — notes, blog, community
+- [ ] Booked a daily learning slot (30–60 minutes)
+- [ ] Accepted "imperfect start" beats "perfect procrastination"
+
+---
+
+## Related Skills
+
+- [`second-brain`](../second-brain/SKILL.md) — note system to retain what you learn
+- [`time-management`](../time-management/SKILL.md) — finding the time to learn

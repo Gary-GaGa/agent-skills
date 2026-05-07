@@ -1,16 +1,16 @@
 ---
-name: technical-writing-en
+name: technical-writing
 description: >
-  English technical writing guide — READMEs, API docs, architecture decision
+  Technical writing for developers — READMEs, API docs, architecture decision
   records (ADRs), changelogs, and inline documentation. Use this skill when
   writing developer-facing documentation, reviewing someone's docs, or
   setting documentation standards for a team.
 category: content
-tags: [writing, documentation, readme, adr, api-docs, english]
-related: [medium-writing-zh, skill-authoring, code-review, newsletter-writing-zh]
+tags: [writing, documentation, readme, adr, api-docs]
+related: [medium-writing, skill-authoring, code-review, newsletter-writing]
 ---
 
-# Technical Writing (English)
+# Technical Writing
 
 > Good docs answer one question clearly. Bad docs answer many questions vaguely.
 
@@ -218,6 +218,6 @@ Use sqlc. It generates type-safe Go from SQL queries with zero runtime reflectio
 
 ## Related Skills
 
-- [`medium-writing-zh`](../medium-writing-zh/SKILL.md) — blog writing (different audience, different rules)
+- [`medium-writing`](../medium-writing/SKILL.md) — blog writing (different audience, different rules)
 - [`skill-authoring`](../../ai-engineering/skill-authoring/SKILL.md) — writing skill docs follows similar principles
 - [`code-review`](../../engineering/code-review/SKILL.md) — docs are part of the review

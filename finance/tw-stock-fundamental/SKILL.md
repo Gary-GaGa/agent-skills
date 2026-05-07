@@ -1,290 +1,299 @@
 ---
 name: tw-stock-fundamental
 description: >
-  台股基本面分析指南，協助散戶投資人從財務報表、營收動能、產業結構與股利政策篩選個股。
-  涵蓋公開資訊觀測站使用、季報/年報判讀、關鍵財務比率、選股框架（殖利率、成長股、
-  價值投資），以及常見的財報陷阱與警訊。觀念為主，不綁特定程式語言或工具。
+  Fundamental analysis for Taiwan-listed stocks — financial-statement reading,
+  revenue momentum, industry structure, and dividend policy as filters. Covers
+  the MOPS data source, monthly/quarterly/annual report timing, key ratios,
+  selection frameworks (yield, growth, value), and common red flags. Concept-
+  oriented; not tied to a specific tool.
 category: finance
 tags: [stock, taiwan, tw-stock, fundamental-analysis, investing, value-investing]
+keywords: [MOPS, ROE, ROA, P/E, P/B, PEG, EPS, free cash flow, moat]
 related: [tw-stock-chip, tw-stock-technical, tw-stock-quant, tw-stock-data, tw-stock-options, tw-etf-investing, portfolio-construction, tw-stock-tax]
 ---
 
-# 台股基本面分析
+# Taiwan Stock Fundamental Analysis
 
-> 基本面回答的是：「這家公司值不值得擁有？」籌碼面回答的是：「現在是不是進場的好時機？」兩者互補，不互斥。
+> Fundamentals answer "is this company worth owning?" Chip flow answers "is this a good moment to enter?" The two are complementary, not exclusive.
 
-## 適用情境
+## When to Use This Skill
 
-- 從幾千檔台股中初步過濾出值得深入研究的標的
-- 判斷一檔股票的合理價值區間
-- 評估高殖利率是真便宜還是價值陷阱
-- 解讀剛公布的月營收 / 季報 / 年報
-- 建立長期持有的存股組合或成長股組合
-
----
-
-## 一、台股資料源與公布時程
-
-### 主要資料源
-
-| 來源 | 用途 |
-|------|------|
-| **公開資訊觀測站** (mops.twse.com.tw) | 官方財報、重訊、董監持股、股利政策 |
-| **證交所** (twse.com.tw) | 上市公司股價、月營收、本益比、殖利率 |
-| **櫃買中心** (tpex.org.tw) | 上櫃公司資料 |
-| **產業公會、券商研究報告** | 產業趨勢、市占率、競爭分析 |
-
-### 重要公布時程
-
-| 資料 | 公布時間 |
-|------|----------|
-| **月營收** | 次月 10 日前 |
-| **第一季報 (Q1)** | 5 月 15 日前 |
-| **第二季報 (Q2)** | 8 月 14 日前 |
-| **第三季報 (Q3)** | 11 月 14 日前 |
-| **年報 (含 Q4)** | 次年 3 月 31 日前 |
-| **股利政策（董事會通過）** | 通常在年報公布前後 |
-
-**重點：** 月營收是領先指標，季報是落後指標。月營收動能轉強通常領先股價 1-2 個月。
+- Filtering down 1,800+ Taiwan-listed names into a deeper-research shortlist
+- Estimating a fair value range for a single stock
+- Judging whether a high yield is real value or a value trap
+- Reading freshly released monthly revenue / quarterly / annual reports
+- Building a long-term dividend or growth portfolio
 
 ---
 
-## 二、財務三表速讀
+## 1. Data Sources and Reporting Timeline
 
-### 1. 損益表（Income Statement）— 公司賺多少
+### Primary sources
 
-關注順序：**營收 → 毛利 → 營業利益 → 稅後淨利 → EPS**
+| Source | What it gives you |
+|--------|------|
+| **MOPS** (mops.twse.com.tw) | Official filings: financials, material announcements, insider holdings, dividend policy |
+| **TWSE** (twse.com.tw) | Listed company prices, monthly revenue, P/E, dividend yield |
+| **TPEx** (tpex.org.tw) | OTC company data |
+| **Industry associations, broker research** | Industry trend, market share, competitive analysis |
 
-| 項目 | 看什麼 |
-|------|--------|
-| 營收 | 年增率 (YoY)、月增率 (MoM)，看成長性 |
-| 毛利率 | 反映產品定價力與成本控制 |
-| 營業利益率 | 扣除費用後的本業獲利能力 |
-| 業外損益 | 一次性收益會膨脹 EPS，要剔除 |
-| EPS | 每股盈餘，最直接的獲利指標 |
+### Key release schedule
 
-**速讀技巧：**
-- 毛利率持續下滑 → 競爭加劇或成本上升，警訊
-- 營業利益成長 < 營收成長 → 費用失控
-- 業外比重高 → EPS 不穩定，要看核心業務
+| Release | Deadline |
+|---------|----------|
+| **Monthly revenue** | By the 10th of the following month |
+| **Q1 report** | May 15 |
+| **Q2 report** | August 14 |
+| **Q3 report** | November 14 |
+| **Annual report (incl. Q4)** | March 31 of the following year |
+| **Dividend proposal (board approval)** | Around the annual report |
 
-### 2. 資產負債表（Balance Sheet）— 公司結構是否健康
-
-關注：**現金 → 應收帳款 → 存貨 → 負債 → 股東權益**
-
-| 項目 | 警訊 |
-|------|------|
-| 應收帳款週轉天數變長 | 客戶付款變慢，可能是品質下滑 |
-| 存貨週轉天數變長 | 賣不掉，可能要打消庫存 |
-| 短期借款大幅增加 | 現金流吃緊 |
-| 負債比 > 60%（非金融業） | 槓桿偏高，景氣反轉風險大 |
-
-### 3. 現金流量表（Cash Flow Statement）— 賺的是不是真錢
-
-最重要：**營業現金流（OCF）**
-
-- ✅ OCF > 稅後淨利 → 帳面獲利有現金支撐
-- ❌ OCF 長期 < 稅後淨利 → 應收帳款或存貨在膨脹，獲利可能是假的
-
-**自由現金流 (FCF) = OCF − 資本支出**
-- FCF 為正 → 有錢配息、買回庫藏股、再投資
-- FCF 長期為負 → 需要不斷融資，存股族要避開
+**Key insight:** monthly revenue is a leading indicator; quarterly reports lag. A turn upward in monthly revenue typically leads price by 1–2 months.
 
 ---
 
-## 三、關鍵財務比率
+## 2. Reading the Three Statements Quickly
 
-### 獲利能力
+### Income Statement — how much the company earns
 
-| 比率 | 公式 | 解讀 |
-|------|------|------|
-| **ROE（股東權益報酬率）** | 稅後淨利 / 股東權益 | 巴菲特最重視。> 15% 算優秀，連續 5 年 > 15% 更佳 |
-| **ROA（資產報酬率）** | 稅後淨利 / 總資產 | 衡量資產運用效率，> 5% 為佳 |
-| **毛利率** | 毛利 / 營收 | 反映產業地位。> 30% 通常有定價力 |
-| **營業利益率** | 營業利益 / 營收 | 本業獲利效率 |
+Order of attention: **Revenue → Gross profit → Operating income → Net income → EPS**
 
-### 估值
+| Item | What to look for |
+|------|------------------|
+| Revenue | YoY and MoM, for growth signal |
+| Gross margin | Pricing power and cost control |
+| Operating margin | Core profitability after operating expenses |
+| Non-operating income/loss | One-offs that inflate EPS — exclude when comparing |
+| EPS | Per-share earnings — most direct profitability number |
 
-| 比率 | 公式 | 解讀 |
-|------|------|------|
-| **本益比 (P/E)** | 股價 / EPS | 越低越便宜。台股大盤平均 15-18 倍。成長股可接受較高 P/E |
-| **股價淨值比 (P/B)** | 股價 / 每股淨值 | < 1 表示低於清算價值。金融股、傳產較適用 |
-| **PEG** | P/E / EPS 成長率 | < 1 為便宜，> 2 為偏貴。成長股最佳估值工具 |
-| **殖利率** | 現金股利 / 股價 | 存股族核心指標。> 5% 算高，> 7% 要小心是陷阱 |
+**Quick reads:**
+- Falling gross margin → competition or rising cost; warning
+- Operating income growth < revenue growth → opex out of control
+- Heavy non-op weight → unstable EPS; focus on the core business
 
-### 安全性
+### Balance Sheet — is the structure healthy?
 
-| 比率 | 警示值 |
-|------|--------|
-| **負債比** | 非金融業 > 60% 偏高 |
-| **流動比率** | < 100% 短期償債吃緊 |
-| **速動比率** | < 80% 警訊（金融業除外）|
-| **利息保障倍數** | < 2 倍代表獲利不夠付利息 |
+Watch: **Cash → Receivables → Inventory → Debt → Equity**
+
+| Item | Warning sign |
+|------|--------------|
+| Receivable days lengthening | Customers paying slower; quality may be deteriorating |
+| Inventory days lengthening | Goods aren't selling; may need to write down inventory |
+| Sharp jump in short-term borrowing | Cash tightening |
+| Debt ratio > 60% (non-financials) | Leverage high; cyclical reversal risk |
+
+### Cash Flow Statement — is the profit real cash?
+
+Most important: **Operating Cash Flow (OCF)**
+
+- ✅ OCF > Net income → reported profit backed by cash
+- ❌ OCF < Net income for years → receivables or inventory inflating; profit may not be real
+
+**Free Cash Flow (FCF) = OCF − Capex**
+- Positive FCF → can pay dividends, buy back shares, reinvest
+- Long-term negative FCF → constantly raising capital; dividend investors should avoid
 
 ---
 
-## 四、選股框架（依目標選一種）
+## 3. Key Financial Ratios
 
-### 框架 A：殖利率存股
+### Profitability
 
-**目標：** 穩定領息，年化 5-7% 報酬。
+| Ratio | Formula | Reading |
+|-------|---------|---------|
+| **ROE** | Net income / Equity | Buffett's favorite. > 15% is good; 5 years above 15% is excellent |
+| **ROA** | Net income / Total assets | Asset utilization; > 5% is good |
+| **Gross margin** | Gross profit / Revenue | Reflects market position; > 30% usually means pricing power |
+| **Operating margin** | Operating income / Revenue | Core operational efficiency |
 
-**篩選條件：**
-1. 連續 10 年配息不間斷
-2. 殖利率 > 5%（且不是因為股價暴跌）
-3. 配息率（盈餘分配率）在 60-80% 之間（太高表示不再投資成長，太低表示不慷慨）
-4. ROE 連續 5 年 > 10%
-5. 負債比 < 60%
-6. 自由現金流連續 5 年為正
+### Valuation
 
-**典型族群：** 金融股、電信股、公用事業、成熟製造業（台塑四寶等）。
+| Ratio | Formula | Reading |
+|-------|---------|---------|
+| **P/E** | Price / EPS | Lower = cheaper. TW market average ≈ 15–18x. Growth stocks tolerate higher |
+| **P/B** | Price / book value | < 1 means below liquidation value. Useful for financials and traditional industries |
+| **PEG** | P/E / EPS growth rate | < 1 cheap, > 2 expensive. Best valuation tool for growth |
+| **Dividend yield** | Cash dividend / Price | Core for dividend investors. > 5% is high; > 7% is suspicious — could be a trap |
 
-### 框架 B：成長股
+### Safety
 
-**目標：** 賺資本利得，年化 15%+。
+| Ratio | Warning level |
+|-------|---------------|
+| **Debt ratio** | Non-financials > 60% is high |
+| **Current ratio** | < 100% indicates short-term solvency tight |
+| **Quick ratio** | < 80% (excluding financials) |
+| **Interest coverage** | < 2x means earnings barely cover interest |
 
-**篩選條件：**
-1. 營收年增率 > 15%（連續 3 季以上）
-2. EPS 年增率 > 20%
-3. 毛利率穩定或提升
+---
+
+## 4. Selection Frameworks (Pick One per Goal)
+
+### Framework A: Dividend (yield-based holding)
+
+**Goal:** stable income, ~5–7% annualized.
+
+**Filters:**
+1. 10+ consecutive years of dividends
+2. Yield > 5% (and not because price collapsed)
+3. Payout ratio between 60–80% (too high → no reinvestment in growth; too low → ungenerous)
+4. ROE > 10% for 5 consecutive years
+5. Debt ratio < 60%
+6. FCF positive for 5 consecutive years
+
+**Typical sectors:** financials, telecom, utilities, mature manufacturing (Formosa Plastics group, etc.).
+
+### Framework B: Growth
+
+**Goal:** capital gains, 15%+ annualized.
+
+**Filters:**
+1. Revenue YoY growth > 15% for 3+ consecutive quarters
+2. EPS YoY growth > 20%
+3. Gross margin stable or rising
 4. PEG < 1.5
 5. ROE > 15%
-6. 產業有結構性成長（AI、電動車、再生能源等）
+6. Industry has structural growth (AI, EV, renewables, etc.)
 
-**注意：** 成長股波動大，買進前先確認**成長動能尚未反轉**（看月營收）。
+**Note:** growth stocks are volatile. Before buying, confirm momentum hasn't yet reversed (check monthly revenue).
 
-### 框架 C：價值投資（葛拉漢式）
+### Framework C: Value (Graham-style)
 
-**目標：** 用便宜價買進被低估的好公司。
+**Goal:** buy undervalued good companies cheaply.
 
-**篩選條件：**
-1. P/E 低於產業平均、低於該股自身歷史平均
+**Filters:**
+1. P/E below industry average and below the stock's own historical average
 2. P/B < 1.5
-3. 連續 5 年獲利
-4. 負債比 < 50%
-5. 現金 + 短期投資 > 短期負債
-6. 有明顯的**護城河**（無形資產、轉換成本、網路效應、成本優勢、有效規模）
+3. 5 consecutive years of profit
+4. Debt ratio < 50%
+5. Cash + short-term investments > short-term liabilities
+6. Visible **moat** (intangible assets, switching costs, network effects, cost advantage, efficient scale)
 
-**注意：** 便宜不等於低估。先確認公司基本面沒有結構性衰退。
-
----
-
-## 五、警訊與陷阱
-
-### 1. EPS 膨脹陷阱
-
-- **業外收益**（賣土地、處分轉投資）讓 EPS 暴增 → 不是核心業務，不可持續
-- **匯兌利益** → 看下一季是否吐回去
-- **股本縮小**（減資）讓 EPS 變高 → 獲利沒變，比例變了
-
-**對策：** 看「本業稅後淨利」，剔除業外。
-
-### 2. 高殖利率陷阱
-
-- 股價先跌 → 殖利率被動拉高
-- 公司前景轉弱 → 殖利率高是因為市場不看好
-- 一次性配發大額股利（如資產處分）→ 不可持續
-
-**對策：** 殖利率 > 7% 要查近 3 年配息穩定度與營收動能。
-
-### 3. 財報品質警訊
-
-| 警訊 | 可能含義 |
-|------|----------|
-| 應收帳款成長 >> 營收成長 | 賣不出去硬出貨 |
-| 存貨成長 >> 營收成長 | 庫存堆積 |
-| 營業現金流 << 稅後淨利 | 帳面獲利缺現金支撐 |
-| 連續多次更換會計師 | 隱含意見不合 |
-| 大股東持續質押 / 出脫 | 大股東不看好 |
-| 重訊頻繁修正 | 內控有問題 |
-
-### 4. 產業循環誤判
-
-景氣循環股（航運、原物料、面板、DRAM）在景氣高峰時 P/E 最低（看起來最便宜），但那是高點賣出的訊號，不是買進。**循環股要看 P/B，不要看 P/E。**
+**Note:** cheap ≠ undervalued. Confirm there's no structural decline first.
 
 ---
 
-## 六、個人選股流程（建議步驟）
+## 5. Red Flags and Traps
 
-### Step 1：粗篩（用免費選股工具）
+### 1. EPS inflation traps
 
-設定條件：例如 ROE > 15%、配息連續 5 年、營收年增 > 10%。
-台股 1,800+ 檔通常會剩 50-100 檔。
+- **Non-op gains** (land sale, divestiture) spike EPS → not core, not sustainable
+- **FX gains** → check whether they reverse next quarter
+- **Share count shrink** (buybacks/cancellations) inflates EPS → earnings unchanged, ratio changed
 
-### Step 2：產業與商業模式
+**Counter:** focus on "core net income" excluding non-op.
 
-- 公司在做什麼？產品 / 服務的客戶是誰？
-- 上下游關係？
-- 有沒有護城河？
-- 產業是成長、成熟、還是衰退？
+### 2. High-yield trap
 
-**讀法人報告或公司年報的「業務概況」。** 看不懂的公司直接跳過。
+- Price drops first → yield rises mechanically
+- Outlook turning sour → high yield because the market doesn't believe
+- One-time large dividend (asset disposal) → unsustainable
 
-### Step 3：財務三表（最近 5 年）
+**Counter:** for yield > 7%, audit 3-year dividend stability and revenue momentum.
 
-- ROE、毛利率、淨利率走勢
-- 營業現金流是否健康
-- 負債結構是否合理
-- 月營收動能（最近 3-6 個月）
+### 3. Reporting-quality red flags
 
-### Step 4：估值
+| Sign | Possible meaning |
+|------|------------------|
+| Receivables grow >> revenue | Forced sales; goods can't be moved |
+| Inventory grows >> revenue | Stock pile-up |
+| OCF << net income | Reported profit lacks cash |
+| Frequent auditor changes | Disagreement on accounting |
+| Major shareholder pledging / selling | Insiders not optimistic |
+| Frequent material-info corrections | Internal control issues |
 
-- 用 P/E、PEG、殖利率估算合理區間
-- 對照歷史本益比帶（5 年最高/最低/平均）
-- 設定**進場價、加碼價、停損價**
+### 4. Misjudging cyclicals
 
-### Step 5：紀錄持股理由
-
-寫下「我為什麼買這檔」。當買進的理由消失時，就是賣出的時候。
-這是最被忽略、卻最重要的一步。
-
----
-
-## 七、選股檢查清單
-
-買進前逐項確認：
-
-- [ ] 我能用兩句話講清楚這家公司在做什麼
-- [ ] 連續 5 年 ROE > 10%（或產業合理水準）
-- [ ] 連續 5 年配息不間斷
-- [ ] 負債比 < 60%（非金融業）
-- [ ] 營業現金流連續 5 年為正
-- [ ] 自由現金流為正或正在轉正
-- [ ] 毛利率穩定或提升
-- [ ] 月營收最近 3 個月 YoY 為正（或合理解釋）
-- [ ] 估值（P/E、PEG、殖利率）相對歷史不算貴
-- [ ] 沒有明顯財報品質警訊
-- [ ] 我寫下了買進理由與賣出條件
-- [ ] 部位大小符合我的資金管理規則
+Cyclicals (shipping, commodities, panels, DRAM) have the lowest P/E at the *peak* of the cycle (looking the cheapest). That's a sell signal, not a buy. **Use P/B for cyclicals, not P/E.**
 
 ---
 
-## 八、進階觀念
+## 6. Personal Selection Workflow
 
-### 護城河（Moat）— Pat Dorsey 五種型態
+### Step 1: Coarse screen (free screeners)
 
-1. **無形資產：** 品牌（味全 vs 統一）、專利（聯亞、台積電製程）、特許執照（電信、銀行）
-2. **轉換成本：** 客戶換掉你成本很高（企業 ERP、銀行客戶）
-3. **網路效應：** 用的人越多越有價值（信用卡網路、社群）
-4. **成本優勢：** 規模、流程、地理位置（台塑、中鋼、台積電）
-5. **有效規模：** 市場容不下第二家賺錢的（公用事業、機場跑道）
+Set conditions: e.g. ROE > 15%, dividends for 5 years, revenue YoY > 10%.
+1,800+ TW names usually narrow to 50–100.
 
-護城河 + 合理價 + 長期持有 = 巴菲特核心邏輯。
+### Step 2: Industry and business model
 
-### 杜邦分析（拆解 ROE）
+- What does the company do? Who buys?
+- Upstream / downstream relationships?
+- Is there a moat?
+- Is the industry growing, mature, or declining?
+
+**Read broker reports or the "business overview" in the annual report.** Skip companies you can't understand.
+
+### Step 3: Three statements (last 5 years)
+
+- Trend in ROE, gross margin, net margin
+- Is OCF healthy?
+- Is the debt structure reasonable?
+- Recent 3–6 months of monthly revenue
+
+### Step 4: Valuation
+
+- Estimate fair-value range with P/E, PEG, yield
+- Compare to historical P/E band (5-year high/low/avg)
+- Decide entry, add-on, and stop-loss prices
+
+### Step 5: Record the thesis
+
+Write down "why I'm buying this". When that reason no longer holds, sell. The most-skipped, most-important step.
+
+---
+
+## 7. Pre-Buy Checklist
+
+Confirm each before buying:
+
+- [ ] I can explain the business in two sentences
+- [ ] ROE > 10% for 5 consecutive years (or industry-appropriate level)
+- [ ] Dividends paid for 5 consecutive years
+- [ ] Debt ratio < 60% (non-financial)
+- [ ] OCF positive for 5 consecutive years
+- [ ] FCF positive or turning positive
+- [ ] Gross margin stable or rising
+- [ ] Last 3 months of monthly revenue YoY > 0 (or has a reasonable explanation)
+- [ ] Valuation (P/E, PEG, yield) not expensive vs history
+- [ ] No clear reporting-quality red flags
+- [ ] Buy thesis and exit conditions written down
+- [ ] Position size matches my money-management rules
+
+---
+
+## 8. Advanced Concepts
+
+### Moats (Pat Dorsey's five types)
+
+1. **Intangible assets:** brand (Wei Chuan vs Uni-President), patents (TSMC process), licenses (telecoms, banks)
+2. **Switching costs:** expensive for customers to leave (enterprise ERP, banking)
+3. **Network effects:** more value with more users (card networks, social platforms)
+4. **Cost advantage:** scale, process, geography (Formosa, China Steel, TSMC)
+5. **Efficient scale:** market only supports one profitable player (utilities, airport runways)
+
+Moat + reasonable price + long holding = Buffett's core logic.
+
+### DuPont decomposition (breaking down ROE)
 
 ```
-ROE = 淨利率 × 資產週轉率 × 權益乘數
+ROE = Net Margin × Asset Turnover × Equity Multiplier
 ```
 
-- 淨利率高 → 定價力強（精品、台積電）
-- 資產週轉率高 → 薄利多銷（零售、通路）
-- 權益乘數高 → 用槓桿（金融業、地產）
+- High net margin → pricing power (luxury, TSMC)
+- High asset turnover → low margin, high volume (retail, distribution)
+- High equity multiplier → leverage (financials, real estate)
 
-同樣的 ROE 從不同來源，風險與商業模式完全不同。
+The same ROE from different sources implies very different risk and business models.
 
 ---
 
-## 相關技能
+## Related Skills
 
-- [`tw-stock-chip`](../tw-stock-chip/SKILL.md) — 籌碼面分析，搭配判斷進場時機
+- [`tw-stock-chip`](../tw-stock-chip/SKILL.md) — chip-flow analysis to time the entry
+- [`tw-stock-technical`](../tw-stock-technical/SKILL.md) — technical analysis as a complement
+- [`tw-stock-quant`](../tw-stock-quant/SKILL.md) — turning factors into a backtest
+- [`tw-stock-data`](../tw-stock-data/SKILL.md) — sourcing the data
+- [`tw-stock-options`](../tw-stock-options/SKILL.md) — options on TAIEX
+- [`tw-etf-investing`](../tw-etf-investing/SKILL.md) — ETFs as core position
+- [`portfolio-construction`](../portfolio-construction/SKILL.md) — combining stocks and ETFs
+- [`tw-stock-tax`](../tw-stock-tax/SKILL.md) — tax considerations

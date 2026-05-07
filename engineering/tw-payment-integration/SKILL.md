@@ -1,96 +1,98 @@
 ---
 name: tw-payment-integration
 description: >
-  台灣金流整合指南，涵蓋綠界 ECPay 與藍新 NewebPay 的串接流程、付款方式
-  （信用卡/ATM/超商）、背景通知（callback）處理、退款、訂單狀態管理，以及
-  安全注意事項。適合需要在台灣市場收款的 Web 應用。
+  Payment integration for the Taiwan market — ECPay and NewebPay flows,
+  payment methods (credit card / ATM / convenience store), background
+  callback handling, refunds, order state management, and security
+  considerations. For web apps that need to collect payments in Taiwan.
 category: engineering
 tags: [payment, taiwan, ecpay, newebpay, integration, fintech]
+keywords: [ECPay, NewebPay, TapPay, LINE Pay, CheckMacValue, MerchantTradeNo]
 related: [api-design-rest, auth-patterns, mongodb-go, line-integration-tw]
 ---
 
-# 台灣金流整合
+# Taiwan Payment Integration
 
-> 金流是信任的基礎設施。付款流程的每一步都要驗證、記錄、可追溯。對金錢的操作，寧可多檢查也不要少。
+> Payments are infrastructure for trust. Every step has to be verified, logged, and traceable. When money is involved, err on the side of more checks, not fewer.
 
-## 適用情境
+## When to Use This Skill
 
-- 在台灣市場的 Web 應用需要收款
-- 串接綠界 ECPay 或藍新 NewebPay
-- 處理付款成功/失敗的回調（callback）
-- 實作退款流程
-- 管理訂單與付款狀態
-
----
-
-## 金流商選擇
-
-| 金流商 | 適合 | 手續費（信用卡） | 特色 |
-|--------|------|------------------|------|
-| **綠界 ECPay** | 中小型、個人 | 2.75% | 申請簡單、文件多、超商取貨付款 |
-| **藍新 NewebPay** | 中大型、企業 | 2.6-2.8% | API 較現代、電子發票整合 |
-| **TapPay** | 行動支付優先 | 議價 | Apple Pay/Google Pay/LINE Pay 整合好 |
-| **LINE Pay** | LINE 生態系 | 3% | 直接串接或透過綠界/藍新 |
-
-**建議：** 起步用綠界（申請門檻低、文件多）；規模成長後考慮藍新或 TapPay。
+- A web app serving the Taiwan market needs to collect payments
+- Integrating with ECPay or NewebPay
+- Handling success/failure payment callbacks
+- Implementing the refund flow
+- Managing order and payment state
 
 ---
 
-## 付款流程（通用）
+## Choosing a Provider
+
+| Provider | Fits | Credit-card fee | Notable |
+|----------|------|-----------------|---------|
+| **ECPay** | SMB, individuals | 2.75% | Easy onboarding, abundant docs, supports COD via convenience stores |
+| **NewebPay** | Mid/large, enterprise | 2.6–2.8% | More modern API, e-invoice integration |
+| **TapPay** | Mobile-first | Negotiated | Best Apple Pay / Google Pay / LINE Pay integration |
+| **LINE Pay** | LINE ecosystem | 3% | Direct integration or via ECPay / NewebPay |
+
+**Recommendation:** start with ECPay (lowest barrier, most documentation); consider NewebPay or TapPay as you scale.
+
+---
+
+## Generic Payment Flow
 
 ```
-1. 使用者在前端選擇付款 → 前端呼叫你的 API
-2. 你的 API 建立訂單（狀態: pending）
-3. 你的 API 組裝付款參數 + 簽章 → 回傳給前端
-4. 前端 redirect / POST 到金流商付款頁
-5. 使用者完成付款
-6. 金流商背景通知你的 API（callback URL）
-7. 你的 API 驗證簽章 → 更新訂單狀態（paid / failed）
-8. 金流商 redirect 使用者回你的前端
+1. User picks payment in the frontend → frontend calls your API
+2. Your API creates the order (state: pending)
+3. Your API builds payment params + signature → returns to frontend
+4. Frontend redirects / POSTs to the provider's payment page
+5. User completes the payment
+6. Provider sends a background callback to your API (callback URL)
+7. Your API verifies the signature → updates order state (paid / failed)
+8. Provider redirects the user back to your frontend
 ```
 
-**重點：** 以 **Step 6 的 callback** 為準，不是 Step 8 的 redirect。使用者可能在 redirect 前關掉視窗。
+**Key:** the source of truth is **Step 6 (callback)**, not Step 8 (redirect). The user may close the browser before the redirect.
 
 ---
 
-## 綠界 ECPay 串接
+## ECPay Integration
 
-### 環境
+### Environments
 
-| | 測試 | 正式 |
-|-|------|------|
+| | Stage | Production |
+|-|-------|------------|
 | API URL | `https://payment-stage.ecpay.com.tw` | `https://payment.ecpay.com.tw` |
-| MerchantID | `3002607` (測試用) | 你申請的 |
-| HashKey | `pwFHCqoQZGmho4w6` (測試用) | 你的 |
-| HashIV | `EkRm7iFT261dpevs` (測試用) | 你的 |
+| MerchantID | `3002607` (stage) | yours |
+| HashKey | `pwFHCqoQZGmho4w6` (stage) | yours |
+| HashIV | `EkRm7iFT261dpevs` (stage) | yours |
 
-### 建立訂單 + 產生付款表單
+### Order parameters
 
 ```go
 type ECPayOrder struct {
     MerchantID        string
-    MerchantTradeNo   string    // 你的訂單編號（唯一, max 20 chars）
+    MerchantTradeNo   string    // your order ID (unique, max 20 chars)
     MerchantTradeDate string    // yyyy/MM/dd HH:mm:ss
     PaymentType       string    // "aio"
-    TotalAmount       int       // 整數，不含小數
+    TotalAmount       int       // integer, no decimals
     TradeDesc         string
     ItemName          string
-    ReturnURL         string    // 背景通知 URL（callback）
-    ClientBackURL     string    // 付完款回前端的 URL
-    ChoosePayment     string    // "ALL" 或 "Credit", "ATM", "CVS"
+    ReturnURL         string    // background callback URL
+    ClientBackURL     string    // post-payment redirect URL
+    ChoosePayment     string    // "ALL" or "Credit", "ATM", "CVS"
     EncryptType       int       // 1 (SHA256)
-    CheckMacValue     string    // 簽章
+    CheckMacValue     string    // signature
 }
 ```
 
-### 簽章計算（CheckMacValue）
+### Computing the signature (CheckMacValue)
 
 ```
-1. 將所有參數按 key 排序（A-Z）
-2. 組成 key=value& 字串
-3. 前面加 HashKey=xxx&，後面加 &HashIV=xxx
-4. URL encode（小寫）
-5. SHA256 → 轉大寫
+1. Sort all params by key (A-Z)
+2. Build "key=value&" string
+3. Prepend "HashKey=xxx&", append "&HashIV=xxx"
+4. URL-encode (lowercase)
+5. SHA256 → uppercase
 ```
 
 ```go
@@ -114,15 +116,15 @@ func CalculateCheckMac(params map[string]string, hashKey, hashIV string) string 
 }
 ```
 
-### 處理 callback（ReturnURL）
+### Handling the callback (ReturnURL)
 
 ```go
 func handleECPayCallback(w http.ResponseWriter, r *http.Request) {
     r.ParseForm()
 
-    // 1. 驗證 CheckMacValue
+    // 1. Verify CheckMacValue
     receivedMac := r.FormValue("CheckMacValue")
-    params := extractParams(r.Form) // 排除 CheckMacValue 本身
+    params := extractParams(r.Form) // exclude CheckMacValue itself
     expectedMac := CalculateCheckMac(params, hashKey, hashIV)
     if receivedMac != expectedMac {
         log.Error("invalid CheckMacValue")
@@ -130,128 +132,128 @@ func handleECPayCallback(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    // 2. 檢查 RtnCode
+    // 2. Check RtnCode
     rtnCode := r.FormValue("RtnCode")
     tradeNo := r.FormValue("MerchantTradeNo")
 
     if rtnCode == "1" {
-        // 付款成功 → 更新訂單狀態
+        // Payment success → update order state
         orderService.MarkPaid(ctx, tradeNo, r.FormValue("TradeNo"))
     } else {
         orderService.MarkFailed(ctx, tradeNo, rtnCode)
     }
 
-    // 3. 回應 "1|OK" 表示收到
+    // 3. Reply "1|OK" to acknowledge
     w.Write([]byte("1|OK"))
 }
 ```
 
-1. **一定要驗證 CheckMacValue。** 否則任何人都能偽造 callback。
-2. **回應 `1|OK`。** 綠界收到後才不會重複通知。沒回應會重送最多 3 次。
-3. **以 callback 為準，不是 redirect。** 使用者可能在 redirect 前關瀏覽器。
+1. **Always verify `CheckMacValue`.** Without it, anyone can forge the callback.
+2. **Reply `1|OK`.** ECPay only stops retrying once it sees this. No reply triggers up to 3 retries.
+3. **Trust the callback, not the redirect.** Users may close the browser before the redirect runs.
 
 ---
 
-## 藍新 NewebPay 串接
+## NewebPay Integration
 
-### 差異
+### Differences vs ECPay
 
-- 使用 AES-256 加密（不是純簽章），參數先 AES 加密再 SHA256 簽章
-- 付款參數包在 `TradeInfo`（AES 加密）和 `TradeSha`（SHA256）
+- Uses AES-256 encryption (not just signing): params are AES-encrypted, then SHA256-signed
+- Payment payload is split into `TradeInfo` (AES) and `TradeSha` (SHA256)
 
-流程類似綠界：組裝參數 → 加密 → 送出 → callback 回來 → 解密驗證。
+The shape of the flow is the same as ECPay: assemble params → encrypt → submit → receive callback → decrypt and verify.
 
 ---
 
-## 訂單狀態管理
+## Order State Management
 
 ```go
 type OrderStatus string
 const (
-    OrderPending   OrderStatus = "pending"    // 建立，未付款
-    OrderPaid      OrderStatus = "paid"       // 付款成功
-    OrderFailed    OrderStatus = "failed"     // 付款失敗
-    OrderRefunded  OrderStatus = "refunded"   // 已退款
-    OrderCancelled OrderStatus = "cancelled"  // 使用者取消
+    OrderPending   OrderStatus = "pending"    // created, unpaid
+    OrderPaid      OrderStatus = "paid"
+    OrderFailed    OrderStatus = "failed"
+    OrderRefunded  OrderStatus = "refunded"
+    OrderCancelled OrderStatus = "cancelled"
 )
 ```
 
-### 狀態機
+### State machine
 
 ```
-pending → paid      (callback: RtnCode=1)
-pending → failed    (callback: RtnCode≠1, 或逾時)
-pending → cancelled (使用者主動取消)
-paid → refunded     (商家發起退款)
+pending → paid       (callback: RtnCode=1)
+pending → failed     (callback: RtnCode != 1, or timeout)
+pending → cancelled  (user actively cancels)
+paid → refunded      (merchant initiates refund)
 ```
 
-4. **訂單編號（MerchantTradeNo）必須唯一。** 用 UUID 或 timestamp + random。
-5. **記錄金流商的交易編號（TradeNo）。** 對帳和退款時需要。
-6. **每次狀態變更都記錄 log。** 金錢相關操作必須可追溯。
+4. **`MerchantTradeNo` must be unique.** Use UUID or timestamp + random.
+5. **Record the provider's `TradeNo` too.** You'll need it for reconciliation and refunds.
+6. **Log every state change.** Anything money-related must be traceable.
 
 ---
 
-## 退款
+## Refunds
 
-### 綠界退款 API
+### ECPay refund API
 
 ```
 POST /CreditDetail/DoAction
-Action: R (退款)
-MerchantTradeNo: 原訂單編號
-TradeNo: 綠界交易編號
-TotalAmount: 退款金額
+Action:           R (refund)
+MerchantTradeNo:  original order ID
+TradeNo:          ECPay transaction ID
+TotalAmount:      refund amount
 ```
 
-7. **退款前驗證訂單狀態。** 只有 `paid` 的訂單可以退款。
-8. **部分退款要記錄已退金額。** 避免超退。
-9. **退款是非同步的。** API 回應只是「已受理」，實際退款需等金流商處理。
+7. **Verify order state before refunding.** Only `paid` orders can be refunded.
+8. **Track refunded amount for partial refunds.** Prevent over-refunding.
+9. **Refund is async.** The API response means "accepted"; the actual movement happens on the provider's side.
 
 ---
 
-## 安全注意事項
+## Security Notes
 
-10. **HashKey / HashIV 絕不放在前端或 git。** 環境變數或 secret manager。
-11. **Callback URL 必須是 HTTPS。** 金流商通常強制要求。
-12. **驗證所有 callback 的簽章。** 防止偽造。
-13. **記錄所有付款相關操作。** 包含：建立訂單、callback 收到、狀態變更、退款。
-14. **金額用整數（分/元）。** 不要用浮點數。台灣金流通常以「元」為單位，無小數。
-15. **測試環境和正式環境用不同的 key。** 切換時要確認所有設定都更新。
-
----
-
-## 常見陷阱
-
-| 陷阱 | 對策 |
-|------|------|
-| **依賴 redirect 判斷付款成功** | 以 callback 為準 |
-| **沒驗證 CheckMacValue** | 一定驗簽章 |
-| **callback 沒回 `1\|OK`** | 金流商會重複通知 3 次 |
-| **訂單編號重複** | 用 UUID 或加 timestamp |
-| **金額用 float** | 用 int（元） |
-| **沒有在測試環境完整跑過** | 綠界提供測試商店，全流程測試 |
-| **退款沒防重複** | 檢查訂單狀態 + 已退金額 |
+10. **Never put HashKey / HashIV in the frontend or in git.** Use env vars or a secret manager.
+11. **The callback URL must be HTTPS.** Providers usually mandate this.
+12. **Verify the signature on every callback.** Forgery prevention.
+13. **Log every payment-related operation.** Order creation, callback receipt, state change, refund.
+14. **Use integer amounts.** No floats. TWD is denominated in whole units; treat it as `int`.
+15. **Stage and production must use different keys.** Audit all settings during the cutover.
 
 ---
 
-## 檢查清單
+## Common Traps
 
-串接完成前確認：
-
-- [ ] 測試環境全流程跑過（建立 → 付款 → callback → 狀態更新）
-- [ ] CheckMacValue 驗證邏輯正確
-- [ ] Callback URL 是 HTTPS
-- [ ] 訂單編號唯一且不超過長度限制
-- [ ] 金額用整數
-- [ ] HashKey/HashIV 不在程式碼或前端
-- [ ] 每次狀態變更有 log
-- [ ] 退款流程測試通過
-- [ ] 正式環境切換 checklist（URL、MerchantID、Key/IV）
+| Trap | Counter |
+|------|---------|
+| **Treating redirect as success** | Trust callback, not redirect |
+| **Skipping `CheckMacValue` verification** | Always verify the signature |
+| **Forgetting `1\|OK` reply** | Provider retries up to 3 times |
+| **Duplicate `MerchantTradeNo`** | UUID or timestamp + random |
+| **Floats for amount** | Use `int` (TWD) |
+| **Skipping end-to-end stage testing** | ECPay's stage merchant lets you exercise the full flow |
+| **No refund de-duplication** | Check order state + already-refunded amount |
 
 ---
 
-## 相關技能
+## Pre-Flight Checklist
 
-- [`api-design-rest`](../api-design-rest/SKILL.md) — API 設計（付款 API 端點）
-- [`auth-patterns`](../auth-patterns/SKILL.md) — 使用者認證（誰在付款）
-- [`mongodb-go`](../mongodb-go/SKILL.md) — 訂單資料儲存
+Before going live:
+
+- [ ] End-to-end stage flow exercised (create → pay → callback → state update)
+- [ ] `CheckMacValue` verification correct
+- [ ] Callback URL is HTTPS
+- [ ] Order ID unique and within length limits
+- [ ] Amounts as integers
+- [ ] `HashKey` / `HashIV` never in code or frontend
+- [ ] Every state change logged
+- [ ] Refund flow tested
+- [ ] Production cutover checklist (URL, MerchantID, Key/IV)
+
+---
+
+## Related Skills
+
+- [`api-design-rest`](../api-design-rest/SKILL.md) — API design (payment endpoints)
+- [`auth-patterns`](../auth-patterns/SKILL.md) — user authentication (who's paying)
+- [`mongodb-go`](../mongodb-go/SKILL.md) — order persistence

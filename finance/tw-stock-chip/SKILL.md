@@ -1,305 +1,309 @@
 ---
 name: tw-stock-chip
 description: >
-  台股籌碼面分析指南，協助散戶觀察三大法人（外資、投信、自營商）動向、信用交易
-  （融資融券）變化、集保戶股權分散與主力進出，判斷股票背後的籌碼結構與買賣壓力。
-  涵蓋資料來源、訊號解讀、常見陷阱與個人觀察流程。觀念為主，不綁特定工具。
+  Chip-flow ("chip") analysis for Taiwan-listed stocks — tracking the three
+  major institutions (foreign, investment trust, dealer), margin trading
+  (financing/short-selling), TDCC shareholder concentration, and "main
+  force" broker activity. Helps retail investors read the supply-side of
+  a stock to time entries and exits.
 category: finance
 tags: [stock, taiwan, tw-stock, chip-analysis, institutional-investors, margin-trading]
+keywords: [TDCC, foreign investor, investment trust, dealer, margin, short interest]
 related: [tw-stock-fundamental, tw-stock-technical, tw-stock-quant, tw-stock-data]
 ---
 
-# 台股籌碼面分析
+# Taiwan Stock Chip-Flow Analysis
 
-> 籌碼面回答的是：「這檔股票被誰拿在手上？這些人想買還是想賣？」基本面判斷「值不值得買」，籌碼面判斷「現在能不能買」。
+> Chip flow answers "who's holding this stock, and are they buying or selling?" Fundamentals decide *whether* to buy; chip flow decides *when*.
 
-## 適用情境
+## When to Use This Skill
 
-- 想買的個股已通過基本面篩選，要決定進場時機
-- 看到一檔大漲或大跌的股票，想知道是誰在動
-- 評估持股是否該續抱或減碼
-- 找出主力悄悄吸貨、尚未發動的標的
-- 避開散戶過熱、籌碼凌亂的股票
-
----
-
-## 一、籌碼面三大觀察維度
-
-| 維度 | 觀察什麼 | 反映誰的動向 |
-|------|----------|-------------|
-| **法人籌碼** | 外資、投信、自營商買賣超 | 大型機構投資人 |
-| **信用籌碼** | 融資、融券餘額 | 散戶（融資）、避險/放空者（融券） |
-| **大戶籌碼** | 集保戶股權分散表、千張大戶比例 | 真正的長期持有者 |
-
-**核心邏輯：** 籌碼往「強手」（法人、大戶）集中 → 多頭訊號；往「弱手」（散戶融資）集中 → 空頭警訊。
+- A stock has cleared fundamentals and you need entry timing
+- Saw a sharp move (up or down) and want to know who drove it
+- Deciding whether to keep or trim an existing position
+- Looking for stocks where a "main force" is quietly accumulating
+- Avoiding stocks where retail crowds are over-extended
 
 ---
 
-## 二、三大法人解讀
+## 1. Three Lenses on Chip Flow
 
-### 各法人特性
+| Dimension | What you watch | Whose behavior |
+|-----------|----------------|----------------|
+| **Institutional flow** | Foreign / investment-trust / dealer net buy-sell | Large institutions |
+| **Margin flow** | Margin (financing) and short balance | Retail (margin), hedgers / shorts (short balance) |
+| **Big-holder flow** | TDCC shareholder concentration, % held by 1000-lot holders | True long-term holders |
 
-| 法人 | 資金性質 | 操作邏輯 | 觀察重點 |
-|------|----------|----------|----------|
-| **外資** | 國際資金，部位大 | 中長線為主，看基本面、匯率、全球資金流向 | 連續買賣超天數、占成交比重 |
-| **投信** | 國內基金，季底要績效 | 中短線，集中火力「認養」少數標的 | 連買強度、是否在「投信認養」名單內 |
-| **自營商** | 券商自有資金 | 短線、避險為主，常與選擇權／權證連動 | 自行買賣 vs 避險，需區分 |
-
-### 自營商的兩個子分類
-
-證交所公布的自營商買賣超會分成兩項，意義完全不同：
-
-- **自營商（自行買賣）** ← 真正反映自營部對市場的看法
-- **自營商（避險）** ← 為了權證、選擇權的 delta hedge，不代表方向
-
-**看自營商一定要看「自行買賣」這項，避險那項忽略。**
-
-### 訊號解讀
-
-| 訊號 | 意義 |
-|------|------|
-| **三大法人同步買超** | 強多頭訊號，但要注意是否短期過熱 |
-| **外資連續買超 5 日以上** | 中長線轉強訊號 |
-| **投信連 3 日買超** | 進入認養期，常持續數週 |
-| **外資賣 + 投信買** | 國內外觀點分歧，方向不明 |
-| **法人買超但融資也大增** | 散戶跟著進場，籌碼變亂，注意短期回檔 |
-| **法人賣超但股價不跌** | 有人默默承接，可能是大戶或主力 |
-| **季底法人作帳行情** | 3、6、9、12 月底，投信常拉抬持股價格 |
-
-### 法人成本估算
-
-法人買超期間的均價可粗略視為法人成本。當股價跌破法人成本：
-- 外資成本：通常是中期支撐
-- 投信成本：通常是短期停損點
-- 跌破後若法人持續賣超 → 可能進入長空
-
-**注意：** 這只是粗略推估，不是精確值，僅作為判斷支撐區的參考。
+**Core logic:** chips concentrating in "strong hands" (institutions, big holders) = bullish; concentrating in "weak hands" (retail margin) = bearish warning.
 
 ---
 
-## 三、信用交易（融資融券）
+## 2. Reading the Three Major Institutions
 
-### 基本概念
+### Their characteristics
 
-| 名詞 | 意義 | 散戶意涵 |
-|------|------|----------|
-| **融資** | 借錢買股票（看多） | 散戶常用，融資餘額是散戶情緒指標 |
-| **融券** | 借股票賣出（看空） | 較少散戶使用，多為避險或專業放空 |
-| **券資比** | 融券餘額 / 融資餘額 | 越高表示空方越積極 |
-| **資券相抵（當沖）** | 同日買賣不交割 | 短線投機度指標 |
+| Institution | Capital nature | Style | What to watch |
+|-------------|----------------|-------|---------------|
+| **Foreign** | International, large | Mid-to-long term, follows fundamentals, FX, global flows | Consecutive buy/sell days, % of turnover |
+| **Investment Trust** | Domestic mutual funds, quarter-end performance pressure | Short-to-mid term, concentrate fire on a few names | Consecutive buys, "investment-trust adopted" lists |
+| **Dealer** | Brokers' proprietary capital | Short term, hedging-driven, often tied to warrants/options | Proprietary vs hedging — must distinguish |
 
-### 訊號解讀
+### Two sub-categories of "Dealer"
 
-#### 多頭訊號
+TWSE reports dealer net buy-sell in two columns with very different meanings:
 
-| 訊號 | 解讀 |
-|------|------|
-| **股價漲、融資減** | 籌碼洗清浮額，健康上漲 |
-| **股價漲、融券增** | 軋空題材，短線爆發力強 |
-| **融資維持率持續上升** | 散戶獲利在增加 |
-| **券資比 > 30%** | 軋空條件成熟 |
+- **Dealer (proprietary)** ← real directional view
+- **Dealer (hedging)** ← delta hedge for warrants/options, no directional signal
 
-#### 空頭警訊
+**Always read the "proprietary" line, ignore the hedging line.**
 
-| 訊號 | 解讀 |
-|------|------|
-| **股價漲、融資也大增** | 散戶追高，籌碼凌亂，回檔機率高 |
-| **股價跌、融資不減反增** | 散戶被套不認輸，籌碼不健康 |
-| **融資維持率 < 130%** | 接近斷頭線，可能引發融資追繳賣壓 |
-| **股價跌、融券大減（軋空結束）** | 短線反彈動能消失 |
+### Signal interpretation
 
-### 「融資斷頭」連鎖效應
+| Signal | Meaning |
+|--------|---------|
+| **All three buying** | Strong bullish, but check for short-term overheating |
+| **Foreign buying for 5+ consecutive days** | Mid-to-long term turn |
+| **Investment trust 3 consecutive buys** | Entering "adoption" period, often lasts weeks |
+| **Foreign sell + trust buy** | Mixed view between domestic and overseas |
+| **Institution buy + margin also rising** | Retail piling in too — chips messy, expect a pullback |
+| **Institution sell but price holds** | Someone is quietly catching it (big holder or main force) |
+| **Quarter-end window dressing** | At end of Mar/Jun/Sep/Dec, trusts often push their holdings |
 
-當大盤或個股急跌：
-1. 融資維持率跌破 130% → 證金公司發出**追繳令**
-2. 散戶兩日內未補繳 → 強制賣出（**斷頭**）
-3. 斷頭賣壓再壓低股價 → 引發更多斷頭
+### Estimating institutional cost
 
-**個股融資餘額過高（占股本 > 20%）的股票，下跌時要小心連環斷頭。**
+The average price during a buying streak is a rough institutional cost basis. When price breaks that cost:
+- Foreign cost: usually a mid-term support
+- Trust cost: usually a short-term stop
+- Break + continued institutional selling → potentially a downtrend
 
----
-
-## 四、集保戶股權分散表
-
-### 在哪看
-
-公開資訊觀測站 → 「集保戶股權分散表」（每週六更新前一週資料）。
-
-### 看什麼
-
-依持股張數分級，最重要的是：
-
-| 級別 | 通常是誰 | 觀察意義 |
-|------|----------|----------|
-| **400 張以下** | 散戶 | 比例上升 = 散戶湧入，籌碼凌亂 |
-| **400-1,000 張** | 中實戶 | 過渡帶，參考用 |
-| **1,000 張以上（千張大戶）** | 法人、大股東、長線資金 | **比例上升 = 籌碼集中，多頭訊號** |
-
-### 籌碼集中度判斷
-
-**核心指標：千張大戶持股比例變化**
-
-- ✅ 千張大戶比例**連續數週上升**，散戶比例下降 → 籌碼往大戶集中，看好後市
-- ❌ 千張大戶比例**連續下降**，散戶比例上升 → 大戶倒貨給散戶，警訊
-
-**例子：**
-- 某股千張大戶從 65% 升到 70% → 大戶持續吸貨
-- 某股千張大戶從 70% 降到 60% → 大戶在出貨
-
-### 注意事項
-
-- 集保資料**滯後一週**，是觀察「結構」而非「即時訊號」
-- ETF 持股算在大戶裡，ETF 成分股調整會造成大戶比例變動，要排除
-- 員工持股、董監持股也算大戶，要從董監股權變動表交叉確認
+**Note:** rough heuristic, not exact — use as a support-zone reference.
 
 ---
 
-## 五、主力進出與分點籌碼
+## 3. Margin Trading
 
-### 主力分點
+### Concepts
 
-券商每個分公司是一個「分點」。透過分點進出表可推測：
+| Term | Meaning | What it implies |
+|------|---------|-----------------|
+| **Margin** | Borrowed money to buy (long) | Often retail; balance is a sentiment gauge |
+| **Short** | Borrowed shares to sell (short) | Less retail; mostly hedging or pro shorts |
+| **Short-to-margin ratio** | Short balance / margin balance | Higher = bears more aggressive |
+| **Same-day round-trip** | Buy-sell intraday with no settlement | Speculation gauge |
 
-- **單一分點大買** → 可能是該分點的大戶或主力進場
-- **多個分點同步動作** → 可能是同一資金透過多個分點操作
-- **常見「特定主力分點」** → 某些分公司歷史上是知名主力的據點
+### Bullish signals
 
-### 訊號解讀
+| Signal | Reading |
+|--------|---------|
+| **Price up, margin down** | Weak hands washed out — healthy advance |
+| **Price up, short balance up** | Short squeeze setup, strong short-term momentum |
+| **Margin maintenance ratio rising** | Retail profits accumulating |
+| **Short-to-margin ratio > 30%** | Squeeze conditions ripe |
 
-| 型態 | 意義 |
-|------|------|
-| **吸貨型態** | 股價橫盤、量縮，主力分點分批小買 |
-| **拉抬型態** | 主力分點集中大買，量增價漲 |
-| **出貨型態** | 股價在高檔震盪，主力分點悄悄賣，散戶接手 |
-| **倒貨型態** | 主力大量賣，跌幅大，散戶融資被套 |
+### Bearish warnings
 
-### 限制與陷阱
+| Signal | Reading |
+|--------|---------|
+| **Price up, margin also surging** | Retail chasing — chips messy, pullback risk |
+| **Price down, margin not falling** | Trapped retail not capitulating — unhealthy |
+| **Margin maintenance ratio < 130%** | Near forced-liquidation, expect cascading sells |
+| **Price down, short balance plunging (squeeze ending)** | Short-term rebound momentum gone |
 
-- 分點資料公開，主力會用**多個分點分散下單**規避追蹤
-- 「主力」定義主觀，不同網站算法不同
-- **不要過度依賴主力進出。** 它是輔助工具，不是聖杯。
+### Margin call cascade
 
----
+When the index or stock drops fast:
+1. Maintenance ratio drops below 130% → margin firm issues a **margin call**
+2. Retail doesn't post within 2 days → **forced liquidation**
+3. Forced sells push price lower → triggers more liquidations
 
-## 六、進場訊號的籌碼條件（綜合判斷）
-
-買進前，籌碼面理想狀態：
-
-### 法人面
-- [ ] 外資近 5 日為買超或持平
-- [ ] 投信近期沒有大量賣超
-- [ ] 自營商（自行買賣）為買超
-
-### 信用面
-- [ ] 融資餘額占股本 < 15%
-- [ ] 近期股價漲時融資沒有大幅增加（沒有散戶追高）
-- [ ] 融資維持率穩定在 150% 以上
-
-### 大戶面
-- [ ] 千張大戶比例近 4 週上升
-- [ ] 散戶比例（400 張以下）近 4 週下降
-- [ ] 董監持股穩定，無大幅減持
-
-至少滿足其中 2 個面向、不違反第 3 個面向，籌碼才算健康。
+**Stocks with margin balance > 20% of share count are vulnerable to cascades on a downturn.**
 
 ---
 
-## 七、常見陷阱與誤區
+## 4. TDCC Shareholder Concentration
 
-### 1. 法人買超 ≠ 一定上漲
+### Where to find it
 
-法人有避險、調節、汰弱留強等多種動機。短期 1-2 日的買超可能只是調整部位。
-**至少看 5 日趨勢**，不要單日決策。
+MOPS → "TDCC Shareholder Concentration" (updated weekly, lagged one week).
 
-### 2. 對沖部位的誤判
+### What to look at
 
-外資借券放空時，會在現股做多避險，造成「外資買超」假象。
-**借券賣出餘額大幅增加**時，要懷疑外資的買超是否為避險動作。
+By holding-size tier:
 
-### 3. 投信季底作帳的陷阱
+| Tier | Usually who | Why it matters |
+|------|-------------|----------------|
+| **≤ 400 lots** | Retail | Rising % = retail piling in, chips messy |
+| **400–1,000 lots** | Mid-large traders | Transitional; informational |
+| **≥ 1,000 lots ("1000-lot holders")** | Institutions, founders, long-term capital | **Rising % = chips concentrating, bullish** |
 
-3、6、9、12 月底前，投信會拉抬重押的持股以美化淨值。
-過了結帳日後常見回吐，**追季底拉抬行情很容易被套在最高點**。
+### Concentration metric
 
-### 4. ETF 調整的雜訊
+**Core indicator: change in % held by 1000-lot holders**
 
-當 ETF（如 0050、0056）調整成份股，被新納入的股票會有大量法人買超，但這是被動買盤，不代表法人看好個股基本面。
-**查核：** 該股近期是否被納入 / 移出 ETF 成份股。
+- ✅ 1000-lot % rising for several weeks, retail % falling → chips concentrating in big hands; bullish
+- ❌ 1000-lot % falling for several weeks, retail % rising → big holders unloading to retail; warning
 
-### 5. 短線分點 vs 長線結構
+**Examples:**
+- 1000-lot % goes from 65% to 70% → big holders accumulating
+- 1000-lot % goes from 70% to 60% → big holders distributing
 
-主力分點進出是短線訊號（幾天到幾週），集保大戶比例是中長線結構（幾週到幾個月）。
-**不要把短線訊號用在長線決策**，反之亦然。
+### Caveats
 
-### 6. 融券回補不一定軋空
-
-軋空需要：高券資比 + 融券大增 + 股價在轉強。
-單純看到「融券大減」可能只是空單獲利了結，不是軋空訊號。
-
----
-
-## 八、個人觀察流程（建議步驟）
-
-### Step 1：先有基本面候選名單
-籌碼面是時機判斷工具，不是選股工具。先用基本面篩出值得買的標的，籌碼面決定進場時機。
-（見 [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md)）
-
-### Step 2：建立籌碼觀察日誌
-針對候選名單，每週記錄一次：
-- 三大法人 5 日 / 20 日買賣超
-- 融資餘額週變化
-- 千張大戶比例週變化
-- 是否有特殊事件（除權息、ETF 調整、財報公布）
-
-### Step 3：等待籌碼訊號
-等到「籌碼集中 + 散戶撤離 + 法人轉買」三條件部分滿足。
-**不滿足就繼續等。** 籌碼觀察沒有「必須馬上行動」的壓力。
-
-### Step 4：分批進場
-即使籌碼訊號明確，也用 2-3 批進場分散買點風險。
-單筆 All in 是籌碼判斷錯誤時的最大殺手。
-
-### Step 5：持續監控
-進場後繼續觀察籌碼結構，當：
-- 千張大戶比例開始下降
-- 法人連續賣超
-- 融資餘額異常飆升
-
-→ 進入警戒，準備依基本面理由決定減碼或退出。
+- TDCC data is **lagged a week** — read it as structural, not a real-time signal
+- ETF holdings count toward big holders; ETF rebalances cause big-holder % swings — adjust for them
+- Employee and director holdings also count; cross-check with the insider-holdings filing
 
 ---
 
-## 九、籌碼觀察檢查清單
+## 5. Main-Force Activity and Branch Flows
 
-每週觀察候選股時逐項確認：
+### Broker branches
 
-- [ ] 外資近 5 日 / 20 日是買超還是賣超
-- [ ] 投信近期是否有認養動作
-- [ ] 自營商「自行買賣」（不看避險）方向
-- [ ] 借券賣出餘額是否異常增加
-- [ ] 融資餘額週變化（占股本比例）
-- [ ] 融券餘額與券資比
-- [ ] 融資維持率（個股 / 大盤）
-- [ ] 千張大戶持股比例近 4 週變化
-- [ ] 散戶（400 張以下）比例近 4 週變化
-- [ ] 主力分點是否有異常進出
-- [ ] 是否有 ETF 成份股調整等技術性因素
+Each brokerage's branch is one "branch". Branch flow can suggest:
 
----
+- **Single branch heavy buy** → big trader or main force at that branch entering
+- **Multiple branches in sync** → likely the same money operating through several branches
+- **Known "main-force branches"** → some branches historically tied to well-known operators
 
-## 十、籌碼面與基本面的整合
+### Patterns
 
-| 基本面 | 籌碼面 | 結論 |
-|--------|--------|------|
-| 好 | 好 | **核心持股**，可加碼 |
-| 好 | 壞 | **觀察等待**，等籌碼洗淨 |
-| 壞 | 好 | **短線題材**，小部位、設停損 |
-| 壞 | 壞 | **直接避開** |
+| Pattern | Meaning |
+|---------|---------|
+| **Accumulation** | Sideways price, lower volume, main-force branch buying in small chunks |
+| **Markup** | Main-force branch buys big, volume + price rise |
+| **Distribution** | Price chops near highs, main-force branch quietly sells, retail picks up |
+| **Dumping** | Main-force sells heavily, sharp drop, retail margin trapped |
 
-只看籌碼面選股 = 短線交易；只看基本面選股 = 可能買在多頭末段。**兩者都看才是完整決策。**
+### Limits and traps
+
+- Branch data is public — main forces fragment orders across multiple branches to avoid detection
+- "Main force" is a subjective definition; sites compute it differently
+- **Don't rely on branch tracking exclusively.** It's a supplementary tool, not a holy grail.
 
 ---
 
-## 相關技能
+## 6. Chip Conditions for Entry (Composite Read)
 
-- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — 基本面分析，籌碼面的前置篩選工具
+Ideal chip-flow setup before buying:
+
+### Institutional
+- [ ] Foreign net buyer (or flat) over the last 5 days
+- [ ] No heavy investment-trust selling recently
+- [ ] Dealer (proprietary) net buyer
+
+### Margin
+- [ ] Margin balance < 15% of share count
+- [ ] On recent up-days, margin didn't surge (no retail chase)
+- [ ] Margin maintenance stable above 150%
+
+### Big-holder
+- [ ] 1000-lot % rising over the last 4 weeks
+- [ ] Retail (≤ 400 lots) % falling over the last 4 weeks
+- [ ] Insider holdings stable, no large reductions
+
+Hit at least 2 of 3 dimensions, no violation in the third — chips are healthy.
+
+---
+
+## 7. Common Traps
+
+### 1. Institutional buy ≠ guaranteed up
+
+Institutions hedge, rebalance, and prune. A 1–2 day buy may be just rebalancing.
+**Look at 5-day trends**, not single days.
+
+### 2. Hedge-driven misreads
+
+When foreign investors short via securities lending, they may go long on cash to hedge — creating a misleading "foreign buying" signal.
+When **securities-lending short balance jumps**, suspect the foreign buy is hedging rather than directional.
+
+### 3. Trust quarter-end window dressing
+
+Before quarter-ends, trusts push the prices of their key holdings to inflate NAV.
+Pullback often follows the close — **chasing late-quarter rallies often means buying the top**.
+
+### 4. ETF-rebalance noise
+
+When an ETF (0050, 0056, etc.) adjusts constituents, newly added stocks see heavy passive institutional buying — that's mechanical, not a fundamentals view.
+**Check whether the stock was recently added to / removed from an ETF.**
+
+### 5. Branch (short-term) vs TDCC (structural)
+
+Branch flow is a short-term signal (days to weeks). TDCC concentration is structural (weeks to months).
+**Don't mix horizons.**
+
+### 6. Short cover ≠ squeeze
+
+A real squeeze needs: high short-to-margin ratio + rising short balance + price strengthening.
+"Short balance just dropped" alone may be profit-taking, not a squeeze.
+
+---
+
+## 8. Personal Workflow
+
+### Step 1: Start with a fundamentals shortlist
+Chip-flow is a timing tool, not a screen. Use fundamentals to find names worth owning, chip-flow to time entry.
+(See [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md).)
+
+### Step 2: Keep a chip-flow journal
+For each shortlisted name, log weekly:
+- 5-day / 20-day institutional net buy-sell
+- Weekly margin balance change
+- 1000-lot holder % change
+- Special events (ex-div, ETF rebalance, earnings)
+
+### Step 3: Wait for the chip signal
+Wait until "chips concentrating + retail leaving + institutions turning buyer" partially aligns.
+**If it doesn't align, keep waiting.** Chip-flow analysis has no "must act now" pressure.
+
+### Step 4: Scale in
+Even with a clear chip signal, scale in over 2–3 tranches to spread the entry.
+Single all-in is the biggest killer when the chip read is wrong.
+
+### Step 5: Monitor continuously
+After entry, keep watching the chip structure. When:
+- 1000-lot % starts falling
+- Institutions sell consistently
+- Margin balance abnormally surges
+
+→ go to caution; decide reduce or exit by your fundamental thesis.
+
+---
+
+## 9. Weekly Observation Checklist
+
+Per shortlisted stock:
+
+- [ ] Foreign 5-day / 20-day net flow
+- [ ] Investment trust adoption activity
+- [ ] Dealer (proprietary, not hedging) direction
+- [ ] Securities-lending short balance — abnormal increase?
+- [ ] Margin balance week-over-week (% of share count)
+- [ ] Short balance and short-to-margin ratio
+- [ ] Margin maintenance (per stock and overall)
+- [ ] 1000-lot holder % over the last 4 weeks
+- [ ] Retail (≤ 400 lots) % over the last 4 weeks
+- [ ] Anomalous main-force branch activity
+- [ ] ETF-rebalance or other technical effect to discount
+
+---
+
+## 10. Combining Fundamentals and Chip Flow
+
+| Fundamentals | Chip flow | Verdict |
+|--------------|-----------|---------|
+| Good | Good | **Core holding** — can add |
+| Good | Bad | **Watch and wait** — let chips wash |
+| Bad | Good | **Short-term theme** — small position with stop |
+| Bad | Bad | **Avoid entirely** |
+
+Chip-flow only = short-term trading. Fundamentals only = risks buying late in the cycle. **Both is a complete decision.**
+
+---
+
+## Related Skills
+
+- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — fundamentals as the screen ahead of chip-flow timing
+- [`tw-stock-technical`](../tw-stock-technical/SKILL.md) — technical patterns alongside chip flow
+- [`tw-stock-quant`](../tw-stock-quant/SKILL.md) — chip factors in a backtest
+- [`tw-stock-data`](../tw-stock-data/SKILL.md) — sourcing chip-flow data

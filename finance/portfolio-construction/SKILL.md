@@ -1,220 +1,222 @@
 ---
 name: portfolio-construction
 description: >
-  投資組合建構指��，涵蓋資產配置、風險分散、再平衡、個人風險承受度評估、
-  核心衛星策略、Kelly criterion 簡化應用，以及組合績效追蹤。
-  適合從單一股票操作進階到系統化組合管理的散戶投資者。
+  Portfolio construction guide — asset allocation, diversification,
+  rebalancing, personal risk-tolerance assessment, the core-satellite
+  strategy, a simplified Kelly criterion, and performance tracking. For
+  retail investors graduating from single-stock picking to systematic
+  portfolio management.
 category: finance
 tags: [portfolio, asset-allocation, risk-management, diversification, investing]
 related: [tw-stock-fundamental, tw-etf-investing, tw-stock-options, tw-stock-tax]
 ---
 
-# 投資組合建構
+# Portfolio Construction
 
-> 投資組合的報酬有 90% 由資產配置決定，不是由選股決定。先決定「放多少在股票、多少在現金」，再決定「買哪些股票」。
+> ~90% of a portfolio's return is determined by asset allocation, not stock picking. Decide "how much in stocks vs cash" first; pick names later.
 
-## 適用情境
+## When to Use This Skill
 
-- 手上有多檔個股和 ETF，但沒有整體配置的概念
-- 想從「一檔一檔買」進階到「系統化管理組合」
-- 想了解自己的風險承受度，設定合理的配置比例
-- 想知道什麼時候該再平衡
-- 想追蹤組合績效並持續改進
-
----
-
-## 一、風險承受度自我評估
-
-在配置之前，先回答這些問題：
-
-| 問題 | 保守 | 穩健 | 積極 |
-|------|------|------|------|
-| 投資期限 | < 3 年 | 3-10 年 | > 10 年 |
-| 年齡 | > 55 | 35-55 | < 35 |
-| 收入穩定性 | 不穩定 | 穩定 | 穩定且有成長 |
-| 最大可接受虧損 | -10% | -20% | -30%+ |
-| 虧損 20% 時的反應 | 全部賣出 | 不安但持有 | 加碼 |
-
-### 配置建議
-
-| 類型 | 股票（含 ETF） | 債券/定存 | 現金 |
-|------|----------------|-----------|------|
-| **保守** | 30-40% | 40-50% | 10-20% |
-| **穩健** | 50-70% | 20-30% | 10-20% |
-| **積極** | 70-90% | 0-20% | 10% |
-
-1. **誠實回答。** 高估自己的風險承受度 = 在大跌時恐慌賣出（最糟的時機）。
-2. **沒有「正確」的配置。** 只有「適合你的」配置。能抱得住的組合才是好組合。
+- You hold several stocks and ETFs but have no overall allocation
+- Want to graduate from "buy one at a time" to "manage the portfolio"
+- Want to set sane allocation ratios for your risk tolerance
+- Want to know when to rebalance
+- Want to track and improve portfolio performance
 
 ---
 
-## 二、資產配置框架
+## 1. Self-Assessing Risk Tolerance
 
-### 核心衛星配置（推薦）
+Before allocating, answer these:
+
+| Question | Conservative | Moderate | Aggressive |
+|----------|--------------|----------|------------|
+| Investment horizon | < 3 yrs | 3–10 yrs | > 10 yrs |
+| Age | > 55 | 35–55 | < 35 |
+| Income stability | Unstable | Stable | Stable + growing |
+| Max acceptable drawdown | -10% | -20% | -30%+ |
+| Reaction at -20% | Sell everything | Uncomfortable but hold | Buy more |
+
+### Suggested allocation
+
+| Type | Equity (incl. ETF) | Bonds / Fixed deposit | Cash |
+|------|--------------------|------------------------|------|
+| **Conservative** | 30–40% | 40–50% | 10–20% |
+| **Moderate** | 50–70% | 20–30% | 10–20% |
+| **Aggressive** | 70–90% | 0–20% | 10% |
+
+1. **Be honest.** Overestimating your risk tolerance = panic-selling at the bottom (the worst time).
+2. **There is no "correct" allocation — only what fits you.** A portfolio you can hold through a downturn is the only good portfolio.
+
+---
+
+## 2. Allocation Framework
+
+### Core-satellite (recommended)
 
 ```
-核心部位（60-80%）
-├── 市值型 ETF (0050 / 006208)
-├── 高股息 ETF（可選）
-└── 穩定型資產（定存、債券 ETF）
+Core (60–80%)
+├── Broad-market ETF (e.g. 0050 / 006208 in TW; VOO / VTI globally)
+├── Dividend ETF (optional)
+└── Stable assets (fixed deposit, bond ETFs)
 
-衛星部位（20-40%）
-├── 個股（5-8 檔，基本面篩選）
-├── 主題型 ETF（半導體、ESG 等）
-└── 選擇權策略（可選，小部位）
+Satellite (20–40%)
+├── Individual stocks (5–8 names, fundamentals-screened)
+├── Thematic ETFs (semiconductors, ESG, etc.)
+└── Options strategies (optional, small allocation)
 ```
 
-3. **核心部位定期定額，不擇時。** 衛星部位可以主動操作。
-4. **核心部位承擔「不虧」的責任；衛星部位爭取「超額報酬」。**
+3. **Core: dollar-cost average, don't time.** Satellite can be actively managed.
+4. **Core's job is "don't lose"; satellite's job is "outperformance".**
 
 ---
 
-## 三、分散原則
+## 3. Diversification Principles
 
-### 分散的維度
+### Dimensions of diversification
 
-| 維度 | 怎麼做 |
-|------|--------|
-| **個股數量** | 持股 5-15 檔（太少集中風險，太多管不了）|
-| **產業** | 不要全壓同一產業（科技 50% 上限）|
-| **市值** | 大型股為主，搭配少量中小型 |
-| **風格** | 成長股 + 價值股 + 高息股混搭 |
-| **資產類別** | 股票 + 現金 + 債券（視風險承受度）|
-| **地區（可選）** | 台股 + 美股 ETF 分散地區風險 |
+| Dimension | How |
+|-----------|-----|
+| **Number of names** | 5–15 holdings (too few = concentration risk; too many = unmanageable) |
+| **Industry** | No single industry above ~40% (cap tech at 50%) |
+| **Market cap** | Mostly large cap, with some mid/small |
+| **Style** | Mix growth + value + dividend |
+| **Asset class** | Equity + cash + bonds (per risk tolerance) |
+| **Geography (optional)** | TW + US ETFs to spread regional risk |
 
-5. **單一個股 ≤ 15% 總資金。** 再有信心也不重押。
-6. **單一產業 ≤ 30-40% 總資金。**
-7. **相關性低的資產組合在一起。** 台積電 + 聯發科不是分散（高度相關）。台積電 + 中華電信才是。
+5. **No single name above 15% of total capital.** No matter how confident.
+6. **No single industry above 30–40%.**
+7. **Combine low-correlation assets.** TSMC + MediaTek isn't diversification (highly correlated). TSMC + Chunghwa Telecom is.
 
 ---
 
-## 四、部位大小（Position Sizing）
+## 4. Position Sizing
 
-### 等權重法（最簡單）
+### Equal weight (simplest)
 
-每檔個股分配相同金額。10 檔各 10%。
+Same dollar amount per name. Ten names → 10% each.
 
-### 信心加權法
+### Confidence-weighted
 
-根據信心程度分配不同比重：
+Weight by your conviction:
 
-| 信心度 | 比重 |
-|--------|------|
-| 高（基本面 + 籌碼 + 技術三面共振） | 10-15% |
-| 中（兩面支持） | 5-10% |
-| 低（單面支持或觀察中） | 2-5% |
+| Conviction | Weight |
+|------------|--------|
+| High (fundamentals + chip-flow + technical aligned) | 10–15% |
+| Medium (two of three aligned) | 5–10% |
+| Low (single signal, or watchlist) | 2–5% |
 
-### Kelly Criterion 簡化版
+### Simplified Kelly Criterion
 
 ```
-最佳部位 % = 勝率 − (1 − 勝率) / 盈虧比
+Optimal position % = win_rate − (1 − win_rate) / win_loss_ratio
 ```
 
-例如：勝率 60%，平均盈虧比 2:1
-→ 0.6 − 0.4/2 = 0.4 = 40%
+Example: 60% win rate, average win/loss ratio 2:1
+→ 0.6 − 0.4 / 2 = 0.4 = 40%
 
-**實務上用 Kelly 的 1/4 到 1/2。** 全 Kelly 波動太大。
+**In practice, use 1/4 to 1/2 Kelly.** Full Kelly has too much volatility.
 
-8. **新部位先用目標的 1/3 建倉。** 確認方向對了再加碼到滿倉。
+8. **Build new positions in tranches starting at 1/3 of the target.** Add the rest after the thesis confirms.
 
 ---
 
-## 五、再平衡
+## 5. Rebalancing
 
-### 什麼時候做
+### When
 
-| 觸發條件 | 行動 |
-|----------|------|
-| **日曆觸發：每季或每半年** | 檢視配置比例是否偏離目標 |
-| **偏離觸發：任一資產偏離 > 5%** | 賣出超配部分，買入低配部分 |
-| **事件觸發：大漲大跌後** | 機械式調整回目標比例 |
+| Trigger | Action |
+|---------|--------|
+| **Calendar:** quarterly or semi-annually | Check whether allocations have drifted from target |
+| **Drift:** any asset class > 5% off target | Sell the over-allocated, buy the under-allocated |
+| **Event:** after a sharp move | Mechanically adjust back to target |
 
-### 怎麼做
+### How
 
 ```
-目標：0050 60%, 個股 30%, 現金 10%
-實際：0050 72%, 個股 22%, 現金 6%
+Target: 0050 60%, individual stocks 30%, cash 10%
+Actual: 0050 72%, individual stocks 22%, cash  6%
 
-→ 賣出部分 0050（72%→60%），加碼個股（22%→30%），補現金（6%→10%）
+→ Sell some 0050 (72%→60%), add to stocks (22%→30%), refill cash (6%→10%)
 ```
 
-9. **再平衡是「高賣低買」的機械化。** 自然把漲多的賣一些、跌多的補一些。
-10. **不要過度再平衡。** 每次調整有交易成本。一年 2-4 次就夠。
+9. **Rebalancing mechanizes "sell high, buy low".** It naturally trims winners and tops up laggards.
+10. **Don't over-rebalance.** Each adjustment has cost. 2–4 times per year is enough.
 
 ---
 
-## 六、績效追蹤
+## 6. Performance Tracking
 
-### 核心指標
+### Core metrics
 
-| 指標 | 怎麼算 | 好的基準 |
-|------|--------|----------|
-| **年化報酬率** | 含息報酬 / 年數 | > 大盤（0050）|
-| **最大回撤 (MDD)** | 高點到最低點的跌幅 | < 25%（穩健型）|
-| **夏普比率** | (報酬 − 無風險利率) / 波動率 | > 0.5 |
+| Metric | How to compute | Good benchmark |
+|--------|----------------|----------------|
+| **Annualized return** | Total return (incl. dividends) / years | > broad-market index (0050) |
+| **Max drawdown (MDD)** | Peak-to-trough loss | < 25% (moderate type) |
+| **Sharpe ratio** | (return − risk-free rate) / volatility | > 0.5 |
 
-### 追蹤方式
+### How to track
 
-11. **每月記錄總資產價值。** 一行 Excel 或 Google Sheets 就夠。
-12. **與基準比較。** 自選股組合 vs 0050 定期定額。如果長期跑輸 0050，考慮增加 ETF 比重。
-13. **每年做一次完整檢視。** 哪些部位貢獻、哪些拖累。
-
----
-
-## 七、組合建構步驟
-
-### Step 1：決定風險承受度
-→ 確定股票 / 現金 / 債券的大比例
-
-### Step 2：決定核心 / 衛星比例
-→ 通常 70/30 或 60/40
-
-### Step 3：選擇核心部位
-→ 1-2 檔市值型 ETF，定期定額
-
-### Step 4：選擇衛星部位
-→ 5-8 檔個股（基本面篩選 + 籌碼面擇時）
-
-### Step 5：決定各部位大小
-→ 等權重或信心加權
-
-### Step 6：設定再平衡規則
-→ 每季 + 偏離 5% 觸發
-
-### Step 7：執行並記錄
-→ 每月記錄，每年檢視
+11. **Log total portfolio value monthly.** One line in Excel or Google Sheets.
+12. **Compare against a benchmark.** Your stock-picked portfolio vs. dollar-cost averaging into 0050. If you trail 0050 long-term, raise the ETF allocation.
+13. **Full review once a year.** Which positions contributed, which dragged.
 
 ---
 
-## 常見陷阱
+## 7. Construction Steps
 
-| 陷阱 | 對策 |
-|------|------|
-| **沒有配置，只有一堆股票** | 先決定大比例（股/債/現金），再選個股 |
-| **全壓單一產業（如半導體）** | 產業上限 30-40% |
-| **從不再平衡** | 設定日曆 + 偏離觸發 |
-| **頻繁調整（每週）** | 每季就夠；過度調整 = 高成本 |
-| **不追蹤績效** | 每月一行記錄；每年對比基準 |
-| **高估自己的風險承受度** | 用真實大跌情境檢驗（2022 年你跌 20% 的感受）|
+### Step 1: Decide risk tolerance
+→ Set the high-level equity / cash / bond split.
+
+### Step 2: Decide core / satellite split
+→ Usually 70/30 or 60/40.
+
+### Step 3: Pick core
+→ 1–2 broad-market ETFs, dollar-cost average.
+
+### Step 4: Pick satellites
+→ 5–8 names (fundamentals filter + chip-flow timing).
+
+### Step 5: Decide position sizes
+→ Equal weight or confidence-weighted.
+
+### Step 6: Set rebalancing rule
+→ Quarterly + drift trigger > 5%.
+
+### Step 7: Execute and log
+→ Monthly log; annual review.
 
 ---
 
-## 檢查清單
+## Common Traps
 
-- [ ] 風險承受度已自我評估
-- [ ] 股票/現金/債券大比例已決定
-- [ ] 核心部位占 60-80%（ETF 定期定額）
-- [ ] 衛星部位占 20-40%（個股/主題 ETF）
-- [ ] 單一個股 ≤ 15%，單一產業 ≤ 40%
-- [ ] 再平衡規則已設定（頻率 + 偏離閾值）
-- [ ] 績效追蹤表已建立
-- [ ] 每年至少做一次完整組合檢視
+| Trap | Counter |
+|------|---------|
+| **No allocation, just a pile of stocks** | Decide the high-level split first, names second |
+| **Concentrated in one sector** | Cap industry at 30–40% |
+| **Never rebalance** | Use calendar + drift triggers |
+| **Tweak every week** | Quarterly is enough; over-tweaking = high cost |
+| **No performance tracking** | One line per month; compare to benchmark yearly |
+| **Overestimating risk tolerance** | Stress-test with a real downturn (how did 2022's 20% drop feel?) |
 
 ---
 
-## 相關技能
+## Pre-Flight Checklist
 
-- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — 選擇衛星部位個股
-- [`tw-etf-investing`](../tw-etf-investing/SKILL.md) — 核心部位的 ETF 選擇
-- [`tw-stock-options`](../tw-stock-options/SKILL.md) — 選擇權作為衛星策略
-- [`rules/trading-discipline`](../../rules/trading-discipline.md) — 交易紀律
+- [ ] Risk tolerance self-assessed
+- [ ] High-level equity / cash / bond split decided
+- [ ] Core occupies 60–80% (ETF, dollar-cost average)
+- [ ] Satellite occupies 20–40% (stocks / thematic ETFs)
+- [ ] Single name ≤ 15%, single industry ≤ 40%
+- [ ] Rebalancing rule set (frequency + drift threshold)
+- [ ] Performance tracking sheet in place
+- [ ] At least one full annual portfolio review
+
+---
+
+## Related Skills
+
+- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — pick satellite names
+- [`tw-etf-investing`](../tw-etf-investing/SKILL.md) — choose core ETFs
+- [`tw-stock-options`](../tw-stock-options/SKILL.md) — options as satellite strategy
+- [`rules/trading-discipline`](../../rules/trading-discipline.md) — trading discipline rules

@@ -23,7 +23,7 @@ Current skills — 59 total across 7 categories:
 
 **data (3):** data-modeling, database-migrations, sql-fundamentals
 
-**content (3):** medium-writing-zh, newsletter-writing-zh, technical-writing-en
+**content (3):** medium-writing, newsletter-writing, technical-writing
 
 **finance (9):** portfolio-construction, tw-etf-investing, tw-stock-chip, tw-stock-data, tw-stock-fundamental, tw-stock-options, tw-stock-quant, tw-stock-tax, tw-stock-technical
 

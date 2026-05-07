@@ -39,7 +39,7 @@ If your skill doesn't fit, propose a new category in your PR and add it to `READ
 ## 3. Create the Skill Folder
 
 1. Create a kebab-case directory under the appropriate **category folder**: `<category>/your-skill-name/`.
-   - If the skill is language- or locale-specific, suffix with the code: `medium-writing-zh`, `clean-ddd-go`.
+   - If the skill is region- or stack-specific, suffix appropriately: `tw-stock-data` (Taiwan market), `clean-ddd-go` (Go-specific).
 2. Copy `SKILL_TEMPLATE.md` into it as `SKILL.md`.
 3. Fill in the frontmatter:
 
@@ -105,8 +105,7 @@ search surface — empty is fine.
 
 ## 7. Style Guide
 
-- **Language.** Use the language that best serves the audience. Chinese skills should be written in 繁體中文; SDK/architecture skills are typically English.
-- **Mixed text.** In Chinese prose, put a half-width space between CJK and Latin/numbers (`使用 Medium 撰寫`).
+- **Language.** All skill content is written in English. If a skill targets a non-English market (Taiwan, Japan, etc.), keep proper nouns and product names in their canonical form (`ECPay`, `LINE Notify`, `0050 ETF`).
 - **Code blocks.** Annotate with a language tag so syntax highlighting works.
 - **Links.** Use relative paths for intra-repo links (`../other-skill/SKILL.md`).
 - **No emojis** unless they carry meaning (e.g. severity markers in `ddd-check`).

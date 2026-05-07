@@ -9,7 +9,7 @@ Learning, knowledge management, and time management.
 <!-- BEGIN AUTO-GENERATED: skills-table -->
 | Skill | Tags | Description |
 |-------|------|-------------|
-| [`learning-methodology`](./learning-methodology/SKILL.md) | `learning`, `methodology`, `feynman`, `spaced-repetition`, `productivity` | 系統化學習方法論 — 費曼技巧、間隔重複、刻意練習、學習金字塔、 建構主義學習法，以及技術領域的高效學習框架。適合想提升學習效率的 開發者或終身學習者。 |
-| [`second-brain`](./second-brain/SKILL.md) | `pkm`, `second-brain`, `zettelkasten`, `obsidian`, `note-taking`, `productivity` | 個人知識管理系統（第二大腦）建構指南 — Zettelkasten 方法、PARA 組織法、 筆記工具選擇（Obsidian/Notion/Logseq）、知識連結、定期回顧，以及從輸入 到輸出的知識工作流。適合想系統化管理學習筆記和想法的人。 |
-| [`time-management`](./time-management/SKILL.md) | `time-management`, `productivity`, `deep-work`, `focus`, `planning` | 開發者的時間管理實踐 — 時間盒、深度工作、任務優先級（Eisenhower）、 能量管理、中斷處理、每日/每週回顧，以及避免過度排程。 適合感覺「時間不夠用」或「一天很忙但沒產出」的知識工作者。 |
+| [`learning-methodology`](./learning-methodology/SKILL.md) | `learning`, `methodology`, `feynman`, `spaced-repetition`, `productivity` | Systematic learning methodology — the Feynman Technique, spaced repetition, deliberate practice, the Learning Pyramid, and a high-efficiency framework for technical learning. For developers and lifelong learners who want to raise the return on study time. |
+| [`second-brain`](./second-brain/SKILL.md) | `pkm`, `second-brain`, `zettelkasten`, `obsidian`, `note-taking`, `productivity` | Personal knowledge management (PKM) system — Zettelkasten, the PARA method, tool selection (Obsidian / Notion / Logseq), linking strategy, regular review, and the workflow from input to output. For people who want a system that manages their notes, ideas, and reading material end-to-end. |
+| [`time-management`](./time-management/SKILL.md) | `time-management`, `productivity`, `deep-work`, `focus`, `planning` | Time management for developers — timeboxing, deep work, the Eisenhower matrix, energy management, handling interruptions, daily and weekly review, and avoiding over-scheduling. For knowledge workers who feel "always busy but with little to show". |
 <!-- END AUTO-GENERATED: skills-table -->
