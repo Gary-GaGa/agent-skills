@@ -1,158 +1,160 @@
 ---
 name: tw-stock-options
 description: >
-  台股選擇權基礎指南，涵蓋買權/賣權觀念、希臘字母（Delta/Gamma/Theta/Vega）、
-  常見策略（covered call、protective put、價差、跨式）、台指選擇權合約規格，
-  以及個人投資者的風險管理。觀念為主，不綁工具。
+  Options basics for the Taiwan market — calls and puts, the Greeks
+  (Delta / Gamma / Theta / Vega), common strategies (covered call,
+  protective put, spreads, straddles), TAIEX options (TXO) contract specs,
+  and risk management for retail investors.
 category: finance
 tags: [stock, taiwan, options, derivatives, strategy]
+keywords: [TXO, TAIEX, Delta, Gamma, Theta, Vega, covered call, protective put, IV crush]
 related: [tw-stock-fundamental, tw-stock-technical, portfolio-construction]
 ---
 
-# 台股選擇權基礎
+# Taiwan Options Basics
 
-> 選擇權是權利，不是義務。買方付權利金買一個「選擇的權利」；賣方收權利金承擔「被執行的義務」。
+> An option is a right, not an obligation. The buyer pays a premium for "the right to choose"; the seller takes a premium and accepts "the obligation to be exercised against".
 
-## 適用情境
+## When to Use This Skill
 
-- 想在持股上做避險（protective put）
-- 想在持股上賺額外收入（covered call）
-- 想了解選擇權基本觀念與報價
-- 想用小資金做方向性操作
-- 想知道選擇權為什麼會「歸零」
-
----
-
-## 基本概念
-
-### 買權（Call）與賣權（Put）
-
-| | 買方（持有者） | 賣方（開立者） |
-|-|----------------|----------------|
-| **買權 (Call)** | 有權利在到期前以履約價「買」標的 | 有義務在被執行時以履約價「賣」標的 |
-| **賣權 (Put)** | 有權利在到期前以履約價「賣」標的 | 有義務在被執行時以履約價「買」標的 |
-
-### 四種基本部位
-
-| 部位 | 看法 | 最大獲利 | 最大虧損 |
-|------|------|----------|----------|
-| **買 Call** | 看漲 | 無限 | 權利金 |
-| **賣 Call** | 看不漲 | 權利金 | 無限 |
-| **買 Put** | 看跌 | 履約價 − 權利金 | 權利金 |
-| **賣 Put** | 看不跌 | 權利金 | 履約價 − 權利金 |
-
-1. **買方風險有限（最多虧權利金）、獲利潛力大。** 但勝率低（時間不站在你這邊）。
-2. **賣方獲利有限（賺權利金）、風險可能很大。** 勝率高但單次虧損可能巨大。
-3. **新手從買方開始。** 賣方需要更多資金和經驗管理風險。
+- Want to hedge a stock holding (protective put)
+- Want extra income from a stock holding (covered call)
+- Want to learn options basics and how to read quotes
+- Want directional exposure with small capital
+- Want to understand why options "go to zero"
 
 ---
 
-## 台指選擇權（TXO）合約規格
+## Basics
 
-| 項目 | 規格 |
+### Calls and Puts
+
+| | Buyer (holder) | Seller (writer) |
+|-|----------------|------------------|
+| **Call** | Right to buy the underlying at the strike before expiry | Obligation to sell at the strike if exercised |
+| **Put** | Right to sell the underlying at the strike before expiry | Obligation to buy at the strike if exercised |
+
+### Four basic positions
+
+| Position | View | Max profit | Max loss |
+|----------|------|------------|----------|
+| **Long Call** | Bullish | Unlimited | Premium |
+| **Short Call** | Not bullish | Premium | Unlimited |
+| **Long Put** | Bearish | Strike − premium | Premium |
+| **Short Put** | Not bearish | Premium | Strike − premium |
+
+1. **Buyers have limited risk (premium) and big upside.** But low win rate (time isn't on your side).
+2. **Sellers have limited profit (premium) but potentially huge risk.** Higher win rate but a single loss can be enormous.
+3. **Beginners: start as buyers.** Selling needs more capital and risk-management skill.
+
+---
+
+## TAIEX Options (TXO) Contract Spec
+
+| Item | Spec |
 |------|------|
-| 標的 | 台灣加權股價指數 |
-| 合約乘數 | 每點 50 元 |
-| 到期日 | 每月第三個週三 |
-| 履約方式 | 歐式（只能在到期日結算） |
-| 結算方式 | 現金結算 |
-| 交易時間 | 8:45-13:45 |
+| Underlying | Taiwan Capitalization Weighted Stock Index (TAIEX) |
+| Multiplier | NT$50 per index point |
+| Expiry | Third Wednesday of each month |
+| Style | European (settled at expiry only) |
+| Settlement | Cash settled |
+| Trading hours | 08:45–13:45 |
 
-### 報價範例
+### Quote example
 
 ```
-TXO 20000 Call 2月    報價 150 點
-→ 權利金 = 150 × 50 = 7,500 元
-→ 買一口 Call 花 7,500 元
-→ 損益平衡點 = 20000 + 150 = 20150
-→ 台指到期超過 20150 → 獲利
-→ 台指到期低於 20000 → 權利金歸零（虧 7,500 元）
+TXO 20000 Call (Feb)   quote 150 pts
+→ Premium = 150 × 50 = NT$7,500
+→ One Call costs NT$7,500
+→ Break-even at expiry = 20000 + 150 = 20150
+→ TAIEX > 20150 at expiry → profit
+→ TAIEX < 20000 at expiry → premium goes to zero (loss = NT$7,500)
 ```
 
 ---
 
-## 希臘字母（Greeks）
+## The Greeks
 
-| 希臘字母 | 衡量什麼 | 買方關注 |
-|----------|----------|----------|
-| **Delta (Δ)** | 標的漲 1 點，權利金變多少 | Call Delta 0-1, Put Delta 0 to -1 |
-| **Gamma (Γ)** | Delta 的變化速度 | 越接近價平 Gamma 越大 |
-| **Theta (Θ)** | 每天流失多少時間價值 | **買方的敵人**，每天虧一點 |
-| **Vega (ν)** | 波動率變 1%，權利金變多少 | 波動率上升 → 權利金上升 |
+| Greek | What it measures | Why buyers care |
+|-------|------------------|-----------------|
+| **Delta (Δ)** | Premium change per 1-point move in underlying | Call delta 0–1, Put delta 0 to −1 |
+| **Gamma (Γ)** | Rate of change of delta | Largest near at-the-money |
+| **Theta (Θ)** | Time-value decay per day | **The buyer's enemy** — losing a bit every day |
+| **Vega (ν)** | Premium change per 1% move in implied vol | Higher IV → higher premium |
 
-### 實務重點
+### Practical points
 
-4. **Theta 是買方最大的成本。** 越接近到期，時間價值流失越快。不要買太近到期的選擇權。
-5. **Delta 約等於「到期時 in-the-money 的機率」。** Delta 0.3 的 Call ≈ 30% 機率獲利。
-6. **Vega 在大事件前（財報、選舉）最重要。** 波動率飆高 → 權利金飆高。
-
----
-
-## 常見策略
-
-### 初學者策略
-
-| 策略 | 做法 | 情境 |
-|------|------|------|
-| **Covered Call** | 持有股票 + 賣出 Call | 持股橫盤時賺額外收入 |
-| **Protective Put** | 持有股票 + 買入 Put | 擔心下跌但不想賣股 |
-| **Long Call** | 買入 Call | 看漲，風險有限 |
-| **Long Put** | 買入 Put | 看跌，風險有限 |
-
-### 進階策略
-
-| 策略 | 做法 | 情境 |
-|------|------|------|
-| **Bull Call Spread** | 買低履約 Call + 賣高履約 Call | 溫和看漲，降低成本 |
-| **Bear Put Spread** | 買高履約 Put + 賣低履約 Put | 溫和看跌，降低成本 |
-| **跨式 (Straddle)** | 同時買 Call + Put（同履約價） | 預期大波動，方向不確定 |
-| **勒式 (Strangle)** | 同時買 Call + Put（不同履約價） | 類似跨式，成本更低，需更大波動 |
-| **Iron Condor** | 賣 Call Spread + 賣 Put Spread | 預期橫盤，賺時間價值 |
-
-7. **價差策略（Spread）是最適合個人投資者的進階策略。** 風險和獲利都有限，可控。
+4. **Theta is the buyer's biggest cost.** The closer to expiry, the faster the decay. Don't buy too short-dated.
+5. **Delta ≈ probability of finishing in-the-money.** Delta 0.3 Call ≈ 30% chance of winning.
+6. **Vega matters most before big events (earnings, elections).** IV spikes pump premiums.
 
 ---
 
-## 風險管理
+## Common Strategies
 
-8. **選擇權部位不超過總資金的 5-10%。** 單一月份的權利金支出要設上限。
-9. **不賣裸 Call（naked call）。** 風險理論上無限。至少做成 spread。
-10. **買方設時間停損。** 到期前 1 週如果方向沒有明確，考慮認賠出場，避免最後一週 Theta 加速侵蝕。
-11. **了解最大虧損再下單。** 每個策略在下單前都要計算「最壞情況虧多少」。
-12. **不要在大事件前一天重倉買選擇權。** 波動率（Vega）已經定價進去了，事件結束後波動率下降 = 權利金快速縮水（IV crush）。
+### Beginner
 
----
+| Strategy | Construction | Use when |
+|----------|--------------|----------|
+| **Covered Call** | Long stock + short call | Stock is sideways; earn extra income |
+| **Protective Put** | Long stock + long put | Worried about a drop, don't want to sell |
+| **Long Call** | Buy call | Bullish, limited risk |
+| **Long Put** | Buy put | Bearish, limited risk |
 
-## 常見陷阱
+### Intermediate
 
-| 陷阱 | 說明 | 對策 |
-|------|------|------|
-| **買深度價外選擇權** | 便宜但到期歸零機率 > 90% | 買至少 Delta > 0.2 的 |
-| **忽略 Theta** | 每天虧時間價值 | 買方不要買太近到期 |
-| **IV Crush** | 財報/事件後波動率下降，權利金暴縮 | 事件前賣方有利 |
-| **賣方無限風險** | 裸賣 Call 遇到暴漲 | 用 Spread 限制虧損 |
-| **過度槓桿** | 買太多口 | 單一策略 < 5% 總資金 |
-| **不了解結算** | 到期日沒處理部位 | 設提醒，到期前決定是否平倉 |
+| Strategy | Construction | Use when |
+|----------|--------------|----------|
+| **Bull Call Spread** | Long lower-strike call + short higher-strike call | Mildly bullish, lower cost |
+| **Bear Put Spread** | Long higher-strike put + short lower-strike put | Mildly bearish, lower cost |
+| **Straddle** | Long call + long put (same strike) | Big move expected, direction unclear |
+| **Strangle** | Long call + long put (different strikes) | Like straddle, cheaper, needs bigger move |
+| **Iron Condor** | Short call spread + short put spread | Sideways expected; sell time |
 
----
-
-## 檢查清單
-
-買進選擇權前：
-
-- [ ] 我知道這個策略的最大虧損是多少
-- [ ] 權利金支出 < 總資金的 5%
-- [ ] Delta > 0.2（不是深度價外）
-- [ ] 距離到期至少 2-4 週（避免 Theta 加速）
-- [ ] 沒有即將發生的大事件可能造成 IV Crush
-- [ ] 我有明確的出場計畫（目標價、停損、時間停損）
-- [ ] 我了解台指選擇權是歐式、現金結算
+7. **Spreads are the best intermediate strategy for retail.** Both risk and reward are bounded and controllable.
 
 ---
 
-## 相關技能
+## Risk Management
 
-- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — 基本面決定方向
-- [`tw-stock-technical`](../tw-stock-technical/SKILL.md) — 技術面決定時機和履約價
-- [`portfolio-construction`](../portfolio-construction/SKILL.md) — 選擇權在整體配置中的角色
-- [`rules/trading-discipline`](../../rules/trading-discipline.md) — 資金管理規則
+8. **Total options exposure ≤ 5–10% of capital.** Cap monthly premium spend.
+9. **Don't sell naked calls.** The risk is theoretically unlimited. Use a spread.
+10. **Time stops for buyers.** With a week to go and no clear direction, consider cutting — the last week's theta accelerates.
+11. **Know the max loss before you trade.** Every strategy: compute the worst case before placing the order.
+12. **Don't go heavy the day before a big event.** IV is already priced in; after the event IV collapses (IV crush) and premiums shrink fast.
+
+---
+
+## Common Traps
+
+| Trap | Note | Counter |
+|------|------|---------|
+| **Buying deep OTM** | Cheap, but > 90% chance of going to zero | Buy ≥ Delta 0.2 |
+| **Ignoring Theta** | Lose time value daily | Don't buy too close to expiry |
+| **IV crush** | Post-event IV drop, premium collapses | Pre-event favors sellers |
+| **Naked call risk** | Selling naked into a rally | Use a spread to bound the loss |
+| **Over-leverage** | Buying too many contracts | Single strategy < 5% of capital |
+| **Settlement surprise** | Forgetting expiry day | Set reminders; decide before close |
+
+---
+
+## Pre-Trade Checklist
+
+Before opening an options trade:
+
+- [ ] I know the max loss
+- [ ] Premium spend < 5% of capital
+- [ ] Delta > 0.2 (not deep OTM)
+- [ ] At least 2–4 weeks to expiry (avoid theta acceleration)
+- [ ] No imminent event likely to cause IV crush
+- [ ] Clear exit plan (target, stop, time stop)
+- [ ] I understand TXO is European-style and cash-settled
+
+---
+
+## Related Skills
+
+- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — fundamentals for direction
+- [`tw-stock-technical`](../tw-stock-technical/SKILL.md) — technicals for timing and strike
+- [`portfolio-construction`](../portfolio-construction/SKILL.md) — options' role in the portfolio
+- [`rules/trading-discipline`](../../rules/trading-discipline.md) — money management

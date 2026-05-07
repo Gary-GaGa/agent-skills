@@ -1,116 +1,118 @@
-# 交易紀律規則
+# Trading Discipline
 
-散戶投資人的進出場紀律、停損停利、資金管理與心理控制規則。
-適用於台股個股操作，搭配基本面、籌碼面、技術面分析使用。
-
----
-
-## 資金管理
-
-1. **單一個股不超過總資金的 15%。** 再有信心的標的也不 All in。集中持股上限：前三大持股合計 < 40%。
-
-2. **一次進場用 1/3 資金，分 2-3 批買進。** 第一筆是試單，確認方向對了再加碼。
-
-3. **隨時保留 10-20% 現金。** 沒有現金就沒有機動性。大跌時的加碼機會是現金換來的。
-
-4. **不借錢買股票。** 融資放大的是風險，不是報酬。當虧損觸及停損時，融資會讓你虧更多、壓力更大、更不敢執行停損。
-
-5. **每月可投入金額 = 扣除生活費後的剩餘。** 投資不能影響日常生活。
+Entry/exit discipline, stop-loss / take-profit, position sizing, and
+psychological control rules for retail investors. Written with single-stock
+operations on the Taiwan market in mind, and intended to pair with
+fundamental, chip-flow, and technical analysis.
 
 ---
 
-## 進場規則
+## Position Sizing
 
-6. **不追漲。** 如果目標價已到或已超過，等回檔，不要 FOMO（Fear of Missing Out）。沒買到不會怎樣，買在山頂會。
+1. **No single stock above 15% of total capital.** No matter how confident, never all in. Concentration cap: top three holdings combined < 40%.
 
-7. **買進前寫下三件事：** 買進理由、目標價、停損價。寫不出來就不要買。
+2. **Enter with 1/3 of intended capital, scale in over 2–3 tranches.** The first lot is a probe. Add only after the thesis confirms.
 
-8. **不要一天決定。** 今天發現標的 → 做功課 → 至少隔一個交易日再下單。衝動買進的勝率最低。
+3. **Always keep 10–20% cash.** No cash, no flexibility. Buy-the-dip opportunities are paid for by held cash.
 
-9. **只買自己理解的公司。** 如果不能用兩句話說清楚公司在做什麼，就不要買。
+4. **Don't borrow to buy.** Margin amplifies risk, not return. When the loss hits the stop, leverage makes the loss bigger, the stress higher, and the discipline harder.
 
-10. **不要因為便宜而買。** 「跌了很多所以便宜」是散戶最常見的邏輯錯誤。便宜是相對於價值，不是相對於歷史價格。
-
----
-
-## 停損規則
-
-11. **絕對停損：個股虧損達 -10% 到 -15% 無條件出場。** 這是生存底線，不是建議。超過這個虧損，需要 12-18% 漲幅才能回本。
-
-12. **停損是在買進時設的，不是虧損後才設的。** 買的那一刻就決定好虧多少走人。
-
-13. **不移動停損點（往下移）。** 可以往上移（提高保護），絕不往下移（擴大虧損容忍）。
-
-14. **觸發停損就執行，不猶豫。** 「再等等看」是虧損擴大的開始。停損後股票漲回去 = 正常代價，不是你做錯了。
-
-15. **停損後 3 天內不碰同一檔。** 冷靜期。衝動回補通常會再停損一次。
+5. **Investable amount per month = surplus after living expenses.** Investing must not affect daily life.
 
 ---
 
-## 停利規則
+## Entry Rules
 
-16. **有目標價就在目標價附近分批出場。** 到了就賣，不要改目標。貪心是獲利回吐的開始。
+6. **Don't chase breakouts.** If price is at or beyond your target, wait for a pullback. FOMO loses; missing a trade costs nothing, buying the top costs a lot.
 
-17. **移動停利法：** 股價上漲後，把停損線往上移至成本價（保本）→ 再移至獲利的 50% → 直到被觸發。
+7. **Before buying, write down three things:** thesis, target price, stop price. If you can't write them, don't buy.
 
-18. **獲利 > 20% 後至少先賣一半。** 確保鎖住部分利潤。剩下一半可以用移動停利跟趨勢。
+8. **Don't decide and execute the same day.** Spot it → research → wait at least one trading day → place the order. Impulse buys have the worst win rate.
 
-19. **買進理由消失 = 立刻賣出。** 不管賺或賠。買的理由是什麼，理由不在就走。
+9. **Only buy companies you understand.** If you can't explain what the business does in two sentences, don't buy.
 
----
-
-## 心理紀律
-
-20. **不看盤決策。** 每天看盤 > 30 分鐘 = 你在用情緒交易。設好條件單、到價提醒，然後離開。
-
-21. **不聽明牌。** 朋友推薦、群組推薦、新聞推薦 → 當作「可能值得研究的起點」，不是買進訊號。
-
-22. **連續虧損 3 筆後暫停 1 週。** 連續虧損會讓判斷力下降，急於翻本是最危險的狀態。
-
-23. **交易日誌每筆必記。** 記錄：日期、標的、買賣價、理由、當時的情緒。每月回顧一次。
-
-24. **不跟市場對賭。** 大盤趨勢明確向下時減少操作。「我比市場聰明」這個想法已經讓無數人破產。
-
-25. **接受虧損是成本。** 虧損不是失敗，是經營投資的成本。勝率 60% 的策略意味著 10 筆中有 4 筆虧損，這是正常的。
+10. **Don't buy because it's "cheap".** "Down a lot, so it's cheap" is the most common retail logic error. Cheap is relative to value, not to past price.
 
 ---
 
-## 持股管理
+## Stop-Loss Rules
 
-26. **持股不超過 8 檔。** 太多管不了、太少風險集中。5-8 檔是個人投資者的甜蜜點。
+11. **Hard stop: exit any single name at –10% to –15%, no exceptions.** This is a survival floor, not a suggestion. Beyond this, you need a 12–18% rebound just to break even.
 
-27. **每週檢視一次持股。** 問自己：「如果今天手上沒有這檔，我會不會現在買？」不會的話，考慮出場。
+12. **The stop is set at entry, not after the loss.** The moment you buy, you've decided how much you're willing to lose.
 
-28. **不攤平虧損股。** 股價跌了再買更多 = 加碼在錯誤的方向。只在「上漲趨勢回檔到支撐」時才加碼。
+13. **Never move the stop *down*.** Move it up to lock protection; never down to "give it more room".
 
-29. **除權息前評估。** 不是所有配息都值得參加。填息力道弱的股票，除息前賣出、除息後再買可能更好。
+14. **When the stop hits, execute. No hesitation.** "Just a bit longer" is how losses grow. If the stock recovers after you stop out, that's the price of discipline, not your mistake.
 
-30. **定期淘汰最弱持股。** 每月底比較持股表現，考慮賣出最弱的 1-2 檔，換入候選名單中更強的標的。
-
----
-
-## 特殊情境
-
-31. **大盤急跌（跌 > 3%）時不做決策。** 恐慌時的判斷最差。等收盤、看數據、隔天再決定。
-
-32. **利多出盡（利好消息公布後股價不漲）= 賣出訊號。** 最好的消息都出來了，還能期待什麼？
-
-33. **利空出盡的判斷要更謹慎。** 利多出盡常見，利空出盡需要看到籌碼和技術面真正轉強才算數。
-
-34. **IPO 前 3 個月不碰。** 沒有足夠歷史數據、籌碼不穩、情緒波動大。
-
-35. **不在財報公布前重倉。** 財報是二元事件（好或壞），風險不對稱。小部位試可以，大部位賭不行。
+15. **Don't touch the same stock for 3 days after stopping out.** A cooling-off period. Impulse re-entries usually get stopped out again.
 
 ---
 
-## 反模式
+## Take-Profit Rules
 
-| 行為 | 為什麼危險 | 規則編號 |
-|------|-----------|----------|
-| 重押一檔 | 一次錯誤就重傷 | #1 |
-| 融資追高 | 槓桿放大虧損 | #4 |
-| 停損後馬上回補 | 情緒操作，常再虧一次 | #15 |
-| 攤平虧損股 | 在錯誤方向加碼 | #28 |
-| 每天換股 | 手續費吃掉獲利 | #8, #20 |
-| 「這次不一樣」 | 每次泡沫都有人這麼說 | #24 |
-| 只記獲利不記虧損 | 無法改善 | #23 |
+16. **At target, scale out around the target.** When you get there, sell. Don't move the target up. Greed is when gains start giving back.
+
+17. **Trailing stop:** as the price rises, move the stop up to break-even (capital protected) → then to 50% of unrealized gain → until triggered.
+
+18. **At +20% gain, sell at least half.** Lock in part of the profit. The rest can ride the trend with a trailing stop.
+
+19. **Thesis broken = sell immediately.** Profit or loss doesn't matter. The reason you bought no longer applies; out.
+
+---
+
+## Psychological Discipline
+
+20. **Don't make decisions while staring at the screen.** Watching > 30 minutes/day = you're trading on emotion. Set price alerts, walk away.
+
+21. **Don't act on tips.** Friends, chat groups, news headlines → treat as "starting points for research", not buy signals.
+
+22. **After 3 consecutive losing trades, stop for 1 week.** Loss streaks erode judgment; "make it back fast" is the most dangerous state to trade in.
+
+23. **Journal every trade.** Date, ticker, prices, thesis, your emotional state at the time. Review monthly.
+
+24. **Don't fight the market.** When the broad trend is clearly down, reduce activity. "I'm smarter than the market" has bankrupted plenty.
+
+25. **Accept losses as cost.** A loss isn't a failure, it's the cost of running an investment operation. A 60%-win-rate strategy means 4 of 10 trades lose. That's normal.
+
+---
+
+## Holdings Management
+
+26. **Hold ≤ 8 names.** Too many is unmanageable; too few concentrates risk. 5–8 is the retail sweet spot.
+
+27. **Review holdings weekly.** Ask: "If I didn't already own this, would I buy it today?" If not, consider exiting.
+
+28. **Don't average down on losers.** Adding to a falling position = doubling down on a wrong direction. Only add on "uptrend pulling back to support".
+
+29. **Evaluate before each ex-dividend.** Not every dividend is worth participating in. For names with weak dividend recapture, selling pre-ex and buying post-ex can be better.
+
+30. **Periodically prune the weakest holdings.** End-of-month, compare; consider selling the bottom 1–2 and rotating into stronger candidates.
+
+---
+
+## Special Situations
+
+31. **Don't make decisions during sharp index drops (> 3%).** Judgment in a panic is the worst judgment. Wait for the close, look at the data, decide tomorrow.
+
+32. **"Good news priced in" (price doesn't rise on good news) = sell signal.** The best news is out — what's left to expect?
+
+33. **Be more careful calling "bad news priced in".** Common to see "good news priced in"; "bad news priced in" requires real chip-flow + technical confirmation before you trust it.
+
+34. **No new IPOs in the first 3 months.** Insufficient history, unstable share register, high emotional volatility.
+
+35. **Don't be heavy ahead of earnings.** Earnings are binary (good or bad), risk is asymmetric. Small probe positions OK; large bets are gambling.
+
+---
+
+## Anti-Patterns
+
+| Behavior | Why dangerous | Rule # |
+|----------|---------------|--------|
+| Concentrating in one name | One mistake is catastrophic | #1 |
+| Margin chasing higher | Leverage amplifies the loss | #4 |
+| Re-entering immediately after a stop-out | Emotional, often stopped again | #15 |
+| Averaging down on losers | Adding in the wrong direction | #28 |
+| Trading every day | Commissions eat the alpha | #8, #20 |
+| "This time is different" | Every bubble has people saying this | #24 |
+| Logging only winners | Can't improve what you don't measure | #23 |

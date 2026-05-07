@@ -1,355 +1,357 @@
 ---
 name: tw-stock-quant
 description: >
-  台股量化投資策略指南，涵蓋回測框架設計、常見因子模型（價值、動能、品質、低波動）、
-  策略開發流程、績效評估指標、過擬合風險與存活偏差，以及策略上線後的紀律。
-  觀念為主，程式碼範例以 pseudo-code 呈現，可對接 Python / Go / R 等語言。
+  Quantitative investing for Taiwan-listed stocks — backtest framework
+  design, classic factor models (value, momentum, quality, low volatility),
+  strategy development workflow, performance metrics, overfitting and
+  survivorship bias, and post-go-live discipline. Concept-first; pseudo-code
+  examples are language-agnostic (Python / Go / R).
 category: finance
 tags: [stock, taiwan, tw-stock, quantitative, backtesting, factor-investing, strategy]
+keywords: [backtest, factor model, Sharpe, Sortino, Calmar, survivorship bias, look-ahead bias]
 related: [tw-stock-fundamental, tw-stock-chip, tw-stock-technical, tw-stock-data]
 ---
 
-# 台股量化投資策略
+# Taiwan Stock Quantitative Strategy
 
-> 量化的核心不是寫程式，是把「我的投資邏輯」轉換成可驗證、可重複、可改進的規則。程式只是執行工具。
+> Quant isn't really about coding. It's about turning "my investment logic" into rules that are testable, repeatable, and improvable. The code is just the executor.
 
-## 適用情境
+## When to Use This Skill
 
-- 想把手動選股規則系統化、自動化
-- 想回測一個投資想法在歷史上是否有效
-- 想建立因子模型，每月自動篩選持股
-- 想比較不同策略的風險報酬特性
-- 想避免情緒干擾，用紀律執行交易
-
----
-
-## 一、量化投資的核心流程
-
-```
-1. 提出假說   →  「高 ROE + 低 P/E 的股票長期會跑贏大盤」
-2. 定義規則   →  每月初選 ROE > 15%、P/E < 15 的前 20 檔
-3. 歷史回測   →  用過去 10 年數據跑看看
-4. 績效評估   →  年化報酬、最大回撤、夏普比率
-5. 壓力測試   →  換時間區間、改參數、加交易成本
-6. 紙上交易   →  模擬 3-6 個月即時績效
-7. 實盤上線   →  真金白銀，嚴格照規則執行
-8. 定期檢視   →  策略失效了嗎？市場結構變了嗎？
-```
-
-**每一步都不可跳過。** 最常見的失敗是跳過第 5、6 步直接上線。
+- Want to systematize and automate manual stock-picking rules
+- Want to backtest whether an investment idea worked historically
+- Want a factor model that screens monthly
+- Want to compare strategies' risk/return characteristics
+- Want discipline-driven execution that resists emotional override
 
 ---
 
-## 二、回測框架設計
+## 1. Core Workflow
 
-### 基本架構
+```
+1. Hypothesis     →  "High ROE + low P/E stocks beat the index long-term"
+2. Define rules   →  Pick top 20 of {ROE > 15%, P/E < 15} on day 1 of each month
+3. Backtest       →  Run on 10 years of historical data
+4. Evaluate       →  CAGR, max drawdown, Sharpe
+5. Stress test    →  Sub-periods, parameter shifts, transaction costs
+6. Paper trade    →  3–6 months on real data without real money
+7. Go live        →  Real money, strict rule execution
+8. Periodic review→  Has the strategy stopped working? Has the market changed?
+```
+
+**No step is optional.** The most common failure is jumping from step 4 to step 7.
+
+---
+
+## 2. Backtest Framework
+
+### Architecture
 
 ```
 ┌──────────────────────────────────────┐
-│             回測引擎                  │
+│            Backtest Engine            │
 │                                      │
-│  歷史數據 → 訊號生成 → 模擬交易 → 績效統計  │
+│  History → Signals → Sim trade → Stats│
 │                                      │
-│  ┌────────┐  ┌────────┐  ┌────────┐  │
-│  │ 數據模組 │  │ 策略模組 │  │ 風控模組 │  │
-│  └────────┘  └────────┘  └────────┘  │
+│  ┌────────┐ ┌────────┐ ┌────────────┐│
+│  │ Data   │ │ Strategy│ │ Risk mgmt ││
+│  └────────┘ └────────┘ └────────────┘│
 └──────────────────────────────────────┘
 ```
 
-### 回測引擎的關鍵元件
+### Key components
 
-| 元件 | 職責 | 注意事項 |
-|------|------|----------|
-| **數據模組** | 提供 OHLCV、財務、籌碼數據 | 使用調整後價格（除權息還原） |
-| **訊號生成** | 根據策略規則產生買/賣/持有訊號 | 不可使用未來數據（見下方） |
-| **模擬交易** | 模擬下單、成交、手續費、稅 | 台股手續費 0.1425%、證交稅 0.3%（當沖 0.15%） |
-| **風控模組** | 停損、停利、部位上限 | 策略層面的風險控制 |
-| **績效統計** | 計算報酬、回撤、風險指標 | 與大盤基準（0050）比較 |
+| Component | Responsibility | Watch out |
+|-----------|----------------|-----------|
+| **Data** | Provide OHLCV, financials, chip flow | Use adjusted price (dividend-adjusted) |
+| **Signal** | Generate buy/sell/hold per the rules | Don't peek at the future (see below) |
+| **Simulator** | Simulate orders, fills, fees, taxes | TW fees: 0.1425% commission + 0.3% securities transaction tax (0.15% for day-trade) |
+| **Risk** | Stops, take-profit, position caps | Strategy-level risk control |
+| **Stats** | Compute return, drawdown, risk metrics | Compare against benchmark (0050) |
 
-### 台股回測特有注意事項
+### Taiwan-market specifics
 
-1. **除權息還原價。** 台股除權息會造成價格跳空，不還原會嚴重高估報酬。使用「還原收盤價」。
-2. **漲跌停限制。** 台股有 ±10% 漲跌停。回測要模擬：漲停買不到、跌停賣不掉。
-3. **流動性。** 小型股日均量可能只有幾十張。回測下單量不能超過當日成交量的某個比例（建議 < 10%）。
-4. **存活偏差（Survivorship Bias）。** 只用現在上市的股票回測 = 自動排除了下市的爛股票 → 績效被高估。必須用包含下市股票的完整歷史數據。
-5. **財報發布延遲。** Q1 季報 5/15 才公布，回測在 4 月用 Q1 數據 = 使用未來數據（偷看答案）。
+1. **Dividend-adjusted price.** Ex-dividend creates price gaps; un-adjusted price drastically overstates returns. Use back-adjusted close.
+2. **Daily price limit.** TW has a ±10% daily limit. Backtest must simulate "couldn't buy at limit-up / couldn't sell at limit-down".
+3. **Liquidity.** Small caps may average tens of lots/day. Don't simulate orders larger than X% of daily volume (recommend < 10%).
+4. **Survivorship bias.** Backtesting only currently listed stocks excludes the ones that delisted = inflated performance. Use a full history including delisted names.
+5. **Earnings release lag.** Q1 reports are released by May 15; using Q1 data in April = look-ahead. Use point-in-time data.
 
 ---
 
-## 三、常見因子模型
+## 3. Common Factor Models
 
-### 什麼是因子？
+### What is a factor?
 
-因子 = 被學術研究或實務驗證過的、能解釋股票報酬差異的特徵。
+A factor = a stock characteristic, validated by academia or practice, that explains return differences.
 
-### 五大經典因子
+### Five classic factors
 
-| 因子 | 定義 | 邏輯 | 台股適用度 |
-|------|------|------|------------|
-| **價值（Value）** | 低 P/E、低 P/B、高殖利率 | 便宜的股票長期表現優於昂貴的 | ✅ 高，台股殖利率策略效果明顯 |
-| **動能（Momentum）** | 過去 3-12 個月漲幅排名靠前 | 漲的繼續漲（趨勢延續）| ✅ 高，搭配停損效果佳 |
-| **品質（Quality）** | 高 ROE、低負債比、穩定盈餘 | 好公司長期跑贏差公司 | ✅ 高 |
-| **低波動（Low Volatility）** | 過去 1 年日報酬波動率最低 | 低風險股票風險調整後報酬更好 | ✅ 中高 |
-| **規模（Size）** | 小市值 | 小型股長期報酬較高（但風險也高）| ⚠️ 台股小型股流動性差，要注意 |
+| Factor | Definition | Logic | TW applicability |
+|--------|------------|-------|-------------------|
+| **Value** | Low P/E, low P/B, high yield | Cheap stocks beat expensive ones long-term | High — TW dividend factors work well |
+| **Momentum** | Top performers over the past 3–12 months | Rising keeps rising (trend continuation) | High; pair with stops |
+| **Quality** | High ROE, low debt, stable earnings | Good companies beat bad ones long-term | High |
+| **Low volatility** | Lowest daily-return volatility over 1 year | Low-vol earns better risk-adjusted returns | Mid-high |
+| **Size** | Small market cap | Small caps have historically outperformed | Caution: TW small caps lack liquidity |
 
-### 多因子模型（Factor Composite）
+### Multi-factor composite
 
-單一因子容易在某段時期失效。組合多個因子可以：
-- 分散單一因子的風險
-- 不同因子在不同市場環境互補
-- 提高選股穩定度
+Single factors can underperform for stretches. Combining factors:
+- Diversifies single-factor risk
+- Different factors complement each other in different regimes
+- Stabilizes selection
 
-**實務做法：** 對每檔股票計算每個因子的排名分數（percentile），加權平均後取前 N 名。
-
-```
-總分 = 0.3 × 價值分數 + 0.3 × 品質分數 + 0.2 × 動能分數 + 0.2 × 低波動分數
-```
-
-### 因子組合範例
-
-#### 存股型策略
+**In practice:** rank each stock by each factor (percentile), weighted-average, take the top N.
 
 ```
-篩選條件：
-  1. 上市滿 5 年
-  2. 連續 5 年配息
+Score = 0.3 × Value + 0.3 × Quality + 0.2 × Momentum + 0.2 × Low-vol
+```
+
+### Strategy examples
+
+#### Dividend strategy
+
+```
+Filter:
+  1. Listed ≥ 5 years
+  2. Dividends paid 5 years in a row
   3. ROE > 10%
-  4. 負債比 < 60%
-  5. 自由現金流為正
+  4. Debt ratio < 60%
+  5. FCF positive
 
-排序：殖利率 × 0.5 + ROE × 0.3 + 營收 YoY × 0.2
+Rank by: 0.5 × yield + 0.3 × ROE + 0.2 × revenue YoY
 
-持有：前 20 名
-換股頻率：每年除息後一次
+Hold:    top 20
+Rebalance: once a year, post ex-dividend
 ```
 
-#### 動能型策略
+#### Momentum strategy
 
 ```
-篩選條件：
-  1. 股價在年線之上
-  2. 近 20 日成交量 > 500 張/日
-  3. 過去 12 個月漲幅為正
+Filter:
+  1. Price above MA240
+  2. 20-day average volume > 500 lots/day
+  3. 12-month return > 0
 
-排序：過去 6 個月漲幅 × 0.6 + 過去 1 個月漲幅 × 0.4
+Rank by: 0.6 × 6-month return + 0.4 × 1-month return
 
-持有：前 15 名
-換股頻率：每月初
-停損：個股跌破買進價 -10% 出場
+Hold:        top 15
+Rebalance:   monthly (1st)
+Stop-loss:   -10% from entry per name
 ```
 
-#### 價值 + 品質混合策略
+#### Value + Quality blend
 
 ```
-篩選條件：
-  1. P/E < 產業平均
+Filter:
+  1. P/E < industry average
   2. P/B < 2
   3. ROE > 15%
-  4. 營業現金流 > 稅後淨利
-  5. 連續 3 年 EPS 成長
+  4. OCF > Net income
+  5. EPS growth 3 years in a row
 
-排序：PEG 由低到高
+Rank by: PEG ascending
 
-持有：前 15 名
-換股頻率：每季季報後
+Hold:       top 15
+Rebalance:  after each quarter's earnings
 ```
 
 ---
 
-## 四、績效評估指標
+## 4. Performance Metrics
 
-### 報酬指標
+### Return metrics
 
-| 指標 | 意義 | 好的基準 |
-|------|------|----------|
-| **年化報酬率 (CAGR)** | 複利計算的平均年報酬 | 台股大盤長期 ~8-10%，策略應 > 大盤 |
-| **累積報酬** | 回測期間總報酬 | 看絕對金額成長 |
-| **超額報酬（Alpha）** | 策略報酬 − 基準報酬 | > 0 才有存在價值 |
+| Metric | Meaning | Good benchmark |
+|--------|---------|----------------|
+| **CAGR** | Compounded annual growth rate | TW market long-term ~8–10%; strategy should beat market |
+| **Cumulative return** | Total return over the backtest | Watch absolute growth |
+| **Alpha** | Strategy return − benchmark | > 0 to be worth running |
 
-### 風險指標
+### Risk metrics
 
-| 指標 | 意義 | 好的基準 |
-|------|------|----------|
-| **最大回撤 (MDD)** | 從高點到最低點的最大跌幅 | < 25% 為佳，> 40% 很危險 |
-| **波動率** | 日/月報酬的標準差 | 越低越穩定 |
-| **下行風險** | 只計算負報酬的波動率 | 比波動率更精確反映痛苦 |
+| Metric | Meaning | Good benchmark |
+|--------|---------|----------------|
+| **Max drawdown (MDD)** | Largest peak-to-trough drop | < 25% good; > 40% dangerous |
+| **Volatility** | Std dev of daily/monthly returns | Lower = steadier |
+| **Downside risk** | Volatility of negative returns only | Reflects pain better than total volatility |
 
-### 風險調整報酬
+### Risk-adjusted return
 
-| 指標 | 公式 | 好的基準 |
-|------|------|----------|
-| **夏普比率 (Sharpe)** | (策略報酬 − 無風險利率) / 波動率 | > 1 良好，> 1.5 優秀，> 2 頂級 |
-| **索提諾比率 (Sortino)** | (策略報酬 − 無風險利率) / 下行風險 | > Sharpe 更能反映真實品質 |
-| **卡瑪比率 (Calmar)** | CAGR / MDD | > 0.5 可接受，> 1 優秀 |
+| Metric | Formula | Good benchmark |
+|--------|---------|----------------|
+| **Sharpe** | (return − risk-free) / volatility | > 1 good, > 1.5 excellent, > 2 elite |
+| **Sortino** | (return − risk-free) / downside risk | A truer quality reading than Sharpe |
+| **Calmar** | CAGR / MDD | > 0.5 acceptable, > 1 excellent |
 
-### 其他實務指標
+### Practical metrics
 
-| 指標 | 意義 |
+| Metric | Meaning |
+|--------|---------|
+| **Win rate** | Winning trades / total. > 50% is good — but low win rate + high payoff ratio also wins |
+| **Win/loss ratio** | Avg win / avg loss. > 2 is good |
+| **Trade count** | Too few isn't statistically meaningful (target > 100) |
+| **Turnover** | Annual traded value / avg position. Higher = more friction cost |
+
+---
+
+## 5. Overfitting — the Quant's Worst Enemy
+
+### What it is
+
+Strategy looks perfect in backtest, dies in production.
+**Why:** the strategy learned historical noise, not pattern.
+
+### Warning signs
+
+| Sign | Note |
 |------|------|
-| **勝率** | 獲利交易次數 / 總交易次數。> 50% 為佳，但低勝率 + 高盈虧比也能賺 |
-| **盈虧比** | 平均獲利金額 / 平均虧損金額。> 2 為佳 |
-| **交易次數** | 太少不具統計意義（建議 > 100 筆）|
-| **換手率** | 年交易金額 / 平均部位。越高摩擦成本越大 |
+| Backtest > 30% CAGR with almost no drawdown | Too good, probably wrong |
+| Hyper-precise parameters (MA17, RSI(13.5)) | Why 17 and not 15 or 20? |
+| Performance collapses with small parameter shifts | Brittle = overfit |
+| Only works in a specific time window | Lucky alignment |
+| Many conditions (> 5 filters + 3 indicators) | Each condition adds an overfitting dimension |
+
+### Defenses
+
+6. **Out-of-sample testing.** Develop on the first 70% of data, validate on the last 30%. If validation drops sharply → overfit.
+7. **Walk-forward.** Rolling backtest: train on past N years, validate next year, roll forward.
+8. **Parameter robustness.** Vary key parameters within a sane range (MA20 → MA15..MA25); performance shouldn't shift dramatically.
+9. **Simple beats complex.** Fewer conditions, fewer parameters, more intuitive logic = less overfitting risk.
+10. **Economic logic.** A strategy needs a reasonable economic story. "Low P/E beats long-term" has a story (value premium); "buy stock #38 on day 17" doesn't.
 
 ---
 
-## 五、過擬合（Overfitting）— 量化最大的敵人
+## 6. Strategy Development Workflow
 
-### 什麼是過擬合？
+### Step 1: Hypothesis
 
-策略在歷史數據上表現完美，但上線後馬上失效。
-**原因：** 策略學到的是歷史數據的「噪音」而非「規律」。
+Write one sentence: "I think ____ stocks will ____ because ____."
 
-### 過擬合的警訊
+For example:
+- "High-ROE + low-P/E stocks beat the index because the market underprices quality."
+- "Stocks with 3 consecutive monthly revenue highs rise short-term because of the momentum effect."
 
-| 警訊 | 說明 |
-|------|------|
-| 回測年化 > 30% 且幾乎沒有回撤 | 太好了，不可能是真的 |
-| 參數非常精確（如 MA17、RSI(13.5)） | 為什麼是 17 而不是 15 或 20？ |
-| 改一點參數績效就崩潰 | 策略對參數敏感 = 脆弱 |
-| 只在特定時間區間有效 | 可能只是碰巧 |
-| 條件很多（> 5 個篩選 + 3 個指標） | 每加一個條件就多一個過擬合維度 |
+**If you can't fill in "because", the hypothesis isn't worth backtesting.**
 
-### 防過擬合的方法
-
-6. **樣本外測試（Out-of-Sample）。** 用前 70% 數據開發策略，後 30% 驗證。驗證期績效掉太多 = 過擬合。
-7. **交叉驗證（Walk-Forward）。** 滾動式回測：每次用過去 N 年訓練、未來 1 年驗證，逐年滾動。
-8. **參數穩健性。** 把關鍵參數在合理範圍內上下調整（如 MA20 改為 MA15-MA25），績效不應大幅改變。
-9. **簡單優於複雜。** 條件越少、參數越少、邏輯越直觀的策略越不容易過擬合。
-10. **經濟邏輯。** 策略要有合理的經濟學解釋。「低 P/E 長期跑贏」有邏輯（價值溢酬）；「每月 17 日買第 38 檔股票」沒有。
-
----
-
-## 六、策略開發的完整工作流
-
-### Step 1：提出假說
-
-寫下一句話：「我認為 ________ 的股票會 ________，因為 ________。」
-
-例如：
-- 「我認為**高 ROE + 低 P/E** 的股票會跑贏大盤，因為市場低估了優質公司。」
-- 「我認為**月營收連 3 個月創新高**的股票短期會上漲，因為動能效應。」
-
-**如果寫不出「因為」，這個假說就不值得回測。**
-
-### Step 2：定義規則（Pseudo-code 精度）
+### Step 2: Pseudo-code rules
 
 ```
-每月第一個交易日執行：
+On the first trading day of each month:
 
-1. 取得所有上市上櫃股票
-2. 排除：上市未滿 1 年、近 20 日均量 < 200 張、金融業
-3. 篩選：ROE > 15%、P/E < 產業平均、連續 3 月營收 YoY > 0
-4. 排序：PEG 由低到高
-5. 取前 15 名
-6. 等權重配置（每檔 1/15）
-7. 與上月持股比較，換股
-8. 個股停損：買進價 -15%
+1. Get all listed and OTC stocks
+2. Exclude: listed < 1 year; 20-day avg volume < 200 lots; financials
+3. Filter:  ROE > 15%; P/E < industry average; revenue YoY > 0 for 3 months
+4. Rank:    PEG ascending
+5. Take top 15
+6. Equal weight (1/15 each)
+7. Compare to last month's holdings; rotate
+8. Per-name stop: -15% from entry
 ```
 
-### Step 3：回測
+### Step 3: Backtest
 
-- 回測區間至少 5 年（涵蓋 1 個多空循環）
-- 加入交易成本：手續費 0.1425% + 證交稅 0.3% = 單趟約 0.44%
-- 基準：加權指數或 0050 ETF
-- 記錄每年報酬、MDD、持股明細
+- Period ≥ 5 years (covering at least one bull/bear cycle)
+- Include transaction costs: 0.1425% commission + 0.3% securities transaction tax = ~0.44% round-trip
+- Benchmark: TAIEX or 0050 ETF
+- Log per-year return, MDD, holdings
 
-### Step 4：評估
+### Step 4: Evaluate
 
-比較策略 vs 基準的：
-- 年化報酬率
-- 最大回撤
-- 夏普比率
-- 每年勝敗
+Compare strategy vs benchmark on:
+- CAGR
+- Max drawdown
+- Sharpe
+- Yearly win/loss
 
-**如果策略跑贏大盤但 MDD > 40%，多數人心理上撐不住，不算好策略。**
+**A strategy that beats the market with 40%+ MDD will probably break the operator's nerves — not a good strategy in practice.**
 
-### Step 5：壓力測試
+### Step 5: Stress test
 
-- 改回測區間（如只用金融海嘯那段、只用 COVID 那段）
-- 改參數（MA20 改為 MA15/MA25、持股改為 10/20 檔）
-- 加大交易成本（假設滑價 0.1%）
-- 限制流動性（排除日均量 < 500 張）
+- Restrict the period (e.g., only the financial-crisis window, only COVID)
+- Vary parameters (MA20 → MA15/MA25; 10/20 holdings)
+- Inflate costs (assume 0.1% slippage)
+- Tighter liquidity (exclude < 500 lots/day)
 
-**如果任何壓力測試讓策略從賺變賠 → 策略不夠穩健。**
+**If any stress test takes the strategy from green to red → it isn't robust.**
 
-### Step 6：紙上交易（Paper Trading）
+### Step 6: Paper trade
 
-用真實即時數據、按策略規則操作，但不真的下單。跑 3-6 個月。
-目的：
-- 驗證策略在真實市場條件下是否可行
-- 發現回測忽略的問題（漲停買不到、流動性不夠）
-- 建立執行紀律
+Run on real-time data, follow rules, don't actually order. 3–6 months. Goals:
+- Validate viability in real market conditions
+- Find issues backtests miss (limit-up, illiquidity)
+- Build execution discipline
 
-### Step 7：實盤上線
+### Step 7: Go live
 
-- 初始小部位（總資金的 20-30%）
-- 嚴格照規則執行，不加入人為判斷
-- 記錄每筆交易的偏離（有沒有按策略走）
-- 每月/每季檢視績效
+- Start small (20–30% of total capital)
+- Strict rule following — no human override
+- Log every trade, including any deviation from the rule
+- Review monthly / quarterly
 
-### Step 8：定期檢視
+### Step 8: Periodic review
 
-策略可能在市場結構改變後失效。定期問自己：
-- 最近 6 個月的績效是否顯著偏離回測預期？
-- 因子邏輯是否還成立？（例如價值因子在 AI 泡沫期可能暫時失效）
-- 是策略失效，還是正常的低潮期？
+Strategies can fail when market structure changes. Ask:
+- Is the last 6 months' performance materially off from backtest?
+- Does the factor logic still hold? (Value can underperform during tech bubbles, for instance.)
+- Is this a regime change or just a low patch?
 
-**策略連續 1 年跑輸大盤 + 經濟邏輯被質疑 → 考慮停用或修改。**
-
----
-
-## 七、台股量化的實務限制
-
-| 限制 | 影響 | 對策 |
-|------|------|------|
-| 小型股流動性差 | 回測報酬高但實際買不到 | 排除日均量 < 500 張 |
-| 漲跌停限制 | 模型說買，漲停買不進 | 回測模擬漲跌停 |
-| 除權息會影響報酬計算 | 不還原價格 = 報酬失真 | 使用還原收盤價 |
-| 財報延遲發布 | Point-in-time 數據才能避免 look-ahead bias | 嚴格按公布日使用數據 |
-| 股票借不到 | 做空策略在台股很難執行 | 專注做多策略 |
-| 稅與費 | 單趟 ~0.44%，高換手策略被成本吃掉 | 降低換手率 |
+**A strategy that trails the market for 1 year + with broken economic logic → consider pause or revision.**
 
 ---
 
-## 八、常見陷阱
+## 7. Practical Constraints in Taiwan
 
-| 陷阱 | 說明 | 對策 |
-|------|------|------|
-| **存活偏差** | 只回測現存股票 | 用包含下市股票的全歷史數據 |
-| **前視偏差** | 回測用了當時尚未公布的數據 | 嚴格用 point-in-time 數據 |
-| **資料探勘偏差** | 測了 100 個策略，挑最好的那個 | 先有假說再回測，不是先回測再找解釋 |
-| **忽略交易成本** | 回測不算手續費和稅 | 一律計入 |
-| **忽略滑價** | 以收盤價成交是理想化 | 加入 0.05-0.1% 滑價假設 |
-| **過度最佳化** | 調參數調到完美 | 參數穩健性測試 |
-| **樣本太小** | 回測只有 30 筆交易 | 至少 100 筆以上才有統計意義 |
-
----
-
-## 九、量化策略檢查清單
-
-開發一個策略後，逐項確認：
-
-- [ ] 有明確的經濟邏輯（能寫出「因為」）
-- [ ] 回測區間 ≥ 5 年，涵蓋多空循環
-- [ ] 使用除權息還原價
-- [ ] 使用 point-in-time 財務數據（無前視偏差）
-- [ ] 包含下市股票（無存活偏差）
-- [ ] 計入交易成本（手續費 + 證交稅 + 滑價）
-- [ ] 模擬漲跌停與流動性限制
-- [ ] 樣本外測試或 walk-forward 驗證通過
-- [ ] 關鍵參數上下調整 ±20% 績效不崩潰
-- [ ] 夏普比率 > 0.5（含成本後）
-- [ ] 最大回撤在可承受範圍內
-- [ ] 已完成 ≥ 3 個月紙上交易
-- [ ] 有明確的停用/修改條件
+| Constraint | Impact | Counter |
+|------------|--------|---------|
+| Small caps illiquid | Backtest looks great, you can't actually buy | Exclude < 500 lots/day average |
+| Daily price limit | Model says buy; market is at limit-up | Simulate limit-up / limit-down |
+| Ex-dividend price moves | Un-adjusted price = distorted return | Use adjusted close |
+| Earnings release lag | Need point-in-time data to avoid look-ahead | Strictly use data on its release date |
+| No share borrow | Shorting is hard in TW | Focus on long-only |
+| Fees + taxes | ~0.44% per round-trip; high turnover bleeds | Lower turnover |
 
 ---
 
-## 相關技能
+## 8. Common Traps
 
-- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — 因子選擇的基礎知識（ROE、P/E、殖利率等）
-- [`tw-stock-chip`](../tw-stock-chip/SKILL.md) — 籌碼因子的來源
-- [`tw-stock-technical`](../tw-stock-technical/SKILL.md) — 動能因子與技術指標
-- [`tw-stock-data`](../tw-stock-data/SKILL.md) — 回測所需的數據工程
-- [`rules/trading-discipline`](../../rules/trading-discipline.md) — 策略上線後的執行紀律
+| Trap | Note | Counter |
+|------|------|---------|
+| **Survivorship bias** | Only currently-listed stocks | Use full history with delisted |
+| **Look-ahead bias** | Using data not yet released at the time | Strict point-in-time data |
+| **Data mining bias** | Test 100 strategies, pick the best | Hypothesize first, then test |
+| **Ignoring fees** | Backtest without commission/tax | Always include |
+| **Ignoring slippage** | Filling at close is idealized | Add 0.05–0.1% slippage assumption |
+| **Over-optimization** | Tune to perfection | Robustness check |
+| **Sample too small** | Backtest with 30 trades | At least 100 for statistical significance |
+
+---
+
+## 9. Pre-Live Checklist
+
+For each strategy before live deployment:
+
+- [ ] Has clear economic logic (the "because" exists)
+- [ ] Backtest period ≥ 5 years, covers bull and bear
+- [ ] Uses adjusted prices
+- [ ] Uses point-in-time data (no look-ahead)
+- [ ] Includes delisted stocks (no survivorship bias)
+- [ ] Costs included (commission + STT + slippage)
+- [ ] Simulates limit-up / limit-down and liquidity
+- [ ] Out-of-sample or walk-forward validation passes
+- [ ] Performance survives ±20% parameter shifts
+- [ ] Sharpe > 0.5 after costs
+- [ ] Max drawdown within tolerable range
+- [ ] ≥ 3 months of paper trading completed
+- [ ] Clear "stop / revise" criteria defined
+
+---
+
+## Related Skills
+
+- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — fundamentals as factor source (ROE, P/E, yield)
+- [`tw-stock-chip`](../tw-stock-chip/SKILL.md) — chip factors
+- [`tw-stock-technical`](../tw-stock-technical/SKILL.md) — momentum / technical factors
+- [`tw-stock-data`](../tw-stock-data/SKILL.md) — data engineering for backtests
+- [`rules/trading-discipline`](../../rules/trading-discipline.md) — execution discipline

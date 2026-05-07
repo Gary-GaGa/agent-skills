@@ -98,8 +98,8 @@ function GroupCard({ group }: { group: Group }) {
       <CardContent>
         <p className="text-sm text-muted-foreground">{group.location.name}</p>
         <p className="text-sm">{group.schedule.date} {group.schedule.startTime}</p>
-        <p className="font-medium">{group.members.length}/{group.maxMembers} 人</p>
-        <Button className="mt-2 w-full">加入</Button>
+        <p className="font-medium">{group.members.length}/{group.maxMembers} members</p>
+        <Button className="mt-2 w-full">Join</Button>
       </CardContent>
     </Card>
   );
@@ -121,7 +121,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const group = await fetchGroup(params.id);
   return {
     title: `${group.sport} — ${group.location.name}`,
-    description: `${group.schedule.date} ${group.schedule.startTime}，還有 ${group.maxMembers - group.members.length} 個名額`,
+    description: `${group.schedule.date} ${group.schedule.startTime} — ${group.maxMembers - group.members.length} spots left`,
   };
 }
 ```

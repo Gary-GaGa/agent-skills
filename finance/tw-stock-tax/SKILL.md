@@ -1,174 +1,177 @@
 ---
 name: tw-stock-tax
 description: >
-  台股投資相關稅務指南，涵蓋證券交易稅、股利所得稅（合併/分離計稅）、
-  二代健保補充保費、當沖稅率、海外所得基本稅額，以及節稅策略。
-  適合需要在報稅前了解投資稅務影響的散戶。
+  Tax considerations for Taiwan stock investing — securities transaction
+  tax, dividend income tax (combined vs separate filing), the second-
+  generation NHI supplemental premium, day-trading rates, basic income
+  tax on overseas gains, and tax-saving strategies. For retail investors
+  preparing to file.
 category: finance
 tags: [stock, taiwan, tax, dividend, investing]
+keywords: [securities transaction tax, NHI supplemental premium, separate filing, combined filing, basic income tax]
 related: [tw-stock-fundamental, tw-etf-investing, portfolio-construction]
 ---
 
-# 台股投資稅務
+# Taiwan Stock Investment Taxes
 
-> 稅是確定的成本。不了解稅，你的實際報酬率可能比想像中低很多。
+> Tax is a guaranteed cost. Without understanding it, your real return may be much lower than you think.
 
-## 適用情境
+## When to Use This Skill
 
-- 報稅季想了解股利怎麼課稅
-- 比較「合併計稅」和「分離計稅」哪個划算
-- 想知道買賣股票要付多少稅和費用
-- 評估存股策略的實際稅後報酬
-- 想知道二代健保對高配息投資的影響
-
----
-
-## 一、交易成本總覽
-
-| 費用 | 比率 | 誰付 | 何時 |
-|------|------|------|------|
-| **手續費** | 0.1425%（折扣後通常 0.04-0.06%） | 買賣雙方 | 每次交易 |
-| **證券交易稅** | 0.3% | 賣方 | 賣出時 |
-| **當沖交易稅** | 0.15%（優惠稅率，延至 2027） | 賣方 | 當日沖銷賣出時 |
-
-### 實際單趟成本
-
-```
-買進：手續費 ~0.06%
-賣出：手續費 ~0.06% + 證交稅 0.3% = ~0.36%
-來回合計：~0.42%
-```
-
-1. **每筆交易成本 ~0.4%。** 一年換手 10 次 = 4% 成本。這比很多人想像的高。
-2. **高頻交易的敵人是交易成本。** 月均換手 > 2 次要仔細算成本是否吃掉報酬。
+- Tax season: how dividends are taxed
+- Comparing "combined filing" vs "separate filing" of dividend income
+- Understanding what fees and taxes a trade incurs
+- Estimating after-tax return on a dividend-investing strategy
+- Understanding the impact of the 2nd-generation NHI supplemental premium on high-yield holdings
 
 ---
 
-## 二、股利所得稅
+## 1. Trading Costs Overview
 
-### 兩種計稅方式（二擇一）
+| Cost | Rate | Who pays | When |
+|------|------|----------|------|
+| **Commission** | 0.1425% (often discounted to 0.04–0.06%) | Both sides | Every trade |
+| **Securities transaction tax (STT)** | 0.3% | Seller | On sale |
+| **Day-trade STT** | 0.15% (preferential rate, extended to 2027) | Seller | On same-day round-trip sale |
 
-自 2018 年起，股利所得可選擇：
-
-#### A. 合併計稅（併入綜所稅）
-
-```
-股利所得併入個人綜合所得
-可抵減稅額 = 股利 × 8.5%（上限 8 萬元）
-```
-
-| 綜所稅率 | 股利實質稅率（扣除抵減後）| 適合？ |
-|----------|-------------------------|--------|
-| 5% | 約 0% (有抵減) | ✅ 很划算 |
-| 12% | 約 3.5% | ✅ 划算 |
-| 20% | 約 11.5% | ⚠️ 接近分離計稅 |
-| 30% | 約 21.5% | ❌ 分離計稅較好 |
-| 40% | 約 31.5% | ❌ 分離計稅較好 |
-
-#### B. 分離計稅（單一稅率 28%）
+### Round-trip cost in practice
 
 ```
-股利所得 × 28% = 應繳稅額
-不併入綜所稅，不適用累進稅率
+Buy:  commission ~0.06%
+Sell: commission ~0.06% + STT 0.3% = ~0.36%
+Total round-trip: ~0.42%
 ```
 
-### 怎麼選？
-
-3. **綜所稅率 ≤ 20% → 合併計稅。** 因為有 8.5% 抵減，實質稅率更低。
-4. **綜所稅率 ≥ 30% → 分離計稅。** 28% 固定稅率比 30-40% 累進稅率低。
-5. **每年報稅時選，不是固定的。** 根據當年度所得狀況決定。
+1. **~0.4% per round-trip.** 10 trades a year = 4% in cost. That's higher than many people think.
+2. **High-frequency trading's enemy is cost.** > 2 round-trips per month? Carefully model whether costs eat the return.
 
 ---
 
-## 三、二代健保補充保費
+## 2. Dividend Income Tax
 
-| 項目 | 門檻 | 費率 |
-|------|------|------|
-| **單筆股利 > 2 萬元** | 單次配息超過 2 萬 | 2.11% |
+### Two filing methods (choose one)
+
+Since 2018, dividend income can be filed either way:
+
+#### A. Combined filing (with personal income tax)
 
 ```
-例：某股配息 30,000 元
-補充保費 = 30,000 × 2.11% = 633 元
+Dividend income added to total personal income.
+Tax credit = 8.5% of dividend (capped at NT$80,000).
 ```
 
-6. **高股息策略的隱形成本。** 存股族領大額配息會被扣二代健保。
-7. **分散持股可降低單筆金額。** 但刻意拆分不一定划算（要看整體稅務效果）。
+| Marginal income-tax rate | Effective rate after credit | Worth it? |
+|--------------------------|------------------------------|-----------|
+| 5% | ~0% (credit covers) | Yes — great |
+| 12% | ~3.5% | Yes |
+| 20% | ~11.5% | Borderline |
+| 30% | ~21.5% | No — separate filing better |
+| 40% | ~31.5% | No — separate filing better |
+
+#### B. Separate filing (flat 28%)
+
+```
+Dividend income × 28% = tax owed.
+Not added to total income; no progressive rates.
+```
+
+### How to choose
+
+3. **Marginal rate ≤ 20% → combined filing.** The 8.5% credit makes the effective rate lower.
+4. **Marginal rate ≥ 30% → separate filing.** A flat 28% beats progressive 30–40%.
+5. **The choice is annual, not permanent.** Re-evaluate each tax year based on income.
 
 ---
 
-## 四、資本利得稅
+## 3. NHI Supplemental Premium (2nd-Generation NHI)
 
-### 台股：目前免稅
+| Item | Threshold | Rate |
+|------|-----------|------|
+| **Single dividend payment > NT$20,000** | Per single distribution | 2.11% |
 
-台股個人投資者的**資本利得（價差）目前免徵所得稅**（證所稅已停徵）。
+```
+Example: a stock pays NT$30,000 dividend
+Supplemental premium = 30,000 × 2.11% = NT$633
+```
 
-8. **這是台股的重大稅務優勢。** 價差獲利不課稅，只有賣出時付 0.3% 證交稅。
-9. **政策可能改變。** 證所稅歷史上多次討論，投資人應關注政策動向。
-
----
-
-## 五、ETF 配息的稅務
-
-ETF 配息來源可能包含：
-
-| 來源 | 課稅方式 |
-|------|----------|
-| **國內股利** | 併入股利所得（可選合併/分離）|
-| **國內財產交易所得** | 免稅（資本利得部分）|
-| **收益平準金** | 免稅（退還本金性質）|
-
-10. **不是 ETF 配息的全部都要課稅。** 查看 ETF 公告的「配息組成」，只有國內股利部分課稅。
-11. **高股息 ETF 的稅後殖利率可能比帳面低 1-2%。** 計算時要扣除稅金和二代健保。
+6. **Hidden cost of high-yield strategies.** Dividend investors with large checks get hit by the supplemental premium.
+7. **Splitting holdings can lower per-payment amount.** But fragmenting deliberately isn't always net-better — model the full tax effect.
 
 ---
 
-## 六、海外所得（基本稅額）
+## 4. Capital Gains Tax
 
-| 項目 | 規則 |
+### Taiwan: currently exempt for individuals
+
+For individual investors, **capital gains on TW stocks are currently not taxed** (the capital-gains tax has been suspended).
+
+8. **A major TW tax advantage.** Price gains aren't taxed; you only pay 0.3% STT on the sell side.
+9. **Policy can change.** The capital-gains tax has been re-debated several times; investors should track policy direction.
+
+---
+
+## 5. ETF Distributions and Taxes
+
+ETF distributions can come from multiple sources:
+
+| Source | Taxation |
+|--------|----------|
+| **Domestic dividends** | Counted as dividend income (combined / separate optional) |
+| **Domestic capital gains** | Tax-exempt (capital-gains portion) |
+| **Income equalization** | Tax-exempt (return of capital) |
+
+10. **Not all of an ETF's distribution is taxable.** Check the ETF's published "distribution composition"; only the domestic-dividend portion is taxed.
+11. **The after-tax yield of a high-yield ETF may be 1–2% below its headline yield.** Subtract tax + supplemental NHI.
+
+---
+
+## 6. Overseas Income (Basic Income Tax)
+
+| Item | Rule |
 |------|------|
-| 門檻 | 海外所得 > 100 萬元 |
-| 基本稅額 | (綜合所得 + 海外所得 − 670 萬免稅額) × 20% |
-| 與綜所稅比較 | 取兩者較高者繳納 |
+| Threshold | Overseas income > NT$1,000,000 |
+| Basic tax | (Total income + overseas income − NT$6,700,000 exemption) × 20% |
+| Reconciliation | Pay the higher of basic tax vs personal income tax |
 
-12. **海外所得未超過 100 萬免申報。** 小額投資美股 ETF 通常不受影響。
-13. **海外股利已被來源國預扣稅。** 美股股利預扣 30%（有租稅協定者較低）。台灣不抵扣。
-
----
-
-## 七、節稅策略
-
-### 合法節稅方式
-
-| 策略 | 說明 |
-|------|------|
-| **選對計稅方式** | 每年比較合併 vs 分離，選稅較低的 |
-| **善用 8.5% 抵減** | 低稅率者把股利控制在抵減額度內（94 萬以內滿抵） |
-| **分散配息時間** | 選季配 / 月配 ETF，分散二代健保觸發 |
-| **資本利得免稅** | 賣價差不課稅；可適度用價差替代股息 |
-| **夫妻分開計稅** | 股利所得可選擇分開計稅 |
-| **控制海外所得** | 海外投資部分注意 100 萬門檻 |
-
-14. **最大的節稅是「不要過度交易」。** 每次賣出付 0.3% 證交稅，少交易 = 少繳稅。
-15. **不要為了節稅做出不好的投資決策。** 稅只是成本之一，報酬才是目標。
+12. **Overseas income under NT$1M doesn't require declaration.** Small US ETF positions usually aren't affected.
+13. **Overseas dividends are pre-withheld at the source.** US dividend withholding is 30% (lower with treaty). Taiwan does not credit it.
 
 ---
 
-## 八、年度稅務檢查清單
+## 7. Tax-Saving Strategies
 
-報稅前確認：
+### Legitimate tactics
 
-- [ ] 計算全年股利所得總額
-- [ ] 比較合併計稅 vs 分離計稅（用試算工具）
-- [ ] 檢查二代健保補充保費扣繳記錄
-- [ ] 確認 ETF 配息組成（哪些是免稅的）
-- [ ] 海外所得是否超過 100 萬
-- [ ] 證券交易稅已從賣出價自動扣除（無需另計）
-- [ ] 手續費折讓記錄（可作為費用）
+| Strategy | Notes |
+|----------|-------|
+| **Pick the right filing method** | Compare combined vs separate yearly, take the lower |
+| **Use the 8.5% credit fully** | Low-bracket investors keep dividends within the credit cap (NT$940,000 fully covered) |
+| **Spread distributions** | Quarterly / monthly ETFs spread the supplemental premium triggers |
+| **Capital gains exempt** | Use price gains (untaxed) instead of dividends where appropriate |
+| **Spousal separate filing** | Dividend income can be filed separately within a couple |
+| **Track overseas income** | Mind the NT$1M threshold |
+
+14. **The biggest tax saver is "don't over-trade".** Every sale costs 0.3% STT — fewer trades = less tax.
+15. **Don't make poor investment decisions for tax reasons.** Tax is one cost; return is the goal.
 
 ---
 
-## 相關技能
+## 8. Annual Tax Checklist
 
-- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — 殖利率要看稅後才準
-- [`tw-etf-investing`](../tw-etf-investing/SKILL.md) — ETF 配息的稅務處理
-- [`portfolio-construction`](../portfolio-construction/SKILL.md) — 稅務影響資產配置決策
+Before filing:
+
+- [ ] Total dividend income for the year computed
+- [ ] Compare combined vs separate filing (use a calculator)
+- [ ] Check NHI supplemental premium withholdings
+- [ ] Confirm ETF distribution composition (which portions are tax-exempt)
+- [ ] Overseas income above NT$1M?
+- [ ] STT auto-deducted at sale (no separate calculation needed)
+- [ ] Commission discount records (deductible as cost)
+
+---
+
+## Related Skills
+
+- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — yield isn't yield until it's after-tax
+- [`tw-etf-investing`](../tw-etf-investing/SKILL.md) — ETF distribution taxation
+- [`portfolio-construction`](../portfolio-construction/SKILL.md) — tax shapes asset-allocation decisions

@@ -1,193 +1,194 @@
 ---
 name: second-brain
 description: >
-  個人知識管理系統（第二大腦）建構指南 — Zettelkasten 方法、PARA 組織法、
-  筆記工具選擇（Obsidian/Notion/Logseq）、知識連結、定期回顧，以及從輸入
-  到輸出的知識工作流。適合想系統化管理學習筆記和想法的人。
+  Personal knowledge management (PKM) system — Zettelkasten, the PARA method,
+  tool selection (Obsidian / Notion / Logseq), linking strategy, regular review,
+  and the workflow from input to output. For people who want a system that
+  manages their notes, ideas, and reading material end-to-end.
 category: productivity
 tags: [pkm, second-brain, zettelkasten, obsidian, note-taking, productivity]
 related: [learning-methodology, time-management]
 ---
 
-# 第二大腦（Personal Knowledge Management）
+# Second Brain (Personal Knowledge Management)
 
-> 你的大腦是用來產生想法的，不是用來儲存想法的。把儲存和連結的工作交給系統。
+> Your brain is for having ideas, not for storing them. Outsource the storage and the linking to a system.
 
-## 適用情境
+## When to Use This Skill
 
-- 學了很多但找不到、想不起來
-- 筆記散落在各處（手機、便條、不同 App）
-- 想把閱讀的書/文章轉化為可用的知識
-- 想建立一個可以「跟自己對話」的知識庫
-- 想提升寫作/創作的效率（有素材可組合）
-
----
-
-## 核心原則
-
-1. **捕捉一切值得記住的事。** 不信任記憶，信任系統。
-2. **每條筆記是一個獨立的想法。** 原子化：一筆記一概念。
-3. **連結比分類重要。** 筆記之間的連結產生新想法；資料夾只是收納。
-4. **定期回顧。** 不回顧的系統會腐爛。
-5. **為行動服務。** 知識管理的目標是產出（寫文章、做決策、解問題），不是囤積。
+- Studied a lot but can't recall or find anything
+- Notes scattered across phone, sticky notes, multiple apps
+- Want to convert reading into usable knowledge
+- Want a knowledge base you can "have a conversation with"
+- Want to write or create more efficiently (have raw material to compose from)
 
 ---
 
-## 方法論選擇
+## Core Principles
 
-### PARA（Tiago Forte）
-
-按「用途」組織：
-
-```
-Projects/     — 有明確目標和截止日的事（寫書、開發專案）
-Areas/        — 持續維護的責任區（健康、財務、職涯）
-Resources/    — 感興趣的主題（技術學習、投資筆記）
-Archives/     — 不再活躍的項目
-```
-
-**適合：** 行動導向、以專案為中心的人。
-
-### Zettelkasten（Luhmann）
-
-按「連結」組織：
-
-- 每條筆記有唯一 ID
-- 筆記之間用雙向連結
-- 沒有嚴格的資料夾結構
-- 透過連結浮現新想法
-
-**適合：** 研究者、寫作者、想產生原創想法的人。
-
-### 混合法（推薦初學者）
-
-```
-PARA 管理「做什麼」（Projects, Areas）
-Zettelkasten 管理「知道什麼」（Resources 內部用連結組織）
-```
-
-6. **不要花太多時間選方法。** 選一個開始，3 個月後調整。
+1. **Capture anything worth remembering.** Don't trust memory; trust the system.
+2. **One note = one idea.** Atomic notes — one concept per note.
+3. **Linking matters more than categorizing.** Links between notes create new ideas; folders are just storage.
+4. **Review regularly.** A system that isn't reviewed rots.
+5. **Serve action.** The point of PKM is output (writing, decisions, problem solving), not hoarding.
 
 ---
 
-## 工具選擇
+## Method Choice
 
-| 工具 | 特色 | 適合 |
-|------|------|------|
-| **Obsidian** | 本地 Markdown、雙向連結、外掛生態豐富 | 開發者、Zettelkasten |
-| **Logseq** | 大綱式、本地優先、雙向連結 | 日誌導向、大綱思考者 |
-| **Notion** | 資料庫、協作、模板豐富 | 團隊、專案管理混合筆記 |
-| **Apple Notes** | 簡單、跨裝置同步 | 快速捕捉、不想管理系統 |
-| **Heptabase** | 白板式視覺連結 | 視覺思考者 |
+### PARA (Tiago Forte)
 
-7. **Obsidian 是開發者的最佳選擇。** 本地 Markdown（不被綁定）、Git 備份、雙向連結、社群外掛。
-8. **工具不重要，習慣重要。** 用得最順手的工具 > 功能最多的工具。
+Organized by *purpose*:
+
+```
+Projects/   — bounded efforts with a goal and deadline (book, build, launch)
+Areas/      — ongoing responsibility (health, finances, career)
+Resources/  — topics of interest (technical, investing, hobbies)
+Archives/   — no longer active
+```
+
+**Best for:** action-oriented people, project-centric work.
+
+### Zettelkasten (Luhmann)
+
+Organized by *links*:
+
+- Each note has a unique ID
+- Notes connect via bidirectional links
+- No strict folder hierarchy
+- New ideas emerge from following links
+
+**Best for:** researchers, writers, anyone trying to generate original ideas.
+
+### Hybrid (recommended for beginners)
+
+```
+PARA manages "what to do" (Projects, Areas)
+Zettelkasten manages "what you know" (organize Resources/ with links)
+```
+
+6. **Don't spend forever picking a method.** Pick one, start, adjust at the 3-month mark.
 
 ---
 
-## 筆記類型
+## Tool Choice
 
-| 類型 | 用途 | 範例 |
-|------|------|------|
-| **Fleeting Note（閃念筆記）** | 快速捕捉想法，未處理 | 「gRPC 的 streaming 好像可以用在 X」 |
-| **Literature Note（文獻筆記）** | 讀書/文章的摘要和心得 | 讀完一篇文章後的 3-5 句重點 |
-| **Permanent Note（永久筆記）** | 用自己的話寫的獨立概念 | 「間隔重複的最佳複習間隔是...」 |
-| **Project Note（專案筆記）** | 特定專案的工作記錄 | Sprint 回顧、技術決策 |
+| Tool | Strengths | Best for |
+|------|-----------|----------|
+| **Obsidian** | Local Markdown, bidirectional links, rich plugin ecosystem | Developers, Zettelkasten |
+| **Logseq** | Outline-based, local-first, bidirectional links | Daily-journal flow, outline thinkers |
+| **Notion** | Databases, collaboration, templates | Teams, project + notes hybrid |
+| **Apple Notes** | Simple, syncs across devices | Quick capture, low-maintenance |
+| **Heptabase** | Whiteboard-style visual links | Visual thinkers |
 
-### 流程
-
-```
-閃念筆記 → 每天整理 → 文獻筆記 / 永久筆記 → 連結到現有筆記 → 回顧
-```
-
-9. **閃念筆記不是永久筆記。** 必須在 24 小時內處理（轉成永久筆記或刪除）。
-10. **永久筆記用自己的話寫。** 複製貼上不是知識，是資料。用自己的話 = 理解了。
+7. **Obsidian is the best fit for developers.** Local Markdown (no lock-in), Git-backable, bidirectional links, large plugin ecosystem.
+8. **The tool doesn't matter — the habit does.** The most-used tool beats the most-featured tool.
 
 ---
 
-## 連結策略
+## Note Types
 
-### 怎麼建立連結
+| Type | Purpose | Example |
+|------|---------|---------|
+| **Fleeting note** | Capture an idea fast, unprocessed | "gRPC streaming might fit X" |
+| **Literature note** | Summary + your takeaways from a reading | 3–5 bullets after reading an article |
+| **Permanent note** | A standalone concept written in your own words | "The optimal review interval for spaced repetition is..." |
+| **Project note** | Working notes for a specific project | Sprint retro, tech decision log |
 
-11. **寫新筆記時，問自己：「這跟什麼有關？」** 找到 2-3 個已有筆記做連結。
-12. **雙向連結是核心。** `[[概念A]]` 連到 `[[概念B]]`，B 自動反連到 A。
-13. **用 MOC（Map of Content）做索引。** 一個主題的「目錄頁」，列出所有相關筆記。
+### The flow
+
+```
+Fleeting → daily processing → Literature / Permanent → linked to existing notes → reviewed
+```
+
+9. **A fleeting note is not a permanent note.** Process within 24 hours (promote or delete).
+10. **Permanent notes are written in your own words.** Copy-paste is data, not knowledge. Rewriting in your words = understood.
+
+---
+
+## Linking Strategy
+
+### How to add links
+
+11. **When writing a new note, ask: "what is this related to?"** Find 2–3 existing notes to link.
+12. **Bidirectional links are the point.** `[[Concept A]]` linking to `[[Concept B]]` automatically backlinks B → A.
+13. **Use MOC (Map of Content) as an index.** A "table of contents" for a topic, listing related notes.
 
 ```markdown
-# Go 併發 MOC
+# Go Concurrency MOC
 
-相關筆記：
-- [[goroutine 生命週期]]
-- [[channel 方向限制]]
-- [[errgroup 使用模式]]
-- [[race condition 常見模式]]
-- [[context 取消傳播]]
+Related notes:
+- [[goroutine lifecycle]]
+- [[channel direction restrictions]]
+- [[errgroup patterns]]
+- [[common race conditions]]
+- [[context cancellation propagation]]
 ```
 
-14. **不要過度分類。** 3-5 個頂層資料夾就夠。連結 > 資料夾。
+14. **Don't over-categorize.** 3–5 top-level folders is plenty. Links > folders.
 
 ---
 
-## 回顧系統
+## Review System
 
-| 回顧 | 頻率 | 做什麼 |
-|------|------|--------|
-| **Daily Review** | 每天 5 分鐘 | 處理閃念筆記、回顧今天學到的 |
-| **Weekly Review** | 每週 30 分鐘 | 整理本週筆記、更新專案進度、找新連結 |
-| **Monthly Review** | 每月 1 小時 | 回顧筆記庫、歸檔完成的專案、發現知識缺口 |
-| **Random Resurfacing** | 每天 | Obsidian Random Note 外掛，隨機顯示一則舊筆記 |
+| Review | Frequency | What you do |
+|--------|-----------|-------------|
+| **Daily review** | 5 min/day | Process fleeting notes, recap today's learnings |
+| **Weekly review** | 30 min/week | Tidy this week's notes, update project progress, find new links |
+| **Monthly review** | 1 hr/month | Survey the vault, archive finished projects, find knowledge gaps |
+| **Random resurfacing** | Daily | Obsidian Random Note plugin to surface old notes |
 
-15. **每日回顧是最重要的習慣。** 5 分鐘就夠。不回顧 = 系統慢慢死亡。
-16. **隨機回顧產生意外連結。** 這是第二大腦最有價值的功能。
+15. **The daily review is the most important habit.** Five minutes is enough. Skip it = the system slowly dies.
+16. **Random resurfacing creates serendipitous links.** This is one of the most valuable PKM features.
 
 ---
 
-## 知識工作流：從輸入到輸出
+## Knowledge Workflow: Input to Output
 
 ```
-輸入（閱讀、聽講、體驗）
-  ↓
-捕捉（閃念筆記、highlight）
-  ↓
-處理（用自己的話重寫 → 永久筆記）
-  ↓
-連結（找到相關筆記、建立雙向連結）
-  ↓
-回顧（每日/每週整理）
-  ↓
-輸出（寫文章、做決策、教別人）
+Input (reading, listening, experience)
+   ↓
+Capture (fleeting notes, highlights)
+   ↓
+Process (rewrite in your own words → permanent note)
+   ↓
+Link (find related notes, add bidirectional links)
+   ↓
+Review (daily / weekly cleanup)
+   ↓
+Output (write articles, make decisions, teach others)
 ```
 
-17. **輸出是檢驗的唯一標準。** 如果知識庫只進不出，它就是一個高級收藏夾。
-18. **寫作是最好的輸出。** 每學完一個主題，寫一篇筆記或文章。
+17. **Output is the only real test.** A vault that only takes input is a fancy bookmark folder.
+18. **Writing is the best output.** After learning a topic, write a note or article.
 
 ---
 
-## 常見陷阱
+## Common Traps
 
-| 陷阱 | 對策 |
-|------|------|
-| **工具狂：不斷換工具** | 選一個用 3 個月再評估 |
-| **收藏家：只進不出** | 設定輸出目標（每月 1 篇文章）|
-| **完美主義：每條筆記要寫得完美** | 草稿就好；日後回顧時再改善 |
-| **分類強迫症** | 連結 > 資料夾。不要花 30 分鐘想該放哪 |
-| **不回顧** | 設日曆提醒；養成每日 5 分鐘習慣 |
-| **把所有東西都記** | 只記「改變了你想法」或「未來會用到」的 |
-
----
-
-## 快速啟動清單
-
-- [ ] 選一個工具（推薦 Obsidian）
-- [ ] 建立 4 個頂層資料夾（Projects / Areas / Resources / Archives）
-- [ ] 設定每日 5 分鐘回顧時間
-- [ ] 寫第一則永久筆記（今天學到的最重要的一件事）
-- [ ] 把這則筆記連結到至少一則已有筆記
-- [ ] 承諾使用 3 個月後再評估方法
+| Trap | Fix |
+|------|-----|
+| **Tool obsession** — constant tool switching | Pick one, use it 3 months before reassessing |
+| **Hoarder** — input only, no output | Set an output goal (1 article / month) |
+| **Perfectionism** — every note must be polished | Drafts are fine; refine on review |
+| **Compulsive categorizing** | Links > folders. Don't burn 30 minutes deciding where it goes |
+| **No review** | Calendar reminder; build the daily 5-minute habit |
+| **Recording everything** | Only what changes your mind or you'll need later |
 
 ---
 
-## 相關技能
+## Quick-Start Checklist
 
-- [`learning-methodology`](../learning-methodology/SKILL.md) — 學習方法論，第二大腦是知識的存放地
-- [`time-management`](../time-management/SKILL.md) — 找到回顧和整理的時間
+- [ ] Pick a tool (Obsidian recommended)
+- [ ] Create 4 top-level folders (Projects / Areas / Resources / Archives)
+- [ ] Schedule a daily 5-minute review slot
+- [ ] Write your first permanent note (the most important thing you learned today)
+- [ ] Link it to at least one existing note
+- [ ] Commit to using the system for 3 months before reassessing
+
+---
+
+## Related Skills
+
+- [`learning-methodology`](../learning-methodology/SKILL.md) — the second brain is where the learning lives
+- [`time-management`](../time-management/SKILL.md) — finding the time to review and process

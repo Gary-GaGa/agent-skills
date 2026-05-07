@@ -1,165 +1,167 @@
 ---
 name: tw-etf-investing
 description: >
-  台股 ETF 投資指南，涵蓋主流 ETF（0050/0056/00878/00713 等）特性比較、
-  定期定額策略、核心衛星配置、配息機制、內扣費用，以及 ETF 搭配個股的組合方式。
-  適合想建立長期投資組合的散戶。
+  Investing in Taiwan-listed ETFs — comparison of major ETFs (0050, 0056,
+  00878, 00713 etc.), dollar-cost averaging strategy, core-satellite
+  allocation, dividend mechanics, expense ratios, and combining ETFs with
+  individual stocks. For retail investors building a long-term portfolio.
 category: finance
 tags: [stock, taiwan, etf, passive-investing, dividend, portfolio]
+keywords: ["0050", "0056", "00878", "00713", "00919", "006208", "expense ratio"]
 related: [tw-stock-fundamental, portfolio-construction, tw-stock-tax]
 ---
 
-# 台股 ETF 投資
+# Taiwan ETF Investing
 
-> ETF 的核心價值是分散風險和低成本。不用選股、不用盯盤，長期跑贏多數主動投資者。
+> An ETF's value is diversification at low cost. No stock picking, no chart watching — long-term ETF investing beats most active retail investors.
 
-## 適用情境
+## When to Use This Skill
 
-- 想開始投資但不想花大量時間研究個股
-- 想建立長期定期定額的核心部位
-- 想了解台股主流 ETF 的差異
-- 想在個股投資之外增加被動配置
-- 想比較高股息 ETF 和市值型 ETF
-
----
-
-## 台股主流 ETF 比較
-
-### 市值型（追蹤大盤）
-
-| ETF | 追蹤指數 | 特色 | 適合 |
-|-----|----------|------|------|
-| **0050（元大台灣50）** | 台灣50指數 | 台股前50大市值，台積電占比 ~50% | 長期資本增值 |
-| **006208（富邦台50）** | 台灣50指數 | 和 0050 同指數，內扣費用更低 | 費用敏感者 |
-
-### 高股息型
-
-| ETF | 特色 | 配息 | 適合 |
-|-----|------|------|------|
-| **0056（元大高股息）** | 預測未來殖利率選股 | 年配（近年改季配） | 傳統存股族 |
-| **00878（國泰永續高股息）** | ESG + 高股息 | 季配 | ESG 偏好者 |
-| **00713（元大台灣高息低波）** | 高殖利率 + 低波動 | 季配 | 重視穩定性 |
-| **00919（群益台灣精選高息）** | 月配息 | 月配 | 需要現金流 |
-
-### 主題型
-
-| ETF | 主題 | 適合 |
-|-----|------|------|
-| **00881** | 國泰台灣5G+ | 看好 5G/科技 |
-| **00757** | 統一FANG+ | 美股科技巨頭 |
-| **00830** | 國泰費城半導體 | 半導體產業 |
+- Want to start investing without spending hours on stock research
+- Building a long-term core position via dollar-cost averaging
+- Want to understand differences among major Taiwan ETFs
+- Want to add a passive sleeve alongside individual stocks
+- Want to compare dividend ETFs vs broad-market ETFs
 
 ---
 
-## 市值型 vs 高股息型
+## Major Taiwan ETFs
 
-| | 市值型 (0050) | 高股息型 (0056/00878) |
-|-|---------------|----------------------|
-| **報酬來源** | 資本利得為主 | 股息為主 |
-| **長期年化報酬** | 較高（含股息再投入）| 較低（配息後價格調整）|
-| **波動** | 較大（跟台積電連動高）| 較小 |
-| **適合** | 長期累積資產 | 需要現金流、退休 |
-| **稅務** | 少配息 → 少稅 | 配息要課所得稅 |
+### Broad-market (tracks the index)
 
-1. **年輕累積期：市值型為主。** 股息再投入的複利效果最大化。
-2. **退休提領期：高股息型搭配市值型。** 需要穩定現金流。
-3. **不要只看殖利率。** 高股息 ETF 配息後股價會除息，不是「額外」收益。
+| ETF | Index | Notes | Best for |
+|-----|-------|-------|----------|
+| **0050 (Yuanta TW 50)** | Taiwan 50 Index | Top 50 by market cap, ~50% in TSMC | Long-term capital growth |
+| **006208 (Fubon TW 50)** | Taiwan 50 Index | Same index as 0050, lower expense ratio | Cost-sensitive investors |
 
----
+### Dividend-focused
 
-## 定期定額
+| ETF | Notes | Distribution | Best for |
+|-----|-------|--------------|----------|
+| **0056 (Yuanta High Dividend)** | Selects by forward yield | Annual (recently moved to quarterly) | Traditional dividend investors |
+| **00878 (Cathay ESG High Dividend)** | ESG + high dividend | Quarterly | ESG-minded investors |
+| **00713 (Yuanta TW Hi-Yield Low-Vol)** | High yield + low volatility | Quarterly | Stability-focused |
+| **00919 (Capital TW Select Hi-Div)** | Monthly distribution | Monthly | Need monthly cash flow |
 
-### 為什麼有效
+### Thematic
 
-- **紀律勝過擇時。** 市場低點加碼、高點少買（自動攤平成本）。
-- **避免情緒決策。** 固定日期、固定金額，不需要判斷時機。
-- **時間是最大的盟友。** 20 年定期定額 0050 的歷史年化報酬約 8-10%。
-
-### 執行方式
-
-3. **固定日期、固定金額。** 例如每月 6 日、10,000 元。
-4. **選 1-3 檔 ETF 就好。** 太多反而管理負擔。
-5. **不要因為短期下跌停扣。** 下跌時買到更多單位 = 未來報酬更高。
-6. **每年檢視一次，不需要每月。** 看總報酬和配置比例是否偏離。
+| ETF | Theme | Best for |
+|-----|-------|----------|
+| **00881** | Cathay Taiwan 5G+ | Bullish on 5G / tech |
+| **00757** | Uni-President FANG+ | US tech mega-caps |
+| **00830** | Cathay PHLX Semiconductor | Semiconductor industry |
 
 ---
 
-## 核心衛星配置
+## Broad-Market vs Dividend-Focused
+
+| | Broad-market (0050) | Dividend (0056 / 00878) |
+|-|---------------------|-------------------------|
+| **Return source** | Mostly capital gain | Mostly dividends |
+| **Long-term annualized return** | Higher (with dividend reinvestment) | Lower (price drops at ex-dividend) |
+| **Volatility** | Higher (heavily TSMC-correlated) | Lower |
+| **Best for** | Accumulation | Cash flow, retirement |
+| **Tax** | Less distribution → less tax | Distributions taxed as income |
+
+1. **Accumulation phase: lean broad-market.** Reinvested dividends compound the most.
+2. **Retirement / withdrawal phase: dividend ETF + broad-market mix.** You want stable cash flow.
+3. **Don't focus only on yield.** Price drops on ex-dividend; the distribution isn't a bonus.
+
+---
+
+## Dollar-Cost Averaging
+
+### Why it works
+
+- **Discipline beats timing.** You buy more at lows, less at highs (automatically averaging cost).
+- **Avoids emotional decisions.** Same date, same amount — no timing judgment needed.
+- **Time is the biggest ally.** 20 years of DCA into 0050 has historically returned ~8–10% annualized.
+
+### How to do it
+
+3. **Fixed date, fixed amount.** E.g. NT$10,000 on the 6th of every month.
+4. **One to three ETFs is plenty.** More creates management overhead.
+5. **Don't pause contributions on short-term drops.** A drop means more units bought = higher future return.
+6. **Review yearly, not monthly.** Check total return and whether allocation has drifted.
+
+---
+
+## Core-Satellite Allocation
 
 ```
-核心（70-80%）：市值型 ETF，穩定成長
-衛星（20-30%）：個股、主題 ETF、高股息 ETF，增加報酬或現金流
+Core (70–80%): broad-market ETFs, steady growth
+Satellite (20–30%): individual stocks, thematic ETFs, dividend ETFs — for excess return or cash flow
 ```
 
-### 範例
+### Example
 
-| 部位 | 標的 | 比例 | 目的 |
-|------|------|------|------|
-| 核心 | 0050 / 006208 | 60% | 長期資本增值 |
-| 衛星 | 00878 | 15% | 季配息現金流 |
-| 衛星 | 個股（3-5 檔） | 25% | 主動選股超額報酬 |
+| Bucket | Ticker | Weight | Purpose |
+|--------|--------|--------|---------|
+| Core | 0050 / 006208 | 60% | Long-term capital growth |
+| Satellite | 00878 | 15% | Quarterly cash flow |
+| Satellite | individual stocks (3–5 names) | 25% | Active alpha attempt |
 
-7. **核心部位定期定額，不擇時。** 衛星部位可以用基本面/技術面/籌碼面選股。
+7. **Core: dollar-cost average, don't time.** Satellite can use fundamentals / technicals / chip flow for selection.
 
 ---
 
-## 內扣費用（總管理費）
+## Expense Ratios (Total Management Fees)
 
-| ETF | 經理費 | 保管費 | 合計（概估） |
-|-----|--------|--------|--------------|
+| ETF | Management fee | Custody fee | Total (approx.) |
+|-----|----------------|-------------|------------------|
 | 0050 | 0.32% | 0.035% | ~0.43% |
 | 006208 | 0.15% | 0.035% | ~0.24% |
 | 0056 | 0.30% | 0.035% | ~0.74% |
 | 00878 | 0.25% | 0.035% | ~0.57% |
 
-8. **費用率對長期報酬影響巨大。** 0.5% 的差異，20 年複利下來差距超過 10%。
-9. **市值型 ETF 之間，選費用最低的。** 006208 追蹤同指數但費用比 0050 低。
+8. **Fees compound brutally over the long term.** A 0.5% gap over 20 years is more than 10% in cumulative return.
+9. **Among broad-market ETFs, pick the cheapest.** 006208 tracks the same index as 0050 at a lower cost.
 
 ---
 
-## 配息機制
+## Distribution Mechanics
 
-- **年配：** 一年一次（傳統，如 0050）
-- **季配：** 一季一次（0056、00878、00713）
-- **月配：** 每月（00919）
+- **Annual:** once a year (traditional, e.g. 0050)
+- **Quarterly:** four times a year (0056, 00878, 00713)
+- **Monthly:** every month (00919)
 
-10. **配息頻率不影響總報酬。** 只影響現金流節奏。
-11. **配息要課稅。** 台股 ETF 配息屬於「所得」，合併個人綜所稅。高所得者注意稅率。
-12. **除息後股價下降。** 「填息」才是真的賺到。不填息 = 只是把自己的錢分給自己。
-
----
-
-## 常見陷阱
-
-| 陷阱 | 說明 | 對策 |
-|------|------|------|
-| **只看殖利率** | 忽略了總報酬和填息能力 | 比較「含息報酬率」（股價 + 配息）|
-| **追高股息 ETF** | 熱門時溢價買進 | 比較 ETF 淨值 vs 市價 |
-| **買太多檔 ETF** | 重疊持股，分散過度 | 3 檔以內，檢查持股重疊 |
-| **下跌就停扣** | 錯過低點加碼機會 | 紀律定期定額 |
-| **短期績效比較** | 1-3 個月績效無意義 | 至少看 3-5 年 |
-| **忽略內扣費用** | 長期侵蝕報酬 | 選同類型中費用最低的 |
-| **把 ETF 當個股短線操作** | 違反 ETF 設計初衷 | ETF 是長期工具 |
+10. **Frequency doesn't affect total return.** Only the cash-flow rhythm.
+11. **Distributions are taxable.** Taiwan ETF distributions count as income on your personal tax return. High earners: mind the bracket.
+12. **Price drops on the ex-dividend date.** A successful "dividend recapture" (price recovering) is the only way you actually gain. No recapture = you're just paying yourself with your own money.
 
 ---
 
-## 檢查清單
+## Common Traps
 
-定期定額前確認：
-
-- [ ] 選定 1-3 檔 ETF（核心 + 衛星）
-- [ ] 了解追蹤指數和前十大持股
-- [ ] 比較過內扣費用
-- [ ] 設定固定日期和金額
-- [ ] 確認券商有提供定期定額服務
-- [ ] 了解配息機制和稅務影響
-- [ ] 設定年度檢視日（一年一次即可）
-- [ ] 承諾至少 3 年不因短期下跌停扣
+| Trap | What happens | Fix |
+|------|--------------|-----|
+| **Yield-only mindset** | Ignores total return and recapture ability | Compare total-return (price + distributions) |
+| **Chasing hot dividend ETFs** | Buying at premium during hype | Compare NAV vs market price |
+| **Too many ETFs** | Overlapping holdings, over-diversification | Cap at ~3 ETFs, audit for overlap |
+| **Pausing DCA on dips** | Misses the best buying days | Stick to the schedule |
+| **Comparing 1–3 month performance** | Meaningless | Look at 3–5+ years |
+| **Ignoring fees** | Erodes long-term return | Pick the lowest-cost in each category |
+| **Trading ETFs short-term** | Defeats the design | ETFs are long-term tools |
 
 ---
 
-## 相關技能
+## Pre-Flight Checklist
 
-- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — 選股用於衛星部位
-- [`portfolio-construction`](../portfolio-construction/SKILL.md) — ETF 在整體配置中的角色
-- [`rules/trading-discipline`](../../rules/trading-discipline.md) — 紀律是定期定額的核心
+Before starting DCA:
+
+- [ ] Picked 1–3 ETFs (core + satellite)
+- [ ] Read the tracked index and top-10 holdings
+- [ ] Compared expense ratios
+- [ ] Set fixed date and amount
+- [ ] Broker supports automated DCA
+- [ ] Understood distribution mechanics and tax impact
+- [ ] Annual review date scheduled (yearly is enough)
+- [ ] Committed to at least 3 years without pausing on dips
+
+---
+
+## Related Skills
+
+- [`tw-stock-fundamental`](../tw-stock-fundamental/SKILL.md) — picking satellite names
+- [`portfolio-construction`](../portfolio-construction/SKILL.md) — ETF role in the overall portfolio
+- [`rules/trading-discipline`](../../rules/trading-discipline.md) — discipline is the heart of DCA

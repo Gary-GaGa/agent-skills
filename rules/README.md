@@ -27,7 +27,7 @@ Each rule sheet is a single `.md` file. No frontmatter required — rules are me
 | [`prompt-style.md`](./prompt-style.md) | Prompt writing — structure, instructions, examples, output format, refusals |
 | [`security-checklist.md`](./security-checklist.md) | Security checklist — OWASP Top 10 condensed for code review |
 | [`tool-schema.md`](./tool-schema.md) | Tool schemas — naming, descriptions, parameters, errors, side effects |
-| [`trading-discipline.md`](./trading-discipline.md) | 交易紀律 — 資金管理、停損停利、心理控制、持股管理 |
+| [`trading-discipline.md`](./trading-discipline.md) | Trading discipline — position sizing, stops, psychological control, holdings management |
 <!-- END AUTO-GENERATED: rules-index -->
 
 ---

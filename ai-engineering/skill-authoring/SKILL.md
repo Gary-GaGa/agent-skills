@@ -7,7 +7,7 @@ description: >
   refactoring an existing one for clarity and discoverability.
 category: ai-engineering
 tags: [skill, agent, meta, documentation, claude-skills]
-related: [prompt-engineering, agent-harness-design, tool-design-for-agents, agentic-coding-patterns, claude-code-customization, technical-writing-en]
+related: [prompt-engineering, agent-harness-design, tool-design-for-agents, agentic-coding-patterns, claude-code-customization, technical-writing]
 ---
 
 # Skill Authoring
