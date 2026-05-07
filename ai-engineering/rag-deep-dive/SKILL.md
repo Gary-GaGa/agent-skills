@@ -7,7 +7,7 @@ description: >
   retrieval quality, or choosing between RAG approaches.
 category: ai-engineering
 tags: [rag, retrieval, embedding, vector-db, llm, search]
-related: [context-engineering, prompt-engineering, agent-evaluation]
+related: [context-engineering, prompt-engineering, agent-evaluation, gcp-vertex-ai-rag, graphrag-multi-service, query-rewriting-rag, rag-for-code, rag-ingestion-pipeline, spring-ai-rag]
 ---
 
 # RAG Deep Dive

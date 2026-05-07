@@ -8,7 +8,7 @@ description: >
 category: engineering
 tags: [java, spring-boot, api, rest, http, backend, design, validation]
 keywords: [Spring MVC, "@RestController", "@ControllerAdvice", ProblemDetail, RFC 7807, Bean Validation, "@Valid", Jackson, ResponseEntity]
-related: [spring-boot-fundamentals, openapi-swagger-spring, spring-boot-testing, api-design-rest, auth-patterns]
+related: [spring-boot-fundamentals, openapi-swagger-spring, spring-boot-testing, api-design-rest, auth-patterns, spring-ai-rag]
 ---
 
 # Java RESTful API (Spring Boot)
