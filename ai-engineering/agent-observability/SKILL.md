@@ -7,7 +7,7 @@ description: >
   ways you can't reproduce, or when setting up production telemetry.
 category: ai-engineering
 tags: [observability, tracing, logging, agent, debugging, monitoring]
-related: [agent-harness-design, agent-evaluation, debugging-methodology, observability-go]
+related: [agent-harness-design, agent-evaluation, debugging-methodology, observability-go, rag-ingestion-pipeline]
 ---
 
 # Agent Observability

@@ -5,19 +5,19 @@
       "name": "engineering",
       "title": "Engineering",
       "description": "Software design, Go, APIs, frontend, databases, architecture, integrations.",
-      "skill_count": 30
+      "skill_count": 31
     },
     {
       "name": "ai-engineering",
       "title": "AI Engineering",
       "description": "LLM agents, prompts, context, tools, eval, observability, safety, caching.",
-      "skill_count": 16
+      "skill_count": 21
     },
     {
       "name": "devops",
       "title": "DevOps",
       "description": "Docker, GitHub Actions, Terraform, Kubernetes.",
-      "skill_count": 7
+      "skill_count": 8
     },
     {
       "name": "data",
@@ -95,7 +95,8 @@
         "claude-code-customization",
         "prompt-caching",
         "llm-cost-optimization",
-        "copilot-sdk"
+        "copilot-sdk",
+        "agentic-rag"
       ],
       "path": "ai-engineering/agent-harness-design/SKILL.md",
       "body_lines": 219,
@@ -118,7 +119,8 @@
         "agent-harness-design",
         "agent-evaluation",
         "debugging-methodology",
-        "observability-go"
+        "observability-go",
+        "rag-ingestion-pipeline"
       ],
       "path": "ai-engineering/agent-observability/SKILL.md",
       "body_lines": 273,
@@ -168,6 +170,41 @@
       "references": []
     },
     {
+      "name": "agentic-rag",
+      "category": "ai-engineering",
+      "description": "Agentic RAG — letting an LLM agent retrieve iteratively via tools (grep, AST query, file read, graph traversal) instead of fixed top-K vector search. Use this skill when one-shot retrieval can't reach multi-hop answers or when code RAG needs structural exploration.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "llm",
+        "search",
+        "agent",
+        "tool",
+        "coding"
+      ],
+      "keywords": [
+        "agentic RAG",
+        "ReAct",
+        "tool calling",
+        "grep tool",
+        "ripgrep",
+        "AST query",
+        "LSP",
+        "retrieval agent",
+        "self-correcting RAG"
+      ],
+      "related": [
+        "rag-for-code",
+        "graphrag-multi-service",
+        "query-rewriting-rag",
+        "tool-design-for-agents",
+        "agent-harness-design"
+      ],
+      "path": "ai-engineering/agentic-rag/SKILL.md",
+      "body_lines": 214,
+      "references": []
+    },
+    {
       "name": "claude-code-customization",
       "category": "ai-engineering",
       "description": "Customizing Claude Code via settings.json, hooks, slash commands, MCP servers, CLAUDE.md memory files, plugins, and statusline. Use this skill when tailoring Claude Code to a specific project, automating repetitive workflows, enforcing team conventions, or building a personal Claude Code setup.",
@@ -210,7 +247,8 @@
         "rag-deep-dive",
         "llm-cost-optimization",
         "multi-agent-orchestration",
-        "tool-design-for-agents"
+        "tool-design-for-agents",
+        "rag-for-code"
       ],
       "path": "ai-engineering/context-engineering/SKILL.md",
       "body_lines": 280,
@@ -235,6 +273,46 @@
       ],
       "path": "ai-engineering/fine-tuning-guide/SKILL.md",
       "body_lines": 193,
+      "references": []
+    },
+    {
+      "name": "graphrag-multi-service",
+      "category": "ai-engineering",
+      "description": "Knowledge-graph RAG for multi-microservice projects — modelling services, endpoints, events, dependencies as a graph; extracting edges from OpenAPI / Pub-Sub / Maven; hybrid graph + vector retrieval. Use this skill when \"talk to my codebase\" RAG misses cross-service relationships.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "embedding",
+        "vector-db",
+        "llm",
+        "search",
+        "microservices",
+        "architecture"
+      ],
+      "keywords": [
+        "GraphRAG",
+        "knowledge graph",
+        "Microsoft GraphRAG",
+        "LightRAG",
+        "Neo4j",
+        "property graph",
+        "service map",
+        "call graph",
+        "OpenAPI",
+        "Pub/Sub",
+        "hybrid retrieval"
+      ],
+      "related": [
+        "rag-for-code",
+        "rag-deep-dive",
+        "rag-ingestion-pipeline",
+        "microservices-patterns",
+        "event-driven-architecture",
+        "agentic-rag",
+        "query-rewriting-rag"
+      ],
+      "path": "ai-engineering/graphrag-multi-service/SKILL.md",
+      "body_lines": 219,
       "references": []
     },
     {
@@ -354,10 +432,44 @@
         "skill-authoring",
         "rag-deep-dive",
         "multi-agent-orchestration",
-        "fine-tuning-guide"
+        "fine-tuning-guide",
+        "query-rewriting-rag"
       ],
       "path": "ai-engineering/prompt-engineering/SKILL.md",
       "body_lines": 335,
+      "references": []
+    },
+    {
+      "name": "query-rewriting-rag",
+      "category": "ai-engineering",
+      "description": "Improving RAG retrieval recall by rewriting queries before search — HyDE, multi-query expansion, decomposition, step-back prompting, and routing. Use this skill when a RAG pipeline retrieves the wrong chunks despite a sensible question, or complex multi-hop questions fail consistently.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "llm",
+        "search",
+        "prompt",
+        "optimization"
+      ],
+      "keywords": [
+        "HyDE",
+        "query rewriting",
+        "query expansion",
+        "multi-query",
+        "query decomposition",
+        "step-back prompting",
+        "routing",
+        "RAG fusion"
+      ],
+      "related": [
+        "rag-deep-dive",
+        "rag-for-code",
+        "graphrag-multi-service",
+        "agentic-rag",
+        "prompt-engineering"
+      ],
+      "path": "ai-engineering/query-rewriting-rag/SKILL.md",
+      "body_lines": 221,
       "references": []
     },
     {
@@ -376,10 +488,94 @@
       "related": [
         "context-engineering",
         "prompt-engineering",
-        "agent-evaluation"
+        "agent-evaluation",
+        "gcp-vertex-ai-rag",
+        "graphrag-multi-service",
+        "query-rewriting-rag",
+        "rag-for-code",
+        "rag-ingestion-pipeline",
+        "spring-ai-rag"
       ],
       "path": "ai-engineering/rag-deep-dive/SKILL.md",
       "body_lines": 227,
+      "references": []
+    },
+    {
+      "name": "rag-for-code",
+      "category": "ai-engineering",
+      "description": "RAG for source code — AST/tree-sitter chunking, code embedding models, repo metadata, import/call graphs, cross-repo retrieval. Use this skill when building \"talk to my codebase\" RAG, indexing Java/TS/Go monorepos, or when generic prose RAG retrieval misses the right code chunks.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "embedding",
+        "vector-db",
+        "llm",
+        "search",
+        "codebase-design",
+        "coding"
+      ],
+      "keywords": [
+        "code RAG",
+        "tree-sitter",
+        "AST chunking",
+        "voyage-code",
+        "jina-embeddings-v2-code",
+        "CodeRankEmbed",
+        "call graph",
+        "import graph",
+        "monorepo",
+        "semantic search for code"
+      ],
+      "related": [
+        "rag-deep-dive",
+        "rag-ingestion-pipeline",
+        "graphrag-multi-service",
+        "agentic-rag",
+        "context-engineering",
+        "query-rewriting-rag",
+        "spring-ai-rag"
+      ],
+      "path": "ai-engineering/rag-for-code/SKILL.md",
+      "body_lines": 278,
+      "references": []
+    },
+    {
+      "name": "rag-ingestion-pipeline",
+      "category": "ai-engineering",
+      "description": "Ingestion pipeline for code/document RAG — source enumeration, parsing, chunking, embedding, dedup, incremental git-SHA updates, schema migrations, observability. Use this skill when setting up or operationalising the data side of a RAG system over multiple repos.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "embedding",
+        "vector-db",
+        "llm",
+        "pipeline",
+        "data-engineering",
+        "automation"
+      ],
+      "keywords": [
+        "ingestion",
+        "ETL",
+        "incremental indexing",
+        "content hash",
+        "git SHA",
+        "tree-sitter",
+        "chunking pipeline",
+        "dedup",
+        "watcher",
+        "schema migration",
+        "RAG ops"
+      ],
+      "related": [
+        "rag-for-code",
+        "graphrag-multi-service",
+        "rag-deep-dive",
+        "agent-observability",
+        "github-actions",
+        "gcp-vertex-ai-rag"
+      ],
+      "path": "ai-engineering/rag-ingestion-pipeline/SKILL.md",
+      "body_lines": 280,
       "references": []
     },
     {
@@ -425,7 +621,8 @@
         "agent-safety-guardrails",
         "skill-authoring",
         "context-engineering",
-        "agent-evaluation"
+        "agent-evaluation",
+        "agentic-rag"
       ],
       "path": "ai-engineering/tool-design-for-agents/SKILL.md",
       "body_lines": 299,
@@ -658,10 +855,48 @@
         "gcp-cloud-sql-spring",
         "gcp-pubsub-spring",
         "gcp-observability-spring",
-        "gcp-firestore-spring"
+        "gcp-firestore-spring",
+        "gcp-vertex-ai-rag"
       ],
       "path": "devops/gcp-fundamentals/SKILL.md",
       "body_lines": 279,
+      "references": []
+    },
+    {
+      "name": "gcp-vertex-ai-rag",
+      "category": "devops",
+      "description": "RAG infrastructure on GCP — Vertex AI Vector Search, AlloyDB AI, pgvector on Cloud SQL, Firestore vector, Vertex AI RAG Engine; embedding models; Document AI; IAM and cost. Use this skill when sizing or selecting the GCP RAG stack for a Spring/Java backend.",
+      "tags": [
+        "gcp",
+        "cloud",
+        "devops",
+        "rag",
+        "llm",
+        "retrieval",
+        "vector-db",
+        "infrastructure"
+      ],
+      "keywords": [
+        "Vertex AI Vector Search",
+        "Vertex AI RAG Engine",
+        "AlloyDB AI",
+        "pgvector",
+        "Cloud SQL",
+        "Firestore vector",
+        "gemini-embedding",
+        "text-embedding-005",
+        "Document AI",
+        "ScaNN"
+      ],
+      "related": [
+        "gcp-fundamentals",
+        "gcp-cloud-sql-spring",
+        "spring-ai-rag",
+        "rag-deep-dive",
+        "rag-ingestion-pipeline"
+      ],
+      "path": "devops/gcp-vertex-ai-rag/SKILL.md",
+      "body_lines": 283,
       "references": []
     },
     {
@@ -682,7 +917,8 @@
         "go-testing",
         "k8s-fundamentals",
         "terraform-basics",
-        "cloud-build-artifact-registry"
+        "cloud-build-artifact-registry",
+        "rag-ingestion-pipeline"
       ],
       "path": "devops/github-actions/SKILL.md",
       "body_lines": 303,
@@ -1003,7 +1239,8 @@
         "microservices-patterns",
         "api-design-grpc",
         "realtime-websocket",
-        "gcp-pubsub-spring"
+        "gcp-pubsub-spring",
+        "graphrag-multi-service"
       ],
       "path": "engineering/event-driven-architecture/SKILL.md",
       "body_lines": 235,
@@ -1037,7 +1274,8 @@
         "spring-boot-fundamentals",
         "spring-data-jpa",
         "gcp-fundamentals",
-        "gke-deployment"
+        "gke-deployment",
+        "gcp-vertex-ai-rag"
       ],
       "path": "engineering/gcp-cloud-sql-spring/SKILL.md",
       "body_lines": 296,
@@ -1272,7 +1510,8 @@
         "openapi-swagger-spring",
         "spring-boot-testing",
         "api-design-rest",
-        "auth-patterns"
+        "auth-patterns",
+        "spring-ai-rag"
       ],
       "path": "engineering/java-restful-api/SKILL.md",
       "body_lines": 310,
@@ -1326,7 +1565,8 @@
         "event-driven-architecture",
         "api-design-rest",
         "api-design-grpc",
-        "gcp-pubsub-spring"
+        "gcp-pubsub-spring",
+        "graphrag-multi-service"
       ],
       "path": "engineering/microservices-patterns/SKILL.md",
       "body_lines": 233,
@@ -1501,6 +1741,43 @@
       "references": []
     },
     {
+      "name": "spring-ai-rag",
+      "category": "engineering",
+      "description": "RAG inside a Spring Boot service with Spring AI — VectorStore (pgvector / Vertex AI), DocumentReader, Embedding clients, RetrievalAugmentation / QuestionAnswerAdvisor, exposing RAG over REST. Use this skill when the RAG component is itself a Spring Boot microservice.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "rag",
+        "llm",
+        "ai-agent",
+        "integration",
+        "backend",
+        "gcp"
+      ],
+      "keywords": [
+        "Spring AI",
+        "VectorStore",
+        "RetrievalAugmentationAdvisor",
+        "QuestionAnswerAdvisor",
+        "DocumentReader",
+        "TextSplitter",
+        "Embedding",
+        "ChatClient",
+        "pgvector",
+        "Vertex AI"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "java-restful-api",
+        "rag-deep-dive",
+        "rag-for-code",
+        "gcp-vertex-ai-rag"
+      ],
+      "path": "engineering/spring-ai-rag/SKILL.md",
+      "body_lines": 353,
+      "references": []
+    },
+    {
       "name": "spring-boot-fundamentals",
       "category": "engineering",
       "description": "Spring Boot fundamentals — project structure, auto-configuration, profiles, configuration binding, Actuator, and graceful shutdown. Use this skill when starting a Spring Boot service, choosing between Spring MVC and WebFlux, wiring beans, or hardening a Boot app for production.",
@@ -1530,7 +1807,8 @@
         "gcp-cloud-sql-spring",
         "gcp-firestore-spring",
         "gcp-observability-spring",
-        "gcp-pubsub-spring"
+        "gcp-pubsub-spring",
+        "spring-ai-rag"
       ],
       "path": "engineering/spring-boot-fundamentals/SKILL.md",
       "body_lines": 308,
@@ -2026,6 +2304,11 @@
       "topic": "Prompt writing — structure, instructions, examples, output format, refusals"
     },
     {
+      "name": "rag-checklist",
+      "path": "rules/rag-checklist.md",
+      "topic": "RAG production checklist — corpus, chunking, embedding, retrieval, generation, ops, eval"
+    },
+    {
       "name": "security-checklist",
       "path": "rules/security-checklist.md",
       "topic": "Security checklist — OWASP Top 10 condensed for code review"
@@ -2047,8 +2330,8 @@
     }
   ],
   "totals": {
-    "skills": 71,
-    "rules": 15,
+    "skills": 78,
+    "rules": 16,
     "categories": 7
   }
 }
