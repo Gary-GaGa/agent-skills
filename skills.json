@@ -5,7 +5,7 @@
       "name": "engineering",
       "title": "Engineering",
       "description": "Software design, Go, APIs, frontend, databases, architecture, integrations.",
-      "skill_count": 21
+      "skill_count": 30
     },
     {
       "name": "ai-engineering",
@@ -17,7 +17,7 @@
       "name": "devops",
       "title": "DevOps",
       "description": "Docker, GitHub Actions, Terraform, Kubernetes.",
-      "skill_count": 4
+      "skill_count": 7
     },
     {
       "name": "data",
@@ -521,7 +521,8 @@
         "sql-fundamentals",
         "database-migrations",
         "clean-ddd-go",
-        "mongodb-go"
+        "mongodb-go",
+        "gcp-firestore-spring"
       ],
       "path": "data/data-modeling/SKILL.md",
       "body_lines": 242,
@@ -569,6 +570,40 @@
       "references": []
     },
     {
+      "name": "cloud-build-artifact-registry",
+      "category": "devops",
+      "description": "CI on Google Cloud — Cloud Build, Artifact Registry, Workload Identity Federation from GitHub Actions, vulnerability scanning, and Cloud Deploy for progressive rollouts. Use this skill when setting up CI/CD for a service deployed to GKE, or auditing an existing pipeline.",
+      "tags": [
+        "gcp",
+        "ci-cd",
+        "devops",
+        "container",
+        "automation",
+        "cloud",
+        "deployment"
+      ],
+      "keywords": [
+        "Cloud Build",
+        "Artifact Registry",
+        "cloudbuild.yaml",
+        "Cloud Deploy",
+        "Skaffold",
+        "Workload Identity Federation",
+        "GitHub Actions",
+        "vulnerability scanning",
+        "image signing"
+      ],
+      "related": [
+        "gcp-fundamentals",
+        "gke-deployment",
+        "docker-basics",
+        "github-actions"
+      ],
+      "path": "devops/cloud-build-artifact-registry/SKILL.md",
+      "body_lines": 327,
+      "references": []
+    },
+    {
       "name": "docker-basics",
       "category": "devops",
       "description": "Docker best practices for developers — Dockerfile patterns, multi-stage builds, image optimization, docker-compose for local dev, security hardening, and .dockerignore. Use this skill when containerizing an application, optimizing image size, or setting up a local development environment.",
@@ -583,10 +618,50 @@
       "related": [
         "github-actions",
         "k8s-fundamentals",
-        "terraform-basics"
+        "terraform-basics",
+        "cloud-build-artifact-registry",
+        "gke-deployment"
       ],
       "path": "devops/docker-basics/SKILL.md",
       "body_lines": 180,
+      "references": []
+    },
+    {
+      "name": "gcp-fundamentals",
+      "category": "devops",
+      "description": "GCP fundamentals — projects, IAM, service accounts, Workload Identity, gcloud CLI, Application Default Credentials (ADC), and Secret Manager. Use this skill when bootstrapping a GCP project, granting access to a service, or wiring credentials into a containerised app.",
+      "tags": [
+        "gcp",
+        "cloud",
+        "iam",
+        "devops",
+        "security",
+        "infrastructure"
+      ],
+      "keywords": [
+        "GCP",
+        "Google Cloud",
+        "gcloud",
+        "IAM",
+        "Service Account",
+        "Workload Identity",
+        "ADC",
+        "Application Default Credentials",
+        "Secret Manager",
+        "Project",
+        "Folder",
+        "Organization"
+      ],
+      "related": [
+        "gke-deployment",
+        "cloud-build-artifact-registry",
+        "gcp-cloud-sql-spring",
+        "gcp-pubsub-spring",
+        "gcp-observability-spring",
+        "gcp-firestore-spring"
+      ],
+      "path": "devops/gcp-fundamentals/SKILL.md",
+      "body_lines": 279,
       "references": []
     },
     {
@@ -606,10 +681,50 @@
         "git-workflow",
         "go-testing",
         "k8s-fundamentals",
-        "terraform-basics"
+        "terraform-basics",
+        "cloud-build-artifact-registry"
       ],
       "path": "devops/github-actions/SKILL.md",
       "body_lines": 303,
+      "references": []
+    },
+    {
+      "name": "gke-deployment",
+      "category": "devops",
+      "description": "Deploying containerised services to GKE — Autopilot vs Standard, Workload Identity, Deployment/Service/Ingress manifests, GCLB, HPA, PDB, and rolling updates. Use this skill when shipping a service to GKE or hardening an existing GKE workload for production.",
+      "tags": [
+        "gcp",
+        "gke",
+        "kubernetes",
+        "k8s",
+        "deployment",
+        "devops",
+        "container",
+        "cloud"
+      ],
+      "keywords": [
+        "GKE",
+        "Autopilot",
+        "Workload Identity",
+        "Ingress",
+        "BackendConfig",
+        "GCLB",
+        "HPA",
+        "PodDisruptionBudget",
+        "rolling update",
+        "readiness probe",
+        "liveness probe"
+      ],
+      "related": [
+        "gcp-fundamentals",
+        "k8s-fundamentals",
+        "cloud-build-artifact-registry",
+        "docker-basics",
+        "gcp-observability-spring",
+        "gcp-cloud-sql-spring"
+      ],
+      "path": "devops/gke-deployment/SKILL.md",
+      "body_lines": 423,
       "references": []
     },
     {
@@ -627,7 +742,8 @@
       "related": [
         "docker-basics",
         "github-actions",
-        "terraform-basics"
+        "terraform-basics",
+        "gke-deployment"
       ],
       "path": "devops/k8s-fundamentals/SKILL.md",
       "body_lines": 240,
@@ -697,7 +813,9 @@
         "microservices-patterns",
         "nextjs-fundamentals",
         "realtime-websocket",
-        "tw-payment-integration"
+        "tw-payment-integration",
+        "java-restful-api",
+        "openapi-swagger-spring"
       ],
       "path": "engineering/api-design-rest/SKILL.md",
       "body_lines": 292,
@@ -721,7 +839,8 @@
         "mongodb-go",
         "nextjs-fundamentals",
         "line-integration-tw",
-        "tw-payment-integration"
+        "tw-payment-integration",
+        "java-restful-api"
       ],
       "path": "engineering/auth-patterns/SKILL.md",
       "body_lines": 308,
@@ -859,7 +978,8 @@
         "go-concurrency",
         "go-performance",
         "observability-go",
-        "agent-observability"
+        "agent-observability",
+        "gcp-observability-spring"
       ],
       "path": "engineering/debugging-methodology/SKILL.md",
       "body_lines": 182,
@@ -882,10 +1002,153 @@
         "clean-ddd-go",
         "microservices-patterns",
         "api-design-grpc",
-        "realtime-websocket"
+        "realtime-websocket",
+        "gcp-pubsub-spring"
       ],
       "path": "engineering/event-driven-architecture/SKILL.md",
       "body_lines": 235,
+      "references": []
+    },
+    {
+      "name": "gcp-cloud-sql-spring",
+      "category": "engineering",
+      "description": "Connecting Spring Boot to Cloud SQL (PostgreSQL/MySQL) on GCP — Cloud SQL Java Connector vs Auth Proxy, IAM database authentication, HikariCP sizing, private IP, and read replicas. Use this skill when wiring a Spring Boot service to Cloud SQL on GKE or Cloud Run, or when scaling an existing setup.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "gcp",
+        "database",
+        "postgresql",
+        "jpa",
+        "integration",
+        "backend"
+      ],
+      "keywords": [
+        "Cloud SQL",
+        "Cloud SQL Auth Proxy",
+        "Cloud SQL Java Connector",
+        "IAM database authentication",
+        "HikariCP",
+        "private IP",
+        "read replica",
+        "PgBouncer"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "spring-data-jpa",
+        "gcp-fundamentals",
+        "gke-deployment"
+      ],
+      "path": "engineering/gcp-cloud-sql-spring/SKILL.md",
+      "body_lines": 296,
+      "references": []
+    },
+    {
+      "name": "gcp-firestore-spring",
+      "category": "engineering",
+      "description": "Firestore in Native Mode from Spring Boot via Spring Cloud GCP — document modelling, repositories, transactions, security rules vs server-side access, and when not to choose Firestore. Use this skill when using Firestore as the primary or auxiliary store for a Spring backend.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "gcp",
+        "firestore",
+        "database",
+        "nosql",
+        "document-db",
+        "integration"
+      ],
+      "keywords": [
+        "Firestore",
+        "Native mode",
+        "Datastore mode",
+        "FirestoreTemplate",
+        "@Document",
+        "composite index",
+        "security rules",
+        "eventual consistency",
+        "document database"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "gcp-fundamentals",
+        "data-modeling",
+        "mongodb-go"
+      ],
+      "path": "engineering/gcp-firestore-spring/SKILL.md",
+      "body_lines": 285,
+      "references": []
+    },
+    {
+      "name": "gcp-observability-spring",
+      "category": "engineering",
+      "description": "Observability for Spring Boot on GCP — JSON logs to Cloud Logging, OpenTelemetry traces to Cloud Trace, Micrometer metrics to Managed Prometheus, correlation IDs, and SLOs. Use this skill when adding telemetry to a Spring Boot service or debugging a production incident.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "gcp",
+        "observability",
+        "logging",
+        "tracing",
+        "metrics",
+        "opentelemetry",
+        "monitoring"
+      ],
+      "keywords": [
+        "Cloud Logging",
+        "Cloud Trace",
+        "Cloud Monitoring",
+        "Managed Prometheus",
+        "Micrometer",
+        "OpenTelemetry",
+        "structured logging",
+        "trace context",
+        "correlation ID",
+        "SLO",
+        "error budget"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "gke-deployment",
+        "observability-go",
+        "debugging-methodology",
+        "gcp-fundamentals"
+      ],
+      "path": "engineering/gcp-observability-spring/SKILL.md",
+      "body_lines": 317,
+      "references": []
+    },
+    {
+      "name": "gcp-pubsub-spring",
+      "category": "engineering",
+      "description": "Google Cloud Pub/Sub from Spring Boot via Spring Cloud GCP — publishing, pull/push subscribers, ack/nack semantics, ordering keys, dead-letter topics, exactly-once delivery. Use this skill when a Spring service publishes or consumes Pub/Sub messages.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "gcp",
+        "pubsub",
+        "messaging",
+        "event-driven",
+        "integration"
+      ],
+      "keywords": [
+        "Pub/Sub",
+        "Spring Cloud GCP",
+        "PubSubTemplate",
+        "ordering keys",
+        "dead-letter",
+        "exactly-once",
+        "push subscription",
+        "pull subscription",
+        "ack deadline"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "gcp-fundamentals",
+        "event-driven-architecture",
+        "microservices-patterns"
+      ],
+      "path": "engineering/gcp-pubsub-spring/SKILL.md",
+      "body_lines": 349,
       "references": []
     },
     {
@@ -980,6 +1243,42 @@
       "references": []
     },
     {
+      "name": "java-restful-api",
+      "category": "engineering",
+      "description": "Building RESTful APIs in Java with Spring Boot — controllers, DTOs, Bean Validation, global error handling with @ControllerAdvice, RFC 7807 ProblemDetail, content negotiation, and pagination. Use this skill when implementing or reviewing REST endpoints in a Spring MVC project.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "api",
+        "rest",
+        "http",
+        "backend",
+        "design",
+        "validation"
+      ],
+      "keywords": [
+        "Spring MVC",
+        "@RestController",
+        "@ControllerAdvice",
+        "ProblemDetail",
+        "RFC 7807",
+        "Bean Validation",
+        "@Valid",
+        "Jackson",
+        "ResponseEntity"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "openapi-swagger-spring",
+        "spring-boot-testing",
+        "api-design-rest",
+        "auth-patterns"
+      ],
+      "path": "engineering/java-restful-api/SKILL.md",
+      "body_lines": 310,
+      "references": []
+    },
+    {
       "name": "line-integration-tw",
       "category": "engineering",
       "description": "LINE platform integration for the Taiwan market — LINE Login, LINE Notify, LIFF, the Messaging API, and Rich Menu, with patterns for common scenarios like group sign-ups and reservations. For web services that need LINE-based social login, push notifications, or in-LINE web apps in Taiwan.",
@@ -1026,7 +1325,8 @@
         "clean-ddd-go",
         "event-driven-architecture",
         "api-design-rest",
-        "api-design-grpc"
+        "api-design-grpc",
+        "gcp-pubsub-spring"
       ],
       "path": "engineering/microservices-patterns/SKILL.md",
       "body_lines": 233,
@@ -1057,7 +1357,8 @@
         "go-testing",
         "go-concurrency",
         "auth-patterns",
-        "tw-payment-integration"
+        "tw-payment-integration",
+        "gcp-firestore-spring"
       ],
       "path": "engineering/mongodb-go/SKILL.md",
       "body_lines": 373,
@@ -1114,10 +1415,45 @@
       "related": [
         "debugging-methodology",
         "go-performance",
-        "agent-observability"
+        "agent-observability",
+        "gcp-observability-spring"
       ],
       "path": "engineering/observability-go/SKILL.md",
       "body_lines": 266,
+      "references": []
+    },
+    {
+      "name": "openapi-swagger-spring",
+      "category": "engineering",
+      "description": "OpenAPI 3 and Swagger UI for Spring Boot via springdoc-openapi — annotating controllers, generating the spec, securing the docs, and choosing between code-first and API-first workflows. Use this skill when documenting a Java REST API or generating client SDKs.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "api",
+        "rest",
+        "openapi",
+        "api-docs",
+        "documentation",
+        "design"
+      ],
+      "keywords": [
+        "OpenAPI",
+        "Swagger",
+        "springdoc-openapi",
+        "@Operation",
+        "@Schema",
+        "@ApiResponse",
+        "swagger-ui",
+        "openapi-generator",
+        "API-first"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "java-restful-api",
+        "api-design-rest"
+      ],
+      "path": "engineering/openapi-swagger-spring/SKILL.md",
+      "body_lines": 329,
       "references": []
     },
     {
@@ -1162,6 +1498,110 @@
       ],
       "path": "engineering/refactoring-patterns/SKILL.md",
       "body_lines": 367,
+      "references": []
+    },
+    {
+      "name": "spring-boot-fundamentals",
+      "category": "engineering",
+      "description": "Spring Boot fundamentals — project structure, auto-configuration, profiles, configuration binding, Actuator, and graceful shutdown. Use this skill when starting a Spring Boot service, choosing between Spring MVC and WebFlux, wiring beans, or hardening a Boot app for production.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "backend",
+        "framework",
+        "design"
+      ],
+      "keywords": [
+        "Spring Boot",
+        "Spring MVC",
+        "WebFlux",
+        "Actuator",
+        "application.yml",
+        "@SpringBootApplication",
+        "profiles",
+        "Maven",
+        "Gradle"
+      ],
+      "related": [
+        "java-restful-api",
+        "spring-boot-testing",
+        "spring-data-jpa",
+        "openapi-swagger-spring",
+        "gcp-cloud-sql-spring",
+        "gcp-firestore-spring",
+        "gcp-observability-spring",
+        "gcp-pubsub-spring"
+      ],
+      "path": "engineering/spring-boot-fundamentals/SKILL.md",
+      "body_lines": 308,
+      "references": []
+    },
+    {
+      "name": "spring-boot-testing",
+      "category": "engineering",
+      "description": "Testing Spring Boot applications — slice tests (@WebMvcTest, @DataJpaTest), full-context @SpringBootTest, MockMvc / WebTestClient, Testcontainers for real PostgreSQL/Pub-Sub, and test data builders. Use this skill when writing or reviewing tests for a Java Spring Boot service.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "testing",
+        "tdd",
+        "quality",
+        "backend"
+      ],
+      "keywords": [
+        "@SpringBootTest",
+        "@WebMvcTest",
+        "@DataJpaTest",
+        "MockMvc",
+        "WebTestClient",
+        "Testcontainers",
+        "JUnit 5",
+        "AssertJ",
+        "Mockito",
+        "@MockBean"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "java-restful-api",
+        "spring-data-jpa"
+      ],
+      "path": "engineering/spring-boot-testing/SKILL.md",
+      "body_lines": 284,
+      "references": []
+    },
+    {
+      "name": "spring-data-jpa",
+      "category": "engineering",
+      "description": "Persistence with Spring Data JPA and Hibernate — entities, repositories, transactions, fetch strategies, N+1 prevention, and Flyway migrations. Use this skill when modeling domain persistence, writing JPA repositories, or diagnosing slow queries in a Spring Boot service.",
+      "tags": [
+        "java",
+        "spring-boot",
+        "jpa",
+        "hibernate",
+        "database",
+        "postgresql",
+        "backend",
+        "sql"
+      ],
+      "keywords": [
+        "Spring Data JPA",
+        "Hibernate",
+        "@Entity",
+        "@Transactional",
+        "JpaRepository",
+        "EntityGraph",
+        "Flyway",
+        "Liquibase",
+        "HikariCP",
+        "N+1"
+      ],
+      "related": [
+        "spring-boot-fundamentals",
+        "spring-boot-testing",
+        "gcp-cloud-sql-spring"
+      ],
+      "path": "engineering/spring-data-jpa/SKILL.md",
+      "body_lines": 357,
       "references": []
     },
     {
@@ -1551,6 +1991,11 @@
       "topic": "Dockerfile — base image, layer ordering, security, multi-stage"
     },
     {
+      "name": "gcp-iam-checklist",
+      "path": "rules/gcp-iam-checklist.md",
+      "topic": "GCP IAM — service accounts, Workload Identity, least privilege, secret hygiene"
+    },
+    {
       "name": "go-concurrency",
       "path": "rules/go-concurrency.md",
       "topic": "Go concurrency — goroutine lifecycle, channels, mutexes, context, race prevention"
@@ -1571,6 +2016,11 @@
       "topic": "Go naming conventions — packages, types, functions, receivers"
     },
     {
+      "name": "java-naming",
+      "path": "rules/java-naming.md",
+      "topic": "Java naming conventions — packages, classes, methods, Spring Boot specifics"
+    },
+    {
       "name": "prompt-style",
       "path": "rules/prompt-style.md",
       "topic": "Prompt writing — structure, instructions, examples, output format, refusals"
@@ -1579,6 +2029,11 @@
       "name": "security-checklist",
       "path": "rules/security-checklist.md",
       "topic": "Security checklist — OWASP Top 10 condensed for code review"
+    },
+    {
+      "name": "spring-boot-checklist",
+      "path": "rules/spring-boot-checklist.md",
+      "topic": "Spring Boot production checklist — wiring, persistence, security, observability"
     },
     {
       "name": "tool-schema",
@@ -1592,8 +2047,8 @@
     }
   ],
   "totals": {
-    "skills": 59,
-    "rules": 12,
+    "skills": 71,
+    "rules": 15,
     "categories": 7
   }
 }

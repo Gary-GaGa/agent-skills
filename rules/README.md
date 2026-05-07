@@ -20,12 +20,15 @@ Each rule sheet is a single `.md` file. No frontmatter required — rules are me
 | [`api-versioning.md`](./api-versioning.md) | API versioning — when to bump, backward compat, deprecation process |
 | [`commit-messages.md`](./commit-messages.md) | Conventional Commits format for git messages |
 | [`dockerfile.md`](./dockerfile.md) | Dockerfile — base image, layer ordering, security, multi-stage |
+| [`gcp-iam-checklist.md`](./gcp-iam-checklist.md) | GCP IAM — service accounts, Workload Identity, least privilege, secret hygiene |
 | [`go-concurrency.md`](./go-concurrency.md) | Go concurrency — goroutine lifecycle, channels, mutexes, context, race prevention |
 | [`go-error-handling.md`](./go-error-handling.md) | Go error handling — sentinel, wrapping, `errors.Is/As`, panic policy |
 | [`go-logging.md`](./go-logging.md) | Go logging — slog, levels, what to log / not to log, correlation IDs |
 | [`go-naming.md`](./go-naming.md) | Go naming conventions — packages, types, functions, receivers |
+| [`java-naming.md`](./java-naming.md) | Java naming conventions — packages, classes, methods, Spring Boot specifics |
 | [`prompt-style.md`](./prompt-style.md) | Prompt writing — structure, instructions, examples, output format, refusals |
 | [`security-checklist.md`](./security-checklist.md) | Security checklist — OWASP Top 10 condensed for code review |
+| [`spring-boot-checklist.md`](./spring-boot-checklist.md) | Spring Boot production checklist — wiring, persistence, security, observability |
 | [`tool-schema.md`](./tool-schema.md) | Tool schemas — naming, descriptions, parameters, errors, side effects |
 | [`trading-discipline.md`](./trading-discipline.md) | Trading discipline — position sizing, stops, psychological control, holdings management |
 <!-- END AUTO-GENERATED: rules-index -->

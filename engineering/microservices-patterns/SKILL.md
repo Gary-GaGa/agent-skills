@@ -7,7 +7,7 @@ description: >
   splitting a monolith, or reviewing a microservices architecture.
 category: engineering
 tags: [architecture, microservices, distributed-systems, 12-factor, patterns]
-related: [clean-ddd-go, event-driven-architecture, api-design-rest, api-design-grpc]
+related: [clean-ddd-go, event-driven-architecture, api-design-rest, api-design-grpc, gcp-pubsub-spring]
 ---
 
 # Microservices Patterns

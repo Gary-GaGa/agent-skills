@@ -7,7 +7,7 @@ description: >
   Operator-level topics (cluster setup, networking) are out of scope.
 category: devops
 tags: [kubernetes, k8s, devops, deployment, container]
-related: [docker-basics, github-actions, terraform-basics]
+related: [docker-basics, github-actions, terraform-basics, gke-deployment]
 ---
 
 # Kubernetes Fundamentals

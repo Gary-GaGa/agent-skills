@@ -7,7 +7,7 @@ description: >
   examples lean Go.
 category: engineering
 tags: [api, rest, http, backend, go, design]
-related: [clean-ddd-go, api-design-grpc, auth-patterns, microservices-patterns, nextjs-fundamentals, realtime-websocket, tw-payment-integration]
+related: [clean-ddd-go, api-design-grpc, auth-patterns, microservices-patterns, nextjs-fundamentals, realtime-websocket, tw-payment-integration, java-restful-api, openapi-swagger-spring]
 ---
 
 # RESTful API Design

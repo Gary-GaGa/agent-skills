@@ -7,7 +7,7 @@ description: >
   on GitHub.
 category: devops
 tags: [github-actions, ci-cd, devops, automation, github]
-related: [docker-basics, git-workflow, go-testing, k8s-fundamentals, terraform-basics]
+related: [docker-basics, git-workflow, go-testing, k8s-fundamentals, terraform-basics, cloud-build-artifact-registry]
 ---
 
 # GitHub Actions
