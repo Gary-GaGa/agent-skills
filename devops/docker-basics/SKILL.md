@@ -7,7 +7,7 @@ description: >
   image size, or setting up a local development environment.
 category: devops
 tags: [docker, container, dockerfile, compose, devops]
-related: [github-actions, k8s-fundamentals, terraform-basics]
+related: [github-actions, k8s-fundamentals, terraform-basics, cloud-build-artifact-registry, gke-deployment]
 ---
 
 # Docker Basics

@@ -13,13 +13,13 @@ This repo is a collection of reusable **agent skills**, organized into **categor
 **Navigation:** `README.md` → `<category>/INDEX.md` → `<category>/<skill>/SKILL.md`.
 
 <!-- BEGIN AUTO-GENERATED: skill-list -->
-Current skills — 59 total across 7 categories:
+Current skills — 71 total across 7 categories:
 
-**engineering (21):** api-design-grpc, api-design-rest, auth-patterns, clean-ddd-go, code-review, copilot-sdk, ddd-check, debugging-methodology, event-driven-architecture, git-workflow, go-concurrency, go-performance, go-testing, line-integration-tw, microservices-patterns, mongodb-go, nextjs-fundamentals, observability-go, realtime-websocket, refactoring-patterns, tw-payment-integration
+**engineering (30):** api-design-grpc, api-design-rest, auth-patterns, clean-ddd-go, code-review, copilot-sdk, ddd-check, debugging-methodology, event-driven-architecture, gcp-cloud-sql-spring, gcp-firestore-spring, gcp-observability-spring, gcp-pubsub-spring, git-workflow, go-concurrency, go-performance, go-testing, java-restful-api, line-integration-tw, microservices-patterns, mongodb-go, nextjs-fundamentals, observability-go, openapi-swagger-spring, realtime-websocket, refactoring-patterns, spring-boot-fundamentals, spring-boot-testing, spring-data-jpa, tw-payment-integration
 
 **ai-engineering (16):** agent-evaluation, agent-harness-design, agent-observability, agent-safety-guardrails, agentic-coding-patterns, claude-code-customization, context-engineering, fine-tuning-guide, llm-cost-optimization, mcp-server-design, multi-agent-orchestration, prompt-caching, prompt-engineering, rag-deep-dive, skill-authoring, tool-design-for-agents
 
-**devops (4):** docker-basics, github-actions, k8s-fundamentals, terraform-basics
+**devops (7):** cloud-build-artifact-registry, docker-basics, gcp-fundamentals, github-actions, gke-deployment, k8s-fundamentals, terraform-basics
 
 **data (3):** data-modeling, database-migrations, sql-fundamentals
 
@@ -29,7 +29,7 @@ Current skills — 59 total across 7 categories:
 
 **productivity (3):** learning-methodology, second-brain, time-management
 
-Rule sheets (12) in `rules/`: agent-anti-patterns, api-versioning, commit-messages, dockerfile, go-concurrency, go-error-handling, go-logging, go-naming, prompt-style, security-checklist, tool-schema, trading-discipline
+Rule sheets (15) in `rules/`: agent-anti-patterns, api-versioning, commit-messages, dockerfile, gcp-iam-checklist, go-concurrency, go-error-handling, go-logging, go-naming, java-naming, prompt-style, security-checklist, spring-boot-checklist, tool-schema, trading-discipline
 <!-- END AUTO-GENERATED: skill-list -->
 
 Repo-level files:

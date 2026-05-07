@@ -8,7 +8,7 @@ description: >
 category: engineering
 tags: [go, mongodb, database, nosql, document-db]
 keywords: [MongoDB, mongo-go-driver, BSON, ObjectID, aggregation pipeline, $lookup]
-related: [clean-ddd-go, data-modeling, go-testing, go-concurrency, auth-patterns, tw-payment-integration]
+related: [clean-ddd-go, data-modeling, go-testing, go-concurrency, auth-patterns, tw-payment-integration, gcp-firestore-spring]
 ---
 
 # MongoDB + Go

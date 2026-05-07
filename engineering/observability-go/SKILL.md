@@ -7,7 +7,7 @@ description: >
   or debugging production issues with inadequate telemetry.
 category: engineering
 tags: [go, observability, logging, tracing, metrics, opentelemetry, slog]
-related: [debugging-methodology, go-performance, agent-observability]
+related: [debugging-methodology, go-performance, agent-observability, gcp-observability-spring]
 ---
 
 # Go Observability
