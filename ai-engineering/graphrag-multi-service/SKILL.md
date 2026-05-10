@@ -63,12 +63,14 @@ Nodes
 Edges
 ─────
 (Service)-[:EXPOSES]->(Endpoint)
-(Service)-[:CALLS]->(Endpoint)              ← cross-service call
-(Service)-[:PUBLISHES]->(Event)->(Topic)
+(Service)-[:CALLS]->(Endpoint)                  ← cross-service call
+(Service)-[:PUBLISHES]->(Event)
+(Event)-[:ON]->(Topic)
 (Subscription)-[:CONSUMES]->(Topic)
 (Service)-[:OWNS]->(Subscription)
 (Service)-[:DEFINES]->(Entity)
-(Entity)-[:PERSISTED_BY]->(Repository)->(Database)
+(Entity)-[:PERSISTED_BY]->(Repository)
+(Repository)-[:IN]->(Database)
 (Service)-[:DEPENDS_ON]->(Library)
 (Service)-[:DOCUMENTED_BY]->(Doc)
 ```

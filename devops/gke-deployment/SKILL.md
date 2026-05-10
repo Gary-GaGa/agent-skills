@@ -6,7 +6,7 @@ description: >
   rolling updates. Use this skill when shipping a service to GKE or
   hardening an existing GKE workload for production.
 category: devops
-tags: [gcp, gke, kubernetes, k8s, deployment, devops, container, cloud]
+tags: [gcp, gke, kubernetes, deployment, devops, container, cloud]
 keywords: [GKE, Autopilot, Workload Identity, Ingress, BackendConfig, GCLB, HPA, PodDisruptionBudget, rolling update, readiness probe, liveness probe]
 related: [gcp-fundamentals, k8s-fundamentals, cloud-build-artifact-registry, docker-basics, gcp-observability-spring, gcp-cloud-sql-spring]
 ---
@@ -32,7 +32,7 @@ For Kubernetes basics that aren't GKE-specific, pair with [`k8s-fundamentals`](.
 | | Autopilot | Standard |
 |---|---|---|
 | Node management | Google manages nodes | You manage node pools |
-| Billing | Per-pod (vCPU + memory + storage requested) | Per-node |
+| Billing | Per-pod resource requests, with **compute classes** (general-purpose / balanced / scale-out / accelerator) setting the per-vCPU / per-GB rate | Per-node (sustained-use / committed-use discounts apply) |
 | `DaemonSet`, custom kernel modules | Limited / disallowed | Allowed |
 | GPUs / specialised hardware | Limited | Full |
 | Default security posture | Hardened (no privileged, no host network) | You configure |

@@ -37,7 +37,7 @@ dependencies {
 }
 ```
 
-1. **Use Spring AI 1.0 GA or later.** Earlier milestones rename packages on every release. Pin a stable version in your BOM.
+1. **Use Spring AI 1.0 GA or later.** Pre-1.0 milestones renamed packages and reshaped APIs (`SearchRequest`, advisors, `ChatClient.Builder`) every few releases. Pin via the `spring-ai-bom` and read the [migration notes](https://docs.spring.io/spring-ai/reference/) before upgrading minor versions.
 
 2. **One model provider per service.** Spring AI lets you bind multiple, but multi-provider routing belongs in a gateway, not a controller. See `llm-cost-optimization` for routing strategies.
 
@@ -253,13 +253,24 @@ public Flux<String> askStream(@Valid @RequestBody AskRequest req) {
 
 ## Observability
 
+Spring AI auto-instruments `ChatClient`, `EmbeddingModel`, and `VectorStore` via the Micrometer **Observation API** when an `ObservationRegistry` is on the application context. No advisor needed — adding the bean is enough.
+
 ```java
-@Bean
-public ChatClient ragChatClient(ChatClient.Builder builder, VectorStore vs, ObservationRegistry observations) {
-    return builder
-        .defaultAdvisors(new QuestionAnswerAdvisor(vs), new ObservationAdvisor(observations))
-        .build();
+@Configuration
+public class ObservabilityConfig {
+    // Provided by spring-boot-starter-actuator + micrometer-tracing-bridge-otel.
+    // Spring AI picks it up automatically; no extra wiring.
 }
+```
+
+```yaml
+management:
+  observations:
+    annotations:
+      enabled: true
+  tracing:
+    sampling:
+      probability: 1.0   # adjust per environment
 ```
 
 20. **Spring AI 1.0+ emits Micrometer Observations** for chat and embedding calls (`gen_ai.client.operation`). Wire to OpenTelemetry → Cloud Trace as in [`gcp-observability-spring`](../gcp-observability-spring/SKILL.md). One trace per question, with spans for retrieval and generation.

@@ -85,7 +85,7 @@ public record OrderDoc(
 ) {}
 ```
 
-6. **Records work but are reactive-only via Spring Cloud GCP's reactive driver.** If your service is mostly reactive (`WebFlux`), this fits; otherwise consider the official `Firestore` client directly with blocking calls.
+6. **Two API surfaces in Spring Cloud GCP**: `FirestoreReactiveRepository` (Reactor / WebFlux-friendly) and `FirestoreTemplate` (blocking). For an MVC service stick with the template; for WebFlux use the reactive repository. Direct usage of the official Google `Firestore` client is fine when you want fewer abstractions.
 
 7. **Embed small, bounded child collections** (≤ ~50 items per parent). Use sub-collections when children grow unbounded.
 
@@ -137,7 +137,7 @@ public class OrderService {
 }
 ```
 
-11. **Repositories are reactive.** Don't `.block()` on them in a request thread except in tests. Match your stack: WebFlux end-to-end or use the `Firestore` client directly for blocking code.
+11. **`FirestoreReactiveRepository` returns `Mono`/`Flux`.** Don't `.block()` on them in an MVC request thread — use `FirestoreTemplate` instead. Match the abstraction to your stack: WebFlux end-to-end with reactive repos; MVC with the blocking template; lowest layer with the Google `Firestore` client.
 
 12. **Derived queries are limited to equality, range, and array-contains.** No `OR` (well, limited), no `JOIN`, no aggregation across collections.
 

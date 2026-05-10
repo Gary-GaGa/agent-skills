@@ -6,7 +6,7 @@ description: >
   this skill when starting a Spring Boot service, choosing between Spring
   MVC and WebFlux, wiring beans, or hardening a Boot app for production.
 category: engineering
-tags: [java, spring-boot, backend, framework, design]
+tags: [java, spring-boot, backend, design]
 keywords: [Spring Boot, Spring MVC, WebFlux, Actuator, application.yml, "@SpringBootApplication", profiles, Maven, Gradle]
 related: [java-restful-api, spring-boot-testing, spring-data-jpa, openapi-swagger-spring, gcp-cloud-sql-spring, gcp-firestore-spring, gcp-observability-spring, gcp-pubsub-spring, spring-ai-rag]
 ---
