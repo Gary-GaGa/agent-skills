@@ -896,8 +896,14 @@
         "rag-ingestion-pipeline"
       ],
       "path": "devops/gcp-vertex-ai-rag/SKILL.md",
-      "body_lines": 283,
-      "references": []
+      "body_lines": 239,
+      "references": [
+        {
+          "name": "drift",
+          "path": "devops/gcp-vertex-ai-rag/references/drift.md",
+          "lines": 190
+        }
+      ]
     },
     {
       "name": "github-actions",
@@ -2370,7 +2376,7 @@
     }
   ],
   "totals": {
-    "skills": 78,
+    "skills": 79,
     "rules": 16,
     "categories": 7
   }

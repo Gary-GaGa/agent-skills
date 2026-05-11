@@ -13,7 +13,7 @@ This repo is a collection of reusable **agent skills**, organized into **categor
 **Navigation:** `README.md` → `<category>/INDEX.md` → `<category>/<skill>/SKILL.md`.
 
 <!-- BEGIN AUTO-GENERATED: skill-list -->
-Current skills — 78 total across 7 categories:
+Current skills — 79 total across 7 categories:
 
 **engineering (31):** api-design-grpc, api-design-rest, auth-patterns, clean-ddd-go, code-review, copilot-sdk, ddd-check, debugging-methodology, event-driven-architecture, gcp-cloud-sql-spring, gcp-firestore-spring, gcp-observability-spring, gcp-pubsub-spring, git-workflow, go-concurrency, go-performance, go-testing, java-restful-api, line-integration-tw, microservices-patterns, mongodb-go, nextjs-fundamentals, observability-go, openapi-swagger-spring, realtime-websocket, refactoring-patterns, spring-ai-rag, spring-boot-fundamentals, spring-boot-testing, spring-data-jpa, tw-payment-integration
 

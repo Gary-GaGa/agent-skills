@@ -1,7 +1,7 @@
 # Agent Skills
 
 <!-- BEGIN AUTO-GENERATED: summary -->
-A curated collection of **78 skills** and **16 rule sheets** across **7 categories**. Each skill is a self-contained capability package that AI coding agents (Claude Code, GitHub Copilot, etc.) can load to gain domain expertise.
+A curated collection of **79 skills** and **16 rule sheets** across **7 categories**. Each skill is a self-contained capability package that AI coding agents (Claude Code, GitHub Copilot, etc.) can load to gain domain expertise.
 <!-- END AUTO-GENERATED: summary -->
 
 ---
