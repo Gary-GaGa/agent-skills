@@ -9,11 +9,15 @@ category: devops
 tags: [gcp, cloud, devops, rag, llm, retrieval, vector-db, infrastructure]
 keywords: [Vertex AI Vector Search, Vertex AI RAG Engine, AlloyDB AI, pgvector, Cloud SQL, Firestore vector, gemini-embedding, text-embedding-005, Document AI, ScaNN]
 related: [gcp-fundamentals, gcp-cloud-sql-spring, spring-ai-rag, rag-deep-dive, rag-ingestion-pipeline]
+last_verified: 2026-05-07
+freshness_budget: 180d
 ---
 
 # RAG Infrastructure on GCP
 
 > Three reasonable choices, three sets of trade-offs. Pick by scale, latency, and what you already run — not by what's shiniest.
+
+> **Drift Surface.** Specific model names, library versions, gcloud command shapes, IAM role identifiers, and pricing live in [`references/drift.md`](./references/drift.md) — not in this file. Verify those against GCP docs before pasting; this `SKILL.md` body is principles only.
 
 ## When to Use This Skill
 
@@ -79,17 +83,13 @@ CREATE INDEX idx_rag_chunks_metadata
 
 ## AlloyDB AI
 
-AlloyDB is Postgres with Google's columnar engine and ScaNN. The RAG-relevant features:
+AlloyDB is Postgres with Google's columnar engine and a ScaNN-backed vector index. The RAG-relevant capabilities:
 
-- **`ScaNN`-backed vector index** — Google's nearest-neighbour algorithm; faster and more memory-efficient than HNSW at scale.
+- **`ScaNN`-backed vector index** — faster and more memory-efficient than HNSW at scale.
 - **Parallel query** — vector + filter + join evaluated concurrently.
-- **AI-integrated SQL** — `embedding()` function calls Vertex AI directly from SQL (use sparingly; egress and cost).
+- **AI-integrated SQL** — an `embedding()` function calls Vertex AI directly from SQL.
 
-```sql
-CREATE INDEX idx_rag_chunks_scann
-    ON rag_chunks USING scann (embedding cosine)
-    WITH (num_leaves = 1000);
-```
+ScaNN index syntax and operator-class names live in [`references/drift.md`](./references/drift.md) (this SQL evolved recently).
 
 9. **Switch from Cloud SQL → AlloyDB** when index size or query latency becomes the bottleneck. Schema is portable; client code mostly unchanged.
 
@@ -99,39 +99,12 @@ CREATE INDEX idx_rag_chunks_scann
 
 ## Vertex AI Vector Search
 
-Two modes:
+Two endpoint modes:
 
-- **Public endpoint**: easy to deploy, internet-routable.
-- **Private endpoint** (PSC): for VPC-only services. Default for production.
+- **Public endpoint** — easy to deploy, internet-routable. Suitable only for non-sensitive demos.
+- **Private endpoint** (PSC) — VPC-only. Mandatory for production.
 
-```bash
-# Create an index
-gcloud ai indexes create \
-    --display-name=rag-code \
-    --metadata-file=index-metadata.json \
-    --region=asia-east1
-```
-
-```json
-{
-  "contentsDeltaUri": "gs://acme-rag-deltas/",
-  "config": {
-    "dimensions": 768,
-    "approximateNeighborsCount": 150,
-    "distanceMeasureType": "COSINE_DISTANCE",
-    "algorithm_config": { "treeAhConfig": { "leafNodeEmbeddingCount": 500 } }
-  }
-}
-```
-
-```bash
-# Create an endpoint, deploy index to it
-gcloud ai index-endpoints create --display-name=rag-endpoint --region=asia-east1
-gcloud ai index-endpoints deploy-index <ENDPOINT_ID> \
-    --deployed-index-id=rag_v1 \
-    --display-name=rag_v1 \
-    --index=<INDEX_ID>
-```
+The exact `gcloud ai indexes create` flags and the `index-metadata.json` shape (including the ANN algorithm config) live in [`references/drift.md`](./references/drift.md). They evolve as Google ships new index algorithms.
 
 11. **Streaming updates vs batch updates.** Streaming for incremental ingest (small, frequent); batch for backfills (large, rare). Mixing them costs you predictability.
 
@@ -145,23 +118,9 @@ gcloud ai index-endpoints deploy-index <ENDPOINT_ID> \
 
 ## Vertex AI RAG Engine (Managed)
 
-The fastest path from "I have docs in GCS" to "I have a RAG endpoint".
+The fastest path from "I have docs in GCS" to "I have a RAG endpoint": upload to a bucket, the service chunks, embeds, indexes, and serves.
 
-```python
-from vertexai.preview import rag
-
-corpus = rag.create_corpus(
-    display_name="orders-docs",
-    description="orders microservice documentation",
-)
-rag.import_files(corpus.name, paths=["gs://acme-rag-source/orders-docs/"])
-
-response = rag.retrieval_query(
-    rag_resources=[rag.RagResource(rag_corpus=corpus.name)],
-    text="How do we cancel an order?",
-    similarity_top_k=10,
-)
-```
+The Python SDK lives under `vertexai.preview.rag` at the time of writing; that import path will move when the API GAs. Current SDK signatures are in [`references/drift.md`](./references/drift.md).
 
 15. **The corpus does the chunking and embedding.** You can configure chunk size and overlap; you cannot plug in a tree-sitter chunker. **This is the disqualifier for code RAG.**
 
@@ -173,18 +132,15 @@ response = rag.retrieval_query(
 
 ## Embedding Models on Vertex AI
 
-| Model | Dims | Languages | Notes |
-|---|---|---|---|
-| `text-embedding-005` | 768 | English | Latest general-purpose; default if you're not sure |
-| `text-multilingual-embedding-002` | 768 | 100+ | Multilingual; small quality dip vs English-only |
-| `gemini-embedding-001` | 3072 (truncatable) | Multilingual + code | Highest quality; can downsample dims |
-| `text-embedding-large-exp-03-07` | 3072 | English | Experimental large model |
+The current list of models, their dimensions, and language coverage lives in [`references/drift.md`](./references/drift.md). Verify against the Vertex AI embeddings page before you pick — Google ships new models and retires old ones a few times a year.
 
-18. **For code-heavy corpora, evaluate `voyage-code-3` (third-party) against `gemini-embedding-001`.** The Vertex models are general-purpose; code-specific models often win on retrieval recall for code search.
+The decision rules below are durable:
+
+18. **For code-heavy corpora, evaluate code-specific models (e.g. `voyage-code-3`) against the latest Vertex `gemini-embedding-*`.** Vertex models are general-purpose; code-specific ones often win on retrieval recall for code search.
 
 19. **Pin the model in your collection metadata.** Switching means re-embedding every chunk. The mistake of "let me try the new one" without a migration plan is expensive.
 
-20. **`gemini-embedding-001` supports dimension truncation.** If 3072 is too much for your store/budget, request 768 or 1536. Quality decay is sub-linear.
+20. **Prefer models that support dimension truncation** (Matryoshka embeddings) when storage matters. They let you index at 3072 and serve at 768 with sub-linear quality decay.
 
 21. **Cost shape**: per million tokens embedded. Estimate before reindex: tokens in corpus × $/1M × safety factor (1.3).
 
@@ -214,45 +170,41 @@ text = result.document.text
 
 ## IAM and Networking
 
-25. **Service account roles** (one per workload):
-    - Spring app SA: `roles/aiplatform.user` (chat + embedding APIs), `roles/cloudsql.client` + `roles/cloudsql.instanceUser` (pgvector)
-    - Ingestion job SA: same as app + `roles/storage.objectViewer` (GCS sources)
-    - Document AI processor SA: `roles/documentai.apiUser`
+The durable principles:
 
-26. **Vertex AI Vector Search private endpoint** uses Private Service Connect. Same VPC as your GKE cluster; no public IP. Mandatory for production.
+25. **One service account per workload** — app SA, ingest SA, Document AI processor SA. No shared "ai-platform-app" SA.
 
-27. **Quotas to pre-request**: tokens per minute for the embedding model (default is small for new projects); concurrent online prediction requests; index nodes per region.
+26. **Predefined `user`-level roles, never `admin`** for app workloads. Specific role names (e.g. `aiplatform.user`, `cloudsql.instanceUser`, `documentai.apiUser`) are listed in [`references/drift.md`](./references/drift.md) — verify when Google introduces finer-grained replacements.
 
-28. **VPC Service Controls** if data residency / exfil prevention matters. Wrap the AI Platform API; pgvector lives in your private VPC anyway.
+27. **Vertex AI Vector Search private endpoint** uses Private Service Connect. Same VPC as your GKE cluster; no public IP. Mandatory for production.
+
+28. **Quotas to pre-request**: tokens per minute for the embedding model (default is small for new projects); concurrent online prediction requests; index nodes per region.
+
+29. **VPC Service Controls** if data residency / exfil prevention matters. Wrap the AI Platform API; pgvector lives in your private VPC anyway.
 
 ---
 
-## Cost Sketch (Rough, Late 2025)
+## Cost Shape
 
-For a 5M-chunk code RAG, ~10 QPS, asia-east1:
+The dated cost sketch (a 5M-chunk code RAG at ~10 QPS in asia-east1) lives in [`references/drift.md`](./references/drift.md). It's a ballpark, not a quote.
 
-| Item | Vertex AI Vector Search | AlloyDB AI | pgvector on Cloud SQL |
-|---|---|---|---|
-| Storage / index | 1 e2 deployed node, ~$200/mo | 4 vCPU instance, ~$400/mo | db-custom-4-16384, ~$300/mo |
-| Embedding (one-time) | $50–200 (5M chunks × ~200 tok) | same | same |
-| Query embedding | ~$20/mo | same | same |
-| Chat (Gemini 2.5 Pro) | $1k–5k/mo (workload-dependent) | same | same |
-| **Total infra** | **$200–500/mo** | **$400–700/mo** | **$300–500/mo** |
-| Operational complexity | Medium (deployment, restricts) | Low (Postgres) | Low (Postgres) |
+The durable observations:
 
-29. **At this scale, infra is noise next to LLM cost.** Optimise prompt length and caching first; vector DB second.
+30. **At realistic scale, vector-store infra is noise next to LLM cost.** Optimise prompt length and caching first; vector DB second.
 
-30. **Always set a billing budget alert.** Embedding-loop bugs and unbounded ingest jobs are the #1 reason for surprise bills.
+31. **Always set a billing budget alert.** Embedding-loop bugs and unbounded ingest jobs are the #1 reason for surprise bills.
+
+32. **Pricing pages move.** Run the [GCP pricing calculator](https://cloud.google.com/products/calculator) for any decision sensitive to more than one significant figure. Don't quote `references/drift.md` numbers to finance.
 
 ---
 
 ## Multi-Region Considerations
 
-31. **Pick the region closest to your serving cluster.** `asia-east1` for Taiwan-served workloads; cross-region adds 50–150ms.
+33. **Pick the region closest to your serving cluster.** `asia-east1` for Taiwan-served workloads; cross-region adds 50–150ms.
 
-32. **Vertex AI Vector Search supports multi-region endpoint deployment** — pay per node per region. AlloyDB and Cloud SQL replicas can be cross-region read replicas.
+34. **Vertex AI Vector Search supports multi-region endpoint deployment** — pay per node per region. AlloyDB and Cloud SQL replicas can be cross-region read replicas.
 
-33. **Embeddings are region-pinned.** Re-embedding is needed if you migrate regions because dimensions and behaviour are guaranteed only within a deployment.
+35. **Embeddings are region-pinned.** Re-embedding is needed if you migrate regions because dimensions and behaviour are guaranteed only within a deployment.
 
 ---
 
@@ -282,6 +234,12 @@ For a 5M-chunk code RAG, ~10 QPS, asia-east1:
 - [ ] Cost monitoring + budget alert
 - [ ] Reindex / re-embedding migration plan documented
 - [ ] Dev / staging environments don't keep an idle deployed index 24/7
+
+---
+
+## References
+
+- [`references/drift.md`](./references/drift.md) — time-sensitive content (model names, library versions, gcloud command shapes, IAM role IDs, pricing) with canonical verify URLs. Walk this when `validate.py` flags freshness staleness.
 
 ---
 

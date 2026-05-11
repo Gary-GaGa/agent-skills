@@ -44,7 +44,14 @@ VALID_CATEGORIES = {
     "productivity",
 }
 REQUIRED_FIELDS = ("name", "description", "category", "tags")
-ALLOWED_FIELDS = {"name", "description", "category", "tags", "keywords", "related"}
+ALLOWED_FIELDS = {
+    "name", "description", "category", "tags", "keywords", "related",
+    # Freshness signalling for time-sensitive content (e.g. cloud SaaS skills).
+    # Both fields are optional; when present we surface a warning if the skill
+    # hasn't been verified within freshness_budget days. See
+    # rules/cloud-content-freshness.md for the policy.
+    "last_verified", "freshness_budget",
+}
 DESCRIPTION_MAX = 300
 REFERENCES_LINES_MAX = 1500  # warn when SKILL.md + references exceed this
 
@@ -64,6 +71,58 @@ def err(msg: str) -> None:
 
 def warn(msg: str) -> None:
     warnings.append(msg)
+
+
+_FRESHNESS_BUDGET_RE = re.compile(r"^\s*(\d+)\s*d\s*$", re.IGNORECASE)
+
+
+def _check_freshness(rel: Path, fm: dict) -> None:
+    """If freshness fields are set, warn when last_verified is past the budget.
+
+    Both fields are optional; if either is missing we don't enforce anything —
+    only skills that opt in (typically cloud / SaaS skills) get checked.
+    """
+    last_verified = fm.get("last_verified")
+    budget_raw = fm.get("freshness_budget")
+    if last_verified is None and budget_raw is None:
+        return  # opted out
+
+    if last_verified is None:
+        warn(f"{rel}: freshness_budget set but last_verified is missing")
+        return
+    if budget_raw is None:
+        warn(f"{rel}: last_verified set but freshness_budget is missing")
+        return
+
+    # last_verified can be a date or a string YYYY-MM-DD
+    import datetime as _dt
+    if isinstance(last_verified, _dt.date):
+        verified = last_verified
+    elif isinstance(last_verified, str):
+        try:
+            verified = _dt.date.fromisoformat(last_verified)
+        except ValueError:
+            err(f"{rel}: last_verified `{last_verified}` is not a YYYY-MM-DD date")
+            return
+    else:
+        err(f"{rel}: last_verified must be a YYYY-MM-DD date string")
+        return
+
+    if not isinstance(budget_raw, str):
+        err(f"{rel}: freshness_budget must be a string like `180d`")
+        return
+    m = _FRESHNESS_BUDGET_RE.match(budget_raw)
+    if not m:
+        err(f"{rel}: freshness_budget `{budget_raw}` must look like `180d`")
+        return
+    budget_days = int(m.group(1))
+
+    age = (_dt.date.today() - verified).days
+    if age > budget_days:
+        warn(
+            f"{rel}: last_verified {verified.isoformat()} is {age} days old; "
+            f"exceeds freshness_budget of {budget_days}d — re-verify drift surface"
+        )
 
 
 def parse_frontmatter(path: Path) -> dict | None:
@@ -119,6 +178,8 @@ def check_skill(path: Path) -> dict | None:
         err(f"{rel}: tags must be a list")
     if not isinstance(fm.get("related") or [], list):
         err(f"{rel}: related must be a list")
+
+    _check_freshness(rel, fm)
 
     if "keywords" in fm:
         kw = fm["keywords"]
