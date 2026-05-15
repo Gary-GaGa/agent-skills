@@ -94,7 +94,10 @@ class AllowedFieldsTests(unittest.TestCase):
         # Required + optional combined; unknown fields should be flagged.
         self.assertEqual(
             validate.ALLOWED_FIELDS,
-            {"name", "description", "category", "tags", "keywords", "related"},
+            {
+                "name", "description", "category", "tags", "keywords", "related",
+                "last_verified", "freshness_budget",
+            },
         )
 
 
