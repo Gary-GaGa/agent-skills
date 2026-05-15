@@ -58,7 +58,8 @@ implementation 'com.google.cloud.sql:postgres-socket-factory:1.19.1'
 spring:
   datasource:
     url: jdbc:postgresql:///orders?cloudSqlInstance=acme-orders-prod:asia-east1:orders-db&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=orders-app@acme-orders-prod.iam&enableIamAuth=true
-    # Driver fills in `password` from a one-time IAM token; no static password needed
+    username: orders-app@acme-orders-prod.iam
+    password: ""                # required placeholder; the connector substitutes a short-lived IAM token
     hikari:
       maximum-pool-size: 10
       minimum-idle: 2
@@ -68,9 +69,11 @@ spring:
 
 4. **`cloudSqlInstance` format**: `<project>:<region>:<instance>`. Wrong regions are the #1 cause of "ConnectorException: instance not found".
 
-5. **`enableIamAuth=true`** lets the SA authenticate without a password. The connector fetches a short-lived token; nothing static to leak.
+5. **`enableIamAuth=true`** lets the SA authenticate without a static password. The connector fetches a short-lived token per connection.
 
-6. **The DB user matches the SA email**, with `@<project>.iam` suffix for service accounts and `@acme.com` for human users — minus the trailing `.gserviceaccount.com`.
+6. **`password: ""` is still required** in the YAML. HikariCP runs a credentials check before the connector takes over; without the property it fails with `"password" property is not set`. The empty value is replaced by the connector's IAM token.
+
+7. **The DB user matches the SA email**, with `@<project>.iam` suffix for service accounts and `@acme.com` for human users — minus the trailing `.gserviceaccount.com`.
 
 ### Required IAM
 
@@ -84,7 +87,7 @@ gcloud projects add-iam-policy-binding acme-orders-prod \
     --role   "roles/cloudsql.instanceUser"
 ```
 
-7. **`cloudsql.client`** allows connecting; **`cloudsql.instanceUser`** is required for IAM auth specifically.
+8. **`cloudsql.client`** allows connecting; **`cloudsql.instanceUser`** is required for IAM auth specifically.
 
 ### Create the DB user
 
@@ -103,7 +106,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO "orders-app@acme-orders-prod.iam";
 ```
 
-8. **Don't grant superuser to the app SA.** Migrations should run as a separate user (or a separate SA with broader rights) used only by the migration job.
+9. **Don't grant superuser to the app SA.** Migrations should run as a separate user (or a separate SA with broader rights) used only by the migration job.
 
 ---
 
@@ -134,9 +137,9 @@ containers:
 serviceAccountName: orders-app   # Workload Identity → GSA with roles/cloudsql.client
 ```
 
-9. **Same IAM requirements as the Java Connector.** The proxy is just a cleaner UX in some environments.
+10. **Same IAM requirements as the Java Connector.** The proxy is just a cleaner UX in some environments.
 
-10. **Configure pod-level lifecycle so the proxy outlives the app.** Otherwise the app loses DB during shutdown.
+11. **Configure pod-level lifecycle so the proxy outlives the app.** Otherwise the app loses DB during shutdown.
 
 ---
 
@@ -154,13 +157,13 @@ spring:
       leak-detection-threshold: 5000  # log connections held > 5s
 ```
 
-11. **Pool size × pod count must fit the Cloud SQL `max_connections` quota.** Cloud SQL Postgres caps depend on tier (db-custom-2-4096 ≈ 100; bigger tiers higher). Run the math.
+12. **Pool size × pod count must fit the Cloud SQL `max_connections` quota.** Cloud SQL Postgres scales `max_connections` with tier; check the live value with `SHOW max_connections;` (and the `cloudsql.iam_authentication`-specific overrides). Run the math before scaling pods, not after.
 
-12. **At scale, front Cloud SQL with PgBouncer** (transaction pooling). Without it, autoscaling Spring pods can exhaust connections. Many teams self-host PgBouncer in the cluster; alternatively use Cloud SQL's built-in connection pooling on supported tiers.
+13. **At scale, front Cloud SQL with PgBouncer** (transaction pooling). Without it, autoscaling Spring pods can exhaust connections. Many teams self-host PgBouncer in the cluster; alternatively use Cloud SQL's built-in connection pooling on supported tiers.
 
-13. **`max-lifetime` < Cloud SQL idle disconnect.** Otherwise pods carry stale connections until the next query fails.
+14. **`max-lifetime` < Cloud SQL idle disconnect.** Otherwise pods carry stale connections until the next query fails.
 
-14. **`leak-detection-threshold` of 5s** in non-prod helps catch missing `@Transactional` boundaries that hold connections too long.
+15. **`leak-detection-threshold` of 5s** in non-prod helps catch missing `@Transactional` boundaries that hold connections too long.
 
 ---
 
@@ -177,9 +180,9 @@ gcloud sql instances create orders-db \
     --no-assign-ip                                        # private only
 ```
 
-15. **No public IP in production.** A private IP is reachable only from the VPC; the Java Connector still works because it talks to a private endpoint.
+16. **No public IP in production.** A private IP is reachable only from the VPC; the Java Connector still works because it talks to a private endpoint.
 
-16. **VPC Service Controls** for compliance — they wrap the API itself, not just the network. Pair with private IP, not as an alternative.
+17. **VPC Service Controls** for compliance — they wrap the API itself, not just the network. Pair with private IP, not as an alternative.
 
 ---
 
@@ -227,15 +230,15 @@ public class DataSourceConfig {
 }
 ```
 
-17. **`@Transactional(readOnly = true)` routes to the replica.** The whole flow depends on the read-only flag being set correctly on services.
+18. **`@Transactional(readOnly = true)` routes to the replica.** The whole flow depends on the read-only flag being set correctly on services.
 
-18. **Replicas lag.** Don't read-after-write your own changes from a replica. Either pin to primary for the read in that flow, or use cursors that tolerate staleness.
+19. **Replicas lag.** Don't read-after-write your own changes from a replica. Either pin to primary for the read in that flow, or use cursors that tolerate staleness.
 
 ---
 
 ## Migrations
 
-19. **Run Flyway/Liquibase as a separate Job, not inside app startup**, in production. App startup is the wrong place for a slow or risky DDL change.
+20. **Run Flyway/Liquibase as a separate Job, not inside app startup**, in production. App startup is the wrong place for a slow or risky DDL change.
 
    ```yaml
    # k8s Job that runs migrations before the app rolls out
@@ -253,7 +256,7 @@ public class DataSourceConfig {
              command: ["java", "-jar", "/app/app.jar", "--spring.profiles.active=migrate"]
    ```
 
-20. **The migration SA has DDL rights, the app SA does not.** Least privilege, again.
+21. **The migration SA has DDL rights, the app SA does not.** Least privilege, again.
 
 ---
 
@@ -267,7 +270,7 @@ cloud-sql-proxy acme-orders-dev:asia-east1:orders-db &
 docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local postgres:15
 ```
 
-21. **Don't share a Cloud SQL dev instance across developers.** Schema drift, fixture pollution. Local Docker > shared remote DB.
+22. **Don't share a Cloud SQL dev instance across developers.** Schema drift, fixture pollution. Local Docker > shared remote DB.
 
 ---
 

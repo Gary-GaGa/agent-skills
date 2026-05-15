@@ -312,7 +312,7 @@
         "query-rewriting-rag"
       ],
       "path": "ai-engineering/graphrag-multi-service/SKILL.md",
-      "body_lines": 219,
+      "body_lines": 221,
       "references": []
     },
     {
@@ -896,8 +896,14 @@
         "rag-ingestion-pipeline"
       ],
       "path": "devops/gcp-vertex-ai-rag/SKILL.md",
-      "body_lines": 283,
-      "references": []
+      "body_lines": 239,
+      "references": [
+        {
+          "name": "drift",
+          "path": "devops/gcp-vertex-ai-rag/references/drift.md",
+          "lines": 190
+        }
+      ]
     },
     {
       "name": "github-actions",
@@ -932,7 +938,6 @@
         "gcp",
         "gke",
         "kubernetes",
-        "k8s",
         "deployment",
         "devops",
         "container",
@@ -1278,7 +1283,7 @@
         "gcp-vertex-ai-rag"
       ],
       "path": "engineering/gcp-cloud-sql-spring/SKILL.md",
-      "body_lines": 296,
+      "body_lines": 299,
       "references": []
     },
     {
@@ -1386,7 +1391,7 @@
         "microservices-patterns"
       ],
       "path": "engineering/gcp-pubsub-spring/SKILL.md",
-      "body_lines": 349,
+      "body_lines": 353,
       "references": []
     },
     {
@@ -1774,7 +1779,7 @@
         "gcp-vertex-ai-rag"
       ],
       "path": "engineering/spring-ai-rag/SKILL.md",
-      "body_lines": 353,
+      "body_lines": 364,
       "references": []
     },
     {
@@ -1785,7 +1790,6 @@
         "java",
         "spring-boot",
         "backend",
-        "framework",
         "design"
       ],
       "keywords": [
@@ -2372,7 +2376,7 @@
     }
   ],
   "totals": {
-    "skills": 78,
+    "skills": 79,
     "rules": 16,
     "categories": 7
   }

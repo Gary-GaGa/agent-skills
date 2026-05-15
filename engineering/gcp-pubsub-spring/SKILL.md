@@ -141,19 +141,23 @@ gcloud pubsub subscriptions create orders-events.inventory \
 
 ```java
 public void publishOrderCreated(Order order) {
-    Map<String, String> headers = Map.of(
-        "event-type", "OrderCreated",
-        "googclient_OrderingKey", order.id().toString()   // Spring Cloud GCP convention
-    );
-    pubsub.publish("orders-events", event, headers);
+    PubsubMessage msg = PubsubMessage.newBuilder()
+        .setData(ByteString.copyFromUtf8(serialize(event)))
+        .putAttributes("event-type", "OrderCreated")
+        .putAttributes("event-id", UUID.randomUUID().toString())
+        .setOrderingKey(order.id().toString())   // built-in field, not an attribute
+        .build();
+    pubsub.publish("orders-events", msg);
 }
 ```
 
-9. **Ordering is opt-in per subscription.** Without `--enable-message-ordering` on the subscription, messages may be delivered out of order even if you set the key.
+9. **Ordering key is a first-class field on `PubsubMessage`**, not a header attribute. Set it via `setOrderingKey(...)`; Spring Cloud GCP's `PubSubTemplate.publish(topic, PubsubMessage)` overload preserves it. Don't try to smuggle it through `Map<String,String>` headers — header names mapping to the ordering key has changed across versions.
 
-10. **Ordering key = aggregate ID** in DDD terms. Ordering "all orders in the system" doesn't scale; ordering "events for order 42" does.
+10. **Ordering is opt-in per subscription.** Without `--enable-message-ordering` on the subscription, messages may be delivered out of order even if you set the key.
 
-11. **A single failed message blocks the ordering key.** Keep your consumer fast and resilient, or accept the blocking trade-off explicitly.
+11. **Ordering key = aggregate ID** in DDD terms. Ordering "all orders in the system" doesn't scale; ordering "events for order 42" does.
+
+12. **A single failed message blocks the ordering key.** Keep your consumer fast and resilient, or accept the blocking trade-off explicitly.
 
 ---
 
@@ -198,13 +202,13 @@ public class PubSubInboundConfig {
 }
 ```
 
-12. **`ack` after the side effect succeeds.** Acking before processing means you lose the message on failure.
+13. **`ack` after the side effect succeeds.** Acking before processing means you lose the message on failure.
 
-13. **`nack` for transient failures.** Pub/Sub redelivers per its retry policy. Use exponential backoff via subscription config, not by holding the thread.
+14. **`nack` for transient failures.** Pub/Sub redelivers per its retry policy. Use exponential backoff via subscription config, not by holding the thread.
 
-14. **Make the handler idempotent.** Track processed `event-id`s in a small table or cache, or use `INSERT ... ON CONFLICT DO NOTHING` semantics on the side-effect write.
+15. **Make the handler idempotent.** Track processed `event-id`s in a small table or cache, or use `INSERT ... ON CONFLICT DO NOTHING` semantics on the side-effect write.
 
-15. **Set `ack-deadline`** to your 99th-percentile processing time + buffer. Too short → unnecessary redelivery; too long → slow recovery from a stuck pod.
+16. **Set `ack-deadline`** to your 99th-percentile processing time + buffer. Too short → unnecessary redelivery; too long → slow recovery from a stuck pod.
 
 ---
 
@@ -223,11 +227,11 @@ gcloud pubsub topics add-iam-policy-binding orders-events-dlq \
     --role="roles/pubsub.publisher"
 ```
 
-16. **Always configure a DLQ.** Without it, "poison" messages cycle forever and the subscription's backlog grows.
+17. **Always configure a DLQ.** Without it, "poison" messages cycle forever and the subscription's backlog grows.
 
-17. **Alert on DLQ depth, not on the main subscription's redelivery rate.** Redelivery is normal; DLQ growth is not.
+18. **Alert on DLQ depth, not on the main subscription's redelivery rate.** Redelivery is normal; DLQ growth is not.
 
-18. **Build a re-drive job.** A small worker that reads the DLQ, re-publishes to the main topic after fix, and acks. Don't manually click in the console.
+19. **Build a re-drive job.** A small worker that reads the DLQ, re-publishes to the main topic after fix, and acks. Don't manually click in the console.
 
 ---
 
@@ -261,11 +265,11 @@ public class OrdersPushController {
 }
 ```
 
-19. **HTTP 2xx = ack; non-2xx = nack.** No body needed.
+20. **HTTP 2xx = ack; non-2xx = nack.** No body needed.
 
-20. **Verify the OIDC token** that Pub/Sub sends in the `Authorization` header. Don't expose the endpoint without auth.
+21. **Verify the OIDC token** that Pub/Sub sends in the `Authorization` header. Don't expose the endpoint without auth.
 
-21. **Pull > push for high-throughput workers** — pull can flow-control. Push subscribers can be overrun by traffic spikes.
+22. **Pull > push for high-throughput workers** — pull can flow-control. Push subscribers can be overrun by traffic spikes.
 
 ---
 
@@ -278,9 +282,9 @@ gcloud pubsub subscriptions create orders-events.payment \
     --ack-deadline=60
 ```
 
-22. **Even with exactly-once, build idempotent consumers.** It guarantees no duplicate ack-delivery, but your code may still re-process if it crashed mid-side-effect.
+23. **Even with exactly-once, build idempotent consumers.** It guarantees no duplicate ack-delivery, but your code may still re-process if it crashed mid-side-effect.
 
-23. **Exactly-once requires a longer minimum ack deadline (60s).** Plan throughput accordingly.
+24. **Exactly-once requires a longer minimum ack deadline (60s).** Plan throughput accordingly.
 
 ---
 
@@ -296,9 +300,9 @@ gcloud pubsub schemas create orders-events-schema \
 gcloud pubsub topics create orders-events --schema=orders-events-schema --message-encoding=JSON
 ```
 
-24. **JSON-on-a-schema** is the easiest starting point — human-readable in the console, validated by Pub/Sub.
+25. **JSON-on-a-schema** is the easiest starting point — human-readable in the console, validated by Pub/Sub.
 
-25. **Treat the schema as code.** Version it, evolve it under backward-compat rules (additive only on the existing version; new major version → new topic).
+26. **Treat the schema as code.** Version it, evolve it under backward-compat rules (additive only on the existing version; new major version → new topic).
 
 ---
 
@@ -321,7 +325,7 @@ spring:
       project-id: local-test
 ```
 
-26. **Topics and subscriptions don't auto-create on the emulator.** Add a small startup script in your local-dev profile.
+27. **Topics and subscriptions don't auto-create on the emulator.** Add a small startup script in your local-dev profile.
 
 ---
 
