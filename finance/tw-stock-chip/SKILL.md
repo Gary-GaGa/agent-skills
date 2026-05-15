@@ -9,7 +9,7 @@ description: >
 category: finance
 tags: [stock, taiwan, tw-stock, chip-analysis, institutional-investors, margin-trading]
 keywords: [TDCC, foreign investor, investment trust, dealer, margin, short interest]
-related: [tw-stock-fundamental, tw-stock-technical, tw-stock-quant, tw-stock-data]
+related: [tw-stock-fundamental, tw-stock-technical, tw-stock-quant, tw-stock-data, tw-stock-trend]
 ---
 
 # Taiwan Stock Chip-Flow Analysis

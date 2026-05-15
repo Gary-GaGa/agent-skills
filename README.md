@@ -29,7 +29,7 @@ README.md (you are here)
 | **[devops](./devops/INDEX.md)** | 8 | Docker, GitHub Actions, Terraform, Kubernetes. | [→ INDEX](./devops/INDEX.md) |
 | **[data](./data/INDEX.md)** | 3 | SQL, database migrations, data modeling. | [→ INDEX](./data/INDEX.md) |
 | **[content](./content/INDEX.md)** | 3 | Medium writing, technical docs, newsletters. | [→ INDEX](./content/INDEX.md) |
-| **[finance](./finance/INDEX.md)** | 9 | Taiwan stock analysis, ETF, options, portfolio, tax. | [→ INDEX](./finance/INDEX.md) |
+| **[finance](./finance/INDEX.md)** | 10 | Taiwan stock analysis, ETF, options, portfolio, tax. | [→ INDEX](./finance/INDEX.md) |
 | **[productivity](./productivity/INDEX.md)** | 3 | Learning methodology, second brain, time management. | [→ INDEX](./productivity/INDEX.md) |
 | **[rules](./rules/README.md)** | 16 | Lightweight, quotable convention sheets (Go, security, Docker, prompts, etc.). | [→ README](./rules/README.md) |
 <!-- END AUTO-GENERATED: categories -->

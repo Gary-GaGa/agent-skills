@@ -9,7 +9,7 @@ description: >
 category: finance
 tags: [stock, taiwan, tw-stock, fundamental-analysis, investing, value-investing]
 keywords: [MOPS, ROE, ROA, P/E, P/B, PEG, EPS, free cash flow, moat]
-related: [tw-stock-chip, tw-stock-technical, tw-stock-quant, tw-stock-data, tw-stock-options, tw-etf-investing, portfolio-construction, tw-stock-tax]
+related: [tw-stock-chip, tw-stock-technical, tw-stock-quant, tw-stock-data, tw-stock-options, tw-etf-investing, portfolio-construction, tw-stock-tax, tw-stock-trend]
 ---
 
 # Taiwan Stock Fundamental Analysis

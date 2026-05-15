@@ -25,7 +25,7 @@ Current skills — 78 total across 7 categories:
 
 **content (3):** medium-writing, newsletter-writing, technical-writing
 
-**finance (9):** portfolio-construction, tw-etf-investing, tw-stock-chip, tw-stock-data, tw-stock-fundamental, tw-stock-options, tw-stock-quant, tw-stock-tax, tw-stock-technical
+**finance (10):** portfolio-construction, tw-etf-investing, tw-stock-chip, tw-stock-data, tw-stock-fundamental, tw-stock-options, tw-stock-quant, tw-stock-tax, tw-stock-technical, tw-stock-trend
 
 **productivity (3):** learning-methodology, second-brain, time-management
 

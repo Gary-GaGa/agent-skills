@@ -35,7 +35,7 @@
       "name": "finance",
       "title": "Finance",
       "description": "Taiwan stock analysis, ETF, options, portfolio, tax.",
-      "skill_count": 9
+      "skill_count": 10
     },
     {
       "name": "productivity",
@@ -1928,7 +1928,8 @@
         "tw-stock-fundamental",
         "tw-etf-investing",
         "tw-stock-options",
-        "tw-stock-tax"
+        "tw-stock-tax",
+        "tw-stock-trend"
       ],
       "path": "finance/portfolio-construction/SKILL.md",
       "body_lines": 210,
@@ -1988,7 +1989,8 @@
         "tw-stock-fundamental",
         "tw-stock-technical",
         "tw-stock-quant",
-        "tw-stock-data"
+        "tw-stock-data",
+        "tw-stock-trend"
       ],
       "path": "finance/tw-stock-chip/SKILL.md",
       "body_lines": 296,
@@ -2056,7 +2058,8 @@
         "tw-stock-options",
         "tw-etf-investing",
         "portfolio-construction",
-        "tw-stock-tax"
+        "tw-stock-tax",
+        "tw-stock-trend"
       ],
       "path": "finance/tw-stock-fundamental/SKILL.md",
       "body_lines": 286,
@@ -2119,7 +2122,8 @@
         "tw-stock-fundamental",
         "tw-stock-chip",
         "tw-stock-technical",
-        "tw-stock-data"
+        "tw-stock-data",
+        "tw-stock-trend"
       ],
       "path": "finance/tw-stock-quant/SKILL.md",
       "body_lines": 344,
@@ -2179,10 +2183,48 @@
         "tw-stock-chip",
         "tw-stock-quant",
         "tw-stock-data",
-        "tw-stock-options"
+        "tw-stock-options",
+        "tw-stock-trend"
       ],
       "path": "finance/tw-stock-technical/SKILL.md",
       "body_lines": 314,
+      "references": []
+    },
+    {
+      "name": "tw-stock-trend",
+      "category": "finance",
+      "description": "Trend identification for Taiwan-listed stocks — Dow theory structure (HH/HL vs LH/LL), multi-timeframe alignment, strength and phase, pullback vs reversal. Use this skill to answer \"is this stock in an uptrend or downtrend, and how strong?\" before any entry / exit decision.",
+      "tags": [
+        "stock",
+        "taiwan",
+        "tw-stock",
+        "technical-analysis",
+        "charting",
+        "indicators"
+      ],
+      "keywords": [
+        "trend",
+        "uptrend",
+        "downtrend",
+        "Dow theory",
+        "higher high",
+        "lower low",
+        "swing point",
+        "ADX",
+        "pullback",
+        "reversal",
+        "break of structure",
+        "Wyckoff"
+      ],
+      "related": [
+        "tw-stock-technical",
+        "tw-stock-chip",
+        "tw-stock-fundamental",
+        "tw-stock-quant",
+        "portfolio-construction"
+      ],
+      "path": "finance/tw-stock-trend/SKILL.md",
+      "body_lines": 298,
       "references": []
     },
     {
