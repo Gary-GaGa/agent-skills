@@ -7,7 +7,7 @@ description: >
   downtrend, and how strong?" before any entry / exit decision.
 category: finance
 tags: [stock, taiwan, tw-stock, technical-analysis, charting, indicators]
-keywords: [trend, uptrend, downtrend, Dow theory, higher high, lower low, swing point, ADX, pullback, reversal, break of structure, Wyckoff]
+keywords: [trend, uptrend, downtrend, Dow theory, higher high, lower low, swing point, ADX, pullback, reversal, break of structure, Wyckoff, 趨勢, 上漲, 下跌, K線, 多頭, 空頭, 回檔]
 related: [tw-stock-technical, tw-stock-chip, tw-stock-fundamental, tw-stock-quant, portfolio-construction]
 ---
 

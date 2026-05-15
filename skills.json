@@ -542,7 +542,7 @@
     {
       "name": "rag-ingestion-pipeline",
       "category": "ai-engineering",
-      "description": "Ingestion pipeline for code/document RAG — source enumeration, parsing, chunking, embedding, dedup, incremental git-SHA updates, schema migrations, observability. Use this skill when setting up or operationalising the data side of a RAG system over multiple repos.",
+      "description": "Operationalising the data side of a RAG system — source enumeration, parsing, embedding batches, dedup, tombstone deletes, incremental git-SHA updates, schema migrations, observability. Use this skill when setting up or running the long-lived ingestion job over multiple repos.",
       "tags": [
         "rag",
         "retrieval",
@@ -769,7 +769,7 @@
     {
       "name": "cloud-build-artifact-registry",
       "category": "devops",
-      "description": "CI on Google Cloud — Cloud Build, Artifact Registry, Workload Identity Federation from GitHub Actions, vulnerability scanning, and Cloud Deploy for progressive rollouts. Use this skill when setting up CI/CD for a service deployed to GKE, or auditing an existing pipeline.",
+      "description": "CI on Google Cloud — Cloud Build, Artifact Registry, vulnerability scanning, and Cloud Deploy for progressive rollouts. Covers Workload Identity Federation from external CI. Use this skill when wiring image builds and deploys to a GKE service on GCP, or auditing an existing GCP-side pipeline.",
       "tags": [
         "gcp",
         "ci-cd",
@@ -1346,7 +1346,7 @@
         "structured logging",
         "trace context",
         "correlation ID",
-        "SLO",
+        "SLOs",
         "error budget"
       ],
       "related": [
@@ -1987,7 +1987,14 @@
         "investment trust",
         "dealer",
         "margin",
-        "short interest"
+        "short interest",
+        "籌碼",
+        "外資",
+        "投信",
+        "自營商",
+        "融資",
+        "融券",
+        "集保"
       ],
       "related": [
         "tw-stock-fundamental",
@@ -2218,7 +2225,14 @@
         "pullback",
         "reversal",
         "break of structure",
-        "Wyckoff"
+        "Wyckoff",
+        "趨勢",
+        "上漲",
+        "下跌",
+        "K線",
+        "多頭",
+        "空頭",
+        "回檔"
       ],
       "related": [
         "tw-stock-technical",
