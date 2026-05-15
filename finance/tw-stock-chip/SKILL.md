@@ -8,7 +8,7 @@ description: >
   a stock to time entries and exits.
 category: finance
 tags: [stock, taiwan, tw-stock, chip-analysis, institutional-investors, margin-trading]
-keywords: [TDCC, foreign investor, investment trust, dealer, margin, short interest]
+keywords: [TDCC, foreign investor, investment trust, dealer, margin, short interest, 籌碼, 外資, 投信, 自營商, 融資, 融券, 集保]
 related: [tw-stock-fundamental, tw-stock-technical, tw-stock-quant, tw-stock-data, tw-stock-trend]
 ---
 

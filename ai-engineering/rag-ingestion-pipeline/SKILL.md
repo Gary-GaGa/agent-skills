@@ -1,10 +1,10 @@
 ---
 name: rag-ingestion-pipeline
 description: >
-  Ingestion pipeline for code/document RAG — source enumeration, parsing,
-  chunking, embedding, dedup, incremental git-SHA updates, schema
-  migrations, observability. Use this skill when setting up or
-  operationalising the data side of a RAG system over multiple repos.
+  Operationalising the data side of a RAG system — source enumeration,
+  parsing, embedding batches, dedup, tombstone deletes, incremental
+  git-SHA updates, schema migrations, observability. Use this skill when
+  setting up or running the long-lived ingestion job over multiple repos.
 category: ai-engineering
 tags: [rag, retrieval, embedding, vector-db, llm, pipeline, data-engineering, automation]
 keywords: [ingestion, ETL, incremental indexing, content hash, git SHA, tree-sitter, chunking pipeline, dedup, watcher, schema migration, RAG ops]

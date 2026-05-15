@@ -1,10 +1,11 @@
 ---
 name: cloud-build-artifact-registry
 description: >
-  CI on Google Cloud — Cloud Build, Artifact Registry, Workload Identity
-  Federation from GitHub Actions, vulnerability scanning, and Cloud Deploy
-  for progressive rollouts. Use this skill when setting up CI/CD for a
-  service deployed to GKE, or auditing an existing pipeline.
+  CI on Google Cloud — Cloud Build, Artifact Registry, vulnerability
+  scanning, and Cloud Deploy for progressive rollouts. Covers Workload
+  Identity Federation from external CI. Use this skill when wiring image
+  builds and deploys to a GKE service on GCP, or auditing an existing
+  GCP-side pipeline.
 category: devops
 tags: [gcp, ci-cd, devops, container, automation, cloud, deployment]
 keywords: [Cloud Build, Artifact Registry, cloudbuild.yaml, Cloud Deploy, Skaffold, Workload Identity Federation, GitHub Actions, vulnerability scanning, image signing]

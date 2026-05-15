@@ -7,7 +7,7 @@ description: >
   telemetry to a Spring Boot service or debugging a production incident.
 category: engineering
 tags: [java, spring-boot, gcp, observability, logging, tracing, metrics, opentelemetry, monitoring]
-keywords: [Cloud Logging, Cloud Trace, Cloud Monitoring, Managed Prometheus, Micrometer, OpenTelemetry, structured logging, trace context, correlation ID, SLO, error budget]
+keywords: [Cloud Logging, Cloud Trace, Cloud Monitoring, Managed Prometheus, Micrometer, OpenTelemetry, structured logging, trace context, correlation ID, SLOs, error budget]
 related: [spring-boot-fundamentals, gke-deployment, observability-go, debugging-methodology, gcp-fundamentals]
 ---
 

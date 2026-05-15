@@ -8,7 +8,7 @@
 {"id": "001", "source": "curated", "kind": "match", "intent": "Help me design an MCP server for Claude Desktop", "expected": ["mcp-server-design"]}
 {"id": "002", "source": "curated", "kind": "match", "intent": "I want to write Go tests with table-driven subtests", "expected": ["go-testing"]}
 {"id": "003", "source": "curated", "kind": "match", "intent": "How do I avoid prompt injection in my agent?", "expected": ["agent-safety-guardrails"]}
-{"id": "004", "source": "curated", "kind": "match", "intent": "Building a RAG pipeline — how should I chunk docs?", "expected": ["rag-deep-dive"]}
+{"id": "004", "source": "curated", "kind": "ambiguous", "intent": "Building a RAG pipeline — how should I chunk docs?", "expected": ["rag-deep-dive", "rag-ingestion-pipeline"]}
 {"id": "005", "source": "curated", "kind": "match", "intent": "我想學台股的籌碼面分析", "expected": ["tw-stock-chip"]}
 {"id": "006", "source": "curated", "kind": "match", "intent": "想了解 0050 跟 0056 哪個比較適合長期投資", "expected": ["tw-etf-investing"]}
 {"id": "007", "source": "curated", "kind": "match", "intent": "Optimize a slow PostgreSQL query that joins 3 tables", "expected": ["sql-fundamentals"]}
@@ -53,3 +53,66 @@
 {"id": "w14", "source": "wild", "kind": "ambiguous", "intent": "I want to build a chatbot agent — where do I even start", "expected": ["agent-harness-design", "prompt-engineering"]}
 {"id": "w15", "source": "wild", "kind": "unanswerable", "intent": "should I use vim or emacs for my new project", "expected": []}
 {"id": "w16", "source": "wild", "kind": "unanswerable", "intent": "我女友生氣了該怎麼辦", "expected": []}
+// --- New cases for skills added in the Spring Boot / GCP / RAG / finance batch (PRs #10 #11 #12 #13 #14) ---
+// Spring Boot core
+{"id": "021", "source": "curated", "kind": "match", "intent": "Bootstrap a new Spring Boot 3 service with profiles and Actuator", "expected": ["spring-boot-fundamentals"]}
+{"id": "022", "source": "curated", "kind": "match", "intent": "Design REST controllers in Spring with @Valid, DTOs and ProblemDetail", "expected": ["java-restful-api"]}
+{"id": "023", "source": "curated", "kind": "match", "intent": "Generate OpenAPI 3 docs from a Spring Boot service with springdoc", "expected": ["openapi-swagger-spring"]}
+{"id": "024", "source": "curated", "kind": "match", "intent": "Write @WebMvcTest controller tests with MockMvc and Testcontainers", "expected": ["spring-boot-testing"]}
+{"id": "025", "source": "curated", "kind": "match", "intent": "Avoid N+1 in Spring Data JPA and configure HikariCP properly", "expected": ["spring-data-jpa"]}
+// GCP / GKE
+{"id": "026", "source": "curated", "kind": "ambiguous", "intent": "Set up Workload Identity for a service account on GKE", "expected": ["gcp-fundamentals", "gke-deployment"]}
+{"id": "027", "source": "curated", "kind": "match", "intent": "Production-grade GKE Deployment with readiness probe, HPA, and PDB", "expected": ["gke-deployment"]}
+{"id": "028", "source": "curated", "kind": "match", "intent": "Build container images with Cloud Build and push to Artifact Registry", "expected": ["cloud-build-artifact-registry"]}
+// GCP integrations from Spring Boot
+{"id": "029", "source": "curated", "kind": "match", "intent": "Connect Spring Boot to Cloud SQL Postgres with IAM auth and the Java Connector", "expected": ["gcp-cloud-sql-spring"]}
+{"id": "030", "source": "curated", "kind": "match", "intent": "Publish and subscribe to Google Pub/Sub from a Spring Boot service with dead-letter topics", "expected": ["gcp-pubsub-spring"]}
+{"id": "031", "source": "curated", "kind": "match", "intent": "Model documents in Firestore Native mode from Spring Boot", "expected": ["gcp-firestore-spring"]}
+{"id": "032", "source": "curated", "kind": "match", "intent": "Ship structured JSON logs and OpenTelemetry traces from Spring to Cloud Logging and Cloud Trace", "expected": ["gcp-observability-spring"]}
+// RAG family
+{"id": "033", "source": "curated", "kind": "match", "intent": "Build RAG over a Java codebase with tree-sitter chunking and a code-aware embedding model", "expected": ["rag-for-code"]}
+{"id": "034", "source": "curated", "kind": "match", "intent": "Answer cross-service questions like which services consume an event topic — graph RAG over OpenAPI and Pub/Sub", "expected": ["graphrag-multi-service"]}
+{"id": "035", "source": "curated", "kind": "match", "intent": "Design the ingestion pipeline for code/document RAG with incremental git-SHA updates", "expected": ["rag-ingestion-pipeline"]}
+{"id": "036", "source": "curated", "kind": "match", "intent": "Improve RAG recall with HyDE and multi-query expansion before vector search", "expected": ["query-rewriting-rag"]}
+{"id": "037", "source": "curated", "kind": "match", "intent": "Use an LLM agent to call grep and read_file tools to find answers in a codebase", "expected": ["agentic-rag"]}
+// Spring AI integration
+{"id": "038", "source": "curated", "kind": "match", "intent": "Wire Spring AI VectorStore and QuestionAnswerAdvisor into a REST endpoint backed by pgvector", "expected": ["spring-ai-rag"]}
+// GCP RAG infra
+{"id": "039", "source": "curated", "kind": "match", "intent": "Pick between Vertex AI Vector Search, AlloyDB AI, and pgvector for a RAG workload", "expected": ["gcp-vertex-ai-rag"]}
+// Stock trend
+{"id": "040", "source": "curated", "kind": "match", "intent": "How do I tell if a Taiwan stock is in an uptrend or just a bounce?", "expected": ["tw-stock-trend"]}
+
+// --- Wild paraphrases (mixed-locale, partial vocabulary) ---
+{"id": "w17", "source": "wild", "kind": "match", "intent": "Spring Boot 跑在 GKE 上 怎麼設 graceful shutdown 不要 502", "expected": ["spring-boot-fundamentals"]}
+{"id": "w18", "source": "wild", "kind": "match", "intent": "我的 @RestController 想要回 400 帶詳細錯誤欄位 該怎麼弄", "expected": ["java-restful-api"]}
+{"id": "w19", "source": "wild", "kind": "match", "intent": "swagger ui 在 prod 要不要關起來", "expected": ["openapi-swagger-spring"]}
+{"id": "w20", "source": "wild", "kind": "match", "intent": "JPA 一個查詢拉一堆 child collection 跑得超慢", "expected": ["spring-data-jpa"]}
+{"id": "w21", "source": "wild", "kind": "match", "intent": "gcloud auth login 跟 application-default login 有什麼不一樣", "expected": ["gcp-fundamentals"]}
+{"id": "w22", "source": "wild", "kind": "match", "intent": "pod rolling update 一直 502 怎麼辦", "expected": ["gke-deployment"]}
+{"id": "w23", "source": "wild", "kind": "ambiguous", "intent": "GitHub Actions 想連到 GCP 但不想存 key 在 secret 裡", "expected": ["cloud-build-artifact-registry", "gcp-fundamentals"]}
+{"id": "w24", "source": "wild", "kind": "match", "intent": "cloud sql 用 IAM 認證 spring 連不上怎麼辦", "expected": ["gcp-cloud-sql-spring"]}
+{"id": "w25", "source": "wild", "kind": "match", "intent": "pubsub 訊息一直重送 怎麼設 dead letter", "expected": ["gcp-pubsub-spring"]}
+{"id": "w26", "source": "wild", "kind": "match", "intent": "Spring app 的 log 在 cloud logging 看不到 trace id", "expected": ["gcp-observability-spring"]}
+{"id": "w27", "source": "wild", "kind": "ambiguous", "intent": "想對自己的多個 service 做 talk to my codebase 應該怎麼切 chunk", "expected": ["rag-for-code", "graphrag-multi-service"]}
+{"id": "w28", "source": "wild", "kind": "match", "intent": "問 RAG「哪些服務訂閱 orders-events」總是找不到 怎麼辦", "expected": ["graphrag-multi-service"]}
+{"id": "w29", "source": "wild", "kind": "match", "intent": "每次 push 都要全部重新 embed 一遍 太慢了", "expected": ["rag-ingestion-pipeline"]}
+{"id": "w30", "source": "wild", "kind": "match", "intent": "user 問問題的字跟程式碼裡寫的不太一樣 怎麼提高 retrieval recall", "expected": ["query-rewriting-rag"]}
+{"id": "w31", "source": "wild", "kind": "match", "intent": "想讓 LLM 自己 grep 自己 read_file 找答案", "expected": ["agentic-rag"]}
+{"id": "w32", "source": "wild", "kind": "match", "intent": "Spring AI 1.0 怎麼把 RAG 包成一個 REST endpoint", "expected": ["spring-ai-rag"]}
+{"id": "w33", "source": "wild", "kind": "match", "intent": "GCP 上 vector store 要選哪個 pgvector vs vertex ai vector search", "expected": ["gcp-vertex-ai-rag"]}
+{"id": "w34", "source": "wild", "kind": "match", "intent": "2330 現在到底是漲還是跌 看 K 線怎麼判斷", "expected": ["tw-stock-trend"]}
+{"id": "w35", "source": "wild", "kind": "match", "intent": "controller 想用 record 當 DTO 還要驗 email 格式", "expected": ["java-restful-api"]}
+
+// --- Boundary / disambiguation cases (skills that compete) ---
+// Trend judgement vs indicator details
+{"id": "a04", "source": "curated", "kind": "ambiguous", "intent": "我想學 KD 和 MACD 怎麼解讀", "expected": ["tw-stock-technical"]}
+{"id": "a05", "source": "curated", "kind": "ambiguous", "intent": "判斷大盤多空趨勢的方法", "expected": ["tw-stock-trend"]}
+// RAG generic vs code-specific
+{"id": "a06", "source": "curated", "kind": "ambiguous", "intent": "RAG 怎麼切 chunk 比較好", "expected": ["rag-deep-dive", "rag-for-code"]}
+// Spring REST vs OpenAPI
+{"id": "a07", "source": "curated", "kind": "ambiguous", "intent": "我要寫 Spring Boot REST API 並且產生 OpenAPI doc", "expected": ["java-restful-api", "openapi-swagger-spring"]}
+// GKE vs k8s fundamentals
+{"id": "m04", "source": "curated", "kind": "multi", "intent": "How do Kubernetes probes work, specifically for GKE Autopilot", "expected": ["gke-deployment", "k8s-fundamentals"]}
+// New unanswerables (out of repo scope)
+{"id": "u08", "source": "wild", "kind": "unanswerable", "intent": "今天天氣怎麼樣", "expected": []}
+{"id": "u09", "source": "wild", "kind": "unanswerable", "intent": "推薦一下午餐", "expected": []}
