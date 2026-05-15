@@ -27,6 +27,7 @@ Each rule sheet is a single `.md` file. No frontmatter required — rules are me
 | [`go-naming.md`](./go-naming.md) | Go naming conventions — packages, types, functions, receivers |
 | [`java-naming.md`](./java-naming.md) | Java naming conventions — packages, classes, methods, Spring Boot specifics |
 | [`prompt-style.md`](./prompt-style.md) | Prompt writing — structure, instructions, examples, output format, refusals |
+| [`rag-checklist.md`](./rag-checklist.md) | RAG production checklist — corpus, chunking, embedding, retrieval, generation, ops, eval |
 | [`security-checklist.md`](./security-checklist.md) | Security checklist — OWASP Top 10 condensed for code review |
 | [`spring-boot-checklist.md`](./spring-boot-checklist.md) | Spring Boot production checklist — wiring, persistence, security, observability |
 | [`tool-schema.md`](./tool-schema.md) | Tool schemas — naming, descriptions, parameters, errors, side effects |

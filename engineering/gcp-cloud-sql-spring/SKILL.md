@@ -8,7 +8,7 @@ description: >
 category: engineering
 tags: [java, spring-boot, gcp, database, postgresql, jpa, integration, backend]
 keywords: [Cloud SQL, Cloud SQL Auth Proxy, Cloud SQL Java Connector, IAM database authentication, HikariCP, private IP, read replica, PgBouncer]
-related: [spring-boot-fundamentals, spring-data-jpa, gcp-fundamentals, gke-deployment]
+related: [spring-boot-fundamentals, spring-data-jpa, gcp-fundamentals, gke-deployment, gcp-vertex-ai-rag]
 ---
 
 # Cloud SQL from Spring Boot

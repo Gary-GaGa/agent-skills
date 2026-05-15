@@ -3,7 +3,7 @@
 Software design, development, architecture, and integration.
 
 <!-- BEGIN AUTO-GENERATED: header -->
-## Skills (30)
+## Skills (31)
 <!-- END AUTO-GENERATED: header -->
 
 <!-- BEGIN AUTO-GENERATED: skills-table -->
@@ -35,6 +35,7 @@ Software design, development, architecture, and integration.
 | [`openapi-swagger-spring`](./openapi-swagger-spring/SKILL.md) | `java`, `spring-boot`, `api`, `rest`, `openapi`, `api-docs`, `documentation`, `design` | OpenAPI 3 and Swagger UI for Spring Boot via springdoc-openapi — annotating controllers, generating the spec, securing the docs, and choosing between code-first and API-first workflows. Use this skill when documenting a Java REST API or generating client SDKs. |
 | [`realtime-websocket`](./realtime-websocket/SKILL.md) | `websocket`, `sse`, `realtime`, `go`, `react`, `socket-io` | Real-time communication patterns for web apps — WebSocket, SSE, Socket.IO, Go server implementation, React client integration, and common patterns (presence, pub/sub, rooms). Use this skill when building features that need live updates (chat, notifications, collaborative editing, live status). |
 | [`refactoring-patterns`](./refactoring-patterns/SKILL.md) | `refactoring`, `code-quality`, `patterns`, `go` | Safe, mechanical refactoring patterns — extract, inline, rename, replace conditional with polymorphism, and more. Use this skill when the user wants to clean up code without changing behaviour, is planning a refactor before adding a feature, or is reviewing a refactoring PR. Language-agnostic with Go examples. |
+| [`spring-ai-rag`](./spring-ai-rag/SKILL.md) | `java`, `spring-boot`, `rag`, `llm`, `ai-agent`, `integration`, `backend`, `gcp` | RAG inside a Spring Boot service with Spring AI — VectorStore (pgvector / Vertex AI), DocumentReader, Embedding clients, RetrievalAugmentation / QuestionAnswerAdvisor, exposing RAG over REST. Use this skill when the RAG component is itself a Spring Boot microservice. |
 | [`spring-boot-fundamentals`](./spring-boot-fundamentals/SKILL.md) | `java`, `spring-boot`, `backend`, `framework`, `design` | Spring Boot fundamentals — project structure, auto-configuration, profiles, configuration binding, Actuator, and graceful shutdown. Use this skill when starting a Spring Boot service, choosing between Spring MVC and WebFlux, wiring beans, or hardening a Boot app for production. |
 | [`spring-boot-testing`](./spring-boot-testing/SKILL.md) | `java`, `spring-boot`, `testing`, `tdd`, `quality`, `backend` | Testing Spring Boot applications — slice tests (@WebMvcTest, @DataJpaTest), full-context @SpringBootTest, MockMvc / WebTestClient, Testcontainers for real PostgreSQL/Pub-Sub, and test data builders. Use this skill when writing or reviewing tests for a Java Spring Boot service. |
 | [`spring-data-jpa`](./spring-data-jpa/SKILL.md) | `java`, `spring-boot`, `jpa`, `hibernate`, `database`, `postgresql`, `backend`, `sql` | Persistence with Spring Data JPA and Hibernate — entities, repositories, transactions, fetch strategies, N+1 prevention, and Flyway migrations. Use this skill when modeling domain persistence, writing JPA repositories, or diagnosing slow queries in a Spring Boot service. |

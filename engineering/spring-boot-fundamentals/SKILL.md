@@ -8,7 +8,7 @@ description: >
 category: engineering
 tags: [java, spring-boot, backend, framework, design]
 keywords: [Spring Boot, Spring MVC, WebFlux, Actuator, application.yml, "@SpringBootApplication", profiles, Maven, Gradle]
-related: [java-restful-api, spring-boot-testing, spring-data-jpa, openapi-swagger-spring, gcp-cloud-sql-spring, gcp-firestore-spring, gcp-observability-spring, gcp-pubsub-spring]
+related: [java-restful-api, spring-boot-testing, spring-data-jpa, openapi-swagger-spring, gcp-cloud-sql-spring, gcp-firestore-spring, gcp-observability-spring, gcp-pubsub-spring, spring-ai-rag]
 ---
 
 # Spring Boot Fundamentals

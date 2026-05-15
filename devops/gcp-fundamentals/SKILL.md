@@ -8,7 +8,7 @@ description: >
 category: devops
 tags: [gcp, cloud, iam, devops, security, infrastructure]
 keywords: [GCP, Google Cloud, gcloud, IAM, Service Account, Workload Identity, ADC, Application Default Credentials, Secret Manager, Project, Folder, Organization]
-related: [gke-deployment, cloud-build-artifact-registry, gcp-cloud-sql-spring, gcp-pubsub-spring, gcp-observability-spring, gcp-firestore-spring]
+related: [gke-deployment, cloud-build-artifact-registry, gcp-cloud-sql-spring, gcp-pubsub-spring, gcp-observability-spring, gcp-firestore-spring, gcp-vertex-ai-rag]
 ---
 
 # GCP Fundamentals
