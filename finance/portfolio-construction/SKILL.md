@@ -8,7 +8,7 @@ description: >
   portfolio management.
 category: finance
 tags: [portfolio, asset-allocation, risk-management, diversification, investing]
-related: [tw-stock-fundamental, tw-etf-investing, tw-stock-options, tw-stock-tax]
+related: [tw-stock-fundamental, tw-etf-investing, tw-stock-options, tw-stock-tax, tw-stock-trend]
 ---
 
 # Portfolio Construction

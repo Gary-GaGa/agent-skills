@@ -9,7 +9,7 @@ description: >
 category: finance
 tags: [stock, taiwan, tw-stock, quantitative, backtesting, factor-investing, strategy]
 keywords: [backtest, factor model, Sharpe, Sortino, Calmar, survivorship bias, look-ahead bias]
-related: [tw-stock-fundamental, tw-stock-chip, tw-stock-technical, tw-stock-data]
+related: [tw-stock-fundamental, tw-stock-chip, tw-stock-technical, tw-stock-data, tw-stock-trend]
 ---
 
 # Taiwan Stock Quantitative Strategy

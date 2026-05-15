@@ -8,7 +8,7 @@ description: >
 category: finance
 tags: [stock, taiwan, tw-stock, technical-analysis, charting, indicators]
 keywords: [MACD, RSI, KD, Bollinger Bands, moving average, support, resistance, candlestick]
-related: [tw-stock-fundamental, tw-stock-chip, tw-stock-quant, tw-stock-data, tw-stock-options]
+related: [tw-stock-fundamental, tw-stock-chip, tw-stock-quant, tw-stock-data, tw-stock-options, tw-stock-trend]
 ---
 
 # Taiwan Stock Technical Analysis

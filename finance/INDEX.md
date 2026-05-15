@@ -3,7 +3,7 @@
 Personal investing, market analysis, and trading discipline.
 
 <!-- BEGIN AUTO-GENERATED: header -->
-## Skills (9)
+## Skills (10)
 <!-- END AUTO-GENERATED: header -->
 
 <!-- BEGIN AUTO-GENERATED: skills-table -->
@@ -18,4 +18,5 @@ Personal investing, market analysis, and trading discipline.
 | [`tw-stock-quant`](./tw-stock-quant/SKILL.md) | `stock`, `taiwan`, `tw-stock`, `quantitative`, `backtesting`, `factor-investing`, `strategy` | Quantitative investing for Taiwan-listed stocks — backtest framework design, classic factor models (value, momentum, quality, low volatility), strategy development workflow, performance metrics, overfitting and survivorship bias, and post-go-live discipline. Concept-first; pseudo-code examples are language-agnostic (Python / Go / R). |
 | [`tw-stock-tax`](./tw-stock-tax/SKILL.md) | `stock`, `taiwan`, `tax`, `dividend`, `investing` | Tax considerations for Taiwan stock investing — securities transaction tax, dividend income tax (combined vs separate filing), the second- generation NHI supplemental premium, day-trading rates, basic income tax on overseas gains, and tax-saving strategies. For retail investors preparing to file. |
 | [`tw-stock-technical`](./tw-stock-technical/SKILL.md) | `stock`, `taiwan`, `tw-stock`, `technical-analysis`, `charting`, `indicators` | Technical analysis for Taiwan-listed stocks — candlestick patterns, moving averages, MACD, RSI, KD, Bollinger Bands, volume-price relationships, support / resistance, and a multi-indicator confluence framework. Concept- focused; pairs best with fundamental and chip-flow analysis. |
+| [`tw-stock-trend`](./tw-stock-trend/SKILL.md) | `stock`, `taiwan`, `tw-stock`, `technical-analysis`, `charting`, `indicators` | Trend identification for Taiwan-listed stocks — Dow theory structure (HH/HL vs LH/LL), multi-timeframe alignment, strength and phase, pullback vs reversal. Use this skill to answer "is this stock in an uptrend or downtrend, and how strong?" before any entry / exit decision. |
 <!-- END AUTO-GENERATED: skills-table -->

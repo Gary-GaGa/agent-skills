@@ -1,7 +1,7 @@
 # Agent Skills
 
 <!-- BEGIN AUTO-GENERATED: summary -->
-A curated collection of **71 skills** and **15 rule sheets** across **7 categories**. Each skill is a self-contained capability package that AI coding agents (Claude Code, GitHub Copilot, etc.) can load to gain domain expertise.
+A curated collection of **72 skills** and **15 rule sheets** across **7 categories**. Each skill is a self-contained capability package that AI coding agents (Claude Code, GitHub Copilot, etc.) can load to gain domain expertise.
 <!-- END AUTO-GENERATED: summary -->
 
 ---
@@ -29,7 +29,7 @@ README.md (you are here)
 | **[devops](./devops/INDEX.md)** | 7 | Docker, GitHub Actions, Terraform, Kubernetes. | [→ INDEX](./devops/INDEX.md) |
 | **[data](./data/INDEX.md)** | 3 | SQL, database migrations, data modeling. | [→ INDEX](./data/INDEX.md) |
 | **[content](./content/INDEX.md)** | 3 | Medium writing, technical docs, newsletters. | [→ INDEX](./content/INDEX.md) |
-| **[finance](./finance/INDEX.md)** | 9 | Taiwan stock analysis, ETF, options, portfolio, tax. | [→ INDEX](./finance/INDEX.md) |
+| **[finance](./finance/INDEX.md)** | 10 | Taiwan stock analysis, ETF, options, portfolio, tax. | [→ INDEX](./finance/INDEX.md) |
 | **[productivity](./productivity/INDEX.md)** | 3 | Learning methodology, second brain, time management. | [→ INDEX](./productivity/INDEX.md) |
 | **[rules](./rules/README.md)** | 15 | Lightweight, quotable convention sheets (Go, security, Docker, prompts, etc.). | [→ README](./rules/README.md) |
 <!-- END AUTO-GENERATED: categories -->

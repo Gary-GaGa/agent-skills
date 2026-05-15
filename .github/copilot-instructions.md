@@ -13,7 +13,7 @@ This repo is a collection of reusable **agent skills**, organized into **categor
 **Navigation:** `README.md` → `<category>/INDEX.md` → `<category>/<skill>/SKILL.md`.
 
 <!-- BEGIN AUTO-GENERATED: skill-list -->
-Current skills — 71 total across 7 categories:
+Current skills — 72 total across 7 categories:
 
 **engineering (30):** api-design-grpc, api-design-rest, auth-patterns, clean-ddd-go, code-review, copilot-sdk, ddd-check, debugging-methodology, event-driven-architecture, gcp-cloud-sql-spring, gcp-firestore-spring, gcp-observability-spring, gcp-pubsub-spring, git-workflow, go-concurrency, go-performance, go-testing, java-restful-api, line-integration-tw, microservices-patterns, mongodb-go, nextjs-fundamentals, observability-go, openapi-swagger-spring, realtime-websocket, refactoring-patterns, spring-boot-fundamentals, spring-boot-testing, spring-data-jpa, tw-payment-integration
 
@@ -25,7 +25,7 @@ Current skills — 71 total across 7 categories:
 
 **content (3):** medium-writing, newsletter-writing, technical-writing
 
-**finance (9):** portfolio-construction, tw-etf-investing, tw-stock-chip, tw-stock-data, tw-stock-fundamental, tw-stock-options, tw-stock-quant, tw-stock-tax, tw-stock-technical
+**finance (10):** portfolio-construction, tw-etf-investing, tw-stock-chip, tw-stock-data, tw-stock-fundamental, tw-stock-options, tw-stock-quant, tw-stock-tax, tw-stock-technical, tw-stock-trend
 
 **productivity (3):** learning-methodology, second-brain, time-management
 
